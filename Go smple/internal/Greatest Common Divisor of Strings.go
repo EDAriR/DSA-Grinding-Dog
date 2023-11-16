@@ -1,3 +1,5 @@
+package internal
+
 func gcdOfStrings(str1 string, str2 string) string {
 
     l1 := len(str1)

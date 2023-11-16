@@ -1,0 +1,88 @@
+# 移除排序陣列中的重複元素
+
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [問題描述](#問題描述)
+- [例子](#例子)
+      + [例子 1](#例子-1)
+      + [例子 2](#例子-2)
+- [約束條件](#約束條件)
+- [解法概述](#解法概述)
+      + [暴力法](#暴力法)
+      + [優化方案 - 雙指針技巧](#優化方案-雙指針技巧)
+- [Go 語言實現](#go-語言實現)
+- [Custom Judge 驗證](#custom-judge-驗證)
+- [理解「原地操作」](#理解原地操作)
+
+<!-- TOC end -->
+
+## 問題描述
+
+這個問題要求我們從一個非遞減排序的整數陣列中移除重複的元素，並返回不重複元素的數量。重要的是，這個操作需要在原地完成，也就是說不能使用額外的陣列空間。
+
+## 例子
+
+#### 例子 1:
+# 移除排序陣列中的重複元素
+
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [問題描述](#問題描述)
+- [例子](#例子)
+      + [例子 1](#例子-1)
+      + [例子 2](#例子-2)
+- [約束條件](#約束條件)
+- [解法概述](#解法概述)
+      + [暴力法](#暴力法)
+      + [優化方案 - 雙指針技巧](#優化方案-雙指針技巧)
+- [Go 語言實現](#go-語言實現)
+- [Custom Judge 驗證](#custom-judge-驗證)
+- [理解「原地操作」](#理解原地操作)
+
+<!-- TOC end -->
+
+## 問題描述
+
+這個問題要求我們從一個非遞減排序的整數陣列中移除重複的元素，並返回不重複元素的數量。重要的是，這個操作需要在原地完成，也就是說不能使用額外的陣列空間。
+
+## 例子
+
+#### 例子 1:
+
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
+Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+
+
+#### 例子 2:
+
+Input: nums = [0,0,1,1,1,2,2,3,3,4]
+Output: 5, nums = [0,1,2,3,4,,,,,_]
+Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+
+
+## 約束條件
+
+- `1 <= nums.length <= 3 * 104`
+- `-100 <= nums[i] <= 100`
+- `nums` 是非遞減排序。
+
+## 解法概述
+
+#### 暴力法
+您的當前解法使用了字典來追蹤元素出現的次數。這是一種可行的方法，但它不符合題目要求的「原地操作」。
+
+#### 優化方案 - 雙指針技巧
+我們可以使用雙指針技巧來優化這個問題的解法。一個指針用於遍歷陣列，另一個指針用於在原陣列中放置不重複的元素。
+
+## Go 語言實現
+
+Go 語言的實現中：
+- 我們定義了 `removeDuplicates` 函數，它接受一個整數切片 `nums` 並返回一個整數。
+- 我們使用變數 `j` 來追蹤不重複元素的位置。
+- 通過遍歷 `nums`，當我們找到一個不同於 `nums[j]` 的元素時，我們將其移動到 `j+1` 的位置，然後增加 `j`。
+- 最後，我們返回 `j + 1` 作為不重複元素的數量。
+
+## Custom
