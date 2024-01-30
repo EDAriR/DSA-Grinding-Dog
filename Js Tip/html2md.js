@@ -8,7 +8,8 @@ script.onload = function() {
     var turndownService = new TurndownService();
 
     // 選擇要轉換的 HTML 元素，這裡是 id 為 'content' 的元素
-    var htmlContent = document.getElementById('content').innerHTML;
+    // var htmlContent = document.getElementById('content').innerHTML;
+    var htmlContent = document.getElementsByClassName('content').innerHTML;
 
     // 將 HTML 轉換為 Markdown
     var markdown = turndownService.turndown(htmlContent);
