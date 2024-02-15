@@ -58,20 +58,6 @@ mp3_opts = {
 async def create_session():
     return aiohttp.ClientSession()
 
-# def dl_main(opts, url):
-
-#     with yt_dlp.YoutubeDL(opts) as ydl:
-#         info = ydl.extract_info(url)
-#         print_info(info)
-
-#         thumbnail = sorted(filter(lambda d: d.get('height') is not None, info['thumbnails']), key = lambda x: x['height'])[-1]
-#         print(f'"thumbnail":{thumbnail["url"]}')
-#         # img = requests.get(thumbnail['url'],verify=False)  # 下載圖片
-#         img = requests.get(thumbnail['url'])  # 下載圖片
-#         with open(f"./{info['uploader']}/{info['title']}_{info['release_date']}.jpg", "wb") as file:  # 開啟資料夾及命名圖片檔
-#             file.write(img.content)
-
-#     return info
 
 def check_live_stream_title(info, keywords):
     title = info.get('title', '').lower()
