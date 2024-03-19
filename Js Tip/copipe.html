@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>從剪貼簿貼上圖片</title>
+</head>
+<body>
+    <p>按 Ctrl-V 貼上複製的圖片</p>
+    <div id="panel"></div>
+    <script>
+        document.addEventListener('paste', function (e) {
+            const items = e.clipboardData && e.clipboardData.items;
+            if (!items) return;
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].type.indexOf('image') !== -1) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        var image = new Image();
+                        image.src = e.target.result;
+                        document.getElementById('panel').appendChild(image);
+                    };
+                    reader.readAsDataURL(items[i].getAsFile());
+                }
+            }
+        });
+    </script>
+</body>
+<!-- ref: https://blog.darkthread.net/blog/paste-to-upload/ -->
