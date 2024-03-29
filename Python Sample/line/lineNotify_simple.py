@@ -1,3 +1,5 @@
+
+# ref https://ithelp.ithome.com.tw/articles/10234115
 #基本功能測試
 import requests
 
