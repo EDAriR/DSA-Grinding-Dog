@@ -11,3 +11,5 @@
 ## strings
 
 - https://pkg.go.dev/strings
+- https://go.dev/blog/slices
+- https://go.dev/blog/strings
