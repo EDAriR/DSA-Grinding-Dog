@@ -22,9 +22,7 @@ RUN apt-get update && \
         net-tools \
         wget \
         ffmpeg \
-        libomp-dev \
-        locale-gen && \
-        echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+        libomp-dev
 
 RUN apt-get install --yes --no-install-recommends \
     gcc pkg-config libfreetype6-dev libpng-dev g++ \
@@ -67,10 +65,10 @@ RUN python3 -m pip install --upgrade pip requests setuptools pipenv && \
                 xgboost \
                 catboost \
                 torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 \
-                git+https://github.com/microsoft/qlib.git && \
-    rm -r ~/.cache/pip
+                git+https://github.com/microsoft/qlib.git && rm -r ~/.cache/pip
 
-
+RUN locale-gen && \
+    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 # 設定工作目錄
 WORKDIR /workspace
 
