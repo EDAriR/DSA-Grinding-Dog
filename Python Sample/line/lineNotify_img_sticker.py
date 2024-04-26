@@ -1,3 +1,4 @@
+# ref https://ithelp.ithome.com.tw/articles/10234115
 #分享鐵人幫
 import requests
 from bs4 import BeautifulSoup as bs 
@@ -5,7 +6,7 @@ from bs4 import BeautifulSoup as bs
 def lineNotifyMessage(token, msg, img):
 
     headers = {
-        "Authorization": "Bearer " + token, 
+        "Authorization": f"Bearer {token}", 
         "Content-Type" : "application/x-www-form-urlencoded"
     }
 
@@ -17,6 +18,7 @@ def lineNotifyMessage(token, msg, img):
       #  'stickerId' : 520,
         'notificationDisabled' : True
     }
+    
     r = requests.post("https://notify-api.line.me/api/notify", headers = headers, params = payload, verify=False)
     return r.status_code
 
