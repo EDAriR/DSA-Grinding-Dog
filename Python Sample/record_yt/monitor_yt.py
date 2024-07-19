@@ -2,7 +2,6 @@ import time
 from datetime import datetime
 import requests
 import os
-import sys
 import asyncio
 import aiohttp
 from concurrent.futures import ThreadPoolExecutor
@@ -13,7 +12,8 @@ import whisper
 from whisper.utils import get_writer
 
 
-YT_API_KEY = 'AIzaSyAFOCW-YXn_yY7x9S1Dq_zLF7BD5ewcuew'
+YT_API_KEY = 'LINE_TOKEN'
+LINE_TOKEN = 'LINE_TOKEN'
 
 # https://stackoverflow.com/questions/64825310/downloading-data-directly-into-a-temporary-file-with-python-youtube-dl
 ydl_opts = {
@@ -57,7 +57,6 @@ mp3_opts = {
 
 async def create_session():
     return aiohttp.ClientSession()
-
 
 def check_live_stream_title(info, keywords):
     title = info.get('title', '').lower()
@@ -186,12 +185,29 @@ async def transcribe_audio(file_path:str):
         print(f'done : {get_now()}')
 
 
+def lineNotifyMessage(token, msg):
+    headers = {
+        "Authorization": f"Bearer {token}", 
+        "Content-Type" : "application/x-www-form-urlencoded"
+    }
+
+    payload = {'message': msg }
+    r = requests.post("https://notify-api.line.me/api/notify", headers = headers, params = payload)
+    return r.status_code
+
+
 async def monitor_channel(yt_url, keywords):
     while True:
         try:
             info = await dl_main(ydl_opts, yt_url + '/live')
             if check_live_stream_title(info, keywords):
-                print(f"Recording live stream from {yt_url}...")
+                msg = f'''
+                Recording live stream on {yt_url}...
+                channel:{info.get('channel', 'N/A')}
+                title:{info.get('title', 'N/A')}
+                '''
+                lineNotifyMessage(LINE_TOKEN, msg)
+                print(msg)
                 await download_video(ydl_opts, yt_url + '/live')
                 # 移除 break，使函數繼續監視頻道
             else:
@@ -215,6 +231,8 @@ if __name__ == "__main__":
         'https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g', # IRyS Ch. hololive-EN
         'https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g', # Gawr Gura Ch. hololive-EN
         'https://www.youtube.com/channel/UCL_qhgtOy0dy1Agp8vkySQg'  # Mori Calliope Ch. hololive-EN
+        'https://www.youtube.com/@NanashiMumei'  # Nanashi Mumei Ch. hololive-EN 
     ]
-    keywords = ['unarchive', 'アーカイブ']
+    keywords = ['unarchive', 'アーカイブ', 'unarchived','karaoke', '歌枠']
+    keywords = ['karaoke', '歌枠']
     asyncio.run(main(channels, keywords))
