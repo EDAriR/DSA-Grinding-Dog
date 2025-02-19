@@ -1,0 +1,47 @@
+# main.py
+
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
+from pathlib import Path
+
+from app.routers import upload, ytdownloader
+
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+templates = Jinja2Templates(directory="templates")
+
+# 掛載各個 router
+app.include_router(upload.router, prefix="/upload", tags=["upload"])
+app.include_router(ytdownloader.router, prefix="/yt", tags=["ytdownloader"])
+
+def get_file_list(folder_path: str):
+    """
+    回傳指定資料夾下所有檔案的檔名清單
+    """
+    p = Path(folder_path)
+    if not p.exists():
+        return []
+    return [f.name for f in p.iterdir() if f.is_file()]
+
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # 取得各資料夾的檔案清單
+    img_files = get_file_list("img")
+    video_files = get_file_list("video")
+    other_files = get_file_list("files")
+
+    return templates.TemplateResponse("home.html", {
+        "request": request,
+        "img_files": img_files,
+        "video_files": video_files,
+        "other_files": other_files
+    })

@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: FastAPI Project
+  version: "1.0.0"
+  description: >
+    A FastAPI application that supports file uploads, video downloads, and basic HTML interface.
+
+servers:
+  - url: http://localhost:8000
+
+paths:
+  /:
+    get:
+      summary: Show homepage
+      operationId: read_root
+      responses:
+        "200":
+          description: Return the home.html page
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /upload/file:
+    post:
+      summary: Upload a file
+      operationId: uploadFile
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+              required:
+                - file
+      responses:
+        "200":
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  filename:
+                    type: string
+                  status:
+                    type: string
+                required:
+                  - filename
+                  - status
+        "400":
+          description: Bad Request
+
+  /yt:
+    get:
+      summary: YouTube download page
+      operationId: getYtPage
+      responses:
+        "200":
+          description: Return the YouTube downloader page (HTML)
+          content:
+            text/html:
+              schema:
+                type: string
+
+    post:
+      summary: Trigger YouTube download process
+      operationId: postYtDownload
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: YouTube or other video URL
+              required:
+                - url
+      responses:
+        "200":
+          description: Download initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  filename:
+                    type: string
+              required:
+                - status
+                - message
+        "400":
+          description: Bad Request
+
+components:
+  schemas:
+    FileUploadResponse:
+      type: object
+      properties:
+        filename:
+          type: string
+        status:
+          type: string
+      required:
+        - filename
+        - status
