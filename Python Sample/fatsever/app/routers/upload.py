@@ -3,6 +3,7 @@ import os
 import magic
 from PIL import Image
 from io import BytesIO
+import logging
 
 router = APIRouter()
 
@@ -48,4 +49,5 @@ async def upload_file(file: UploadFile = File(...)):
         with open(file_location, "wb") as f:
             f.write(file_content)
 
+    logging.info(f"{file_type.capitalize()} '{file.filename}' uploaded successfully.")
     return {"info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully."}

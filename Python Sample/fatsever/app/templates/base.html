@@ -27,13 +27,14 @@
         <main>
             {% block content %}
             <h2>Upload Files</h2>
+            <div id="message"></div>
             <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="file" class="form-label">Upload File</label>
                     <input class="form-control" type="file" id="file" name="file" style="display: none;">
                     <div class="drop-zone" id="dropZone">Drag & Drop files here or click to upload</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Upload File</button>
+                <button type="submit" class="btn btn-primary" style="display: none;">Upload File</button>
             </form>
 
             <h2>Image Files</h2>
@@ -67,6 +68,7 @@
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('file');
         const uploadForm = document.getElementById('uploadForm');
+        const messageDiv = document.getElementById('message');
 
         dropZone.addEventListener('click', () => fileInput.click());
 
@@ -82,7 +84,7 @@
             dropZone.classList.remove('dragover');
             if (e.dataTransfer.files.length) {
                 fileInput.files = e.dataTransfer.files;
-                uploadForm.submit();
+                uploadFile();
             }
         });
 
@@ -94,10 +96,26 @@
                     const dataTransfer = new DataTransfer();
                     dataTransfer.items.add(file);
                     fileInput.files = dataTransfer.files;
-                    uploadForm.submit();
+                    uploadFile();
                 }
             }
         });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                uploadFile();
+            }
+        });
+
+        async function uploadFile() {
+            const formData = new FormData(uploadForm);
+            const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            messageDiv.innerHTML = `<div class="alert alert-success" role="alert">${result.info}</div>`;
+        }
     </script>
 </body>
 </html>
