@@ -6,7 +6,7 @@ info:
     A FastAPI application that supports file uploads, video downloads, and basic HTML interface.
 
 servers:
-  - url: http://localhost:8000
+  - url: http://localhost:9001
 
 paths:
   /:

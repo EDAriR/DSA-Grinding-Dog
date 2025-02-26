@@ -1,14 +1,17 @@
+import uvicorn
+from pathlib import Path
+from datetime import datetime
+
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from pathlib import Path
-from datetime import datetime
 
-from app.routers import upload, ytdownloader
 
-from app.services.file_service import get_file_list
+from routers import upload, ytdownloader
+
+from services.file_service import get_file_list
 
 
 app = FastAPI()
@@ -31,6 +34,7 @@ app.mount("/files", StaticFiles(directory="files"), name="files")
 app.include_router(upload.router, prefix="/api", tags=["upload"])
 app.include_router(ytdownloader.router, prefix="/api", tags=["ytdownloader"])
 
+
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     # 取得各資料夾的檔案清單
@@ -47,3 +51,22 @@ async def read_root(request: Request):
         "other_files": other_files,
         "current_year": current_year
     })
+
+# filetype img, video, files
+@app.get("/files")
+async def get_files(filetype: str):
+    return get_file_list(filetype)
+
+
+if __name__ == "__main__":
+    uvicorn.run(
+        app
+        , host="0.0.0.0"
+        , port=9001
+        # , reload=True
+        # , ssl_keyfile="./ssl/key.pem"
+        # , ssl_certfile="./ssl/cert.pem"
+        , server_header=False
+        , proxy_headers=True
+        , forwarded_allow_ips="*"
+        )

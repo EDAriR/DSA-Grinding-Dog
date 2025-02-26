@@ -49,5 +49,5 @@ async def upload_file(file: UploadFile = File(...)):
         with open(file_location, "wb") as f:
             f.write(file_content)
 
-    logging.info(f"{file_type.capitalize()} '{file.filename}' uploaded successfully.")
+    logging.info("%s '%s' uploaded successfully.", file_type.capitalize(), file.filename)
     return {"info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully."}
