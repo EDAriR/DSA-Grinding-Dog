@@ -4,6 +4,14 @@
 
 This FastAPI project provides a web interface for downloading videos and uploading files, including images and other types of documents. It utilizes `yt-dlp` for video downloads and `openai-whisper` for generating subtitles.
 
+## 啟動方式
+
+1. 安裝相依套件：`pip install -r requirements.txt`
+
+2. 啟動 FastAPI 應用程式：`uvicorn app.main:app --reload`
+
+3. 在瀏覽器中開啟 <http://127.0.0.1:8000> 即可使用應用程式界面。
+
 ## Features
 
 - Download videos to the `/video` directory using `yt-dlp`.

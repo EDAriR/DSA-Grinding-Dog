@@ -1,5 +1,5 @@
 CREATE TABLE urls (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY,
     key TEXT UNIQUE,
     secret_key TEXT UNIQUE,
     target_url TEXT,

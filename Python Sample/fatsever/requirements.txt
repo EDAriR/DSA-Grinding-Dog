@@ -1,4 +1,8 @@
 fastapi
 uvicorn
-yt-dlp
-openai-whisper
+python-dotenv
+validators
+sqlalchemy
+python-magic
+python-magic-bin
+Pillow
