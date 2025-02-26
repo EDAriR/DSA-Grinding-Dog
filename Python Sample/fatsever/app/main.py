@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from datetime import datetime
 
@@ -21,6 +22,10 @@ app.add_middleware(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "app" / "templates"))
+
+app.mount("/img", StaticFiles(directory="img"), name="img")
+app.mount("/video", StaticFiles(directory="video"), name="video")
+app.mount("/files", StaticFiles(directory="files"), name="files")
 
 # 掛載各個 router
 app.include_router(upload.router, prefix="/api", tags=["upload"])
