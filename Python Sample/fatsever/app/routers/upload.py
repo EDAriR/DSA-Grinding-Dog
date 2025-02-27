@@ -4,6 +4,7 @@ import magic
 from PIL import Image
 from io import BytesIO
 import logging
+from datetime import datetime
 
 router = APIRouter()
 
@@ -35,6 +36,22 @@ def allowed_file(file_content, file_type):
     file_mime_type = mime.from_buffer(file_content)
     return file_mime_type in ALLOWED_MIME_TYPES[file_type]
 
+def get_unique_filename(filepath):
+    """
+    如果檔案已存在，自動在檔名後加上時間戳記
+    例如: test.jpg -> test_20250227133010.jpg
+    """
+    if not os.path.exists(filepath):
+        return filepath
+    
+    directory = os.path.dirname(filepath)
+    filename = os.path.basename(filepath)
+    name, ext = os.path.splitext(filename)
+    
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    new_filename = f"{name}_{timestamp}{ext}"
+    return os.path.join(directory, new_filename)
+
 @router.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     file_content = await file.read()
@@ -54,11 +71,15 @@ async def upload_file(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="Storage limit exceeded. Current usage: {:.2f} GB".format(CACHE['total_size'] / (1024 * 1024 * 1024)))
 
     file_location = os.path.join(UPLOAD_DIRS[file_type], file.filename)
+    # 檢查檔案是否已存在，如果存在則重新命名
+    file_location = get_unique_filename(file_location)
 
     if file_type == 'image' and file_mime_type == 'image/webp':
         # Convert webp to png
         image = Image.open(BytesIO(file_content))
         file_location = os.path.splitext(file_location)[0] + '.png'
+        # 再次檢查 PNG 檔案是否存在
+        file_location = get_unique_filename(file_location)
         image.save(file_location, 'PNG')
         file_size = os.path.getsize(file_location)
     else:
