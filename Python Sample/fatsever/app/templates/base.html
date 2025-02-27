@@ -32,6 +32,24 @@
     <main>
       {% block content %}
       <div id="message"></div>
+      
+      <!-- ytdownloader -->
+      <form id="ytDownloadForm" action="/api/ytdownloader" method="post" enctype="multipart/form-data" class="mb-4">
+        <div class="input-group">
+          <input type="text" 
+                 id="youtubeUrl" 
+                 name="url" 
+                 class="form-control" 
+                 placeholder="請輸入 YouTube 影片網址"
+                 aria-label="YouTube URL">
+          <button class="btn btn-primary" type="submit" id="ytDownloadBtn">
+            <i class="fas fa-download me-2"></i>
+            <span>下載</span>
+            <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+          </button>
+        </div>
+      </form>
+
       <!-- 上傳表單 -->
       <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data" class="mb-4">
         <div class="mb-3">

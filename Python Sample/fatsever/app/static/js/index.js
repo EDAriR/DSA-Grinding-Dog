@@ -152,6 +152,109 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // YouTube 下載表單處理
+  const ytDownloadForm = document.getElementById('ytDownloadForm');
+  const ytDownloadBtn = document.getElementById('ytDownloadBtn');
+
+  ytDownloadForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const url = document.getElementById('youtubeUrl').value;
+    
+    // 顯示 loading spinner
+    const downloadIcon = ytDownloadBtn.querySelector('.fa-download');
+    const spinner = ytDownloadBtn.querySelector('.fa-spinner');
+    const buttonText = ytDownloadBtn.querySelector('span');
+    
+    downloadIcon.style.display = 'none';
+    spinner.style.display = 'inline-block';
+    buttonText.textContent = '處理中';
+    ytDownloadBtn.disabled = true;
+    
+    try {
+      // 發送下載請求並獲取任務ID
+      const response = await fetch('/api/ytdownloader/start', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url })
+      });
+      
+      const { taskId } = await response.json();
+      
+      // 建立 SSE 連接
+      const eventSource = new EventSource(`/api/ytdownloader/status/${taskId}`);
+      
+      eventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        
+        if (data.status === 'processing') {
+          // 更新進度（如果有）
+          if (data.progress) {
+            buttonText.textContent = `處理中 ${data.progress}%`;
+          }
+        } else if (data.status === 'completed') {
+          // 下載完成
+          const alertDiv = document.createElement('div');
+          alertDiv.className = 'alert alert-success';
+          alertDiv.role = 'alert';
+          alertDiv.textContent = '下載成功！';
+          messageDiv.appendChild(alertDiv);
+          
+          setTimeout(() => {
+            alertDiv.classList.add('fade-out');
+            setTimeout(() => alertDiv.remove(), 500);
+          }, 4500);
+          
+          eventSource.close();
+          resetButton();
+        } else if (data.status === 'failed') {
+          // 下載失敗
+          const alertDiv = document.createElement('div');
+          alertDiv.className = 'alert alert-danger';
+          alertDiv.role = 'alert';
+          alertDiv.textContent = `下載失敗: ${data.error || '未知錯誤'}`;
+          messageDiv.appendChild(alertDiv);
+          
+          setTimeout(() => {
+            alertDiv.classList.add('fade-out');
+            setTimeout(() => alertDiv.remove(), 500);
+          }, 4500);
+          
+          eventSource.close();
+          resetButton();
+        }
+      };
+      
+      eventSource.onerror = () => {
+        eventSource.close();
+        resetButton();
+      };
+      
+    } catch (error) {
+      // 處理初始請求錯誤
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-danger';
+      alertDiv.role = 'alert';
+      alertDiv.textContent = `下載失敗: ${error.message}`;
+      messageDiv.appendChild(alertDiv);
+      
+      setTimeout(() => {
+        alertDiv.classList.add('fade-out');
+        setTimeout(() => alertDiv.remove(), 500);
+      }, 4500);
+      
+      resetButton();
+    }
+    
+    function resetButton() {
+      downloadIcon.style.display = 'inline-block';
+      spinner.style.display = 'none';
+      buttonText.textContent = '下載';
+      ytDownloadBtn.disabled = false;
+    }
+  });
 });
 
 async function updateFileLists() {

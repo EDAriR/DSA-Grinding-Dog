@@ -9,10 +9,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
-from routers import upload, ytdownloader
-from routers.upload import calculate_total_size, CACHE
+from app.routers import upload, ytdownloader
+from app.routers.upload import calculate_total_size, CACHE
 
-from services.file_service import get_file_list
+from app.services.file_service import get_file_list
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

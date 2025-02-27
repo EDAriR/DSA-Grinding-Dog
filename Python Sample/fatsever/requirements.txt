@@ -6,3 +6,5 @@ sqlalchemy
 python-magic
 python-magic-bin
 Pillow
+sse-starlette
+yt-dlp
