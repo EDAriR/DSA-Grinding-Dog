@@ -67,3 +67,46 @@ dialog::backdrop {
 .tab-content {
   scrollbar-gutter: stable;
 }
+
+/* 預設主題 (白底) */
+body {
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Monokai 主題 */
+body.monokai {
+  background-color: #272822;
+  color: #f8f8f2;
+}
+
+/* 修改 navbar 風格 */
+body.monokai .navbar {
+  background-color: #1e1e1e;
+}
+
+body.monokai .navbar-brand, 
+body.monokai .nav-link, 
+body.monokai .btn-outline-light {
+  color: #f8f8f2;
+}
+
+/* 其他元件設定可依需求調整 */
+
+.alert {
+  animation: fadeIn 0.5s;
+}
+
+.alert.fade-out {
+  animation: fadeOut 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
