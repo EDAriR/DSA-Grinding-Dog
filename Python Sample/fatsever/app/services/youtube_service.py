@@ -2,6 +2,19 @@ import os
 import yt_dlp
 from typing import Dict, Any
 
+ydl_opts = {
+    'outtmpl': './video/%(title)s_%(release_date)s.%(ext)s',
+    'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+    'merge_output_format': 'mp4',
+    'writethumbnail' : True,
+    'writedescription': True,
+    'nocheckcertificate': True,
+    # CHROMIUM_BASED_BROWSERS = {'brave', 'chrome', 'chromium', 'edge', 'opera', 'vivaldi'}
+    'cookiesfrombrowser': ('edge',),
+    # 'cookiefile': 'youtube.com_cookies.txt',
+    "nopart": True
+}
+
 class YoutubeService:
     def __init__(self):
         self.download_dir = 'video'
@@ -23,8 +36,13 @@ class YoutubeService:
 
     def get_ydl_opts(self, progress_hook):
         return {
-            'format': 'best',
-            'outtmpl': os.path.join(self.download_dir, '%(title)s.%(ext)s'),
+            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+            'merge_output_format': 'mp4',
+            'writethumbnail' : True,
+            'writedescription': True,
+            'nocheckcertificate': True,
+            "nopart": True,
+            'outtmpl': os.path.join(self.download_dir, '%(title)s_%(release_date)s.%(ext)s'),
             'progress_hooks': [progress_hook],
             'postprocessors': [{
                 'key': 'FFmpegSubtitles',
