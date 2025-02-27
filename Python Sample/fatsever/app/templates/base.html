@@ -3,82 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}FastAPI Project{% endblock %}</title>
+  <title>{% block title %}FatAPI{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
-  <style>
-    .drop-zone {
-      border: 2px dashed #0d6efd;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      text-align: center;
-      color: #0d6efd;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
-    }
-    .drop-zone.dragover {
-      background-color: #e9f2ff;
-    }
-    .divider {
-      border-top: 2px solid #dee2e6;
-      margin: 2rem 0;
-    }
-    /* 檔案縮圖容器卡片 */
-    .file-card {
-      cursor: pointer;
-      transition: transform 0.2s;
-      border: 1px solid #dee2e6;
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
-    .file-card:hover {
-      transform: scale(1.02);
-    }
-    .file-card-img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
-    .file-card-body {
-      padding: 0.5rem;
-      text-align: center;
-    }
-    .file-card-title {
-      font-size: 0.9rem;
-      word-wrap: break-word;
-    }
-    /* dialog 的寬度及可滾動區 */
-    dialog {
-      max-width: 80vw;
-      border: none;
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
-    dialog::backdrop {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    .dialog-header {
-      display: flex;
-      justify-content: flex-end;
-      background: #f8f9fa;
-      padding: 0.5rem;
-    }
-    .dialog-content {
-      padding: 1rem;
-    }
-    /* 統一給其他檔案使用的預設圖示，可換成你喜歡的 icon */
-    .file-icon {
-      width: 100%;
-      height: 120px;
-      background: #ccc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 64 64"><path fill="%23ffffff" d="M44 4H20c-3.3 0-6 2.7-6 6v44c0 3.3 2.7 6 6 6h24c3.3 0 6-2.7 6-6V10c0-3.3-2.7-6-6-6zm-2 8v4H22v-4h20z"/></svg>') no-repeat center;
-      background-size: 40px 40px;
-    }
-  </style>
+  <link rel="stylesheet" href="/static/css/index.css">
 </head>
 <body>
   <!-- 導覽列 -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">FastAPI Project</a>
+      <a class="navbar-brand" href="#">FatAPI Sever</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -88,9 +21,7 @@
 
   <!-- 主要內容區 -->
   <div class="container">
-    <header class="mb-4 text-center">
-      <h1>FastAPI File Upload and Video Download</h1>
-    </header>
+    
     <main>
       {% block content %}
       <div id="message"></div>
@@ -103,63 +34,80 @@
         <button type="submit" class="btn btn-primary d-none">Upload File</button>
       </form>
 
-      <div class="divider"></div>
+      <!-- Tabs -->
+      <ul class="nav nav-tabs" id="fileTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="images-tab" data-bs-toggle="tab" data-bs-target="#images"
+                  type="button" role="tab" aria-controls="images" aria-selected="true">
+            圖片
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#videos"
+                  type="button" role="tab" aria-controls="videos" aria-selected="false">
+            影片
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="others-tab" data-bs-toggle="tab" data-bs-target="#others"
+                  type="button" role="tab" aria-controls="others" aria-selected="false">
+            其他
+          </button>
+        </li>
+      </ul>
 
-      <!-- 圖片檔案區 -->
-      <div class="mb-4">
-        <h2 class="h5 mb-3">Image Files</h2>
-        <div id="imageGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-          {% for file in img_files %}
-          <div class="col">
-            <div class="file-card" data-file="{{ file }}" data-type="image">
-              <img src="/img/{{ file }}" alt="{{ file }}" class="file-card-img">
-              <div class="file-card-body">
-                <p class="file-card-title">{{ file }}</p>
+      <!-- Tab contents -->
+      <div class="tab-content" id="fileTabsContent">
+        <!-- 圖片檔案 -->
+        <div class="tab-pane fade show active p-3" id="images" role="tabpanel"
+             aria-labelledby="images-tab">
+          <div id="imageGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+            {% for file in img_files %}
+            <div class="col">
+              <div class="file-card" data-file="{{ file }}" data-type="image" title="{{ file }}">
+                <img src="/img/{{ file }}" alt="{{ file }}" class="file-card-img">
               </div>
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
-      </div>
 
-      <!-- 影片檔案區 -->
-      <div class="mb-4">
-        <h2 class="h5 mb-3">Video Files</h2>
-        <div id="videoGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-          {% for file in video_files %}
-          <div class="col">
-            <div class="file-card" data-file="{{ file }}" data-type="video">
-              <!-- 可換成影片縮圖 或者固定 video icon -->
-              <div class="file-icon"></div>
-              <div class="file-card-body">
-                <p class="file-card-title">{{ file }}</p>
+        <!-- 影片檔案 -->
+        <div class="tab-pane fade p-3" id="videos" role="tabpanel" aria-labelledby="videos-tab">
+          <div id="videoGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+            {% for file in video_files %}
+            <div class="col">
+              <div class="file-card" data-file="{{ file }}" data-type="video">
+                <div class="file-icon"></div>
+                <div class="file-card-body">
+                  <p class="file-card-title">{{ file }}</p>
+                </div>
               </div>
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
-      </div>
 
-      <!-- 其他檔案區 -->
-      <div class="mb-4">
-        <h2 class="h5 mb-3">Other Files</h2>
-        <div id="otherGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-          {% for file in other_files %}
-          <div class="col">
-            <div class="file-card" data-file="{{ file }}" data-type="other">
-              <div class="file-icon"></div>
-              <div class="file-card-body">
-                <p class="file-card-title">{{ file }}</p>
+        <!-- 其他檔案 -->
+        <div class="tab-pane fade p-3" id="others" role="tabpanel" aria-labelledby="others-tab">
+          <div id="otherGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+            {% for file in other_files %}
+            <div class="col">
+              <div class="file-card" data-file="{{ file }}" data-type="other">
+                <div class="file-icon"></div>
+                <div class="file-card-body">
+                  <p class="file-card-title">{{ file }}</p>
+                </div>
               </div>
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
       </div>
       {% endblock %}
     </main>
     <footer class="text-center mt-4 mb-4">
-      <p class="text-muted">&copy; {{ current_year }} FastAPI Project</p>
+      <p class="text-muted">&copy; {{ current_year }} FatAPI</p>
     </footer>
   </div>
 
@@ -187,217 +135,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('file');
-    const uploadForm = document.getElementById('uploadForm');
-    const messageDiv = document.getElementById('message');
-
-    // dialog 元素
-    const imageDialog = document.getElementById('imageDialog');
-    const imageDialogImg = document.getElementById('imageDialogImg');
-    const closeImageDialog = document.getElementById('closeImageDialog');
-
-    const videoDialog = document.getElementById('videoDialog');
-    const videoDialogPlayer = document.getElementById('videoDialogPlayer');
-    const closeVideoDialog = document.getElementById('closeVideoDialog');
-
-    // 監聽 file-card 點擊，依據 data-type 開啟對應 dialog
-    document.querySelectorAll('.file-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const file = card.dataset.file;
-        const type = card.dataset.type;
-        if (type === 'image') {
-          imageDialogImg.src = `/img/${file}`;
-          imageDialog.showModal();
-        } else if (type === 'video') {
-          // 重置 video source
-          videoDialogPlayer.src = `/video/${file}`;
-          videoDialog.showModal();
-          videoDialogPlayer.play();
-        } else {
-          // 其他檔案直接下載或開啟
-          window.open(`/files/${file}`, '_blank');
-        }
-      });
-    });
-
-    // 關閉 dialog
-    closeImageDialog.addEventListener('click', () => {
-      imageDialog.close();
-    });
-    closeVideoDialog.addEventListener('click', () => {
-      videoDialogPlayer.pause();
-      videoDialog.close();
-    });
-
-    // Drag & Drop + Paste 邏輯
-    dropZone.addEventListener('click', () => fileInput.click());
-
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropZone.classList.add('dragover');
-    });
-
-    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.classList.remove('dragover');
-      if (e.dataTransfer.files.length) {
-        fileInput.files = e.dataTransfer.files;
-        uploadFile();
-      }
-    });
-
-    document.addEventListener('paste', (e) => {
-      const items = e.clipboardData.items;
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].kind === 'file') {
-          const file = items[i].getAsFile();
-          console.log('原始貼上的檔案:', file);
-
-          // 取得目前時間並格式化成字串，例如 "20250226110321111"
-          const now = new Date();
-          const timestamp =
-            now.getFullYear().toString() +
-            (now.getMonth() + 1).toString().padStart(2, '0') +
-            now.getDate().toString().padStart(2, '0') +
-            now.getHours().toString().padStart(2, '0') +
-            now.getMinutes().toString().padStart(2, '0') +
-            now.getSeconds().toString().padStart(2, '0') +
-            now.getMilliseconds().toString().padStart(3, '0');
-
-          // 根據 MIME type 取得副檔名
-          let extension = 'png'; // 預設值
-          if (file.type) {
-            const parts = file.type.split('/');
-            if (parts.length === 2) {
-              extension = parts[1];
-            }
-          }
-
-          // 產生新的檔案名稱，例如 "image_20250226110321111.webp"
-          const newFileName = `image_${timestamp}.${extension}`;
-
-          // 建立新的 File 物件，指定新的檔案名稱
-          const newFile = new File([file], newFileName, { type: file.type });
-          console.log('新的檔案名稱:', newFile.name);
-
-          // 例如：透過 DataTransfer 將新檔案傳到 file input 或進行上傳
-          const dataTransfer = new DataTransfer();
-          dataTransfer.items.add(newFile);
-          fileInput.files = dataTransfer.files;
-          uploadFile();
-        }
-      }
-    });
-
-    fileInput.addEventListener('change', () => {
-      if (fileInput.files.length) {
-        uploadFile();
-      }
-    });
-
-    async function uploadFile() {
-      const formData = new FormData(uploadForm);
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData
-      });
-      const result = await response.json();
-      messageDiv.innerHTML = `<div class="alert alert-success" role="alert">${result.info}</div>`;
-      // 上傳成功後更新檔案列表
-      await updateFileLists();
-    }
-
-    // 更新檔案列表
-    async function updateFileLists() {
-      try {
-        const imgFiles = await fetchFiles('img');
-        const videoFiles = await fetchFiles('video');
-        const otherFiles = await fetchFiles('files');
-
-        updateFileGrid('imageGrid', imgFiles, 'image');
-        updateFileGrid('videoGrid', videoFiles, 'video');
-        updateFileGrid('otherGrid', otherFiles, 'other');
-
-        // 重新綁定 .file-card 的點擊事件
-        rebindFileCards();
-      } catch (error) {
-        console.error('Error updating file lists:', error);
-      }
-    }
-
-    async function fetchFiles(fileType) {
-      const response = await fetch(`/files?filetype=${fileType}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return await response.json();
-    }
-
-    function updateFileGrid(gridId, files, fileType) {
-      const grid = document.getElementById(gridId);
-      if (!grid) return;
-
-      grid.innerHTML = files.map(file => {
-        if (fileType === 'image') {
-          return `
-            <div class="col">
-              <div class="file-card" data-file="${file}" data-type="image">
-                <img src="/img/${file}" alt="${file}" class="file-card-img">
-                <div class="file-card-body">
-                  <p class="file-card-title">${file}</p>
-                </div>
-              </div>
-            </div>
-          `;
-        } else if (fileType === 'video') {
-          return `
-            <div class="col">
-              <div class="file-card" data-file="${file}" data-type="video">
-                <div class="file-icon"></div>
-                <div class="file-card-body">
-                  <p class="file-card-title">${file}</p>
-                </div>
-              </div>
-            </div>
-          `;
-        } else {
-          // other
-          return `
-            <div class="col">
-              <div class="file-card" data-file="${file}" data-type="other">
-                <div class="file-icon"></div>
-                <div class="file-card-body">
-                  <p class="file-card-title">${file}</p>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-      }).join('');
-    }
-
-    function rebindFileCards() {
-      document.querySelectorAll('.file-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const file = card.dataset.file;
-          const type = card.dataset.type;
-          if (type === 'image') {
-            imageDialogImg.src = `/img/${file}`;
-            imageDialog.showModal();
-          } else if (type === 'video') {
-            videoDialogPlayer.src = `/video/${file}`;
-            videoDialog.showModal();
-            videoDialogPlayer.play();
-          } else {
-            window.open(`/files/${file}`, '_blank');
-          }
-        });
-      });
-    }
-  </script>
+  <script src="/static/js/index.js"></script>
 </body>
 </html>

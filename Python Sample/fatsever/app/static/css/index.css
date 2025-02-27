@@ -1,0 +1,66 @@
+.drop-zone {
+  border: 2px dashed #0d6efd;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: #0d6efd;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.drop-zone.dragover {
+  background-color: #e9f2ff;
+}
+.divider {
+  border-top: 2px solid #dee2e6;
+  margin: 2rem 0;
+}
+/* 檔案縮圖容器卡片 */
+.file-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.file-card:hover {
+  transform: scale(1.02);
+}
+.file-card-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.file-card-body {
+  padding: 0.5rem;
+  text-align: center;
+}
+.file-card-title {
+  font-size: 0.9rem;
+  word-wrap: break-word;
+}
+/* dialog */
+dialog {
+  max-width: 80vw;
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.dialog-header {
+  display: flex;
+  justify-content: flex-end;
+  background: #f8f9fa;
+  padding: 0.5rem;
+}
+.dialog-content {
+  padding: 1rem;
+}
+/* 預設圖示 */
+.file-icon {
+  width: 100%;
+  height: 120px;
+  background: #ccc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 64 64"><path fill="%23ffffff" d="M44 4H20c-3.3 0-6 2.7-6 6v44c0 3.3 2.7 6 6 6h24c3.3 0 6-2.7 6-6V10c0-3.3-2.7-6-6-6zm-2 8v4H22v-4h20z"/></svg>') no-repeat center;
+  background-size: 40px 40px;
+}

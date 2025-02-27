@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 import uvicorn
 from pathlib import Path
 from datetime import datetime
@@ -8,13 +9,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
-
 from routers import upload, ytdownloader
+from routers.upload import calculate_total_size, CACHE
 
 from services.file_service import get_file_list
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: 初始化 CACHE
+    CACHE['total_size'] = calculate_total_size()
+    yield
+    # Shutdown: (可選) 在此處做關閉操作
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -25,6 +33,7 @@ app.add_middleware(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "app" / "templates"))
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 app.mount("/img", StaticFiles(directory="img"), name="img")
 app.mount("/video", StaticFiles(directory="video"), name="video")
@@ -61,7 +70,7 @@ async def get_files(filetype: str):
 if __name__ == "__main__":
     uvicorn.run(
         app
-        , host="0.0.0.0"
+        , host="127.0.0.1"
         , port=9001
         # , reload=True
         # , ssl_keyfile="./ssl/key.pem"
