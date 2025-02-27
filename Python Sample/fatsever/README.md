@@ -8,9 +8,11 @@ This FastAPI project provides a web interface for downloading videos and uploadi
 
 1. 安裝相依套件：`pip install -r requirements.txt`
 
-2. 啟動 FastAPI 應用程式：`uvicorn app.main:app --reload --port 9001`
+2. 啟動 FastAPI 應用程式：
+   `uvicorn app.main:app --reload --port 9001`
+   `python .\app\main.py`
 
-3. 在瀏覽器中開啟 <http://127.0.0.1:8000> 即可使用應用程式界面。
+3. 在瀏覽器中開啟 <http://127.0.0.1:9001> 即可使用應用程式界面。
 
 ## Features
 
