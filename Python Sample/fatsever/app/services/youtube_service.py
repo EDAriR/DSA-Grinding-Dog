@@ -43,12 +43,7 @@ class YoutubeService:
             'nocheckcertificate': True,
             "nopart": True,
             'outtmpl': os.path.join(self.download_dir, '%(title)s_%(release_date)s.%(ext)s'),
-            'progress_hooks': [progress_hook],
-            'postprocessors': [{
-                'key': 'FFmpegSubtitles',
-                'langs': ['en'],
-                'format': 'srt',
-            }],
+            'progress_hooks': [progress_hook]
         }
 
     async def download_video(self, url: str, queue) -> Dict[str, Any]:
