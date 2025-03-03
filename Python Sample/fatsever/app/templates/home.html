@@ -72,12 +72,16 @@
     <!-- 影片檔案 -->
     <div class="tab-pane fade p-3" id="videos" role="tabpanel" aria-labelledby="videos-tab">
       <div id="videoGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-        {% for file in video_files %}
+        {% for item in video_files %}
         <div class="col">
-          <div class="file-card" data-file="{{ file }}" data-type="video">
-            <div class="file-icon"></div>
+          <div class="file-card" data-file="{{ item.video }}" data-type="video">
+            {% if item.thumbnail %}
+            <img src="/video/{{ item.thumbnail }}" alt="{{ item.video }}" class="file-card-img">
+            {% else %}
+            <div class="video-icon"></div>
+            {% endif %}
             <div class="file-card-body">
-              <p class="file-card-title">{{ file }}</p>
+              <p class="file-card-title">{{ item.video }}</p>
             </div>
           </div>
         </div>

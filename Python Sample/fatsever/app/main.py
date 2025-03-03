@@ -15,7 +15,7 @@ from sqlalchemy import text
 from app.routers import upload, ytdownloader
 from app.routers.upload import calculate_total_size, CACHE
 
-from app.services.file_service import get_file_list
+from app.services.file_service import get_file_list, get_video_files
 from app.services.db import get_db
 
 @asynccontextmanager
@@ -52,7 +52,8 @@ app.include_router(ytdownloader.router, prefix="/api", tags=["ytdownloader"])
 async def read_root(request: Request):
     # 取得各資料夾的檔案清單
     img_files = get_file_list("img")
-    video_files = get_file_list("video")
+    # 使用自訂的 get_video_files 來取得影片相關資料
+    video_files = get_video_files()
     other_files = get_file_list("files")
 
     current_year = datetime.now().year
