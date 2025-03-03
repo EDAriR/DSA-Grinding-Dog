@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="container home-container">
+  {% block content %}
+    <h2>資料庫狀態</h2>
+    <ul>
+      {% for table in table_list %}
+        <li>{{ table }}</li>
+      {% endfor %}
+    </ul>
+  {% endblock content %}
+</div>
+{% endblock container %}

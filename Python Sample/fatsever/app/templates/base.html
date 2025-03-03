@@ -9,131 +9,41 @@
   <link rel="stylesheet" href="/static/css/index.css"/>
 </head>
 <body>
-  <!-- 導覽列 (Nav block) -->
   {% block navigation %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">FatAPI Sever</a>
+      <a class="navbar-brand" href="/">FatAPI Server</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarNav" aria-controls="navbarNav"
               aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- 使用 Font Awesome 圖示 -->
-      <button id="themeToggle" class="btn btn-outline-light ms-auto" aria-label="dark mode switch">
+      <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/chat">Chat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/status">Status</a>
+          </li>
+        </ul>
+      </div>
+
+      <button id="themeToggle" class="btn btn-outline-light justify-content-end" aria-label="dark mode switch">
         <i id="themeIcon" class="fas fa-sun"></i>
       </button>
     </div>
   </nav>
-  {% endblock %}
+  {% endblock navigation %}
 
-  <!-- 主要內容區 -->
-  <div class="container" id="mainContainer">
-    <main>
-      {% block content %}
-      <div id="message"></div>
-      
-      <!-- ytdownloader -->
-      <form id="ytDownloadForm" action="/api/ytdownloader" method="post" enctype="multipart/form-data" class="mb-4">
-        <div class="input-group">
-          <input type="text" 
-                 id="youtubeUrl" 
-                 name="url" 
-                 class="form-control" 
-                 placeholder="請輸入 YouTube 影片網址"
-                 aria-label="YouTube URL">
-          <button class="btn btn-primary" type="submit" id="ytDownloadBtn">
-            <i class="fas fa-download me-2"></i>
-            <span>下載</span>
-            <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-          </button>
-        </div>
-      </form>
-
-      <!-- 上傳表單 -->
-      <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data" class="mb-4">
-        <div class="mb-3">
-          <input class="form-control" type="file" id="file" name="file" multiple style="display: none;">
-          <div class="drop-zone" id="dropZone">Drag & Drop files here or click to upload</div>
-        </div>
-        <button type="submit" class="btn btn-primary d-none">Upload File</button>
-      </form>
-
-      <!-- Tabs -->
-      <ul class="nav nav-tabs" id="fileTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="images-tab" data-bs-toggle="tab" data-bs-target="#images"
-                  type="button" role="tab" aria-controls="images" aria-selected="true">
-            Images
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#videos"
-                  type="button" role="tab" aria-controls="videos" aria-selected="false">
-            Videos
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="others-tab" data-bs-toggle="tab" data-bs-target="#others"
-                  type="button" role="tab" aria-controls="others" aria-selected="false">
-            Others
-          </button>
-        </li>
-      </ul>
-
-      <!-- Tab contents -->
-      <div class="tab-content" id="fileTabsContent">
-        <!-- 圖片檔案 -->
-        <div class="tab-pane fade show active p-3" id="images" role="tabpanel"
-             aria-labelledby="images-tab">
-          <div id="imageGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-            {% for file in img_files %}
-            <div class="col">
-              <div class="file-card" data-file="{{ file }}" data-type="image" title="{{ file }}">
-                <img src="/img/{{ file }}" alt="{{ file }}" class="file-card-img">
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- 影片檔案 -->
-        <div class="tab-pane fade p-3" id="videos" role="tabpanel" aria-labelledby="videos-tab">
-          <div id="videoGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-            {% for file in video_files %}
-            <div class="col">
-              <div class="file-card" data-file="{{ file }}" data-type="video">
-                <div class="file-icon"></div>
-                <div class="file-card-body">
-                  <p class="file-card-title">{{ file }}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-
-        <!-- 其他檔案 -->
-        <div class="tab-pane fade p-3" id="others" role="tabpanel" aria-labelledby="others-tab">
-          <div id="otherGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
-            {% for file in other_files %}
-            <div class="col">
-              <div class="file-card" data-file="{{ file }}" data-type="other">
-                <div class="file-icon"></div>
-                <div class="file-card-body">
-                  <p class="file-card-title">{{ file }}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      {% endblock %}
-    </main>
+  <!-- 主要內容區塊 -->
+  <div id="mainContainer">
+    {% block content %}{% endblock content %}
   </div>
 
-  <!-- 頁尾 (Footer block) -->
   {% block footer %}
   <footer class="text-center mt-4 mb-4">
     <p class="text-muted">&copy; {{ current_year }} FatAPI</p>

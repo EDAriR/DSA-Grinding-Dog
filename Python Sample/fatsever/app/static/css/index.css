@@ -110,3 +110,20 @@ body.monokai .btn-outline-light {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+/* 讓 html 與 body 充滿全螢幕 */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* 讓 body 成為一個垂直方向的 Flex 容器 */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 讓主要內容區 (#mainContainer) 擴展占滿可用空間 */
+#mainContainer {
+  flex: 1;
+}

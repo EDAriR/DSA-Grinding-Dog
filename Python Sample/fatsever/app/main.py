@@ -3,16 +3,20 @@ import uvicorn
 from pathlib import Path
 from datetime import datetime
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import text
 
 from app.routers import upload, ytdownloader
 from app.routers.upload import calculate_total_size, CACHE
 
 from app.services.file_service import get_file_list
+from app.services.db import get_db
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -53,7 +57,7 @@ async def read_root(request: Request):
 
     current_year = datetime.now().year
 
-    return templates.TemplateResponse("base.html", {
+    return templates.TemplateResponse("home.html", {
         "request": request,
         "img_files": img_files,
         "video_files": video_files,
@@ -66,6 +70,34 @@ async def read_root(request: Request):
 async def get_files(filetype: str):
     return get_file_list(filetype)
 
+@app.get("/status", response_class=HTMLResponse)
+async def status(request: Request, db: AsyncSession = Depends(get_db)):
+    # 執行 SQL 查詢時必須加 await 以取得 ExecResult
+    result = await db.execute(
+        text("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name;")
+    )
+    # result.all() 回傳所有列的列表
+    tables = result.all()
+    table_list = [row[0] for row in tables]
+
+    print(table_list)
+
+    return templates.TemplateResponse(
+        "status.html",
+        {
+            "request": request,
+            "table_list": table_list
+        }
+    )
+
+@app.get("/chat", response_class=HTMLResponse)
+async def chat(request: Request):
+    return templates.TemplateResponse(
+        "chat.html",
+        {
+            "request": request,
+        }
+    )
 
 if __name__ == "__main__":
     uvicorn.run(
