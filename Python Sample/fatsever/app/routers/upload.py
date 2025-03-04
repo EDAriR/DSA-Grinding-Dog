@@ -57,42 +57,59 @@ def get_unique_filename(filepath):
 
 @router.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
-    file_content = await file.read()
+    # 先讀取檔案開頭來確認 MIME 類型
+    initial_content = await file.read(1024)  # 讀取前 1KB 來檢查 MIME 類型
     mime = magic.Magic(mime=True)
-    file_mime_type = mime.from_buffer(file_content)
+    file_mime_type = mime.from_buffer(initial_content)
     file_extension = os.path.splitext(file.filename)[1].lower()
 
+    # 決定檔案類型
     if file_mime_type in ALLOWED_MIME_TYPES['image'] and file_extension in {'.png', '.jpeg', '.jpg', '.gif', '.webp'}:
         file_type = 'image'
     elif file_mime_type in ALLOWED_MIME_TYPES['video'] and file_extension in {'.mp4', '.mkv', '.avi'}:
         file_type = 'video'
     else:
         file_type = 'file'
-    
-    file_size = len(file_content)
-    if CACHE['total_size'] + file_size > 5 * 1024 * 1024 * 1024:  # 5GB
-        raise HTTPException(status_code=400, detail="Storage limit exceeded. Current usage: {:.2f} GB".format(CACHE['total_size'] / (1024 * 1024 * 1024)))
 
+    # 準備檔案路徑
     file_location = os.path.join(UPLOAD_DIRS[file_type], file.filename)
-    # 檢查檔案是否已存在，如果存在則重新命名
     file_location = get_unique_filename(file_location)
 
-    if file_type == 'image' and file_mime_type == 'image/webp':
-        # Convert webp to png
-        image = Image.open(BytesIO(file_content))
-        file_location = os.path.splitext(file_location)[0] + '.png'
-        # 再次檢查 PNG 檔案是否存在
-        file_location = get_unique_filename(file_location)
-        image.save(file_location, 'PNG')
-        file_size = os.path.getsize(file_location)
-    else:
-        async with aiofiles.open(file_location, "wb") as out_file:
-            while True:
-                chunk = await file.read(CHUNK_SIZE)
-                if not chunk:
-                    break
-                await out_file.write(chunk)
+    try:
+        # 特殊處理 webp 檔案
+        if file_type == 'image' and file_mime_type == 'image/webp':
+            content = await file.read()
+            image = Image.open(BytesIO(content))
+            file_location = os.path.splitext(file_location)[0] + '.png'
+            file_location = get_unique_filename(file_location)
+            image.save(file_location, 'PNG')
+            file_size = os.path.getsize(file_location)
+        else:
+            # 重設檔案指標到開頭
+            await file.seek(0)
+            
+            # 分塊寫入檔案
+            file_size = 0
+            async with aiofiles.open(file_location, 'wb') as out_file:
+                while content := await file.read(CHUNK_SIZE):
+                    await out_file.write(content)
+                    file_size += len(content)
 
-    CACHE['total_size'] += file_size
-    logging.info("%s '%s' uploaded successfully.", file_type.capitalize(), file.filename)
-    return {"info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully."}
+        # 檢查總容量限制
+        if CACHE['total_size'] + file_size > 5 * 1024 * 1024 * 1024:  # 5GB
+            if os.path.exists(file_location):
+                os.remove(file_location)
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Storage limit exceeded. Current usage: {CACHE['total_size'] / (1024 * 1024 * 1024):.2f} GB"
+            )
+
+        CACHE['total_size'] += file_size
+        logging.info("%s '%s' uploaded successfully.", file_type.capitalize(), file.filename)
+        return {"info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully."}
+
+    except Exception as e:
+        # 發生錯誤時清理已寫入的檔案
+        if os.path.exists(file_location):
+            os.remove(file_location)
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")

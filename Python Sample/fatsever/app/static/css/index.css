@@ -24,6 +24,7 @@
   border: 1px solid #dee2e6;
   border-radius: 0.5rem;
   overflow: hidden;
+  position: relative;  /* 新增：設定相對定位 */
 }
 .file-card:hover {
   transform: scale(1.02);
@@ -40,6 +41,13 @@
 .file-card-title {
   font-size: 0.9rem;
   word-wrap: break-word;
+}
+/* 刪除按鈕樣式 */
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;  /* 確保按鈕在最上層 */
 }
 /* dialog */
 dialog {

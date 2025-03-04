@@ -63,6 +63,12 @@
         <div class="col">
           <div class="file-card" data-file="{{ file }}" data-type="image" title="{{ file }}">
             <img src="/img/{{ file }}" alt="{{ file }}" class="file-card-img">
+            <button class="btn btn-danger btn-sm delete-btn" 
+                    data-file="{{ file }}" 
+                    data-type="image"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
         {% endfor %}
@@ -83,6 +89,12 @@
             <div class="file-card-body">
               <p class="file-card-title">{{ item.video }}</p>
             </div>
+            <button class="btn btn-danger btn-sm delete-btn" 
+                    data-file="{{ item.video }}" 
+                    data-type="video"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
         {% endfor %}
@@ -99,6 +111,12 @@
             <div class="file-card-body">
               <p class="file-card-title">{{ file }}</p>
             </div>
+            <button class="btn btn-danger btn-sm delete-btn" 
+                    data-file="{{ file }}" 
+                    data-type="other"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
           </a>
         </div>
         {% endfor %}

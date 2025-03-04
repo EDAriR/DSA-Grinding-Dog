@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 
-from app.routers import upload, ytdownloader
+from app.routers import upload, ytdownloader, file_handler
 from app.routers.upload import calculate_total_size, CACHE
 
 from app.services.file_service import get_file_list, get_video_files
@@ -46,7 +46,7 @@ app.mount("/files", StaticFiles(directory="files"), name="files")
 # 掛載各個 router
 app.include_router(upload.router, prefix="/api", tags=["upload"])
 app.include_router(ytdownloader.router, prefix="/api", tags=["ytdownloader"])
-
+app.include_router(file_handler.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):

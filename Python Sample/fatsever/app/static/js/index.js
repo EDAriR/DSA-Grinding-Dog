@@ -1,14 +1,19 @@
+// 將 dialog 相關變數移到全域範圍
+let imageDialog, videoDialog, videoDialogPlayer;
+
 document.addEventListener('DOMContentLoaded', () => {
   // 獲取所有需要的 DOM 元素
   const mainContainer = document.getElementById('mainContainer');
   const dropZone = document.getElementById('dropZone');
   const fileInput = document.getElementById('file');
   const messageDiv = document.getElementById('message');
-  const imageDialog = document.getElementById('imageDialog');
-  const videoDialog = document.getElementById('videoDialog');
-  const videoDialogPlayer = document.getElementById('videoDialogPlayer');
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
+
+  // 初始化 dialog 變數
+  imageDialog = document.getElementById('imageDialog');
+  videoDialog = document.getElementById('videoDialog');
+  videoDialogPlayer = document.getElementById('videoDialogPlayer');
 
   // 主題相關邏輯
   const storedTheme = localStorage.getItem('theme');
@@ -201,22 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 檔案卡片點擊事件
-  document.querySelectorAll('.file-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const file = card.dataset.file;
-      const type = card.dataset.type;
-      if (type === 'image') {
-        imageDialog.querySelector('img').src = `/img/${file}`;
-        imageDialog.showModal();
-      } else if (type === 'video') {
-        videoDialogPlayer.src = `/video/${file}`;
-        videoDialog.showModal();
-        videoDialogPlayer.play();
-      }
-    });
-  });
-
   // YouTube 下載表單處理
   const ytDownloadForm = document.getElementById('ytDownloadForm');
   const ytDownloadBtn = document.getElementById('ytDownloadBtn');
@@ -319,6 +308,74 @@ document.addEventListener('DOMContentLoaded', () => {
       ytDownloadBtn.disabled = false;
     }
   });
+
+  // 改用事件委派處理所有文件操作
+  document.addEventListener('click', async (e) => {
+    // 處理刪除按鈕
+    const deleteBtn = e.target.closest('.delete-btn');
+    if (deleteBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const fileName = deleteBtn.dataset.file;
+      const fileType = deleteBtn.dataset.type;
+      
+      if (confirm(`確定要刪除 ${fileName} 嗎？`)) {
+        try {
+          const response = await fetch(`/api/files/${fileType}/${fileName}`, {
+            method: 'DELETE'
+          });
+          
+          if (response.ok) {
+            const col = deleteBtn.closest('.col');
+            if (col) {
+              col.remove();
+              
+              const alertDiv = document.createElement('div');
+              alertDiv.className = 'alert alert-success';
+              alertDiv.textContent = '檔案已成功刪除';
+              messageDiv.appendChild(alertDiv);
+              setTimeout(() => alertDiv.remove(), 3000);
+              
+              // 重新整理檔案列表
+              updateFileLists();
+            }
+          } else {
+            throw new Error('刪除失敗');
+          }
+        } catch (error) {
+          console.error('Delete error:', error);
+          const alertDiv = document.createElement('div');
+          alertDiv.className = 'alert alert-danger';
+          alertDiv.textContent = '刪除檔案時發生錯誤';
+          messageDiv.appendChild(alertDiv);
+          setTimeout(() => alertDiv.remove(), 3000);
+        }
+      }
+      return;
+    }
+
+    // 處理檔案卡片點擊
+    const fileCard = e.target.closest('.file-card');
+    if (fileCard && !e.target.closest('.delete-btn')) {
+      const file = fileCard.dataset.file;
+      const type = fileCard.dataset.type;
+      
+      if (type === 'image') {
+        e.preventDefault();
+        const img = imageDialog.querySelector('img');
+        if (img) {
+          img.src = `/img/${file}`;
+          imageDialog.showModal();
+        }
+      } else if (type === 'video') {
+        e.preventDefault();
+        videoDialogPlayer.src = `/video/${file}`;
+        videoDialog.showModal();
+        videoDialogPlayer.play();
+      }
+    }
+  });
 });
 
 async function updateFileLists() {
@@ -330,8 +387,6 @@ async function updateFileLists() {
     updateFileGrid('imageGrid', imgFiles, 'image');
     updateFileGrid('videoGrid', videoFiles, 'video');
     updateFileGrid('otherGrid', otherFiles, 'other');
-
-    rebindFileCards();
   } catch (error) {
     console.error('Error updating file lists:', error);
   }
@@ -357,6 +412,12 @@ function updateFileGrid(gridId, files, fileType) {
             <div class="file-card-body">
               <p class="file-card-title">${file}</p>
             </div>
+            <button class="btn btn-danger btn-sm delete-btn" 
+                    data-file="${file}" 
+                    data-type="image"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
       `;
@@ -368,12 +429,16 @@ function updateFileGrid(gridId, files, fileType) {
             <div class="file-card-body">
               <p class="file-card-title">${file}</p>
             </div>
+            <button class="btn btn-danger btn-sm delete-btn" 
+                    data-file="${file}" 
+                    data-type="video"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
       `;
     } else {
-      // 修改 "其他檔案" 區塊，改成一個下載的 <a> 連結，
-      // 點擊後會直接下載檔案（注意：伺服器端需設定適當的 Content-Disposition）
       return `
         <div class="col">
           <a class="file-card" href="/files/${file}" download data-file="${file}" data-type="other">
@@ -381,28 +446,15 @@ function updateFileGrid(gridId, files, fileType) {
             <div class="file-card-body">
               <p class="file-card-title">${file}</p>
             </div>
+            <button class="btn btn-danger btn-sm delete-btn" 
+                    data-file="${file}" 
+                    data-type="other"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
           </a>
         </div>
       `;
     }
   }).join('');
-}
-
-function rebindFileCards() {
-  document.querySelectorAll('.file-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const file = card.dataset.file;
-      const type = card.dataset.type;
-      if (type === 'image') {
-        imageDialog.querySelector('img').src = `/img/${file}`;
-        imageDialog.showModal();
-      } else if (type === 'video') {
-        videoDialogPlayer.src = `/video/${file}`;
-        videoDialog.showModal();
-        videoDialogPlayer.play();
-      } else {
-        window.open(`/files/${file}`, '_blank');
-      }
-    });
-  });
 }
