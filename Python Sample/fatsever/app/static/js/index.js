@@ -39,42 +39,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 檔案上傳相關
   async function uploadFiles(files) {
+    // 取得上傳進度提示元素
+    const progressDiv = document.getElementById('uploadProgress');
     for (let i = 0; i < files.length; i++) {
       const formData = new FormData();
       formData.append("file", files[i]);
-      try {
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData
-        });
-        const result = await response.json();
-        
-        // 顯示上傳成功訊息
-        const alertDiv = document.createElement('div');
-        alertDiv.className = 'alert alert-success';
-        alertDiv.role = 'alert';
-        alertDiv.textContent = result.info;
-        messageDiv.appendChild(alertDiv);
-        
-        setTimeout(() => {
-          alertDiv.classList.add('fade-out');
-          setTimeout(() => alertDiv.remove(), 500);
-        }, 4500);
-        
-      } catch (error) {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = 'alert alert-danger';
-        alertDiv.role = 'alert';
-        alertDiv.textContent = `上傳失敗: ${error}`;
-        messageDiv.appendChild(alertDiv);
-        
-        setTimeout(() => {
-          alertDiv.remove();
-        }, 30000);
-      }
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/api/upload", true);
+
+      // 更新上傳進度
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+          const percentComplete = Math.round((e.loaded / e.total) * 100);
+          progressDiv.textContent = `上傳進度：${percentComplete}%`;
+        }
+      };
+
+      // 上傳完成處理
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // 清除進度提示
+          progressDiv.textContent = "";
+          // 解析回應，並顯示成功訊息
+          const result = JSON.parse(xhr.responseText);
+          const alertDiv = document.createElement('div');
+          alertDiv.className = 'alert alert-success';
+          alertDiv.role = 'alert';
+          alertDiv.textContent = result.info;
+          messageDiv.appendChild(alertDiv);
+          setTimeout(() => {
+            alertDiv.classList.add('fade-out');
+            setTimeout(() => alertDiv.remove(), 500);
+          }, 4500);
+        } else {
+          progressDiv.textContent = "";
+          const alertDiv = document.createElement('div');
+          alertDiv.className = 'alert alert-danger';
+          alertDiv.role = 'alert';
+          alertDiv.textContent = `上傳失敗: ${xhr.statusText}`;
+          messageDiv.appendChild(alertDiv);
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 30000);
+        }
+        // 上傳完畢後刷新檔案列表
+        updateFileLists();
+      };
+
+      xhr.onerror = function() {
+        progressDiv.textContent = '上傳失敗';
+      };
+
+      xhr.send(formData);
     }
-    // 上傳流程結束後重新更新文件列表
-    updateFileLists();
   }
 
   // 拖放相關事件
