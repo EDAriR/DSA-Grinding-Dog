@@ -11,3 +11,4 @@ Pillow
 sse-starlette
 yt-dlp
 pydantic-settings
+aiofiles

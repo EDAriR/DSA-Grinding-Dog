@@ -5,6 +5,7 @@ from PIL import Image
 from io import BytesIO
 import logging
 from datetime import datetime
+import aiofiles
 
 router = APIRouter()
 
@@ -23,6 +24,8 @@ ALLOWED_MIME_TYPES = {
 CACHE = {
     'total_size': 0
 }
+
+CHUNK_SIZE = 1024 * 1024  # 1MB 每次讀取
 
 def calculate_total_size():
     total_size = 0
@@ -83,8 +86,12 @@ async def upload_file(file: UploadFile = File(...)):
         image.save(file_location, 'PNG')
         file_size = os.path.getsize(file_location)
     else:
-        with open(file_location, "wb") as f:
-            f.write(file_content)
+        async with aiofiles.open(file_location, "wb") as out_file:
+            while True:
+                chunk = await file.read(CHUNK_SIZE)
+                if not chunk:
+                    break
+                await out_file.write(chunk)
 
     CACHE['total_size'] += file_size
     logging.info("%s '%s' uploaded successfully.", file_type.capitalize(), file.filename)

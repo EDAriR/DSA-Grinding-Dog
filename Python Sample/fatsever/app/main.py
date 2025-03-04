@@ -111,4 +111,5 @@ if __name__ == "__main__":
         , server_header=False
         , proxy_headers=True
         , forwarded_allow_ips="*"
+        , timeout_keep_alive=60,  # 設定閒置等待時間為 60 秒
         )
