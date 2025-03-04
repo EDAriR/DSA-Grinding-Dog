@@ -49,16 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const result = await response.json();
         
-        // 建立訊息元素
+        // 顯示上傳成功訊息
         const alertDiv = document.createElement('div');
         alertDiv.className = 'alert alert-success';
         alertDiv.role = 'alert';
         alertDiv.textContent = result.info;
-        
-        // 加入到訊息區
         messageDiv.appendChild(alertDiv);
         
-        // 5秒後移除訊息
         setTimeout(() => {
           alertDiv.classList.add('fade-out');
           setTimeout(() => alertDiv.remove(), 500);
@@ -69,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alertDiv.className = 'alert alert-danger';
         alertDiv.role = 'alert';
         alertDiv.textContent = `上傳失敗: ${error}`;
-        
         messageDiv.appendChild(alertDiv);
         
         setTimeout(() => {
@@ -77,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 30000);
       }
     }
+    // 上傳流程結束後重新更新文件列表
+    updateFileLists();
   }
 
   // 拖放相關事件
@@ -308,14 +306,16 @@ function updateFileGrid(gridId, files, fileType) {
         </div>
       `;
     } else {
+      // 修改 "其他檔案" 區塊，改成一個下載的 <a> 連結，
+      // 點擊後會直接下載檔案（注意：伺服器端需設定適當的 Content-Disposition）
       return `
         <div class="col">
-          <div class="file-card" data-file="${file}" data-type="other">
+          <a class="file-card" href="/files/${file}" download data-file="${file}" data-type="other">
             <div class="file-icon"></div>
             <div class="file-card-body">
               <p class="file-card-title">${file}</p>
             </div>
-          </div>
+          </a>
         </div>
       `;
     }

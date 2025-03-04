@@ -16,6 +16,9 @@
 }
 /* 檔案縮圖容器卡片 */
 .file-card {
+  display: block;           /* 讓連結當區塊元素 */
+  text-decoration: none;    /* 移除連結下劃線 */
+  color: inherit;           /* 使用繼承的文字色 */
   cursor: pointer;
   transition: transform 0.2s;
   border: 1px solid #dee2e6;
