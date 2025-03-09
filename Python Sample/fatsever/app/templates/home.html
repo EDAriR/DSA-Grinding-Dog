@@ -134,7 +134,13 @@
   <!-- 影片播放用 dialog -->
   <dialog id="videoDialog">
     <div class="dialog-content text-center">
-      <video id="videoDialogPlayer" controls style="max-width: 100%; max-height: 80vh;"></video>
+      <video id="videoDialogPlayer" 
+             controls 
+             playsinline 
+             webkit-playsinline
+             style="max-width: 100%; max-height: 80vh;"
+             type="video/mp4">
+      </video>
     </div>
   </dialog>
   
