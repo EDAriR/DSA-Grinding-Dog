@@ -2,17 +2,26 @@ import os
 import yt_dlp
 from typing import Dict, Any
 
+
 ydl_opts = {
     'outtmpl': './video/%(title)s_%(release_date)s.%(ext)s',
-    'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+    'format': 'bestvideo[ext=mp4][vcodec^=avc]+bestaudio[ext=m4a]/best[ext=mp4][vcodec^=avc]/best',
     'merge_output_format': 'mp4',
-    'writethumbnail' : True,
+    'writethumbnail': True,
     'writedescription': True,
     'nocheckcertificate': True,
     # CHROMIUM_BASED_BROWSERS = {'brave', 'chrome', 'chromium', 'edge', 'opera', 'vivaldi'}
     'cookiesfrombrowser': ('edge',),
     # 'cookiefile': 'youtube.com_cookies.txt',
-    "nopart": True
+    'live_from_start': True,
+    'nopart': True,
+    'postprocessors': [{
+        'key': 'FFmpegVideoConvertor',
+        'preferedformat': 'mp4',
+    }],
+    'postprocessor_args': {
+        'ffmpeg': ['-vcodec', 'h264_nvenc', '-preset', 'medium', '-b:v', '5M', '-movflags', '+faststart']
+    },
 }
 
 class YoutubeService:
