@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="container home-container">
+  {% block content %}
+    <h1>{{room_name}}</h1>
+    <!-- chat room list collapse navbar-collapse ms-auto -->
+    <div class="" id="chat-room-list">
+      <ul class="">
+        {% for message in messages %}
+        <li class="">
+          <a class="" href="{{ message.url }}">{{ message.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endblock content %}
+</div>
+{% endblock container %}

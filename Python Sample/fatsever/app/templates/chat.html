@@ -3,8 +3,12 @@
 {% block container %}
 <div class="container home-container">
   {% block content %}
-    <h1>Home Page</h1>
-    <!-- 其他專屬的內容 -->
+    <h1>Chat Room List</h1>
+    <textarea placeholder="Type your message..."></textarea>
+    <button type="submit">Send</button>
+    
+
+    <div id="message-list"></div>
   {% endblock content %}
 </div>
 {% endblock container %}
