@@ -14,7 +14,7 @@ def get_video_files():
     except FileNotFoundError:
         return []
 
-    video_ext = {'.mp4', '.mkv', '.avi'}
+    video_ext = {'.mp4', '.mkv', '.avi', '.mov', '.webm'}
     image_ext = {'.jpg', '.png', '.webp'}
     videos = []
 

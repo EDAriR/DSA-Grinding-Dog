@@ -27,6 +27,9 @@ CACHE = {
 
 CHUNK_SIZE = 1024 * 1024  # 1MB 每次讀取
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
 def calculate_total_size():
     total_size = 0
     for dir_path in UPLOAD_DIRS.values():
@@ -88,15 +91,20 @@ async def upload_file(file: UploadFile = File(...)):
             # 重設檔案指標到開頭
             await file.seek(0)
             
-            # 分塊寫入檔案
+            # 分塊寫入檔案並記錄進入與離開訊息
             file_size = 0
+            chunk_index = 0
+            logger.info("開始分塊寫入檔案")
             async with aiofiles.open(file_location, 'wb') as out_file:
                 while content := await file.read(CHUNK_SIZE):
                     await out_file.write(content)
                     file_size += len(content)
+                    chunk_index += 1
+                    logger.info("寫入 chunk %d, 長度: %d bytes", chunk_index, len(content))
+            logger.info("分塊寫入完成，總共寫入 %d bytes", file_size)
 
         # 檢查總容量限制
-        if CACHE['total_size'] + file_size > 5 * 1024 * 1024 * 1024:  # 5GB
+        if CACHE['total_size'] + file_size > 50 * 1024 * 1024 * 1024:  # 5GB
             if os.path.exists(file_location):
                 os.remove(file_location)
             raise HTTPException(
@@ -105,11 +113,12 @@ async def upload_file(file: UploadFile = File(...)):
             )
 
         CACHE['total_size'] += file_size
-        logging.info("%s '%s' uploaded successfully.", file_type.capitalize(), file.filename)
+        logger.info("%s '%s' 上傳成功, 檔案大小: %d bytes", file_type.capitalize(), file.filename, file_size)
         return {"info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully."}
 
     except Exception as e:
         # 發生錯誤時清理已寫入的檔案
         if os.path.exists(file_location):
             os.remove(file_location)
+        logger.error("上傳失敗: %s", str(e))
         raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")

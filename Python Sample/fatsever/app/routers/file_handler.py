@@ -5,6 +5,7 @@ from pathlib import Path
 from fastapi.responses import FileResponse
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 router = APIRouter(
     prefix="/api/files",

@@ -403,15 +403,48 @@ async function fetchFiles(fileType) {
 function updateFileGrid(gridId, files, fileType) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
-  grid.innerHTML = files.map(file => {
-    if (fileType === 'image') {
-      return `
+  
+  // 清空現有內容並重建
+  grid.innerHTML = '';
+  
+  // 檔案去重
+  let uniqueFiles = files;
+  if (fileType !== 'video') {
+    uniqueFiles = [...new Set(files)];
+  }
+
+  // 為不同檔案類型創建對應的卡片
+  let html = '';
+  if (fileType === 'video') {
+    uniqueFiles.forEach(item => {
+      const videoName = item.video ?? item;
+      const thumbnail = item.thumbnail ?? null;
+      html += `
         <div class="col">
-          <div class="file-card" data-file="${file}" data-type="image">
-            <img src="/img/${file}" alt="${file}" class="file-card-img">
+          <div class="file-card" data-file="${videoName}" data-type="video">
+            ${thumbnail
+              ? `<img src="/video/${thumbnail}" alt="${videoName}" class="file-card-img">`
+              : `<div class="video-icon"></div>`
+            }
             <div class="file-card-body">
-              <p class="file-card-title">${file}</p>
+              <p class="file-card-title">${videoName}</p>
             </div>
+            <button class="btn btn-danger btn-sm delete-btn"
+                    data-file="${videoName}"
+                    data-type="video"
+                    style="position: absolute; top: 5px; right: 5px;">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+  } else if (fileType === 'image') {
+    uniqueFiles.forEach(file => {
+      html += `
+        <div class="col">
+          <div class="file-card" data-file="${file}" data-type="image" title="${file}">
+            <img src="/img/${file}" alt="${file}" class="file-card-img">
             <button class="btn btn-danger btn-sm delete-btn" 
                     data-file="${file}" 
                     data-type="image"
@@ -421,25 +454,10 @@ function updateFileGrid(gridId, files, fileType) {
           </div>
         </div>
       `;
-    } else if (fileType === 'video') {
-      return `
-        <div class="col">
-          <div class="file-card" data-file="${file}" data-type="video">
-            <div class="file-icon"></div>
-            <div class="file-card-body">
-              <p class="file-card-title">${file}</p>
-            </div>
-            <button class="btn btn-danger btn-sm delete-btn" 
-                    data-file="${file}" 
-                    data-type="video"
-                    style="position: absolute; top: 5px; right: 5px;">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </div>
-      `;
-    } else {
-      return `
+    });
+  } else {
+    uniqueFiles.forEach(file => {
+      html += `
         <div class="col">
           <a class="file-card" href="/files/${file}" download data-file="${file}" data-type="other">
             <div class="file-icon"></div>
@@ -455,6 +473,8 @@ function updateFileGrid(gridId, files, fileType) {
           </a>
         </div>
       `;
-    }
-  }).join('');
+    });
+  }
+  
+  grid.innerHTML = html;
 }

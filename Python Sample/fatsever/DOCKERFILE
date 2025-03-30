@@ -1,0 +1,89 @@
+# 使用 NVIDIA CUDA 的最新版基底映像
+FROM nvidia/cuda:12.3.2-cudnn9-devel-ubuntu22.04
+
+# 設定非交互式安裝，避免安裝過程中出現提示
+ARG DEBIAN_FRONTEND=noninteractive
+ENV PYTHON_VERSION=3.10
+ARG CONDA_DIR=/opt/miniforge
+
+# 更新系統並安裝必要的庫和工具
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
+        cmake \
+        build-essential \
+        gcc \
+        g++ \
+        curl \
+        git \
+        software-properties-common \
+        locales \
+        sudo \
+        net-tools \
+        wget \
+        ffmpeg \
+        libomp-dev
+
+# 添加 Python 3.10 PPA
+RUN add-apt-repository -y ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt install -y python$PYTHON_VERSION python$PYTHON_VERSION-dev python3-pip python$PYTHON_VERSION-distutils gfortran libopenblas-dev liblapack-dev
+
+# 安裝 Miniforge
+RUN curl -sL https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -o miniforge.sh && \
+    /bin/bash miniforge.sh -f -b -p $CONDA_DIR && \
+    rm miniforge.sh && \
+    echo "export PATH=\"$CONDA_DIR/bin:$PATH\"" >> ~/.bashrc && \
+    . "$CONDA_DIR/bin/activate" && \
+    conda install -c conda-forge python=$PYTHON_VERSION && \
+    conda clean --all -f -y
+
+# 設定環境變量
+ENV PATH="$CONDA_DIR/bin:$PATH"
+
+# 安裝 TA-Lib
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+    tar -xzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib/ && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf ta-lib ta-lib-0.4.0-src.tar.gz && \
+    pip install TA-Lib
+
+# 更新 pip 並安裝 Jupyter Lab 和其他 Python 庫
+RUN python3 -m pip install --upgrade pip requests setuptools pipenv && \
+    pip install jupyterlab \
+                yt-dlp \
+                pandas \
+                numpy \
+                matplotlib \
+                scikit-learn \
+                tensorflow \
+                keras \
+                fastapi \
+                uvicorn \
+                pymongo \
+                openai-whisper \
+                psycopg2-binary \
+                sqlalchemy \
+                finlab \
+                xgboost \
+                catboost \
+                torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 \
+                git+https://github.com/microsoft/qlib.git && \
+    rm -r ~/.cache/pip
+
+# 設定 locale
+RUN locale-gen en_US.UTF-8 && \
+    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+
+# 設定工作目錄
+WORKDIR /workspace
+
+# 開放 Jupyter Lab 的端口
+EXPOSE 8888
+
+# 運行 Jupyter Lab
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--LabApp.token=''"]
