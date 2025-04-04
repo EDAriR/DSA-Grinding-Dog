@@ -1,28 +1,26 @@
 -- 建立 message_images 表（如果不存在）
 CREATE TABLE IF NOT EXISTS message_images (
-    id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- 圖片主鍵
-    message_id     VARCHAR(50) NOT NULL,                        -- 來源訊息ID
-    name           VARCHAR(255) NOT NULL,                       -- 檔名或命名標籤
-    extension      VARCHAR(10)  NOT NULL,                       -- 圖片副檔名（例如 jpg, png）
-    image_data     BYTEA,                                       -- 圖片二進位資料
-    path           VARCHAR(255),                                -- 圖片實體路徑（含副檔名）
-    image_set_id   VARCHAR(100),                                -- LINE 原始圖片組合 ID
-    image_index    INT,                                         -- 圖片在組合中的序號（1~total）
-    image_total    INT,                                         -- 該圖片組合的總數
-    tags           JSONB                                        -- 任意標籤
+    id             VARCHAR(50) PRIMARY KEY,              -- LINE 提供的圖片ID（對應 message.id）
+    image_set_id   VARCHAR(100),                         -- 圖片集合ID（多圖時用）
+    image_index    INT,                                  -- 該圖在集合中的順序
+    image_total    INT,                                  -- 該集合總圖數
+    name           VARCHAR(255),                         -- 檔名（可存為實體儲存的檔名）
+    extension      VARCHAR(10) NOT NULL DEFAULT 'jpg',   -- 副檔名（通常為 jpg）
+    path           VARCHAR(255),                         -- 儲存路徑
+    downloaded     BOOLEAN DEFAULT FALSE,                -- 是否已下載
+    created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP   -- 建立時間
 );
 
--- 為表添加註釋
-COMMENT ON TABLE message_images IS 'LINE 圖片訊息用圖片表';
+-- 表註釋
+COMMENT ON TABLE message_images IS '來自 LINE 的圖片訊息表（多圖訊息可用 image_set_id 組合）';
 
--- 為每個欄位添加註釋
-COMMENT ON COLUMN message_images.id            IS '圖片主鍵 ID（UUID）';
-COMMENT ON COLUMN message_images.message_id    IS '來源 LINE 訊息 ID';
-COMMENT ON COLUMN message_images.name          IS '圖片名稱';
-COMMENT ON COLUMN message_images.extension     IS '圖片副檔名（jpg, png 等）';
-COMMENT ON COLUMN message_images.image_data    IS '圖片二進位資料';
-COMMENT ON COLUMN message_images.path          IS '圖片儲存路徑（含副檔名）';
-COMMENT ON COLUMN message_images.image_set_id  IS 'LINE 圖片組合 ID';
-COMMENT ON COLUMN message_images.image_index   IS '圖片在該組合中的索引';
-COMMENT ON COLUMN message_images.image_total   IS '該組圖片的總數';
-COMMENT ON COLUMN message_images.tags          IS '圖片標籤（JSON 格式）';
+-- 欄位註釋
+COMMENT ON COLUMN message_images.id           IS 'LINE 提供的 message.id，作為圖片唯一識別 ID';
+COMMENT ON COLUMN message_images.image_set_id IS '圖片集合ID（多張圖為一組）';
+COMMENT ON COLUMN message_images.image_index  IS '該圖片在集合中的索引';
+COMMENT ON COLUMN message_images.image_total  IS '該組合圖片的總數';
+COMMENT ON COLUMN message_images.name         IS '儲存用的檔名（可為原始圖名或自定義）';
+COMMENT ON COLUMN message_images.extension    IS '圖片副檔名，例如 jpg、png';
+COMMENT ON COLUMN message_images.path         IS '圖片實體儲存路徑';
+COMMENT ON COLUMN message_images.downloaded   IS '是否已下載圖片內容';
+COMMENT ON COLUMN message_images.created_at   IS '紀錄建立時間';
