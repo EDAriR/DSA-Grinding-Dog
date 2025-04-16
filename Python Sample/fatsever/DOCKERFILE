@@ -26,7 +26,7 @@ RUN apt-get update && \
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
     apt install -y python$PYTHON_VERSION python$PYTHON_VERSION-dev python3-pip python$PYTHON_VERSION-distutils gfortran libopenblas-dev liblapack-dev
-    
+
 # 安裝 Miniforge
 RUN curl -sL https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -o miniforge.sh && \
     /bin/bash miniforge.sh -f -b -p $CONDA_DIR && \
@@ -69,19 +69,24 @@ RUN python3 -m pip install --upgrade pip setuptools && \
         finlab \
         xgboost \
         catboost \
-        torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128 \
-        git+https://github.com/microsoft/qlib.git \
         python-telegram-bot \
         line-bot-sdk \
         anyio \
         aiohttp \
-        psycopg2 \
+        psycopg2-binary \
         asyncpg \
         aiopg \
         aiortc \
         fastapi-sse \
-        discord.py && \
-    rm -r ~/.cache/pip
+        discord.py \
+        aiofiles
+
+RUN update-ca-certificates
+RUN python3 -m pip install torch torchvision torchaudio
+
+RUN python3 -m pip install git+https://github.com/microsoft/qlib.git || echo "[Warning] qlib 安裝失敗，請手動在 Jupyter Lab 中安裝"
+
+RUN rm -r ~/.cache/pip
 
 # 語系設定：預設英文，支援多國語言文件顯示
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
