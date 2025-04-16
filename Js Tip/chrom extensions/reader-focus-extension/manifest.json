@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "閱讀區塊專注模式",
+  "version": "1.0.0",
+  "description": "讓使用者可手動選取一個網頁區塊，自動隱藏其餘部分，提升閱讀專注力",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["focusable-selectors.js", "ui.js", "content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}

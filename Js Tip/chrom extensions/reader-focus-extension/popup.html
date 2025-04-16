@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>閱讀區塊專注模式</title>
+  <style>
+    body {
+      width: 250px;
+      padding: 15px;
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+    }
+
+    .header {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #4285f4;
+      text-align: center;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3367d6;
+    }
+
+    .options {
+      margin-top: 15px;
+    }
+
+    .option-item {
+      margin: 10px 0;
+    }
+
+    .position-options {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+
+    .position-option {
+      width: 48%;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">閱讀區塊專注模式</div>
+
+  <div class="button-container">
+    <button id="toggle-focus">選取閱讀區塊</button>
+  </div>
+
+  <div class="options">
+    <div class="option-item">
+      <div>按鈕位置：</div>
+      <div class="position-options">
+        <button class="position-option" id="position-left">左上角</button>
+        <button class="position-option" id="position-right">右上角</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    選取一個網頁區塊，自動隱藏其餘部分，提升閱讀專注力
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
