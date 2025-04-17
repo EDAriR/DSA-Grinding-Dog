@@ -23,7 +23,13 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["focusable-selectors.js", "ui.js", "content.js"],
+      "js": [
+        "focusable-selectors.js",
+        "ui.js",
+        "focus-mode.js",
+        "select-mode.js",
+        "content.js"
+      ],
       "css": ["styles.css"]
     }
   ]
