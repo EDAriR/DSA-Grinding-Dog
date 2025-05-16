@@ -9,13 +9,16 @@
       width: 250px;
       padding: 15px;
       font-family: "Microsoft JhengHei", Arial, sans-serif;
+      background-color: rgba(23, 43, 76, 0.6);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: #e1d5d5;
     }
 
     .header {
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 15px;
-      color: #4285f4;
+      color: #e1d5d5;
       text-align: center;
     }
 
@@ -23,22 +26,24 @@
       display: flex;
       justify-content: center;
       margin: 15px 0;
+      color: #dbd5d5;
     }
 
     button {
       padding: 8px 15px;
-      background-color: #4285f4;
-      color: white;
+      color: rgb(116, 218, 249);
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-size: 14px;
       width: 100%;
       transition: all 0.3s ease;
+      background-color: #3367d6;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
-      background-color: #3367d6;
+      color: aqua;
     }
 
     .options {
@@ -62,13 +67,53 @@
     .footer {
       margin-top: 20px;
       font-size: 12px;
-      color: #666;
+      color: #e1d5d5;
       text-align: center;
+    }
+
+    /* 自訂選取器輸入樣式 */
+    #custom-selector-input {
+      width: 100%;
+      padding: 4px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #apply-selector {
+      width: 100%;
+      padding: 8px 15px;
+      margin-bottom: 15px;
+      background-color: rgba(40, 48, 61, 0.7);
+      color: rgb(116, 218, 249);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    #toggle-hide-site-button {
+      margin-bottom: 10px; /* 與下方按鈕的間距 */
+      background-color: #5cb85c; /* 初始為綠色，表示「顯示」的動作 */
+    }
+
+    #toggle-hide-site-button.hidden-active {
+      background-color: #d9534f; /* 紅色，表示「隱藏」的動作 */
+    }
+
+    #apply-selector:hover {
+      background-color: #3367d6;
     }
   </style>
 </head>
 <body>
   <div class="header">閱讀區塊專注模式</div>
+
+  <div class="button-container">
+    <button id="toggle-hide-site-button">在此網站隱藏按鈕</button>
+  </div>
 
   <div class="button-container">
     <button id="toggle-focus">選取閱讀區塊</button>
@@ -81,6 +126,13 @@
         <button class="position-option" id="position-left">左上角</button>
         <button class="position-option" id="position-right">右上角</button>
       </div>
+    </div>
+
+    <!-- 新增自訂選取器輸入 -->
+    <div class="option-item" id="custom-selector-item">
+      <div>自訂 CSS 選取器：</div>
+      <input id="custom-selector-input" type="text" placeholder=".page--section--inner" />
+      <button id="apply-selector">套用</button>
     </div>
   </div>
 

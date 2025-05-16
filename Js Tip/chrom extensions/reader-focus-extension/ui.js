@@ -53,26 +53,57 @@
       }
     },
     makeDraggable: function(element) {
-      // 從 content.js 移植的拖曳邏輯
-      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-      element.onmousedown = dragMouseDown;
-      function dragMouseDown(e) {
+      let originalBodyUserSelect = document.body.style.userSelect;
+      let pointerMoveHandler, pointerUpHandler;
+      // 水平位置 side: 'left' or 'right'; 預設 right
+      const side = element.dataset.positionSide || 'right';
+      element.dataset.positionSide = side;
+      // 由 updateButtonPosition() 設定預設位置，初次不需新增 class
+
+      element.addEventListener('pointerdown', function onPointerDown(e) {
         e.preventDefault();
-        pos3 = e.clientX; pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-      }
-      function elementDrag(e) {
-        e.preventDefault();
-        pos1 = pos3 - e.clientX; pos2 = pos4 - e.clientY;
-        pos3 = e.clientX; pos4 = e.clientY;
-        element.style.top = (element.offsetTop - pos2) + 'px';
-        element.style.left = (element.offsetLeft - pos1) + 'px';
-        element.style.right = 'auto';
-      }
-      function closeDragElement() {
-        document.onmouseup = null; document.onmousemove = null;
-      }
+        element.setPointerCapture(e.pointerId);
+        document.body.style.userSelect = 'none';
+        element.style.cursor = 'grabbing';
+        // 記錄初始 Y 值及移動狀態
+        const initialY = e.clientY;
+        let moved = false;
+        // 確保按鈕寬高一致
+        const size = element.offsetWidth;
+        element.style.height = size + 'px';
+
+        pointerMoveHandler = function(e) {
+          const delta = e.clientY - initialY;
+          if (!moved && Math.abs(delta) > 0) {
+            moved = true;
+          }
+          if (moved) {
+            // Y 軸跟隨游標且限制邊界
+            let y = e.clientY;
+            const maxY = window.innerHeight - element.offsetHeight;
+            y = Math.max(0, Math.min(y, maxY));
+            element.style.top = y + 'px';
+          }
+        };
+        pointerUpHandler = function(e) {
+          element.releasePointerCapture(e.pointerId);
+          document.body.style.userSelect = originalBodyUserSelect;
+          element.style.cursor = 'grab';
+          document.removeEventListener('pointermove', pointerMoveHandler);
+          document.removeEventListener('pointerup', pointerUpHandler);
+          if (moved) {
+            window.dispatchEvent(new CustomEvent('readerFocusButtonMoved', {
+              detail: {
+                side: side,
+                top: element.style.top,
+                custom: element.dataset.custom === 'true'
+              }
+            }));
+          }
+        };
+        document.addEventListener('pointermove', pointerMoveHandler);
+        document.addEventListener('pointerup', pointerUpHandler);
+      });
     }
   };
 })();

@@ -12,6 +12,7 @@
     isSelectMode: false,
     focusedElement: null,
     floatButton: null,
+    isButtonHiddenForSite: false, // 新增狀態：按鈕是否在此網站隱藏
   };
 
   function getState() {
@@ -65,21 +66,27 @@
     initialize: function() {
       console.log('[DEBUG] 初始化閱讀區塊專注模式擴充功能');
 
-      // 建立懸浮按鈕並傳入點擊處理函式
-      const button = UI.createFloatingButton(this.handleButtonClick); // 使用 UI 物件
-      if (button) {
-          setState({ floatButton: button }); // 將按鈕存入狀態
-          UI.makeDraggable(button); // 使按鈕可拖曳
+      if (getState().isButtonHiddenForSite) {
+        console.log('[DEBUG] 按鈕已設定為在此網站隱藏，跳過建立按鈕。');
+        // 即使按鈕隱藏，訊息監聽器等還是需要設定
       } else {
-          console.error("[Main.initialize] 無法建立懸浮按鈕");
-          return; // 無法建立按鈕則停止初始化
+        // 建立懸浮按鈕並傳入點擊處理函式
+        const button = UI.createFloatingButton(this.handleButtonClick); // 使用 UI 物件
+        if (button) {
+            setState({ floatButton: button }); // 將按鈕存入狀態
+            UI.makeDraggable(button); // 使按鈕可拖曳
+            // 初始設定按鈕位置（預設右上角）
+            chrome.storage.local.get(['buttonPosition'], function(result) {
+              const position = result.buttonPosition || 'right';
+              UI.updateButtonPosition(position);
+            });
+        } else {
+            console.error("[Main.initialize] 無法建立懸浮按鈕");
+            // 即使無法建立按鈕，也應該繼續設定訊息監聽器
+        }
       }
-
-      // 初始設定按鈕位置（預設右上角）
-      chrome.storage.local.get(['buttonPosition'], function(result) {
-        const position = result.buttonPosition || 'right';
-        UI.updateButtonPosition(position);
-      });
+      // 設定訊息監聽器 (無論按鈕是否顯示，都需要監聽來自 popup 的指令)
+      // 這部分邏輯移到 initializeExtension 的末尾，確保只註冊一次
     },
 
     // 按鈕點擊處理函式
@@ -150,21 +157,159 @@
   Main.handleButtonClick = Main.handleButtonClick.bind(Main);
 
   // 接收來自 popup 的訊息
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'toggleFocus') {
-      Main.toggleSelectMode();
-    } else if (message.action === 'updatePosition') {
-      UI.updateButtonPosition(message.position);
+  let messageListener = null; // 將監聽器移到外部，方便管理
+
+  function setupMessageListener() {
+    if (messageListener) {
+      chrome.runtime.onMessage.removeListener(messageListener); // 移除舊的，避免重複
     }
-    sendResponse({ success: true });
-  });
+    messageListener = (message, sender, sendResponse) => {
+      if (message.action === 'toggleFocus') {
+        if (getState().isButtonHiddenForSite) {
+          sendResponse({ success: false, error: '按鈕已隱藏，無法切換專注' });
+          return true;
+        }
+        Main.toggleSelectMode();
+        sendResponse({ success: true });
+      } else if (message.action === 'updatePosition') {
+        if (getState().isButtonHiddenForSite) {
+          // 理論上按鈕隱藏時，popup 不應提供此選項，但做個防禦
+          sendResponse({ success: false, error: '按鈕已隱藏，無法更新位置' });
+          return true;
+        }
+        UI.updateButtonPosition(message.position);
+        sendResponse({ success: true });
+      } else if (message.action === 'getStatus') {
+        sendResponse({
+          hasFocusedElement: !!getState().focusedElement,
+          isSelectMode: getState().isSelectMode,
+          isButtonHidden: getState().isButtonHiddenForSite, // 新增狀態
+          currentSiteHost: window.location.hostname // 新增目前網域
+        });
+      } else if (message.action === 'setCustomSelector') {
+        if (getState().isButtonHiddenForSite) {
+          sendResponse({ success: false, error: '按鈕已隱藏，無法套用自訂選取器' });
+          return true;
+        }
+        try {
+          const el = document.querySelector(message.selector);
+          if (el) {
+            FocusMode.enableFocusMode(el);
+            setState({ focusedElement: el });
+            UI.updateButtonIcon('取消專注', 'fa-eye-slash');
+            sendResponse({ success: true });
+          } else {
+            sendResponse({ success: false, error: '找不到元素: ' + message.selector });
+          }
+        } catch (err) {
+          sendResponse({ success: false, error: err.message });
+        }
+      } else if (message.action === 'hideButtonForSite') {
+        const currentHostname = window.location.hostname;
+        chrome.storage.local.get(['hiddenSites'], function(result) {
+          const hiddenSites = result.hiddenSites || [];
+          if (!hiddenSites.includes(currentHostname)) {
+            hiddenSites.push(currentHostname);
+            chrome.storage.local.set({ hiddenSites: hiddenSites }, () => {
+              console.log(`[DEBUG] ${currentHostname} 已加入隱藏列表`);
+              performHideButtonActions();
+              sendResponse({ success: true, isHidden: true });
+            });
+          } else {
+            performHideButtonActions(); // 即使已在列表，也執行隱藏動作確保一致
+            sendResponse({ success: true, isHidden: true });
+          }
+        });
+        return true; // 表示會异步呼叫 sendResponse
+      } else if (message.action === 'showButtonForSite') {
+        const currentHostname = window.location.hostname;
+        chrome.storage.local.get(['hiddenSites'], function(result) {
+          let hiddenSites = result.hiddenSites || [];
+          const index = hiddenSites.indexOf(currentHostname);
+          if (index > -1) {
+            hiddenSites.splice(index, 1);
+            chrome.storage.local.set({ hiddenSites: hiddenSites }, () => {
+              console.log(`[DEBUG] ${currentHostname} 已從隱藏列表移除`);
+              performShowButtonActions();
+              sendResponse({ success: true, isHidden: false });
+            });
+          } else {
+            performShowButtonActions(); // 即使不在列表，也執行顯示動作確保一致
+            sendResponse({ success: true, isHidden: false });
+          }
+        });
+        return true; // 表示會异步呼叫 sendResponse
+      }
+      return true; // 保持非同步回應
+    };
+    chrome.runtime.onMessage.addListener(messageListener);
+  }
+
+  function performHideButtonActions() {
+    setState({ isButtonHiddenForSite: true });
+    if (getState().floatButton) {
+      // 如果之前有專注或選取，先清理
+      if (getState().focusedElement) {
+        FocusMode.restoreOriginalPage(getState().focusedElement);
+      }
+      if (getState().isSelectMode) {
+        SelectMode.disableSelectMode();
+      }
+      getState().floatButton.remove();
+      setState({ floatButton: null });
+      console.log('[DEBUG] 懸浮按鈕已移除');
+    }
+  }
+
+  function performShowButtonActions() {
+    setState({ isButtonHiddenForSite: false });
+    if (!getState().floatButton && !document.getElementById('reader-focus-button')) { // 避免重複建立
+      // 重新執行 Main.initialize 的部分邏輯來建立按鈕
+      const button = UI.createFloatingButton(Main.handleButtonClick);
+      if (button) {
+        setState({ floatButton: button });
+        UI.makeDraggable(button);
+        chrome.storage.local.get(['buttonPosition'], function(result) {
+          const position = result.buttonPosition || 'right';
+          UI.updateButtonPosition(position);
+        });
+        console.log('[DEBUG] 懸浮按鈕已建立並顯示');
+      } else {
+        console.error("[Main.performShowButtonActions] 無法建立懸浮按鈕");
+      }
+    } else if (getState().floatButton && !getState().floatButton.isConnected) {
+        // 按鈕物件存在但已從 DOM 移除，重新加入
+        document.body.appendChild(getState().floatButton);
+        console.log('[DEBUG] 懸浮按鈕已重新加入 DOM');
+    }
+  }
+
 
   // 在頁面完全載入後初始化
   function initializeExtension() {
       // 檢查是否已初始化，避免重複執行
-      if (window.readerFocusInitialized) return;
-      window.readerFocusInitialized = true;
-      Main.initialize();
+      if (window.readerFocusInitialized) {
+        console.log('[DEBUG] 已初始化過，檢查按鈕顯示狀態');
+        // 如果已初始化，但按鈕因SPA等原因消失，且不應隱藏，則重建
+        if (!getState().isButtonHiddenForSite && !document.getElementById('reader-focus-button') && getState().floatButton) {
+            console.warn('[DEBUG] 按鈕消失但應顯示，嘗試重建...');
+            performShowButtonActions();
+        }
+        return;
+      }
+      
+      window.readerFocusInitialized = true; // 先標記初始化
+
+      chrome.storage.local.get(['hiddenSites'], function(result) {
+        const hiddenSites = result.hiddenSites || [];
+        const currentHostname = window.location.hostname;
+        if (hiddenSites.includes(currentHostname)) {
+          setState({ isButtonHiddenForSite: true });
+          console.log(`[DEBUG] 擴充功能按鈕已於 ${currentHostname} 設定為隱藏 (根據儲存設定)。`);
+        }
+        Main.initialize(); // 呼叫初始化，它會根據 isButtonHiddenForSite 決定是否建按鈕
+        setupMessageListener(); // 在 Main.initialize 後設定訊息監聽器
+      });
   }
 
   // DOMContentLoaded 可能對 SPA 不可靠，改用更穩健的方式
@@ -175,14 +320,30 @@
   }
 
   // 針對 SPA 或動態載入內容，增加 MutationObserver 監聽
-  const observer = new MutationObserver((mutationsList, observer) => {
+  const observer = new MutationObserver((mutationsList, obs) => {
       // 簡單檢查 body 是否存在，若不存在則可能還在載入早期
       if (!document.body) return;
+
+      // 如果按鈕設定為隱藏，則 MutationObserver 不應嘗試重建按鈕
+      if (getState().isButtonHiddenForSite) {
+        // 如果按鈕意外出現了（不應該），則移除它
+        const buttonElement = document.getElementById('reader-focus-button');
+        if (buttonElement) {
+            console.warn('[DEBUG] 按鈕設定為隱藏，但按鈕存在於 DOM 中，將其移除。');
+            buttonElement.remove();
+            setState({ floatButton: null }); // 更新狀態
+        }
+        return;
+      }
+
       // 檢查按鈕是否意外消失，如果消失則重新初始化 (可能由 SPA 框架移除)
-      if (!document.getElementById('reader-focus-button')) {
-          console.warn('[DEBUG] 偵測到按鈕消失，嘗試重新初始化...');
-          window.readerFocusInitialized = false; // 重設標記
-          initializeExtension();
+      // 且按鈕不應該是隱藏的
+      if (!document.getElementById('reader-focus-button') && window.readerFocusInitialized) {
+          // 這裡需要確保 floatButton 狀態也正確，避免在不應顯示時重建
+          // initializeExtension 內部已有 isButtonHiddenForSite 的檢查
+          console.warn('[DEBUG] 偵測到按鈕消失，嘗試重新執行初始化檢查...');
+          // window.readerFocusInitialized = false; // 不需要重設為 false，讓 initializeExtension 內部邏輯判斷
+          initializeExtension(); // 重新執行初始化流程，它會檢查是否要建按鈕
       }
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
