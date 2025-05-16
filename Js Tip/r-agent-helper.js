@@ -53,7 +53,7 @@
                               ?.textContent.trim() || '';
 
             const condContent = /(Salesforce|Android|Swift|C#|PHP|C\+\+)/i.test(content);
-            const condTitle   = /\b(PMO?|PM|PHP)\b|ＰＭＯ?|ＰＭ|ＰＨＰ/i.test(jobTitle);
+            const condTitle   = /\b(PMO?|PM|PHP|講師)\b|ＰＭＯ?|ＰＭ|ＰＨＰ/i.test(jobTitle);
 
             const shouldCheck = condSalary || condContent || condTitle;
             if (shouldCheck) {
