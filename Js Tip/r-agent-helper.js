@@ -4,6 +4,22 @@
         str.replace(/[０-９]/g, d => String.fromCharCode(d.charCodeAt(0) - 0xFEE0))
            .replace(/,/g, '');
 
+    // 將字串正規化，方便關鍵字比對
+    const normalizeTechString = (str) => {
+        if (typeof str !== 'string') return '';
+        let normalized = str;
+        // 轉換全形英數字元及常用標點為半形
+        normalized = normalized.replace(
+            /[Ａ-Ｚａ-ｚ０-９！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～]/g,
+            (s) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
+        );
+        // 轉換全形空白為半形空白
+        normalized = normalized.replace(/　/g, ' ');
+        // 移除所有空白字元 (包括換行、tab、多個空白等)
+        normalized = normalized.replace(/\\s+/g, '');
+        return normalized;
+    };
+
     const parseSalary = s => {
         const m = s.match(/(\d[\d,]*)\s*万円(?:\s*[～\-]\s*(\d[\d,]*)\s*万円)?/);
         if (!m) return { ok: false };
@@ -53,9 +69,21 @@
             const ability = item.querySelector('h3.jobOfferPost-jobDetails__ability + p')
                               ?.textContent.trim() || '';
 
-            const condContent = /(Salesforce|Android|Swift|C#|PHP|C\+\+|VB\.NET|django)/i.test(content);
-            // 優化：所有條件皆加上單字邊界，避免誤判
-            const condTitle = /\b(PMO?|PHP|講師|プロジェクトマネージャー|フロントエンジニア)\b|\b(ＰＭＯ?|ＰＨＰ)\b/i.test(jobTitle);
+            // 使用正規化後的 content 進行比對
+            const normalizedContent = normalizeTechString(content);
+            const condContent = /(Salesforce|Android|Swift|C#|PHP|C\\+\\+|VB\\.NET|django)/i.test(normalizedContent);
+
+            // --- 偵錯用 Start ---
+            if (content.includes("VB.NET") || content.includes("ＶＢ．ＮＥＴ")) {
+                console.log("Original content:", content);
+                console.log("Normalized content:", normalizedContent);
+                console.log("condContent result for VB.NET:", /(VB\\.NET)/i.test(normalizedContent));
+                console.log("Full condContent result:", condContent);
+            }
+            // --- 偵錯用 End ---
+
+            // 優化：所有條件皆加上單字邊界，避免誤判，並加回明確的 PM 和 ＰＭ
+            const condTitle = /\b(PMO?|PM|PHP|講師|プロジェクトマネージャー|フロントエンジニア)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
 
             const shouldCheck = condSalary || condContent || condTitle;
             if (shouldCheck) {
