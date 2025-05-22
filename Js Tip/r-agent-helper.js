@@ -10,18 +10,19 @@
         const low  = parseInt(normalizeDigits(m[1]), 10);
         const high = m[2] ? parseInt(normalizeDigits(m[2]), 10) : null;
 
-        // 新邏輯：
-        // 1. 無最高薪資且最低薪資>=300，勾選
-        // 2. 最高薪資>=750且最低薪資>=500，不勾選
-        // 3. 最高薪資>=700且最低薪資>=400，不勾選
-        // 其餘都勾選
+        // 新邏輯歸納：
+        // 1. 無最高薪資：最低薪資 <= 300 勾選，其餘不勾選
+        // 2. 有最高薪資：
+        //    a. 最高薪資 >= 750 且最低薪資 >= 500，不勾選
+        //    b. 最高薪資 >= 700 且最低薪資 >= 400，不勾選
+        //    c. 其餘（如 200~500、300~600、400~650...）都勾選
         let wantCheck = false;
-        if (high === null && low <= 300) {
-            wantCheck = true;
-        } else if (low >= 400 && high >= 700) {
+        if (high === null) {
+            wantCheck = low <= 300;
+        } else if (high >= 600 && low >= 400) {
             wantCheck = false;
         } else {
-            wantCheck = false;
+            wantCheck = true;
         }
         const ok = wantCheck; // ok=true 代表要勾選
         return { ok, low, high };
@@ -52,8 +53,9 @@
             const ability = item.querySelector('h3.jobOfferPost-jobDetails__ability + p')
                               ?.textContent.trim() || '';
 
-            const condContent = /(Salesforce|Android|Swift|C#|PHP|C\+\+)/i.test(content);
-            const condTitle   = /\b(PMO?|PM|PHP|講師)\b|ＰＭＯ?|ＰＭ|ＰＨＰ/i.test(jobTitle);
+            const condContent = /(Salesforce|Android|Swift|C#|PHP|C\+\+|VB\.NET|django)/i.test(content);
+            // 優化：所有條件皆加上單字邊界，避免誤判
+            const condTitle = /\b(PMO?|PHP|講師|プロジェクトマネージャー|フロントエンジニア)\b|\b(ＰＭＯ?|ＰＨＰ)\b/i.test(jobTitle);
 
             const shouldCheck = condSalary || condContent || condTitle;
             if (shouldCheck) {
@@ -65,7 +67,7 @@
 
             /* Collect */
             results.push({
-                url,
+                // url,
                 jobTitle,
                 company,
                 想定年収: salaryText,
