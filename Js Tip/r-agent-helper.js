@@ -27,14 +27,14 @@
         const high = m[2] ? parseInt(normalizeDigits(m[2]), 10) : null;
 
         // 新邏輯歸納：
-        // 1. 無最高薪資：最低薪資 <= 300 勾選，其餘不勾選
+        // 1. 無最高薪資：最低薪資 <= 410 勾選，其餘不勾選
         // 2. 有最高薪資：
         //    a. 最高薪資 >= 750 且最低薪資 >= 500，不勾選
         //    b. 最高薪資 >= 700 且最低薪資 >= 400，不勾選
         //    c. 其餘（如 200~500、300~600、400~650...）都勾選
         let wantCheck = false;
         if (high === null) {
-            wantCheck = low <= 300;
+            wantCheck = low <= 410;
         } else if (high >= 600 && low >= 400) {
             wantCheck = false;
         } else {
@@ -45,7 +45,8 @@
     };
 
     /* ---------- 主流程 ---------- */
-    const results = [];
+    const resultsY = [];
+    const resultsN = [];
     document.querySelectorAll('.mod-jobList-item.jobOfferPost-job')
         .forEach(item => {
             /* Title & URL（雙版本相容） */
@@ -83,7 +84,7 @@
             // --- 偵錯用 End ---
 
             // 優化：所有條件皆加上單字邊界，避免誤判，並加回明確的 PM 和 ＰＭ
-            const condTitle = /\b(PMO?|PM|PHP|講師|プロジェクトマネージャー|フロントエンジニア)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
+            const condTitle = /\b(PMO?|PM|PHP|講師|プロジェクトマネージャー|フロントエンジニア|PL)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
 
             const shouldCheck = condSalary || condContent || condTitle;
             if (shouldCheck) {
@@ -91,10 +92,16 @@
                 if (checkbox && !checkbox.checked) {
                     checkbox.click(); // 以 click 方式勾選
                 }
-            }
-
-            /* Collect */
-            results.push({
+                resultsY.push({
+                    // url,
+                    jobTitle,
+                    company,
+                    想定年収: salaryText,
+                    仕事の内容: content,
+                    必要な能力・経験: ability
+                });
+            }else {
+                resultsN.push({
                 // url,
                 jobTitle,
                 company,
@@ -102,8 +109,10 @@
                 仕事の内容: content,
                 必要な能力・経験: ability
             });
+            }            
         });
 
-    console.table(results);
-    return results;
+    console.table(resultsN, ["jobTitle", "company"]);
+    console.table(resultsY, ["jobTitle", "company"]);
+    return resultsN;
 })();
