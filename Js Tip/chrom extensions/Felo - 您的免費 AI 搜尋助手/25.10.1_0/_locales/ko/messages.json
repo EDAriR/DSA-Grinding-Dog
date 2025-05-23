@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "자동"
+   },
+   "bing_translate": {
+      "message": "마이크로소프트 번역기"
+   },
+   "changes_saved": {
+      "message": "변경 사항이 성공적으로 저장되었습니다."
+   },
+   "contact_us": {
+      "message": "문의하기"
+   },
+   "dark": {
+      "message": "다크"
+   },
+   "default_search_engine": {
+      "message": "기본 검색 엔진"
+   },
+   "default_search_engine_description": {
+      "message": "**활성화**하면 Felo Search가 브라우저의 기본 검색 엔진으로 설정됩니다."
+   },
+   "disable_next": {
+      "message": "다음 방문 시 비활성화"
+   },
+   "disabled_global": {
+      "message": "전역 비활성화"
+   },
+   "disabled_site": {
+      "message": "이 사이트에서 비활성화"
+   },
+   "disabled_tip": {
+      "message": "*옵션에서 다시 활성화할 수 있습니다."
+   },
+   "error_bing_title": {
+      "message": "마이크로소프트 번역기 서비스에 응답이 없습니다."
+   },
+   "error_google_title": {
+      "message": "구글 번역 서비스에 응답이 없습니다."
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 마이크로소프트 번역기로 전환"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 구글 번역 엔진으로 전환"
+   },
+   "error_persists": {
+      "message": "문제가 계속 발생한다면,"
+   },
+   "extDescription": {
+      "message": "모국어로 세계를 탐험하고, 무료로 소셜 네트워킹 콘텐츠 검색을 향상하세요."
+   },
+   "extName": {
+      "message": "Felo - 무료 AI 검색 도우미"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it 버튼"
+   },
+   "felo_it_button_description": {
+      "message": "활성화하면 검색 상자에 felo it 버튼이 표시됩니다."
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "이 기능이 비활성화된 웹사이트 목록"
+   },
+   "felo_it_toast": {
+      "message": "키워드를 입력해주세요"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "검색할 내용을 입력하세요"
+   },
+   "felo_search_subtitle": {
+      "message": "무료 AI 검색 엔진"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "일반"
+   },
+   "google_translate": {
+      "message": "구글 번역"
+   },
+   "language": {
+      "message": "언어"
+   },
+   "language_description": {
+      "message": "인터페이스 및 AI 응답을 위한 기본 언어를 설정하세요."
+   },
+   "light": {
+      "message": "라이트"
+   },
+   "open_option_page": {
+      "message": "옵션 열기"
+   },
+   "retry": {
+      "message": "재시도"
+   },
+   "search_felo_it_tip": {
+      "message": "확실하지 않으신가요? Felo it!"
+   },
+   "search_for": {
+      "message": "Felo Search 사용: \"%s\""
+   },
+   "selection_menu": {
+      "message": "텍스트 선택 시 미니 메뉴"
+   },
+   "selection_menu_description": {
+      "message": "텍스트 선택 시 미니 메뉴 표시"
+   },
+   "started_get_started": {
+      "message": "시작하기"
+   },
+   "started_head_subtitle": {
+      "message": "모국어로 세계를 탐험하자"
+   },
+   "started_head_title": {
+      "message": "Felo Search Assistant에 오신 것을 환영합니다!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Felo Search를 기본 검색 엔진으로 설정"
+   },
+   "started_welcome": {
+      "message": "🎉 축하합니다! 당신의 AI 검색 도우미가 준비되었습니다."
+   },
+   "target_language": {
+      "message": "대상 언어"
+   },
+   "target_language_description": {
+      "message": "다른 언어를 설정한 언어로 번역"
+   },
+   "theme": {
+      "message": "테마"
+   },
+   "translate": {
+      "message": "번역"
+   },
+   "translate_display_style": {
+      "message": "번역 표시 스타일"
+   },
+   "translate_display_style_description": {
+      "message": "다양한 번역 스타일의 예시를 아래에서 참조하세요."
+   },
+   "translate_error_tip": {
+      "message": "번역 요청 실패"
+   },
+   "translate_icon_display": {
+      "message": "번역 사이드바 아이콘"
+   },
+   "translate_icon_display_description": {
+      "message": "항상 표시"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "AI 응답의 출력 언어와 동일"
+   },
+   "translate_page_auto": {
+      "message": "웹페이지 자동 번역"
+   },
+   "translate_page_auto_description": {
+      "message": "활성화 시, Felo에서 열리는 외국어 웹페이지를 자동으로 번역합니다."
+   },
+   "translate_service": {
+      "message": "번역 서비스"
+   },
+   "translate_service_description": {
+      "message": "번역 서비스"
+   },
+   "translate_target_language_select": {
+      "message": "대상 언어 선택"
+   },
+   "translation_original_text_display": {
+      "message": "원본 텍스트 표시"
+   },
+   "translation_original_text_display_description": {
+      "message": "**활성화**하면 원본 텍스트가 페이지에 계속 표시됩니다. **비활성화**하면 번역만 표시됩니다."
+   },
+   "translation_service": {
+      "message": "번역 서비스"
+   },
+   "translation_style_auto_highlight": {
+      "message": "스마트 강조"
+   },
+   "translation_style_blue": {
+      "message": "부드러운 파란색"
+   },
+   "translation_style_bold": {
+      "message": "굵게"
+   },
+   "translation_style_dashed": {
+      "message": "대시선"
+   },
+   "translation_style_default": {
+      "message": "스타일 없음"
+   },
+   "translation_style_green": {
+      "message": "신선한 초록색"
+   },
+   "translation_style_highlight": {
+      "message": "강조"
+   },
+   "translation_style_italic": {
+      "message": "이탤릭체"
+   },
+   "translation_style_mask": {
+      "message": "블러 효과 (학습 모드)"
+   },
+   "translation_style_opacity": {
+      "message": "불투명도"
+   },
+   "translation_style_orange": {
+      "message": "따뜻한 오렌지색"
+   },
+   "translation_style_underline": {
+      "message": "밑줄"
+   },
+   "translation_style_wavy": {
+      "message": "물결선"
+   }
+}

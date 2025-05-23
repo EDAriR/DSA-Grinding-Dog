@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automaticky"
+   },
+   "bing_translate": {
+      "message": "Microsoft Prekladač"
+   },
+   "changes_saved": {
+      "message": "Zmeny boli úspešne uložené"
+   },
+   "contact_us": {
+      "message": "Kontaktujte nás"
+   },
+   "dark": {
+      "message": "Tmavá"
+   },
+   "default_search_engine": {
+      "message": "Predvolený Vyhľadávač"
+   },
+   "default_search_engine_description": {
+      "message": "Keď je **povolené**, Felo Search bude nastavené ako predvolený vyhľadávač vášho prehliadača."
+   },
+   "disable_next": {
+      "message": "Zakázať do ďalšej návštevy"
+   },
+   "disabled_global": {
+      "message": "Zakázať globálne"
+   },
+   "disabled_site": {
+      "message": "Zakázať pre túto stránku"
+   },
+   "disabled_tip": {
+      "message": "*Toto môžete znova povoliť v Nastaveniach"
+   },
+   "error_bing_title": {
+      "message": "Služba Microsoft Prekladač neodpovedá"
+   },
+   "error_google_title": {
+      "message": "Služba Google Prekladač neodpovedá"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Prepnite prekladací motor na Microsoft Prekladač"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Prepnite prekladací motor na Google Prekladač"
+   },
+   "error_persists": {
+      "message": "Ak tento problém pretrváva,"
+   },
+   "extDescription": {
+      "message": "Hľadajte vo svete vo vašom vlastnom jazyku a zlepšite svoje vyhľadávanie obsahu na sociálnych sieťach, všetko zdarma."
+   },
+   "extName": {
+      "message": "Felo - Váš Bezplatný AI Vyhľadávací Asistent"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it Tlačidlo"
+   },
+   "felo_it_button_description": {
+      "message": "Keď je to zapnuté, tlačidlo felo it bude k dispozícii v poli na vyhľadávanie."
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Zoznam webových stránok, kde je táto funkcia zakázaná"
+   },
+   "felo_it_toast": {
+      "message": "Zadajte kľúčové slová"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Zadajte, čo chcete vyhľadať"
+   },
+   "felo_search_subtitle": {
+      "message": "Váš Bezplatný AI Vyhľadávač"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Všeobecné"
+   },
+   "google_translate": {
+      "message": "Google Prekladač"
+   },
+   "language": {
+      "message": "Jazyk"
+   },
+   "language_description": {
+      "message": "Nastavte si preferovaný jazyk pre rozhranie a odpovede AI."
+   },
+   "light": {
+      "message": "Svetlá"
+   },
+   "open_option_page": {
+      "message": "Otvorenie nastavení"
+   },
+   "retry": {
+      "message": "Skúsiť znova"
+   },
+   "search_felo_it_tip": {
+      "message": "Neistý? Felo it!"
+   },
+   "search_for": {
+      "message": "Použite Felo Search na: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menu pri výbere textu"
+   },
+   "selection_menu_description": {
+      "message": "Zobraziť mini menu pri výbere textu"
+   },
+   "started_get_started": {
+      "message": "Začať"
+   },
+   "started_head_subtitle": {
+      "message": "Hľadajte vo svete vo vašom vlastnom jazyku"
+   },
+   "started_head_title": {
+      "message": "Vitáme vás v asistentovi Felo Search!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Nastavte Felo Search ako predvolený vyhľadávač"
+   },
+   "started_welcome": {
+      "message": "🎉 Gratulujeme! Váš AI vyhľadávací asistent je pripravený na použitie"
+   },
+   "target_language": {
+      "message": "Cieľový Jazyk"
+   },
+   "target_language_description": {
+      "message": "Preložte iné jazyky do jazyka, ktorý ste nastavili."
+   },
+   "theme": {
+      "message": "Téma"
+   },
+   "translate": {
+      "message": "Preložiť"
+   },
+   "translate_display_style": {
+      "message": "Štýl zobrazenia prekladu"
+   },
+   "translate_display_style_description": {
+      "message": "Pozrite sa nižšie na príklady rôznych štýlov prekladu"
+   },
+   "translate_error_tip": {
+      "message": "Požiadavka na preklad zlyhala"
+   },
+   "translate_icon_display": {
+      "message": "Ikona Postranného Panelu Prekladu"
+   },
+   "translate_icon_display_description": {
+      "message": "Vždy zobraziť"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Rovnaký ako jazyk výstupu odpovedí AI"
+   },
+   "translate_page_auto": {
+      "message": "Automatický preklad webových stránok"
+   },
+   "translate_page_auto_description": {
+      "message": "Keď je táto funkcia povolená, asistent automaticky preloží webové stránky v cudzom jazyku (obmedzené na stránky otvorené z Felo)"
+   },
+   "translate_service": {
+      "message": "Služba Prekladu"
+   },
+   "translate_service_description": {
+      "message": "Prekladové služby"
+   },
+   "translate_target_language_select": {
+      "message": "Vyberte si svoj cieľový jazyk"
+   },
+   "translation_original_text_display": {
+      "message": "Zobrazenie Pôvodného Textu"
+   },
+   "translation_original_text_display_description": {
+      "message": "Keď je **povolené**, pôvodný text zostáva na stránke viditeľný; keď je **zakázané**, zobrazuje sa len preklad."
+   },
+   "translation_service": {
+      "message": "Prekladová Služba"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Inteligentné Zvýraznenie"
+   },
+   "translation_style_blue": {
+      "message": "Jemná Modrá"
+   },
+   "translation_style_bold": {
+      "message": "Tučné"
+   },
+   "translation_style_dashed": {
+      "message": "Čárkovaný"
+   },
+   "translation_style_default": {
+      "message": "Žiadny štýl"
+   },
+   "translation_style_green": {
+      "message": "Svieža Zelená"
+   },
+   "translation_style_highlight": {
+      "message": "Zvýrazniť"
+   },
+   "translation_style_italic": {
+      "message": "Kurzíva"
+   },
+   "translation_style_mask": {
+      "message": "Efekt rozmazania (Režim učenia)"
+   },
+   "translation_style_opacity": {
+      "message": "Priehľadnosť"
+   },
+   "translation_style_orange": {
+      "message": "Teplá Oranžová"
+   },
+   "translation_style_underline": {
+      "message": "Podčiarknuť"
+   },
+   "translation_style_wavy": {
+      "message": "Vlnový"
+   }
+}

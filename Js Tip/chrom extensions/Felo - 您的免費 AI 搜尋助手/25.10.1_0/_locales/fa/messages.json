@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "خودکار"
+   },
+   "bing_translate": {
+      "message": "مترجم مایکروسافت"
+   },
+   "changes_saved": {
+      "message": "تغییرات با موفقیت ذخیره شدند"
+   },
+   "contact_us": {
+      "message": "با ما تماس بگیرید"
+   },
+   "dark": {
+      "message": "تیره"
+   },
+   "default_search_engine": {
+      "message": "موتور جستجوی پیش‌فرض"
+   },
+   "default_search_engine_description": {
+      "message": "هنگامی که **فعال** باشد، فیلو به عنوان موتور جستجوی پیش‌فرض مرورگر شما تنظیم خواهد شد."
+   },
+   "disable_next": {
+      "message": "غیرفعال کردن تا بازدید بعدی"
+   },
+   "disabled_global": {
+      "message": "غیرفعال کردن به‌طور جهانی"
+   },
+   "disabled_site": {
+      "message": "غیرفعال کردن برای این سایت"
+   },
+   "disabled_tip": {
+      "message": "*شما می‌توانید این گزینه را در بخش گزینه‌ها دوباره فعال کنید"
+   },
+   "error_bing_title": {
+      "message": "سرویس مترجم مایکروسافت پاسخ نمی‌دهد"
+   },
+   "error_google_title": {
+      "message": "سرویس ترجمه گوگل پاسخ نمی‌دهد"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 تغییر به حالت مترجم مایکروسافت"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 تغییر به حالت ترجمه گوگل"
+   },
+   "error_persists": {
+      "message": "اگر این مشکل ادامه داشت،"
+   },
+   "extDescription": {
+      "message": "به طور رایگان در زبان خود به جستجوی جهان بپردازید و جستجوی محتوای شبکه‌های اجتماعی خود را بهبود ببخشید."
+   },
+   "extName": {
+      "message": "فیلو - دستیار جستجوگر AI رایگان شما"
+   },
+   "felo_it": {
+      "message": "فیلو"
+   },
+   "felo_it_button": {
+      "message": "دکمه فیلو"
+   },
+   "felo_it_button_description": {
+      "message": "هنگامی که فعال شود، دکمه فیلو در جعبه جستجو در دسترس خواهد بود"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "فهرست وب‌سایت‌هایی که این ویژگی غیرفعال شده است"
+   },
+   "felo_it_toast": {
+      "message": "لطفا کلیدواژه‌ها را وارد کنید"
+   },
+   "felo_search": {
+      "message": "فیلو"
+   },
+   "felo_search_placeholder": {
+      "message": "چیزی که می‌خواهید جستجو کنید را تایپ کنید"
+   },
+   "felo_search_subtitle": {
+      "message": "موتور جستجوی AI رایگان شما"
+   },
+   "felo_search_title": {
+      "message": "فیلو"
+   },
+   "general": {
+      "message": "عمومی"
+   },
+   "google_translate": {
+      "message": "ترجمه گوگل"
+   },
+   "language": {
+      "message": "زبان"
+   },
+   "language_description": {
+      "message": "زبان مورد نظر خود را برای رابط و پاسخ‌های AI تعیین کنید."
+   },
+   "light": {
+      "message": "روشن"
+   },
+   "open_option_page": {
+      "message": "باز کردن گزینه‌ها"
+   },
+   "retry": {
+      "message": "دوباره تلاش کنید"
+   },
+   "search_felo_it_tip": {
+      "message": "در شک؟ فیلو کن!"
+   },
+   "search_for": {
+      "message": "برای جستجو از فیلو استفاده کنید: \"%s\""
+   },
+   "selection_menu": {
+      "message": "منوی کوچک در انتخاب متن"
+   },
+   "selection_menu_description": {
+      "message": "نمایش منوی کوچک هنگام انتخاب متن"
+   },
+   "started_get_started": {
+      "message": "شروع کنید"
+   },
+   "started_head_subtitle": {
+      "message": "به جستجوی دنیا در زبان خود بپردازید"
+   },
+   "started_head_title": {
+      "message": "به دستیار جستجوی فیلو خوش آمدید!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "تنظیم فیلو به عنوان موتور جستجوی پیش‌فرض"
+   },
+   "started_welcome": {
+      "message": "🎉 تبریک! دستیار جستجوی AI شما آماده است"
+   },
+   "target_language": {
+      "message": "زبان هدف"
+   },
+   "target_language_description": {
+      "message": "زبان‌های دیگر را به زبانی که تنظیم کرده‌اید ترجمه کنید"
+   },
+   "theme": {
+      "message": "تم"
+   },
+   "translate": {
+      "message": "ترجمه"
+   },
+   "translate_display_style": {
+      "message": "سبک نمایش ترجمه"
+   },
+   "translate_display_style_description": {
+      "message": "برای مشاهده مثال‌هایی از سبک‌های مختلف ترجمه به زیر مراجعه کنید"
+   },
+   "translate_error_tip": {
+      "message": "درخواست ترجمه ناکام ماند"
+   },
+   "translate_icon_display": {
+      "message": "آیکون نوار کناری ترجمه"
+   },
+   "translate_icon_display_description": {
+      "message": "همیشه نمایش دهید"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "همان زبان خروجی پاسخ‌های AI"
+   },
+   "translate_page_auto": {
+      "message": "ترجمه خودکار صفحات وب"
+   },
+   "translate_page_auto_description": {
+      "message": "در صورت فعال بودن، دستیار به‌طور خودکار صفحات وب به زبان‌های خارجی را ترجمه می‌کند (محدود به صفحاتی که از فلو باز شده‌اند)"
+   },
+   "translate_service": {
+      "message": "خدمات ترجمه"
+   },
+   "translate_service_description": {
+      "message": "خدمات ترجمه"
+   },
+   "translate_target_language_select": {
+      "message": "زبان هدف خود را انتخاب کنید"
+   },
+   "translation_original_text_display": {
+      "message": "نمایش متن اصلی"
+   },
+   "translation_original_text_display_description": {
+      "message": "هنگامی که **فعال** باشد، متن اصلی در صفحه قابل مشاهده خواهد بود؛ هنگامی که **غیرفعال** باشد، فقط ترجمه نمایش داده می‌شود."
+   },
+   "translation_service": {
+      "message": "خدمات ترجمه"
+   },
+   "translation_style_auto_highlight": {
+      "message": "هایلایت هوشمند"
+   },
+   "translation_style_blue": {
+      "message": "آبی ملایم"
+   },
+   "translation_style_bold": {
+      "message": "پررنگ"
+   },
+   "translation_style_dashed": {
+      "message": "خط‌چین"
+   },
+   "translation_style_default": {
+      "message": "بدون سبک"
+   },
+   "translation_style_green": {
+      "message": "سبز تازه"
+   },
+   "translation_style_highlight": {
+      "message": "هایلایت"
+   },
+   "translation_style_italic": {
+      "message": "کج"
+   },
+   "translation_style_mask": {
+      "message": "اثر محو (مدرسانی)"
+   },
+   "translation_style_opacity": {
+      "message": "ناپایداری"
+   },
+   "translation_style_orange": {
+      "message": "نارنجی گرم"
+   },
+   "translation_style_underline": {
+      "message": "زیر خط"
+   },
+   "translation_style_wavy": {
+      "message": "موج‌دار"
+   }
+}

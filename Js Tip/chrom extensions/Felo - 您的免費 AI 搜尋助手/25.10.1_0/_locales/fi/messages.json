@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automaattinen"
+   },
+   "bing_translate": {
+      "message": "Microsoft Kääntäjä"
+   },
+   "changes_saved": {
+      "message": "Muutokset tallennettu onnistuneesti"
+   },
+   "contact_us": {
+      "message": "Ota Yhteyttä"
+   },
+   "dark": {
+      "message": "Tumma"
+   },
+   "default_search_engine": {
+      "message": "Oletushakukone"
+   },
+   "default_search_engine_description": {
+      "message": "Kun **käytössä**, Felo Haku asetetaan oletushakukoneeksi selaimessasi."
+   },
+   "disable_next": {
+      "message": "Poista käytöstä seuraavaan vierailuun"
+   },
+   "disabled_global": {
+      "message": "Poista käytöstä globaalisti"
+   },
+   "disabled_site": {
+      "message": "Poista käytöstä tälle sivustolle"
+   },
+   "disabled_tip": {
+      "message": "*Voit ottaa tämän käyttöön Asetuksista"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Käännöspalvelu ei vastaa"
+   },
+   "error_google_title": {
+      "message": "Google Käännöspalvelu ei vastaa"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Vaihda käännöskonetta Microsoft Kääntäjään"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Vaihda käännöskonetta Google Kääntäjään"
+   },
+   "error_persists": {
+      "message": "Jos ongelma jatkuu,"
+   },
+   "extDescription": {
+      "message": "Etsi maailmaa omalla kielelläsi ja paranna sosiaalisen median sisältösi hakua - täysin ilmaiseksi."
+   },
+   "extName": {
+      "message": "Felo - Ilmainen AI-hakusovelluksesi"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it -painike"
+   },
+   "felo_it_button_description": {
+      "message": "Kun on kytketty, Felo it -painike on saatavilla hakukentässä"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Luettelo verkkosivustoista, joilla tämä ominaisuus on poistettu käytöstä"
+   },
+   "felo_it_toast": {
+      "message": "Ole hyvä ja syötä avainsanat"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Kirjoita haluamasi hakusana"
+   },
+   "felo_search_subtitle": {
+      "message": "Ilmainen AI-hakukoneesi"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Yleiset"
+   },
+   "google_translate": {
+      "message": "Google Kääntäjä"
+   },
+   "language": {
+      "message": "Kieli"
+   },
+   "language_description": {
+      "message": "Aseta haluamasi kieli käyttöliittymälle ja AI:n vastauksille."
+   },
+   "light": {
+      "message": "Vaalea"
+   },
+   "open_option_page": {
+      "message": "Avaa Asetukset"
+   },
+   "retry": {
+      "message": "Yritä uudelleen"
+   },
+   "search_felo_it_tip": {
+      "message": "Epäilyttääkö? Felo se!"
+   },
+   "search_for": {
+      "message": "Käytä Felo Hakua: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Minivalikko tekstivalinnassa"
+   },
+   "selection_menu_description": {
+      "message": "Näytä minivalikko tekstin valitsemisen yhteydessä"
+   },
+   "started_get_started": {
+      "message": "Aloita"
+   },
+   "started_head_subtitle": {
+      "message": "Etsi maailmaa omalla kielelläsi"
+   },
+   "started_head_title": {
+      "message": "Tervetuloa Felo Hakusovellukseen!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Aseta Felo Haku oletushakukoneeksi"
+   },
+   "started_welcome": {
+      "message": "🎉 Onnea! AI-hakusovelluksesi on valmis käyttöön"
+   },
+   "target_language": {
+      "message": "Kohdekieli"
+   },
+   "target_language_description": {
+      "message": "Käännä muita kieliä määräämääsi kieleen"
+   },
+   "theme": {
+      "message": "Teema"
+   },
+   "translate": {
+      "message": "Käännä"
+   },
+   "translate_display_style": {
+      "message": "Käännöksen näyttötapa"
+   },
+   "translate_display_style_description": {
+      "message": "Katso alla esimerkkejä eri käännöstyyleistä"
+   },
+   "translate_error_tip": {
+      "message": "Käännöspyyntö epäonnistui"
+   },
+   "translate_icon_display": {
+      "message": "Käännös Sivupalkin Ikoni"
+   },
+   "translate_icon_display_description": {
+      "message": "Näytä aina"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Sama kuin AI-vastausten kieli"
+   },
+   "translate_page_auto": {
+      "message": "Automaattinen verkkosivujen kääntäminen"
+   },
+   "translate_page_auto_description": {
+      "message": "Kun tämä toiminto on käytössä, avustaja kääntää automaattisesti vieraskieliset verkkosivut (rajoitettu Felo-sovelluksesta avattuihin sivuihin)"
+   },
+   "translate_service": {
+      "message": "Käännöspalvelu"
+   },
+   "translate_service_description": {
+      "message": "Käännöspalvelut"
+   },
+   "translate_target_language_select": {
+      "message": "Valitse kohdekieli"
+   },
+   "translation_original_text_display": {
+      "message": "Alkuperäisen tekstin näyttö"
+   },
+   "translation_original_text_display_description": {
+      "message": "Kun **käytössä**, alkuperäinen teksti näkyy sivulla; kun **pois päältä**, näkyy vain käännös."
+   },
+   "translation_service": {
+      "message": "Käännöspalvelu"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Älykäs Korostus"
+   },
+   "translation_style_blue": {
+      "message": "Pehmeä Sininen"
+   },
+   "translation_style_bold": {
+      "message": "Rohkea"
+   },
+   "translation_style_dashed": {
+      "message": "Viivallinen"
+   },
+   "translation_style_default": {
+      "message": "Ei tyyliä"
+   },
+   "translation_style_green": {
+      "message": "Raikas Vihreä"
+   },
+   "translation_style_highlight": {
+      "message": "Korostus"
+   },
+   "translation_style_italic": {
+      "message": "Kursivoitu"
+   },
+   "translation_style_mask": {
+      "message": "Sumentava Efekti (oppimismoodi)"
+   },
+   "translation_style_opacity": {
+      "message": "Läpinäkyvyys"
+   },
+   "translation_style_orange": {
+      "message": "Lämmin Oranssi"
+   },
+   "translation_style_underline": {
+      "message": "Alleviivattu"
+   },
+   "translation_style_wavy": {
+      "message": "Aaltomainen"
+   }
+}

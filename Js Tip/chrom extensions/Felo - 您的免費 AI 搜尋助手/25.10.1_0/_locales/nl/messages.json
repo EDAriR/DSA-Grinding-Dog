@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automatisch"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Wijzigingen succesvol opgeslagen"
+   },
+   "contact_us": {
+      "message": "Neem Contact Met Ons Op"
+   },
+   "dark": {
+      "message": "Donker"
+   },
+   "default_search_engine": {
+      "message": "Standaard Zoekmachine"
+   },
+   "default_search_engine_description": {
+      "message": "Wanneer **ingeschakeld**, wordt Felo Search ingesteld als de standaard zoekmachine van je browser."
+   },
+   "disable_next": {
+      "message": "Uitschakelen tot het volgende bezoek"
+   },
+   "disabled_global": {
+      "message": "Globaal Uitschakelen"
+   },
+   "disabled_site": {
+      "message": "Uitschakelen voor deze site"
+   },
+   "disabled_tip": {
+      "message": "*Je kunt dit opnieuw inschakelen in Opties"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Translator service reageert niet"
+   },
+   "error_google_title": {
+      "message": "Google Vertaalservice reageert niet"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Schakel de vertaaldienst naar Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Schakel de vertaaldienst naar Google Vertalen"
+   },
+   "error_persists": {
+      "message": "Als dit probleem aanhoudt,"
+   },
+   "extDescription": {
+      "message": "Zoek de wereld in je eigen taal en verbeter je zoekopdrachten voor sociale netwerken, helemaal gratis."
+   },
+   "extName": {
+      "message": "Felo - Jouw Gratis AI Zoekassistent"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it Knop"
+   },
+   "felo_it_button_description": {
+      "message": "Wanneer ingeschakeld, is de Felo it-knop beschikbaar in het zoekvak"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Lijst van websites waar deze functie is uitgeschakeld"
+   },
+   "felo_it_toast": {
+      "message": "Voer sleutelwoorden in"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Typ in wat je wilt zoeken"
+   },
+   "felo_search_subtitle": {
+      "message": "Jouw Gratis AI Zoekmachine"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Algemeen"
+   },
+   "google_translate": {
+      "message": "Google Vertalen"
+   },
+   "language": {
+      "message": "Taal"
+   },
+   "language_description": {
+      "message": "Stel je gewenste taal in voor de interface en AI-antwoorden."
+   },
+   "light": {
+      "message": "Licht"
+   },
+   "open_option_page": {
+      "message": "Opties Openen"
+   },
+   "retry": {
+      "message": "Probeer Het Opnieuw"
+   },
+   "search_felo_it_tip": {
+      "message": "Twijfel je? Felo it!"
+   },
+   "search_for": {
+      "message": "Gebruik Felo Search voor: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini-menu bij tekstselectie"
+   },
+   "selection_menu_description": {
+      "message": "Toon mini-menu bij het selecteren van tekst"
+   },
+   "started_get_started": {
+      "message": "Aan de Slag"
+   },
+   "started_head_subtitle": {
+      "message": "Zoek de wereld in je eigen taal"
+   },
+   "started_head_title": {
+      "message": "Welkom bij de Felo Zoekassistent!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Stel Felo Search in als standaard zoekmachine"
+   },
+   "started_welcome": {
+      "message": "🎉 Gefeliciteerd! Je AI-zoekassistent staat klaar om te gaan"
+   },
+   "target_language": {
+      "message": "Doeltaal"
+   },
+   "target_language_description": {
+      "message": "Vertaal andere talen naar de taal die je hebt ingesteld"
+   },
+   "theme": {
+      "message": "Thema"
+   },
+   "translate": {
+      "message": "Vertalen"
+   },
+   "translate_display_style": {
+      "message": "Vertaalweergave stijl"
+   },
+   "translate_display_style_description": {
+      "message": "Zie hieronder voorbeelden van verschillende vertaalstijlen"
+   },
+   "translate_error_tip": {
+      "message": "Vertaalverzoek mislukt"
+   },
+   "translate_icon_display": {
+      "message": "Vertaal Zijbalkpictogram"
+   },
+   "translate_icon_display_description": {
+      "message": "Altijd Weergeven"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Zelfde als de outputtaal van de AI-antwoorden"
+   },
+   "translate_page_auto": {
+      "message": "Webpagina's automatisch vertalen"
+   },
+   "translate_page_auto_description": {
+      "message": "Wanneer ingeschakeld, zal de assistent automatisch webpagina's in vreemde talen vertalen (beperkt tot pagina's geopend vanuit Felo)"
+   },
+   "translate_service": {
+      "message": "Vertaalservice"
+   },
+   "translate_service_description": {
+      "message": "Vertaalservices"
+   },
+   "translate_target_language_select": {
+      "message": "Selecteer je doeltaal"
+   },
+   "translation_original_text_display": {
+      "message": "Originele Tekst Weergave"
+   },
+   "translation_original_text_display_description": {
+      "message": "Wanneer **ingeschakeld**, blijft de originele tekst zichtbaar op de pagina; wanneer **uitgeschakeld**, wordt alleen de vertaling weergegeven."
+   },
+   "translation_service": {
+      "message": "Vertaalservice"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Slim Markeren"
+   },
+   "translation_style_blue": {
+      "message": "Zacht Blauw"
+   },
+   "translation_style_bold": {
+      "message": "Vet"
+   },
+   "translation_style_dashed": {
+      "message": "Gestippeld"
+   },
+   "translation_style_default": {
+      "message": "Geen stijl"
+   },
+   "translation_style_green": {
+      "message": "Vers Groen"
+   },
+   "translation_style_highlight": {
+      "message": "Markeren"
+   },
+   "translation_style_italic": {
+      "message": "Cursief"
+   },
+   "translation_style_mask": {
+      "message": "Vervagende Effect (Leer Modus)"
+   },
+   "translation_style_opacity": {
+      "message": "Doorzichtigheid"
+   },
+   "translation_style_orange": {
+      "message": "Warm Oranje"
+   },
+   "translation_style_underline": {
+      "message": "Onderstrepen"
+   },
+   "translation_style_wavy": {
+      "message": "Golvend"
+   }
+}

@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automàtic"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Canvis desats amb èxit"
+   },
+   "contact_us": {
+      "message": "Contacta'ns"
+   },
+   "dark": {
+      "message": "Fosc"
+   },
+   "default_search_engine": {
+      "message": "Motor de cerca per defecte"
+   },
+   "default_search_engine_description": {
+      "message": "Quan **habilitat**, Felo Search es configurarà com el motor de cerca per defecte del teu navegador."
+   },
+   "disable_next": {
+      "message": "Desactivar fins a la propera visita"
+   },
+   "disabled_global": {
+      "message": "Desactivar globalment"
+   },
+   "disabled_site": {
+      "message": "Desactivar per aquest lloc"
+   },
+   "disabled_tip": {
+      "message": "*Pots tornar a habilitar-ho a Opcions"
+   },
+   "error_bing_title": {
+      "message": "El servei Microsoft Translator no respon"
+   },
+   "error_google_title": {
+      "message": "El servei Google Translate no respon"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Canvia el motor de traducció a Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Canvia el motor de traducció a Google Translate"
+   },
+   "error_persists": {
+      "message": "Si aquest problema persisteix,"
+   },
+   "extDescription": {
+      "message": "Cerca el món en el teu propi idioma i millora la cerca de contingut a les xarxes socials, tot gratuïtament."
+   },
+   "extName": {
+      "message": "Felo - El teu assistent de cerca AI gratuït"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Botó Felo it"
+   },
+   "felo_it_button_description": {
+      "message": "Quan s'activi, el botó Felo it estarà disponible a la caixa de cerca"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Llista de llocs web on aquesta funció està desactivada"
+   },
+   "felo_it_toast": {
+      "message": "Si us plau, introdueix paraules clau"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Escriu el que vols cercar"
+   },
+   "felo_search_subtitle": {
+      "message": "El teu motor de cerca AI gratuït"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "General"
+   },
+   "google_translate": {
+      "message": "Google Translate"
+   },
+   "language": {
+      "message": "Idioma"
+   },
+   "language_description": {
+      "message": "Estableix l'idioma preferit per a la interfície i les respostes de AI."
+   },
+   "light": {
+      "message": "Clar"
+   },
+   "open_option_page": {
+      "message": "Obre Opcions"
+   },
+   "retry": {
+      "message": "Reintentar"
+   },
+   "search_felo_it_tip": {
+      "message": "Tens dubtes? Felo it!"
+   },
+   "search_for": {
+      "message": "Utilitza Felo Search per: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menú en seleccionar text"
+   },
+   "selection_menu_description": {
+      "message": "Mostra un mini menú quan seleccionis text"
+   },
+   "started_get_started": {
+      "message": "Comença"
+   },
+   "started_head_subtitle": {
+      "message": "Cerca el món en el teu propi idioma"
+   },
+   "started_head_title": {
+      "message": "Benvingut a l'assistent de cerca Felo!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Estableix Felo Search com a motor de cerca per defecte"
+   },
+   "started_welcome": {
+      "message": "🎉 Felicitats! El teu assistent de cerca AI està llest per funcionar"
+   },
+   "target_language": {
+      "message": "Idioma de destinació"
+   },
+   "target_language_description": {
+      "message": "Traduir altres idiomes a l'idioma que has establert"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Traduir"
+   },
+   "translate_display_style": {
+      "message": "Estil de visualització de traducció"
+   },
+   "translate_display_style_description": {
+      "message": "Veure a continuació exemples dels diferents estils de traducció"
+   },
+   "translate_error_tip": {
+      "message": "La sol·licitud de traducció ha fallat"
+   },
+   "translate_icon_display": {
+      "message": "Icona de fòrum de traducció"
+   },
+   "translate_icon_display_description": {
+      "message": "Mostra sempre"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Igual que l'idioma de resposta de l'AI"
+   },
+   "translate_page_auto": {
+      "message": "Traducció automàtica de pàgines web"
+   },
+   "translate_page_auto_description": {
+      "message": "Quan està activat, l'assistent traduirà automàticament les pàgines web en llengües estrangeres (limitades a les pàgines obertes des de Felo)"
+   },
+   "translate_service": {
+      "message": "Servei de Traducció"
+   },
+   "translate_service_description": {
+      "message": "Serveis de traducció"
+   },
+   "translate_target_language_select": {
+      "message": "Selecciona l'idioma de destinació"
+   },
+   "translation_original_text_display": {
+      "message": "Visualització del text original"
+   },
+   "translation_original_text_display_description": {
+      "message": "Quan **hàbil**, el text original es manté visible a la pàgina; quan **deshabilitat**, només es mostra la traducció."
+   },
+   "translation_service": {
+      "message": "Servei de traducció"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Ressaltat intel·ligent"
+   },
+   "translation_style_blue": {
+      "message": "Blau suau"
+   },
+   "translation_style_bold": {
+      "message": "Negreta"
+   },
+   "translation_style_dashed": {
+      "message": "Discontinu"
+   },
+   "translation_style_default": {
+      "message": "Sense estil"
+   },
+   "translation_style_green": {
+      "message": "Verd fresc"
+   },
+   "translation_style_highlight": {
+      "message": "Ressaltar"
+   },
+   "translation_style_italic": {
+      "message": "Cursiva"
+   },
+   "translation_style_mask": {
+      "message": "Efecte de desdibuix (Mode d'aprenentatge)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacitat"
+   },
+   "translation_style_orange": {
+      "message": "Taronja càlid"
+   },
+   "translation_style_underline": {
+      "message": "Subratllar"
+   },
+   "translation_style_wavy": {
+      "message": "Ondulat"
+   }
+}

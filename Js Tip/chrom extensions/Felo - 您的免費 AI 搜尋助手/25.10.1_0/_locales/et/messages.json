@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automaatne"
+   },
+   "bing_translate": {
+      "message": "Microsofti Tõlkija"
+   },
+   "changes_saved": {
+      "message": "Muutused on edukalt salvestatud"
+   },
+   "contact_us": {
+      "message": "Võtke meiega ühendust"
+   },
+   "dark": {
+      "message": "Tumedam"
+   },
+   "default_search_engine": {
+      "message": "Vaikimisi Otsingumootor"
+   },
+   "default_search_engine_description": {
+      "message": "Kui **lubatud**, seatakse Felo Otsing teie brauseri vaikimisi otsingumootoriks."
+   },
+   "disable_next": {
+      "message": "Keela järgmise külastuseni"
+   },
+   "disabled_global": {
+      "message": "Keela globaalset"
+   },
+   "disabled_site": {
+      "message": "Keela selle saidi jaoks"
+   },
+   "disabled_tip": {
+      "message": "*Saate selle Seadetes uuesti lubada"
+   },
+   "error_bing_title": {
+      "message": "Microsofti Tõlkija teenus ei reageeri"
+   },
+   "error_google_title": {
+      "message": "Google Tõlke teenus ei reageeri"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Lülitage tõlke mootor Microsofti Tõlkijaks"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Lülitage tõlke mootor Google Tõlkeks"
+   },
+   "error_persists": {
+      "message": "Kui probleem püsib,"
+   },
+   "extDescription": {
+      "message": "Otsige maailma oma keeles ja täiustage oma sotsiaalmeedia sisu otsingut, kõik tasuta."
+   },
+   "extName": {
+      "message": "Felo - Teie tasuta AI otsingute asistendi"
+   },
+   "felo_it": {
+      "message": "Felo see"
+   },
+   "felo_it_button": {
+      "message": "Felo see nupp"
+   },
+   "felo_it_button_description": {
+      "message": "Kui see on sisse lülitatud, on Felo nupp otsingukastis saadaval."
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Saite loend, kus see funktsioon on keelatud."
+   },
+   "felo_it_toast": {
+      "message": "Palun sisestage märksõnad"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Sisestage, mida soovite otsida"
+   },
+   "felo_search_subtitle": {
+      "message": "Teie tasuta AI otsingumootor"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Üldine"
+   },
+   "google_translate": {
+      "message": "Google Tõlge"
+   },
+   "language": {
+      "message": "Keel"
+   },
+   "language_description": {
+      "message": "Seadke oma eelistatud keel liidese ja AI vastuste jaoks."
+   },
+   "light": {
+      "message": "Heledam"
+   },
+   "open_option_page": {
+      "message": "Ava Seaded"
+   },
+   "retry": {
+      "message": "Proovi uuesti"
+   },
+   "search_felo_it_tip": {
+      "message": "Kahtluse korral? Felo see!"
+   },
+   "search_for": {
+      "message": "Kasutage Felo Otsingut: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menüü tekstivalikul"
+   },
+   "selection_menu_description": {
+      "message": "Kuva mini menüü tekstivalikul"
+   },
+   "started_get_started": {
+      "message": "Alustage"
+   },
+   "started_head_subtitle": {
+      "message": "Otsige maailma oma keeles"
+   },
+   "started_head_title": {
+      "message": "Tere tulemast Felo Otsingu Asistendi!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Seadke Felo Otsing vaikimisi otsingumootoriks"
+   },
+   "started_welcome": {
+      "message": "🎉 Palju õnne! Teie AI otsingute assistent on valmis!"
+   },
+   "target_language": {
+      "message": "Sihtkeel"
+   },
+   "target_language_description": {
+      "message": "Tõlkige teisi keeli keelde, mille olete seadnud."
+   },
+   "theme": {
+      "message": "Teema"
+   },
+   "translate": {
+      "message": "Tõlgi"
+   },
+   "translate_display_style": {
+      "message": "Tõlke kuvamisstiil"
+   },
+   "translate_display_style_description": {
+      "message": "Vaadake allpool erinevate tõlke stiilide näiteid"
+   },
+   "translate_error_tip": {
+      "message": "Tõlke taotlus ebaõnnestus"
+   },
+   "translate_icon_display": {
+      "message": "Tõlke külgriba ikoon"
+   },
+   "translate_icon_display_description": {
+      "message": "Kuva alati"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Sama nagu AI vastuste väljundkeel"
+   },
+   "translate_page_auto": {
+      "message": "Veebilehtede automaattõlge"
+   },
+   "translate_page_auto_description": {
+      "message": "Kui see on lubatud, tõlgib assistent automaatselt võõrkeelsed veebilehed (piiratud Felo kaudu avatud lehtedega)"
+   },
+   "translate_service": {
+      "message": "Tõlke teenus"
+   },
+   "translate_service_description": {
+      "message": "Tõlketeenused"
+   },
+   "translate_target_language_select": {
+      "message": "Valige oma sihtkeel"
+   },
+   "translation_original_text_display": {
+      "message": "Originaalteksti kuvamine"
+   },
+   "translation_original_text_display_description": {
+      "message": "Kui **lubatud**, jääb originaaltekst lehel nähtavaks; kui **keelatud**, kuvatakse ainult tõlge."
+   },
+   "translation_service": {
+      "message": "Tõlke teenus"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Nutikas esiletõstmine"
+   },
+   "translation_style_blue": {
+      "message": "Mugav Sinine"
+   },
+   "translation_style_bold": {
+      "message": "Rasvane"
+   },
+   "translation_style_dashed": {
+      "message": "Katkendlik"
+   },
+   "translation_style_default": {
+      "message": "Ilma stiilita"
+   },
+   "translation_style_green": {
+      "message": "Soe Roheline"
+   },
+   "translation_style_highlight": {
+      "message": "Esiletõstetud"
+   },
+   "translation_style_italic": {
+      "message": "Kaldkiri"
+   },
+   "translation_style_mask": {
+      "message": "Hägu efekt (Õppimisrežiim)"
+   },
+   "translation_style_opacity": {
+      "message": "Opakuss"
+   },
+   "translation_style_orange": {
+      "message": "Soe Oranž"
+   },
+   "translation_style_underline": {
+      "message": "Allajoonimine"
+   },
+   "translation_style_wavy": {
+      "message": "Laineline"
+   }
+}

@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Otomatis"
+   },
+   "bing_translate": {
+      "message": "Penerjemah Microsoft"
+   },
+   "changes_saved": {
+      "message": "Perubahan berhasil disimpan"
+   },
+   "contact_us": {
+      "message": "Hubungi Kami"
+   },
+   "dark": {
+      "message": "Gelap"
+   },
+   "default_search_engine": {
+      "message": "Mesin Pencarian Default"
+   },
+   "default_search_engine_description": {
+      "message": "Ketika **diaktifkan**, Felo Search akan diatur sebagai mesin pencarian default browser Anda."
+   },
+   "disable_next": {
+      "message": "Nonaktifkan sampai kunjungan berikutnya"
+   },
+   "disabled_global": {
+      "message": "Nonaktifkan secara global"
+   },
+   "disabled_site": {
+      "message": "Nonaktifkan untuk situs ini"
+   },
+   "disabled_tip": {
+      "message": "*Anda dapat mengaktifkan kembali ini di Opsi"
+   },
+   "error_bing_title": {
+      "message": "Layanan Penerjemah Microsoft tidak merespons"
+   },
+   "error_google_title": {
+      "message": "Layanan Google Terjemahan tidak merespons"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Ganti mesin terjemahan ke Penerjemah Microsoft"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Ganti mesin terjemahan ke Google Terjemahan"
+   },
+   "error_persists": {
+      "message": "Jika masalah ini terus berlanjut,"
+   },
+   "extDescription": {
+      "message": "Cari di seluruh dunia dalam bahasa Anda sendiri dan tingkatkan pencarian konten jejaring sosial Anda, semuanya gratis."
+   },
+   "extName": {
+      "message": "Felo - Asisten Pencarian AI Gratis Anda"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Tombol Felo it"
+   },
+   "felo_it_button_description": {
+      "message": "Ketika diaktifkan, tombol felo it akan tersedia di kotak pencarian"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Daftar situs web di mana fitur ini dinonaktifkan"
+   },
+   "felo_it_toast": {
+      "message": "Silakan masukkan kata kunci"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Ketikkan yang ingin Anda cari"
+   },
+   "felo_search_subtitle": {
+      "message": "Mesin Pencarian AI Gratis Anda"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Umum"
+   },
+   "google_translate": {
+      "message": "Google Terjemahan"
+   },
+   "language": {
+      "message": "Bahasa"
+   },
+   "language_description": {
+      "message": "Atur bahasa yang Anda pilih untuk antarmuka dan respons AI."
+   },
+   "light": {
+      "message": "Terang"
+   },
+   "open_option_page": {
+      "message": "Buka Opsi"
+   },
+   "retry": {
+      "message": "Coba lagi"
+   },
+   "search_felo_it_tip": {
+      "message": "Ragu? Felo it!"
+   },
+   "search_for": {
+      "message": "Gunakan Felo Search untuk: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Menu mini saat memilih teks"
+   },
+   "selection_menu_description": {
+      "message": "Tampilkan menu mini saat memilih teks"
+   },
+   "started_get_started": {
+      "message": "Mulai"
+   },
+   "started_head_subtitle": {
+      "message": "Cari di seluruh dunia dalam bahasa Anda sendiri"
+   },
+   "started_head_title": {
+      "message": "Selamat datang di Asisten Pencarian Felo!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Tetapkan Felo Search sebagai mesin pencari default"
+   },
+   "started_welcome": {
+      "message": "🎉 Selamat! Asisten pencarian AI Anda siap digunakan"
+   },
+   "target_language": {
+      "message": "Bahasa Tujuan"
+   },
+   "target_language_description": {
+      "message": "Terjemahkan bahasa lain ke dalam bahasa yang Anda atur"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Terjemahkan"
+   },
+   "translate_display_style": {
+      "message": "Gaya tampilan terjemahan"
+   },
+   "translate_display_style_description": {
+      "message": "Lihat contoh gaya terjemahan yang berbeda di bawah ini"
+   },
+   "translate_error_tip": {
+      "message": "Permintaan terjemahan gagal"
+   },
+   "translate_icon_display": {
+      "message": "Ikon Sisi Terjemahan"
+   },
+   "translate_icon_display_description": {
+      "message": "Selalu Tampilkan"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Sama dengan bahasa output respons AI"
+   },
+   "translate_page_auto": {
+      "message": "Terjemahkan halaman web secara otomatis"
+   },
+   "translate_page_auto_description": {
+      "message": "Ketika diaktifkan, asisten akan secara otomatis menerjemahkan halaman web dalam bahasa asing (terbatas pada halaman yang dibuka dari Felo"
+   },
+   "translate_service": {
+      "message": "Layanan Terjemahan"
+   },
+   "translate_service_description": {
+      "message": "Layanan terjemahan"
+   },
+   "translate_target_language_select": {
+      "message": "Pilih bahasa tujuan Anda"
+   },
+   "translation_original_text_display": {
+      "message": "Tampilan Teks Asli"
+   },
+   "translation_original_text_display_description": {
+      "message": "Ketika **diaktifkan**, teks asli tetap terlihat di halaman; ketika **dinonaktifkan**, hanya terjemahan yang ditampilkan."
+   },
+   "translation_service": {
+      "message": "Layanan Terjemahan"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Sorotan Pintar"
+   },
+   "translation_style_blue": {
+      "message": "Biru Lembut"
+   },
+   "translation_style_bold": {
+      "message": "Tebal"
+   },
+   "translation_style_dashed": {
+      "message": "Garis putus-putus"
+   },
+   "translation_style_default": {
+      "message": "Tanpa gaya"
+   },
+   "translation_style_green": {
+      "message": "Hijau Segar"
+   },
+   "translation_style_highlight": {
+      "message": "Sorot"
+   },
+   "translation_style_italic": {
+      "message": "Miring"
+   },
+   "translation_style_mask": {
+      "message": "Efek Blur (Mode Pembelajaran)"
+   },
+   "translation_style_opacity": {
+      "message": "Keburaman"
+   },
+   "translation_style_orange": {
+      "message": "Jingga Hangat"
+   },
+   "translation_style_underline": {
+      "message": "Garis bawah"
+   },
+   "translation_style_wavy": {
+      "message": "Gelombang"
+   }
+}

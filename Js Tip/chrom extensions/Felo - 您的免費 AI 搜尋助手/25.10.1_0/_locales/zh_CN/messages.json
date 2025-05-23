@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "自动"
+   },
+   "bing_translate": {
+      "message": "微软翻译"
+   },
+   "changes_saved": {
+      "message": "修改已成功保存"
+   },
+   "contact_us": {
+      "message": "联系我们"
+   },
+   "dark": {
+      "message": "暗黑"
+   },
+   "default_search_engine": {
+      "message": "默认搜索引擎"
+   },
+   "default_search_engine_description": {
+      "message": "当**启用**时，Felo搜索将被设置为你的浏览器默认搜索引擎。"
+   },
+   "disable_next": {
+      "message": "禁用至下次访问"
+   },
+   "disabled_global": {
+      "message": "全局禁用"
+   },
+   "disabled_site": {
+      "message": "禁用此网站"
+   },
+   "disabled_tip": {
+      "message": "*你可以在选项中重新启用此功能"
+   },
+   "error_bing_title": {
+      "message": "微软翻译服务未响应"
+   },
+   "error_google_title": {
+      "message": "谷歌翻译服务未响应"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 切换翻译引擎至微软翻译"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 切换翻译引擎至谷歌翻译"
+   },
+   "error_persists": {
+      "message": "如果问题仍然存在，"
+   },
+   "extDescription": {
+      "message": "用您的语言搜索世界，提升社交网络内容的搜索，完全免费。"
+   },
+   "extName": {
+      "message": "Felo - 你的免费AI搜索助手"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo按钮"
+   },
+   "felo_it_button_description": {
+      "message": "开启后，Felo按钮将显示在搜索框中"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "此功能被禁用的网站列表"
+   },
+   "felo_it_toast": {
+      "message": "请输入关键词"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "输入你想搜索的内容"
+   },
+   "felo_search_subtitle": {
+      "message": "你的免费AI搜索引擎"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "常规"
+   },
+   "google_translate": {
+      "message": "谷歌翻译"
+   },
+   "language": {
+      "message": "语言"
+   },
+   "language_description": {
+      "message": "设置你偏好的界面语言和AI输出语言。"
+   },
+   "light": {
+      "message": "明亮"
+   },
+   "open_option_page": {
+      "message": "打开选项"
+   },
+   "retry": {
+      "message": "重试"
+   },
+   "search_felo_it_tip": {
+      "message": "不确定？Felo it！"
+   },
+   "search_for": {
+      "message": "使用Felo搜索：\"%s\""
+   },
+   "selection_menu": {
+      "message": "文本选择时的小菜单"
+   },
+   "selection_menu_description": {
+      "message": "选择文本时显示小菜单"
+   },
+   "started_get_started": {
+      "message": "开始使用"
+   },
+   "started_head_subtitle": {
+      "message": "用您的语言搜索世界"
+   },
+   "started_head_title": {
+      "message": "欢迎使用Felo搜索助手！"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "将Felo搜索设置为默认搜索引擎"
+   },
+   "started_welcome": {
+      "message": "🎉 恭喜！你的AI搜索助手已准备就绪"
+   },
+   "target_language": {
+      "message": "目标语言"
+   },
+   "target_language_description": {
+      "message": "将其他语言翻译为你设定的语言"
+   },
+   "theme": {
+      "message": "主题"
+   },
+   "translate": {
+      "message": "翻译"
+   },
+   "translate_display_style": {
+      "message": "翻译显示样式"
+   },
+   "translate_display_style_description": {
+      "message": "以下是不同翻译样式的示例"
+   },
+   "translate_error_tip": {
+      "message": "翻译请求失败"
+   },
+   "translate_icon_display": {
+      "message": "翻译侧边栏图标"
+   },
+   "translate_icon_display_description": {
+      "message": "始终显示"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "与AI回应的输出语言相同"
+   },
+   "translate_page_auto": {
+      "message": "自动翻译网页"
+   },
+   "translate_page_auto_description": {
+      "message": "开启后，助手将自动翻译外语网页（仅限从 Felo 中打开的网页）"
+   },
+   "translate_service": {
+      "message": "翻译服务"
+   },
+   "translate_service_description": {
+      "message": "翻译服务"
+   },
+   "translate_target_language_select": {
+      "message": "选择你的目标语言"
+   },
+   "translation_original_text_display": {
+      "message": "原文显示"
+   },
+   "translation_original_text_display_description": {
+      "message": "当**启用**时，原文在页面上保持可见；当**禁用**时，仅显示翻译。"
+   },
+   "translation_service": {
+      "message": "翻译服务"
+   },
+   "translation_style_auto_highlight": {
+      "message": "智能高亮"
+   },
+   "translation_style_blue": {
+      "message": "柔和蓝色"
+   },
+   "translation_style_bold": {
+      "message": "加粗"
+   },
+   "translation_style_dashed": {
+      "message": "虚线"
+   },
+   "translation_style_default": {
+      "message": "无样式"
+   },
+   "translation_style_green": {
+      "message": "清新绿色"
+   },
+   "translation_style_highlight": {
+      "message": "高亮"
+   },
+   "translation_style_italic": {
+      "message": "斜体"
+   },
+   "translation_style_mask": {
+      "message": "模糊效果（学习模式）"
+   },
+   "translation_style_opacity": {
+      "message": "不透明度"
+   },
+   "translation_style_orange": {
+      "message": "温暖橙色"
+   },
+   "translation_style_underline": {
+      "message": "下划线"
+   },
+   "translation_style_wavy": {
+      "message": "波浪"
+   }
+}

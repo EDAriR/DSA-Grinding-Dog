@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "自動"
+   },
+   "bing_translate": {
+      "message": "Microsoft翻訳"
+   },
+   "changes_saved": {
+      "message": "変更が正常に保存されました"
+   },
+   "contact_us": {
+      "message": "お問い合わせ"
+   },
+   "dark": {
+      "message": "ダーク"
+   },
+   "default_search_engine": {
+      "message": "デフォルト検索エンジン"
+   },
+   "default_search_engine_description": {
+      "message": "運用中の時、Felo Searchはブラウザのデフォルト検索エンジンとして設定されます。"
+   },
+   "disable_next": {
+      "message": "次回の訪問まで無効"
+   },
+   "disabled_global": {
+      "message": "グローバルに無効"
+   },
+   "disabled_site": {
+      "message": "このサイトで無効"
+   },
+   "disabled_tip": {
+      "message": "この設定はオプションで再度有効にできます"
+   },
+   "error_bing_title": {
+      "message": "Microsoft翻訳サービスが応答していません"
+   },
+   "error_google_title": {
+      "message": "Google翻訳サービスが応答していません"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Microsoft翻訳エンジンに切り替え"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Google翻訳エンジンに切り替え"
+   },
+   "error_persists": {
+      "message": "この問題が続く場合、"
+   },
+   "extDescription": {
+      "message": "日本語で世界の真の姿を探求し、ソーシャルネットワークのコンテンツを効果的に検索します。すべてのコンテンツは無料です。"
+   },
+   "extName": {
+      "message": "Felo - あなたの無料AI検索アシスタント"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo itボタン"
+   },
+   "felo_it_button_description": {
+      "message": "表示するがオンにされると、検索ボックスにFelo itボタンが使用可能になります。"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "この機能が無効なウェブサイトのリスト"
+   },
+   "felo_it_toast": {
+      "message": "キーワードを入力してください"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "検索したい内容を入力してください"
+   },
+   "felo_search_subtitle": {
+      "message": "あなたの無料AI検索エンジン"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "一般"
+   },
+   "google_translate": {
+      "message": "Google翻訳"
+   },
+   "language": {
+      "message": "言語"
+   },
+   "language_description": {
+      "message": "インターフェイスとAIの応答に使いたい言語を設定します。"
+   },
+   "light": {
+      "message": "ライト"
+   },
+   "open_option_page": {
+      "message": "オプションを開く"
+   },
+   "retry": {
+      "message": "再試行"
+   },
+   "search_felo_it_tip": {
+      "message": "迷ったら？Felo it！"
+   },
+   "search_for": {
+      "message": "Felo Searchを使用して: \"%s\""
+   },
+   "selection_menu": {
+      "message": "テキスト選択時のミニメニュー"
+   },
+   "selection_menu_description": {
+      "message": "テキストを選択するとミニメニューを表示します"
+   },
+   "started_get_started": {
+      "message": "はじめる"
+   },
+   "started_head_subtitle": {
+      "message": "日本語で世界の真の姿を探求しよう"
+   },
+   "started_head_title": {
+      "message": "Felo Searchアシスタントへようこそ！"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Felo Searchをデフォルト検索エンジンに設定"
+   },
+   "started_welcome": {
+      "message": "🎉 おめでとうございます！あなたのAI検索アシスタントが準備完了です"
+   },
+   "target_language": {
+      "message": "ターゲット言語"
+   },
+   "target_language_description": {
+      "message": "他の言語を設定した言語に翻訳します"
+   },
+   "theme": {
+      "message": "テーマ"
+   },
+   "translate": {
+      "message": "翻訳"
+   },
+   "translate_display_style": {
+      "message": "翻訳表示スタイル"
+   },
+   "translate_display_style_description": {
+      "message": "異なる翻訳スタイルの例を以下に示します"
+   },
+   "translate_error_tip": {
+      "message": "翻訳リクエストが失敗しました"
+   },
+   "translate_icon_display": {
+      "message": "翻訳サイドバーアイコン"
+   },
+   "translate_icon_display_description": {
+      "message": "常に表示"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "AIの応答の出力言語と同じ"
+   },
+   "translate_page_auto": {
+      "message": "ページを自動翻訳"
+   },
+   "translate_page_auto_description": {
+      "message": "有効にすると、アシスタントは外国語のウェブページを自動的に翻訳します（Feloから開いたページのみ）"
+   },
+   "translate_service": {
+      "message": "翻訳サービス"
+   },
+   "translate_service_description": {
+      "message": "翻訳サービス"
+   },
+   "translate_target_language_select": {
+      "message": "ターゲット言語を選択"
+   },
+   "translation_original_text_display": {
+      "message": "原文表示"
+   },
+   "translation_original_text_display_description": {
+      "message": "有効にすると、原文がページに表示されます。有効にしないと、翻訳のみが表示されます。"
+   },
+   "translation_service": {
+      "message": "翻訳サービス"
+   },
+   "translation_style_auto_highlight": {
+      "message": "スマートハイライト"
+   },
+   "translation_style_blue": {
+      "message": "やさしい青"
+   },
+   "translation_style_bold": {
+      "message": "太字"
+   },
+   "translation_style_dashed": {
+      "message": "破線"
+   },
+   "translation_style_default": {
+      "message": "スタイルなし"
+   },
+   "translation_style_green": {
+      "message": "フレッシュグリーン"
+   },
+   "translation_style_highlight": {
+      "message": "ハイライト"
+   },
+   "translation_style_italic": {
+      "message": "イタリック"
+   },
+   "translation_style_mask": {
+      "message": "ぼかし効果（学習モード）"
+   },
+   "translation_style_opacity": {
+      "message": "不透明度"
+   },
+   "translation_style_orange": {
+      "message": "温かいオレンジ"
+   },
+   "translation_style_underline": {
+      "message": "下線"
+   },
+   "translation_style_wavy": {
+      "message": "波状"
+   }
+}

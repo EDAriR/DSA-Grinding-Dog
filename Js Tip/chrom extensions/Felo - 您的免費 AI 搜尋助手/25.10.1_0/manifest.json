@@ -1,0 +1,39 @@
+{
+   "action": {
+      "default_title": "Felo Search"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content-scripts/content.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_idle"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_extDescription__",
+   "externally_connectable": {
+      "matches": [ "https://*.felo.ai/*", "http://*.felo.ai/*" ]
+   },
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "icon/128.png",
+      "16": "icon/16.png",
+      "32": "icon/32.png",
+      "48": "icon/48.png",
+      "96": "icon/96.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmeMr1bx88D530EnNRYVC0HSSUA205MvWlVs5NaUNHIxn2OrYJVFALzILAbK0uO8jA66QjS7hP/STx9tiFfOM91YORIU5yVOcSqRFQoAnhBbHiy2as65D+3VrGBnVglAm/RtRiTIoc8/7IMrtzw+UWDwd2vo0LOsV7Z2ylYJKbYbBxMozs99IyKWgXPKbLR2LzbI9nRcd4h2hdRT3GRQURojxW4NOpwybU43acMgsLmV0URvne/DPV93AKMA4trY7hiA0gXHj9dZ/jxeaqBIlL/mlXAolRkz+7Zw4rwF4vSUjBvy29LfFZEq8GkZlmPyIMOl+hinC6DM6MrZd4AfNGwIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_extName__",
+   "options_ui": {
+      "page": "options.html"
+   },
+   "permissions": [ "storage", "tabs", "contextMenus", "activeTab", "scripting" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "25.10.1",
+   "web_accessible_resources": [ {
+      "matches": [ "*://*/*" ],
+      "resources": [ "content-scripts/content.css" ]
+   } ]
+}

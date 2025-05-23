@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automātiski"
+   },
+   "bing_translate": {
+      "message": "Microsoft Tulkotājs"
+   },
+   "changes_saved": {
+      "message": "Izmaiņas veiksmīgi saglabātas"
+   },
+   "contact_us": {
+      "message": "Sazinieties ar mums"
+   },
+   "dark": {
+      "message": "Tumša"
+   },
+   "default_search_engine": {
+      "message": "Noklusējuma meklētājs"
+   },
+   "default_search_engine_description": {
+      "message": "Kad **ieslēgts**, Felo Search tiks iestatīts kā jūsu pārlūkprogrammas noklusējuma meklētājs."
+   },
+   "disable_next": {
+      "message": "Atslēgt līdz nākamajai vizītei"
+   },
+   "disabled_global": {
+      "message": "Globāli atslēgt"
+   },
+   "disabled_site": {
+      "message": "Atslēgt šai vietnei"
+   },
+   "disabled_tip": {
+      "message": "*Jūs varat to atkārtoti iespējot iestatījumos"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Tulkotājs pakalpojums neatbild"
+   },
+   "error_google_title": {
+      "message": "Google Tulkot pakalpojums neatbild"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Pārejiet uz Microsoft Tulkotāju"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Pārejiet uz Google Tulkot"
+   },
+   "error_persists": {
+      "message": "Ja šī problēma turpinās,"
+   },
+   "extDescription": {
+      "message": "Meklējiet pasauli savā valodā un uzlabojiet savu sociālo tīklu satura meklēšanu, viss bez maksas."
+   },
+   "extName": {
+      "message": "Felo - Jūsu bezmaksas AI meklēšanas asistents"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it poga"
+   },
+   "felo_it_button_description": {
+      "message": "Kad tā ir ieslēgta, Felo it poga būs pieejama meklēšanas lodziņā"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Saraksts ar vietnēm, kur šī funkcija ir atslēgta"
+   },
+   "felo_it_toast": {
+      "message": "Lūdzu, ievadiet atslēgas vārdus"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Ierakstiet, ko vēlaties meklēt"
+   },
+   "felo_search_subtitle": {
+      "message": "Jūsu bezmaksas AI meklētājs"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Vispārīgi"
+   },
+   "google_translate": {
+      "message": "Google Tulkot"
+   },
+   "language": {
+      "message": "Valoda"
+   },
+   "language_description": {
+      "message": "Iestatiet savu vēlamo valodu interfeisam un AI atbildēm."
+   },
+   "light": {
+      "message": "Gaiša"
+   },
+   "open_option_page": {
+      "message": "Atvērt iestatījumus"
+   },
+   "retry": {
+      "message": "Mēģiniet vēlreiz"
+   },
+   "search_felo_it_tip": {
+      "message": "Nezini? Felo it!"
+   },
+   "search_for": {
+      "message": "Izmantojiet Felo Search meklēšanai: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini izvēlne tekstu atlasei"
+   },
+   "selection_menu_description": {
+      "message": "Rādīt mini izvēlni, atlasot tekstu"
+   },
+   "started_get_started": {
+      "message": "Sākt"
+   },
+   "started_head_subtitle": {
+      "message": "Meklējiet pasauli savā valodā"
+   },
+   "started_head_title": {
+      "message": "Laipni lūdzam Felo Search asistentā!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Iestatiet Felo Search kā noklusējuma meklētāju"
+   },
+   "started_welcome": {
+      "message": "🎉 Apsveicam! Jūsu AI meklēšanas asistents ir gatavs"
+   },
+   "target_language": {
+      "message": "Mērķa valoda"
+   },
+   "target_language_description": {
+      "message": "Tulkot citas valodas uz valodu, ko esat iestatījis"
+   },
+   "theme": {
+      "message": "Tēma"
+   },
+   "translate": {
+      "message": "Tulkot"
+   },
+   "translate_display_style": {
+      "message": "Tulkošanas attēlošanas stils"
+   },
+   "translate_display_style_description": {
+      "message": "Skatiet zemāk dažādu tulkošanas stilu piemērus"
+   },
+   "translate_error_tip": {
+      "message": "Tulkošanas pieprasījums neizdevās"
+   },
+   "translate_icon_display": {
+      "message": "Tulkot blakus ikona"
+   },
+   "translate_icon_display_description": {
+      "message": "Vienmēr attēlot"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Tāpat kā AI atbilžu izejas valoda"
+   },
+   "translate_page_auto": {
+      "message": "Automātiski tulkot tīmekļa lapas"
+   },
+   "translate_page_auto_description": {
+      "message": "Kad šī funkcija ir ieslēgta, asistents automātiski tulkos svešvalodu tīmekļa lapas (ierobežots ar lapām, kas atvērtas no Felo)"
+   },
+   "translate_service": {
+      "message": "Tulkot pakalpojums"
+   },
+   "translate_service_description": {
+      "message": "Tulkošanas pakalpojumi"
+   },
+   "translate_target_language_select": {
+      "message": "Izvēlieties savu mērķa valodu"
+   },
+   "translation_original_text_display": {
+      "message": "Oriģinālā teksta attēlošana"
+   },
+   "translation_original_text_display_description": {
+      "message": "Kad **ieslēgts**, oriģinālais teksts paliek redzams lapā; kad **izslēgts**, tiek rādīts tikai tulkojums."
+   },
+   "translation_service": {
+      "message": "Tulkošanas pakalpojums"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Viedais uzsvērums"
+   },
+   "translation_style_blue": {
+      "message": "Maigs zils"
+   },
+   "translation_style_bold": {
+      "message": "Treknraksts"
+   },
+   "translation_style_dashed": {
+      "message": "Līnijkode"
+   },
+   "translation_style_default": {
+      "message": "Bez stila"
+   },
+   "translation_style_green": {
+      "message": "Svaigs zaļš"
+   },
+   "translation_style_highlight": {
+      "message": "Uzsvērts"
+   },
+   "translation_style_italic": {
+      "message": "Italics"
+   },
+   "translation_style_mask": {
+      "message": "Neskaidrs efekts (Mācīšanās režīms)"
+   },
+   "translation_style_opacity": {
+      "message": "Caurredzamība"
+   },
+   "translation_style_orange": {
+      "message": "Silts oranžs"
+   },
+   "translation_style_underline": {
+      "message": "Uzsvērts ar apakšsvītrojumu"
+   },
+   "translation_style_wavy": {
+      "message": "Viļņots"
+   }
+}

@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automatisk"
+   },
+   "bing_translate": {
+      "message": "Microsoft Översätt"
+   },
+   "changes_saved": {
+      "message": "Ändringar har sparats"
+   },
+   "contact_us": {
+      "message": "Kontakta oss"
+   },
+   "dark": {
+      "message": "Mörkt"
+   },
+   "default_search_engine": {
+      "message": "Standard sökmotor"
+   },
+   "default_search_engine_description": {
+      "message": "När **aktiverad**, kommer Felo Search att ställas in som din webbläsares standard sökmotor."
+   },
+   "disable_next": {
+      "message": "Inaktivera tills nästa besök"
+   },
+   "disabled_global": {
+      "message": "Inaktivera globalt"
+   },
+   "disabled_site": {
+      "message": "Inaktivera för denna webbplats"
+   },
+   "disabled_tip": {
+      "message": "*Du kan återaktivera detta i Inställningar"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Översätt-tjänsten svarar inte"
+   },
+   "error_google_title": {
+      "message": "Google Översätt-tjänsten svarar inte"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Byt översättningsmotor till Microsoft Översätt"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Byt översättningsmotor till Google Översätt"
+   },
+   "error_persists": {
+      "message": "Om detta problem kvarstår,"
+   },
+   "extDescription": {
+      "message": "Sök världen på ditt eget språk och förbättra din sociala medieinnehållssökning, helt gratis."
+   },
+   "extName": {
+      "message": "Felo - Din gratis AI-sökhjälpare"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it-knappen"
+   },
+   "felo_it_button_description": {
+      "message": "När den är påslagen, kommer felo it-knappen att vara tillgänglig i sökfältet."
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Lista över webbplatser där denna funktion är inaktiverad"
+   },
+   "felo_it_toast": {
+      "message": "Vänligen ange nyckelord"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Skriv in vad du vill söka"
+   },
+   "felo_search_subtitle": {
+      "message": "Din gratis AI-sökmotor"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Allmän"
+   },
+   "google_translate": {
+      "message": "Google Översätt"
+   },
+   "language": {
+      "message": "Språk"
+   },
+   "language_description": {
+      "message": "Ställ in ditt föredragna språk för gränssnittet och AI-svar."
+   },
+   "light": {
+      "message": "Ljust"
+   },
+   "open_option_page": {
+      "message": "Öppna Inställningar"
+   },
+   "retry": {
+      "message": "Försök igen"
+   },
+   "search_felo_it_tip": {
+      "message": "Tveka? Felo it!"
+   },
+   "search_for": {
+      "message": "Använd Felo Search för: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini-meny vid textmarkering"
+   },
+   "selection_menu_description": {
+      "message": "Visa mini-meny när text markeras"
+   },
+   "started_get_started": {
+      "message": "Kom igång"
+   },
+   "started_head_subtitle": {
+      "message": "Sök världen på ditt eget språk"
+   },
+   "started_head_title": {
+      "message": "Välkommen till Felo Search Assistant!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Ställ in Felo Search som standard sökmotor"
+   },
+   "started_welcome": {
+      "message": "🎉 Grattis! Din AI-sökhjälpare är redo att användas"
+   },
+   "target_language": {
+      "message": "Målspråk"
+   },
+   "target_language_description": {
+      "message": "Översätt andra språk till det språk du valt"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Översätt"
+   },
+   "translate_display_style": {
+      "message": "Översättningsvisningsstil"
+   },
+   "translate_display_style_description": {
+      "message": "Se nedan för exempel på olika översättningsstilar"
+   },
+   "translate_error_tip": {
+      "message": "Översättningsförfrågan misslyckades"
+   },
+   "translate_icon_display": {
+      "message": "Översätt Sidofältsikon"
+   },
+   "translate_icon_display_description": {
+      "message": "Alltid Visa"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Samma som AI-svarens utgångsspråk"
+   },
+   "translate_page_auto": {
+      "message": "Automatisk översättning av webbsidor"
+   },
+   "translate_page_auto_description": {
+      "message": "När aktiverad kommer assistenten automatiskt att översätta webbsidor på främmande språk (begränsat till sidor som öppnas från Felo)"
+   },
+   "translate_service": {
+      "message": "Översättningstjänst"
+   },
+   "translate_service_description": {
+      "message": "Översättningstjänster"
+   },
+   "translate_target_language_select": {
+      "message": "Välj ditt målspråk"
+   },
+   "translation_original_text_display": {
+      "message": "Visning av originaltext"
+   },
+   "translation_original_text_display_description": {
+      "message": "När **aktiverad**, förblir originaltexten synlig på sidan; när **inaktiverad**, visas endast översättningen."
+   },
+   "translation_service": {
+      "message": "Översättningstjänst"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Smart Markering"
+   },
+   "translation_style_blue": {
+      "message": "Mjuk Blå"
+   },
+   "translation_style_bold": {
+      "message": "Fet"
+   },
+   "translation_style_dashed": {
+      "message": "Streckad"
+   },
+   "translation_style_default": {
+      "message": "Ingen stil"
+   },
+   "translation_style_green": {
+      "message": "Färsk Grön"
+   },
+   "translation_style_highlight": {
+      "message": "Markera"
+   },
+   "translation_style_italic": {
+      "message": "Kursiv"
+   },
+   "translation_style_mask": {
+      "message": "Sudda Effekter (Inlärningsläge)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacitet"
+   },
+   "translation_style_orange": {
+      "message": "Varm Orange"
+   },
+   "translation_style_underline": {
+      "message": "Understryk"
+   },
+   "translation_style_wavy": {
+      "message": "Vågig"
+   }
+}

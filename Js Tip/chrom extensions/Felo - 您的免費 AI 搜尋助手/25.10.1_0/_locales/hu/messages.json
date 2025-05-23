@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automatikus"
+   },
+   "bing_translate": {
+      "message": "Microsoft Fordító"
+   },
+   "changes_saved": {
+      "message": "A változások sikeresen mentve"
+   },
+   "contact_us": {
+      "message": "Kapcsolatfelvétel"
+   },
+   "dark": {
+      "message": "Sötét"
+   },
+   "default_search_engine": {
+      "message": "Alapértelmezett Keresőmotor"
+   },
+   "default_search_engine_description": {
+      "message": "Amikor **bekapcsolva van**, a Felo Kereső beállításra kerül a böngésződ alapértelmezett keresőmotorjaként."
+   },
+   "disable_next": {
+      "message": "Kikapcsolás a következő látogatásig"
+   },
+   "disabled_global": {
+      "message": "Globális kikapcsolás"
+   },
+   "disabled_site": {
+      "message": "Kikapcsolás erre az oldalra"
+   },
+   "disabled_tip": {
+      "message": "*Ezt a Beállításokban újra engedélyezheted"
+   },
+   "error_bing_title": {
+      "message": "A Microsoft Fordító szolgáltatás nem válaszol"
+   },
+   "error_google_title": {
+      "message": "A Google Fordító szolgáltatás nem válaszol"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Válts a fordítómotorra Microsoft Fordító"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Válts a fordítómotorra Google Fordító"
+   },
+   "error_persists": {
+      "message": "Ha ez a probléma fennáll,"
+   },
+   "extDescription": {
+      "message": "Keresd meg a világot a saját nyelveden, és javítsd a közösségi hálózati tartalom keresését, mindez ingyen."
+   },
+   "extName": {
+      "message": "Felo - Ingyenes AI Kereső Asszisztens"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it Gomb"
+   },
+   "felo_it_button_description": {
+      "message": "Amikor bekapcsolva, a felo it gomb elérhető lesz a keresőmezőben"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Weboldalak listája, ahol ez a funkció le van tiltva"
+   },
+   "felo_it_toast": {
+      "message": "Kérlek, adj meg kulcsszavakat"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Írd be, mit szeretnél keresni"
+   },
+   "felo_search_subtitle": {
+      "message": "Ingyenes AI Keresőmotorod"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Általános"
+   },
+   "google_translate": {
+      "message": "Google Fordító"
+   },
+   "language": {
+      "message": "Nyelv"
+   },
+   "language_description": {
+      "message": "Állítsd be a preferált nyelved az interfészhez és az AI válaszokhoz."
+   },
+   "light": {
+      "message": "Világos"
+   },
+   "open_option_page": {
+      "message": "Beállítások megnyitása"
+   },
+   "retry": {
+      "message": "Újrapróbálkozás"
+   },
+   "search_felo_it_tip": {
+      "message": "Kétséges? Felo it!"
+   },
+   "search_for": {
+      "message": "Használj Felo Keresőt: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menü szöveg kijelölésekor"
+   },
+   "selection_menu_description": {
+      "message": "Mini menü megjelenítése szöveg kijelölésekor"
+   },
+   "started_get_started": {
+      "message": "Kezdjük"
+   },
+   "started_head_subtitle": {
+      "message": "Keresd meg a világot a saját nyelveden"
+   },
+   "started_head_title": {
+      "message": "Üdvözöljük a Felo Kereső Asszisztensnél!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Állítsd be a Felo Keresőt alapértelmezett keresőmotorként"
+   },
+   "started_welcome": {
+      "message": "🎉 Gratulálunk! Az AI kereső asszisztensed készen áll a használatra"
+   },
+   "target_language": {
+      "message": "Cél Nyelv"
+   },
+   "target_language_description": {
+      "message": "Más nyelvek fordítása a beállított nyelvedre"
+   },
+   "theme": {
+      "message": "Téma"
+   },
+   "translate": {
+      "message": "Fordítás"
+   },
+   "translate_display_style": {
+      "message": "Fordítás megjelenítési stílus"
+   },
+   "translate_display_style_description": {
+      "message": "Lásd alább a különböző fordítási stílusok példáit"
+   },
+   "translate_error_tip": {
+      "message": "A fordítási kérés sikertelen"
+   },
+   "translate_icon_display": {
+      "message": "Fordítás oldalsáv ikon"
+   },
+   "translate_icon_display_description": {
+      "message": "Mindig megjelenítés"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Ugyanaz, mint az AI válaszok kimeneti nyelve"
+   },
+   "translate_page_auto": {
+      "message": "Weboldalak automatikus fordítása"
+   },
+   "translate_page_auto_description": {
+      "message": "Ha engedélyezve van, az asszisztens automatikusan lefordítja az idegen nyelvű weboldalakat (csak a Felo-ból megnyitott oldalakra korlátozva)"
+   },
+   "translate_service": {
+      "message": "Fordító Szolgáltatás"
+   },
+   "translate_service_description": {
+      "message": "Fordító szolgáltatások"
+   },
+   "translate_target_language_select": {
+      "message": "Válaszd ki a cél nyelved"
+   },
+   "translation_original_text_display": {
+      "message": "Eredeti szöveg megjelenítése"
+   },
+   "translation_original_text_display_description": {
+      "message": "Amikor **bekapcsolva van**, az eredeti szöveg látható marad az oldalon; amikor **kikapcsolva van**, csak a fordítás jelenik meg."
+   },
+   "translation_service": {
+      "message": "Fordító Szolgáltatás"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Intelligens kiemelés"
+   },
+   "translation_style_blue": {
+      "message": "Puha Kék"
+   },
+   "translation_style_bold": {
+      "message": "Félkövér"
+   },
+   "translation_style_dashed": {
+      "message": "Szaggatott"
+   },
+   "translation_style_default": {
+      "message": "Nincs stílus"
+   },
+   "translation_style_green": {
+      "message": "Friss Zöld"
+   },
+   "translation_style_highlight": {
+      "message": "Kiemelés"
+   },
+   "translation_style_italic": {
+      "message": "Dőlt"
+   },
+   "translation_style_mask": {
+      "message": "Elmosódott hatás (Tanulási mód)"
+   },
+   "translation_style_opacity": {
+      "message": "Átlátszóság"
+   },
+   "translation_style_orange": {
+      "message": "Meleg Narancs"
+   },
+   "translation_style_underline": {
+      "message": "Aláhúzás"
+   },
+   "translation_style_wavy": {
+      "message": "Hullámos"
+   }
+}

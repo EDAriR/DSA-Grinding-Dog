@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automat"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Modificările au fost salvate cu succes"
+   },
+   "contact_us": {
+      "message": "Contactați-ne"
+   },
+   "dark": {
+      "message": "Întunecat"
+   },
+   "default_search_engine": {
+      "message": "Motor de căutare implicit"
+   },
+   "default_search_engine_description": {
+      "message": "Când **activat**, Felo Search va fi setat ca motor de căutare implicit al browser-ului tău."
+   },
+   "disable_next": {
+      "message": "Dezactivează până la următoarea vizită"
+   },
+   "disabled_global": {
+      "message": "Dezactivează global"
+   },
+   "disabled_site": {
+      "message": "Dezactivează pentru acest site"
+   },
+   "disabled_tip": {
+      "message": "*Poți reactiva asta în opțiuni"
+   },
+   "error_bing_title": {
+      "message": "Serviciul Microsoft Translator nu răspunde"
+   },
+   "error_google_title": {
+      "message": "Serviciul Google Traducere nu răspunde"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Schimbă motorul de traducere la Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Schimbă motorul de traducere la Google Translate"
+   },
+   "error_persists": {
+      "message": "Dacă această problemă persistă,"
+   },
+   "extDescription": {
+      "message": "Caută pe internet în limba ta și îmbunătățește căutarea conținutului rețelelor sociale, totul gratuit."
+   },
+   "extName": {
+      "message": "Felo - Asistentul tău de căutare AI gratuit"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Butonul Felo it"
+   },
+   "felo_it_button_description": {
+      "message": "Când este activat, butonul Felo it va fi disponibil în caseta de căutare"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Lista site-urilor unde această funcție este dezactivată"
+   },
+   "felo_it_toast": {
+      "message": "Te rugăm să introduci cuvinte cheie"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Scrie ce vrei să cauți"
+   },
+   "felo_search_subtitle": {
+      "message": "Motorul tău de căutare AI gratuit"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "General"
+   },
+   "google_translate": {
+      "message": "Google Traducere"
+   },
+   "language": {
+      "message": "Limba"
+   },
+   "language_description": {
+      "message": "Stabilește limba preferată pentru interfață și răspunsurile AI."
+   },
+   "light": {
+      "message": "Deschis"
+   },
+   "open_option_page": {
+      "message": "Deschide opțiunile"
+   },
+   "retry": {
+      "message": "Reîncercare"
+   },
+   "search_felo_it_tip": {
+      "message": "Îndoieli? Felo it!"
+   },
+   "search_for": {
+      "message": "Folosește Felo Search pentru: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini meniu la selecția textului"
+   },
+   "selection_menu_description": {
+      "message": "Afișează mini meniu atunci când selectezi text"
+   },
+   "started_get_started": {
+      "message": "Începe"
+   },
+   "started_head_subtitle": {
+      "message": "Caută pe lume în limba ta"
+   },
+   "started_head_title": {
+      "message": "Bine ai venit la Asistentul de Căutare Felo!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Setează Felo Search ca motor de căutare implicit"
+   },
+   "started_welcome": {
+      "message": "🎉 Felicitări! Asistentul tău de căutare AI este gata de utilizare"
+   },
+   "target_language": {
+      "message": "Limba țintă"
+   },
+   "target_language_description": {
+      "message": "Traducerea altor limbi în limba pe care o setezi"
+   },
+   "theme": {
+      "message": "Temă"
+   },
+   "translate": {
+      "message": "Traducere"
+   },
+   "translate_display_style": {
+      "message": "Stil de afișare a traducerii"
+   },
+   "translate_display_style_description": {
+      "message": "Vezi mai jos exemple de diferite stiluri de traducere"
+   },
+   "translate_error_tip": {
+      "message": "Cererea de traducere a eșuat"
+   },
+   "translate_icon_display": {
+      "message": "Iconița din bara de traducere"
+   },
+   "translate_icon_display_description": {
+      "message": "Afișează mereu"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "La fel ca limba de ieșire a răspunsurilor AI"
+   },
+   "translate_page_auto": {
+      "message": "Traducere automată a paginilor web"
+   },
+   "translate_page_auto_description": {
+      "message": "Când este activată, asistentul va traduce automat paginile web în limbi străine (limitat la paginile deschise din Felo)"
+   },
+   "translate_service": {
+      "message": "Serviciu de traducere"
+   },
+   "translate_service_description": {
+      "message": "Servicii de traducere"
+   },
+   "translate_target_language_select": {
+      "message": "Selectează limba țintă"
+   },
+   "translation_original_text_display": {
+      "message": "Afișarea textului original"
+   },
+   "translation_original_text_display_description": {
+      "message": "Când **activat**, textul original rămâne vizibil pe pagină; când **dezactivat**, se afișează doar traducerea."
+   },
+   "translation_service": {
+      "message": "Serviciu de traducere"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Evidențiere inteligentă"
+   },
+   "translation_style_blue": {
+      "message": "Albastru moale"
+   },
+   "translation_style_bold": {
+      "message": "Îngroșat"
+   },
+   "translation_style_dashed": {
+      "message": "Zigzag"
+   },
+   "translation_style_default": {
+      "message": "Fără stil"
+   },
+   "translation_style_green": {
+      "message": "Verde proaspăt"
+   },
+   "translation_style_highlight": {
+      "message": "Evidențiat"
+   },
+   "translation_style_italic": {
+      "message": "Cursiv"
+   },
+   "translation_style_mask": {
+      "message": "Efect de estompare (Mod de învățare)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacitate"
+   },
+   "translation_style_orange": {
+      "message": "Portocaliu cald"
+   },
+   "translation_style_underline": {
+      "message": "Subliniat"
+   },
+   "translation_style_wavy": {
+      "message": "Undulat"
+   }
+}

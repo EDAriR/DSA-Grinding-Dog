@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Samodejno"
+   },
+   "bing_translate": {
+      "message": "Microsoft Prevajalnik"
+   },
+   "changes_saved": {
+      "message": "Spremembe so bile uspešno shranjene"
+   },
+   "contact_us": {
+      "message": "Kontaktirajte nas"
+   },
+   "dark": {
+      "message": "Temna"
+   },
+   "default_search_engine": {
+      "message": "Privzeti iskalnik"
+   },
+   "default_search_engine_description": {
+      "message": "Ko je **omogočeno**, bo Felo iskanje nastavljeno kot privzeti iskalnik vašega brskalnika."
+   },
+   "disable_next": {
+      "message": "Onemogoči do naslednje obiska"
+   },
+   "disabled_global": {
+      "message": "Onemogoči globalno"
+   },
+   "disabled_site": {
+      "message": "Onemogoči za to spletno mesto"
+   },
+   "disabled_tip": {
+      "message": "*To lahko ponovno omogočite v možnostih"
+   },
+   "error_bing_title": {
+      "message": "Storitev Microsoft Prevajalnik ne odgovarja"
+   },
+   "error_google_title": {
+      "message": "Storitev Google Prevajalnik ne odgovarja"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Preklopite na prevodni stroj Microsoft Prevajalnik"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Preklopite na prevodni stroj Google Prevajalnik"
+   },
+   "error_persists": {
+      "message": "Če težava vztraja,"
+   },
+   "extDescription": {
+      "message": "Iščite po svetu v svojem jeziku in izboljšajte iskanje vsebine na družbenih omrežjih, vse brezplačno."
+   },
+   "extName": {
+      "message": "Felo - Vaš brezplačni AI iskalni pomočnik"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it gumb"
+   },
+   "felo_it_button_description": {
+      "message": "Ko je vklopljen, bo Felo it gumb na voljo v iskalnem okviru"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Seznam spletnih mest, kjer je ta funkcija onemogočena"
+   },
+   "felo_it_toast": {
+      "message": "Prosimo, vnesite ključne besede"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Vnesite, kar iščete"
+   },
+   "felo_search_subtitle": {
+      "message": "Vaš brezplačni AI iskalnik"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Splošno"
+   },
+   "google_translate": {
+      "message": "Google Prevajalnik"
+   },
+   "language": {
+      "message": "Jezik"
+   },
+   "language_description": {
+      "message": "Nastavite svoj najljubši jezik za uporabniški vmesnik in AI odzive."
+   },
+   "light": {
+      "message": "Svetla"
+   },
+   "open_option_page": {
+      "message": "Odpri možnosti"
+   },
+   "retry": {
+      "message": "Ponovno poskusi"
+   },
+   "search_felo_it_tip": {
+      "message": "V dvomih? Felo it!"
+   },
+   "search_for": {
+      "message": "Uporabite Felo iskanje za: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini meni ob izbiri besedila"
+   },
+   "selection_menu_description": {
+      "message": "Prikaži mini meni ob izbiri besedila"
+   },
+   "started_get_started": {
+      "message": "Začnite"
+   },
+   "started_head_subtitle": {
+      "message": "Iščite po svetu v svojem jeziku"
+   },
+   "started_head_title": {
+      "message": "Dobrodošli pri Felo iskalnem pomočniku!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Nastavite Felo iskanje kot privzeti iskalnik"
+   },
+   "started_welcome": {
+      "message": "🎉 Čestitamo! Vaš AI iskalni pomočnik je pripravljen"
+   },
+   "target_language": {
+      "message": "Ciljni jezik"
+   },
+   "target_language_description": {
+      "message": "Prevedite druge jezike v jezik, ki ste ga nastavili"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Prevedi"
+   },
+   "translate_display_style": {
+      "message": "Slog prikaza prevoda"
+   },
+   "translate_display_style_description": {
+      "message": "Spodaj si oglejte primere različnih stilov prevoda"
+   },
+   "translate_error_tip": {
+      "message": "Zahteva za prevod je spodletela"
+   },
+   "translate_icon_display": {
+      "message": "Ikona za prevod v stranski vrstici"
+   },
+   "translate_icon_display_description": {
+      "message": "Vedno prikaži"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Isto kot jezik izhodnih odgovorov AI"
+   },
+   "translate_page_auto": {
+      "message": "Samodejno prevajanje spletnih strani"
+   },
+   "translate_page_auto_description": {
+      "message": "Ko je omogočeno, bo asistent samodejno prevajal spletne strani v tujih jezikih (omejeno na strani, odprte iz Felo)"
+   },
+   "translate_service": {
+      "message": "Prevodna storitev"
+   },
+   "translate_service_description": {
+      "message": "Prevodne storitve"
+   },
+   "translate_target_language_select": {
+      "message": "Izberite svoj ciljni jezik"
+   },
+   "translation_original_text_display": {
+      "message": "Prikaz izvirnega besedila"
+   },
+   "translation_original_text_display_description": {
+      "message": "Ko je **omogočeno**, ostane izvirno besedilo vidno na strani; ko je **onemogočeno**, se prikaže samo prevod."
+   },
+   "translation_service": {
+      "message": "Prevodna storitev"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Pametno označevanje"
+   },
+   "translation_style_blue": {
+      "message": "Mekana modra"
+   },
+   "translation_style_bold": {
+      "message": "Krepko"
+   },
+   "translation_style_dashed": {
+      "message": "Črtkano"
+   },
+   "translation_style_default": {
+      "message": "Brez stila"
+   },
+   "translation_style_green": {
+      "message": "Sveža zelena"
+   },
+   "translation_style_highlight": {
+      "message": "Označeno"
+   },
+   "translation_style_italic": {
+      "message": "Poševno"
+   },
+   "translation_style_mask": {
+      "message": "Zamegljen učinek (Učni način)"
+   },
+   "translation_style_opacity": {
+      "message": "Prosojnost"
+   },
+   "translation_style_orange": {
+      "message": "Topla oranžna"
+   },
+   "translation_style_underline": {
+      "message": "Podčrtano"
+   },
+   "translation_style_wavy": {
+      "message": "Valovito"
+   }
+}

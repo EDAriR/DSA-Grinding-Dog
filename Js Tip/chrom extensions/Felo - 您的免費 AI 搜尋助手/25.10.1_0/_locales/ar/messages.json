@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "تلقائي"
+   },
+   "bing_translate": {
+      "message": "مترجم مايكروسوفت"
+   },
+   "changes_saved": {
+      "message": "تم حفظ التغييرات بنجاح"
+   },
+   "contact_us": {
+      "message": "اتصل بنا"
+   },
+   "dark": {
+      "message": "داكن"
+   },
+   "default_search_engine": {
+      "message": "محرك البحث الافتراضي"
+   },
+   "default_search_engine_description": {
+      "message": "عند **التفعيل**، سيتم تعيين فيلو كأداة البحث الافتراضية في متصفحك."
+   },
+   "disable_next": {
+      "message": "تعطيل حتى الزيارة التالية"
+   },
+   "disabled_global": {
+      "message": "تعطيل عالمي"
+   },
+   "disabled_site": {
+      "message": "تعطيل لهذا الموقع"
+   },
+   "disabled_tip": {
+      "message": "*يمكنك إعادة تفعيل ذلك في الخيارات"
+   },
+   "error_bing_title": {
+      "message": "خدمة مترجم مايكروسوفت لا تستجيب"
+   },
+   "error_google_title": {
+      "message": "خدمة ترجمة جوجل لا تستجيب"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 قم بتحويل محرك الترجمة إلى مترجم مايكروسوفت"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 قم بتحويل محرك الترجمة إلى ترجمة جوجل"
+   },
+   "error_persists": {
+      "message": "إذا استمرت هذه المشكلة،"
+   },
+   "extDescription": {
+      "message": "بحث في العالم بلغتك الخاصة وتعزيز محتوى شبكات التواصل الاجتماعي الخاصة بك، كل ذلك مجانًا."
+   },
+   "extName": {
+      "message": "فيلو - مساعد البحث الذكي المجاني الخاص بك"
+   },
+   "felo_it": {
+      "message": "فيلو"
+   },
+   "felo_it_button": {
+      "message": "زر فيلو"
+   },
+   "felo_it_button_description": {
+      "message": "عند تفعيله، سيكون زر فيلو متاحًا في صندوق البحث"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "قائمة المواقع التي تم تعطيل هذه الميزة فيها"
+   },
+   "felo_it_toast": {
+      "message": "يرجى إدخال الكلمات الرئيسية"
+   },
+   "felo_search": {
+      "message": "فيلو"
+   },
+   "felo_search_placeholder": {
+      "message": "اكتب ما تريد البحث عنه"
+   },
+   "felo_search_subtitle": {
+      "message": "محرك البحث الذكي المجاني الخاص بك"
+   },
+   "felo_search_title": {
+      "message": "فيلو"
+   },
+   "general": {
+      "message": "عام"
+   },
+   "google_translate": {
+      "message": "ترجمة جوجل"
+   },
+   "language": {
+      "message": "اللغة"
+   },
+   "language_description": {
+      "message": "حدد لغتك المفضلة لواجهة المستخدم واستجابة الذكاء الاصطناعي."
+   },
+   "light": {
+      "message": "فاتح"
+   },
+   "open_option_page": {
+      "message": "فتح الخيارات"
+   },
+   "retry": {
+      "message": "حاول مرة أخرى"
+   },
+   "search_felo_it_tip": {
+      "message": "في حالة الشك؟ استخدم فيلو!"
+   },
+   "search_for": {
+      "message": "استخدم فيلو للبحث عن: \"%s\""
+   },
+   "selection_menu": {
+      "message": "قائمة صغيرة عند تحديد النص"
+   },
+   "selection_menu_description": {
+      "message": "عرض القائمة الصغيرة عند تحديد النص"
+   },
+   "started_get_started": {
+      "message": "ابدأ الآن"
+   },
+   "started_head_subtitle": {
+      "message": "ابحث في العالم بلغتك الخاصة"
+   },
+   "started_head_title": {
+      "message": "مرحبًا بك في مساعد البحث فيلو!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "تعيين فيلو كمحرك البحث الافتراضي"
+   },
+   "started_welcome": {
+      "message": "🎉 تهانينا! مساعد البحث الذكي الخاص بك جاهز للعمل"
+   },
+   "target_language": {
+      "message": "اللغة المستهدفة"
+   },
+   "target_language_description": {
+      "message": "ترجمة لغات أخرى إلى اللغة التي حددتها"
+   },
+   "theme": {
+      "message": "ثيم"
+   },
+   "translate": {
+      "message": "ترجمة"
+   },
+   "translate_display_style": {
+      "message": "نمط عرض الترجمة"
+   },
+   "translate_display_style_description": {
+      "message": "انظر أدناه لأمثلة على أنماط الترجمة المختلفة"
+   },
+   "translate_error_tip": {
+      "message": "فشل طلب الترجمة"
+   },
+   "translate_icon_display": {
+      "message": "عرض رمز شريط الترجمة"
+   },
+   "translate_icon_display_description": {
+      "message": "عرض دائم"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "نفس لغة استجابة الذكاء الاصطناعي"
+   },
+   "translate_page_auto": {
+      "message": "ترجمة الصفحات تلقائيًا"
+   },
+   "translate_page_auto_description": {
+      "message": "عند التفعيل، سيقوم المساعد بترجمة صفحات الويب الأجنبية تلقائيًا (محدود بالصفحات المفتوحة من Felo)"
+   },
+   "translate_service": {
+      "message": "خدمة الترجمة"
+   },
+   "translate_service_description": {
+      "message": "خدمات الترجمة"
+   },
+   "translate_target_language_select": {
+      "message": "حدد لغتك المستهدفة"
+   },
+   "translation_original_text_display": {
+      "message": "عرض النص الأصلي"
+   },
+   "translation_original_text_display_description": {
+      "message": "عند **التفعيل**، يظل النص الأصلي مرئيًا على الصفحة؛ وعند **التعطيل**، يتم عرض الترجمة فقط."
+   },
+   "translation_service": {
+      "message": "خدمة الترجمة"
+   },
+   "translation_style_auto_highlight": {
+      "message": "تمييز ذكي"
+   },
+   "translation_style_blue": {
+      "message": "أزرق ناعم"
+   },
+   "translation_style_bold": {
+      "message": "عريض"
+   },
+   "translation_style_dashed": {
+      "message": "مخطط"
+   },
+   "translation_style_default": {
+      "message": "لا نمط"
+   },
+   "translation_style_green": {
+      "message": "أخضر نضر"
+   },
+   "translation_style_highlight": {
+      "message": "تمييز"
+   },
+   "translation_style_italic": {
+      "message": "مائل"
+   },
+   "translation_style_mask": {
+      "message": "تأثير ضبابي (وضع التعلم)"
+   },
+   "translation_style_opacity": {
+      "message": "شفافية"
+   },
+   "translation_style_orange": {
+      "message": "برتقالي دافئ"
+   },
+   "translation_style_underline": {
+      "message": "تسطير"
+   },
+   "translation_style_wavy": {
+      "message": "متموج"
+   }
+}

@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "自動"
+   },
+   "bing_translate": {
+      "message": "微軟翻譯"
+   },
+   "changes_saved": {
+      "message": "變更已成功保存"
+   },
+   "contact_us": {
+      "message": "聯絡我們"
+   },
+   "dark": {
+      "message": "深色"
+   },
+   "default_search_engine": {
+      "message": "預設搜尋引擎"
+   },
+   "default_search_engine_description": {
+      "message": "當 **啟用** 時，Felo 搜尋將設為您瀏覽器的預設搜尋引擎。"
+   },
+   "disable_next": {
+      "message": "禁用至下次訪問"
+   },
+   "disabled_global": {
+      "message": "全域禁用"
+   },
+   "disabled_site": {
+      "message": "對此網站禁用"
+   },
+   "disabled_tip": {
+      "message": "*您可以在選項中重新啟用此功能"
+   },
+   "error_bing_title": {
+      "message": "微軟翻譯服務無法響應"
+   },
+   "error_google_title": {
+      "message": "Google 翻譯服務無法響應"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 切換翻譯引擎至微軟翻譯"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 切換翻譯引擎至 Google 翻譯"
+   },
+   "error_persists": {
+      "message": "如果此問題仍然存在，"
+   },
+   "extDescription": {
+      "message": "用您的語言搜尋世界，提升社交網路內容搜尋，完全免費。"
+   },
+   "extName": {
+      "message": "Felo - 您的免費 AI 搜尋助手"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it 按鈕"
+   },
+   "felo_it_button_description": {
+      "message": "開啟後，Felo it 按鈕將顯示在搜尋框中"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "此功能已禁用的網站列表"
+   },
+   "felo_it_toast": {
+      "message": "請輸入關鍵字"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "輸入您想搜尋的內容"
+   },
+   "felo_search_subtitle": {
+      "message": "您的免費 AI 搜尋引擎"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "通用"
+   },
+   "google_translate": {
+      "message": "Google 翻譯"
+   },
+   "language": {
+      "message": "語言"
+   },
+   "language_description": {
+      "message": "設定您偏好的介面語言和 AI 回應的語言。"
+   },
+   "light": {
+      "message": "淺色"
+   },
+   "open_option_page": {
+      "message": "開啟選項"
+   },
+   "retry": {
+      "message": "重試"
+   },
+   "search_felo_it_tip": {
+      "message": "有疑問嗎？Felo it！"
+   },
+   "search_for": {
+      "message": "使用 Felo 搜尋 \"%s\""
+   },
+   "selection_menu": {
+      "message": "選取文字時的迷你選單"
+   },
+   "selection_menu_description": {
+      "message": "選取文字時顯示迷你選單"
+   },
+   "started_get_started": {
+      "message": "開始使用"
+   },
+   "started_head_subtitle": {
+      "message": "用您的語言搜尋世界"
+   },
+   "started_head_title": {
+      "message": "歡迎使用 Felo 搜尋助手！"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "設置 Felo 搜尋為預設搜尋引擎"
+   },
+   "started_welcome": {
+      "message": "🎉 恭喜您！您的 AI 搜尋助手準備就緒"
+   },
+   "target_language": {
+      "message": "目標語言"
+   },
+   "target_language_description": {
+      "message": "將其他語言翻譯成您設定的語言"
+   },
+   "theme": {
+      "message": "主題"
+   },
+   "translate": {
+      "message": "翻譯"
+   },
+   "translate_display_style": {
+      "message": "翻譯顯示樣式"
+   },
+   "translate_display_style_description": {
+      "message": "查看以下不同翻譯樣式的範例"
+   },
+   "translate_error_tip": {
+      "message": "翻譯請求失敗"
+   },
+   "translate_icon_display": {
+      "message": "翻譯側邊欄圖示"
+   },
+   "translate_icon_display_description": {
+      "message": "始終顯示"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "與 AI 回應輸出語言相同"
+   },
+   "translate_page_auto": {
+      "message": "自動翻譯網頁"
+   },
+   "translate_page_auto_description": {
+      "message": "開啟後，助手將自動翻譯外語網頁（僅限從 Felo 中開啟的網頁）"
+   },
+   "translate_service": {
+      "message": "翻譯服務"
+   },
+   "translate_service_description": {
+      "message": "翻譯服務內容"
+   },
+   "translate_target_language_select": {
+      "message": "選擇您的目標語言"
+   },
+   "translation_original_text_display": {
+      "message": "原始文本顯示"
+   },
+   "translation_original_text_display_description": {
+      "message": "當 **啟用** 時，原始文本仍會顯示在頁面上；當 **禁用** 時，僅顯示翻譯。"
+   },
+   "translation_service": {
+      "message": "翻譯服務"
+   },
+   "translation_style_auto_highlight": {
+      "message": "智能高亮"
+   },
+   "translation_style_blue": {
+      "message": "柔和藍"
+   },
+   "translation_style_bold": {
+      "message": "粗體"
+   },
+   "translation_style_dashed": {
+      "message": "虛線"
+   },
+   "translation_style_default": {
+      "message": "無樣式"
+   },
+   "translation_style_green": {
+      "message": "清新綠"
+   },
+   "translation_style_highlight": {
+      "message": "高亮"
+   },
+   "translation_style_italic": {
+      "message": "斜體"
+   },
+   "translation_style_mask": {
+      "message": "模糊效果（學習模式）"
+   },
+   "translation_style_opacity": {
+      "message": "不透明度"
+   },
+   "translation_style_orange": {
+      "message": "溫暖橙"
+   },
+   "translation_style_underline": {
+      "message": "底線"
+   },
+   "translation_style_wavy": {
+      "message": "波浪"
+   }
+}

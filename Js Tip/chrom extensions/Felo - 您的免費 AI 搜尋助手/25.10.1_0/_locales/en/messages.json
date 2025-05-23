@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automatic"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Changes saved successfully"
+   },
+   "contact_us": {
+      "message": "Contact Us"
+   },
+   "dark": {
+      "message": "Dark"
+   },
+   "default_search_engine": {
+      "message": "Default Search Engine"
+   },
+   "default_search_engine_description": {
+      "message": "When **enabled**, Felo Search will be set as your browser's default search engine."
+   },
+   "disable_next": {
+      "message": "Disable until the next visit"
+   },
+   "disabled_global": {
+      "message": "Disable globally"
+   },
+   "disabled_site": {
+      "message": "Disable for this site"
+   },
+   "disabled_tip": {
+      "message": "*You can re-enable this in Options"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Translator service is not responding"
+   },
+   "error_google_title": {
+      "message": "Google Translate service is not responding"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Switch the translation engine to Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Switch the translation engine to Google Translate"
+   },
+   "error_persists": {
+      "message": "If this problem persists,"
+   },
+   "extDescription": {
+      "message": "Search the world in your own language and enhance your social networking content search, all for free."
+   },
+   "extName": {
+      "message": "Felo - Your Free AI Search Assistant"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it Button"
+   },
+   "felo_it_button_description": {
+      "message": "When turned on, the felo it button will be available in the search box"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "List of websites where this feature is disabled"
+   },
+   "felo_it_toast": {
+      "message": "Please enter key words"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Type in what you want to search"
+   },
+   "felo_search_subtitle": {
+      "message": "Your Free AI Search Engine"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "General"
+   },
+   "google_translate": {
+      "message": "Google Translate"
+   },
+   "language": {
+      "message": "Language"
+   },
+   "language_description": {
+      "message": "Set your preferred language for interface and AI responses."
+   },
+   "light": {
+      "message": "Light"
+   },
+   "open_option_page": {
+      "message": "Open Options"
+   },
+   "retry": {
+      "message": "Retry"
+   },
+   "search_felo_it_tip": {
+      "message": "In doubt? Felo it!"
+   },
+   "search_for": {
+      "message": "Use Felo Search for: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menu on text selection"
+   },
+   "selection_menu_description": {
+      "message": "Show mini menu when selecting text"
+   },
+   "started_get_started": {
+      "message": "Get Started"
+   },
+   "started_head_subtitle": {
+      "message": "Search the world in your own language"
+   },
+   "started_head_title": {
+      "message": "Welcome to the Felo Search Assistant!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Set Felo Search as default search engine"
+   },
+   "started_welcome": {
+      "message": "🎉 Congratulations! Your AI search assistant is ready to go"
+   },
+   "target_language": {
+      "message": "Target Language"
+   },
+   "target_language_description": {
+      "message": "Translate other languages into the language you set"
+   },
+   "theme": {
+      "message": "Theme"
+   },
+   "translate": {
+      "message": "Translate"
+   },
+   "translate_display_style": {
+      "message": "Translation display style"
+   },
+   "translate_display_style_description": {
+      "message": "See below for examples of different translation styles"
+   },
+   "translate_error_tip": {
+      "message": "Translation request failed"
+   },
+   "translate_icon_display": {
+      "message": "Translate Sidebar Icon"
+   },
+   "translate_icon_display_description": {
+      "message": "Always Display"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Same as the AI responses output language"
+   },
+   "translate_page_auto": {
+      "message": "Auto-translate web pages"
+   },
+   "translate_page_auto_description": {
+      "message": "When enabled, the assistant will automatically translate foreign language web pages (limited to pages opened from Felo)"
+   },
+   "translate_service": {
+      "message": "Translate Service"
+   },
+   "translate_service_description": {
+      "message": "Translation services"
+   },
+   "translate_target_language_select": {
+      "message": "Select your target language"
+   },
+   "translation_original_text_display": {
+      "message": "Original Text Display"
+   },
+   "translation_original_text_display_description": {
+      "message": "When **enabled**, the original text remains visible on the page; when **disabled**, only the translation is shown."
+   },
+   "translation_service": {
+      "message": "Translation Service"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Smart Highlight"
+   },
+   "translation_style_blue": {
+      "message": "Soft Blue"
+   },
+   "translation_style_bold": {
+      "message": "Bold"
+   },
+   "translation_style_dashed": {
+      "message": "Dashed"
+   },
+   "translation_style_default": {
+      "message": "No style"
+   },
+   "translation_style_green": {
+      "message": "Fresh Green"
+   },
+   "translation_style_highlight": {
+      "message": "Highlight"
+   },
+   "translation_style_italic": {
+      "message": "Italic"
+   },
+   "translation_style_mask": {
+      "message": "Blur Effect (Learning Mode)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacity"
+   },
+   "translation_style_orange": {
+      "message": "Warm Orange"
+   },
+   "translation_style_underline": {
+      "message": "Underline"
+   },
+   "translation_style_wavy": {
+      "message": "Wavy"
+   }
+}

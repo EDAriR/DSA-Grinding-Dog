@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Otomatik"
+   },
+   "bing_translate": {
+      "message": "Microsoft Çevirmen"
+   },
+   "changes_saved": {
+      "message": "Değişiklikler başarıyla kaydedildi"
+   },
+   "contact_us": {
+      "message": "Bize Ulaşın"
+   },
+   "dark": {
+      "message": "Koyu"
+   },
+   "default_search_engine": {
+      "message": "Varsayılan Arama Motoru"
+   },
+   "default_search_engine_description": {
+      "message": "**Açık olduğunda**, Felo Arama tarayıcınızın varsayılan arama motoru olarak ayarlanır."
+   },
+   "disable_next": {
+      "message": "Sonraki ziyarete kadar devre dışı bırak"
+   },
+   "disabled_global": {
+      "message": "Küresel olarak devre dışı bırak"
+   },
+   "disabled_site": {
+      "message": "Bu site için devre dışı bırak"
+   },
+   "disabled_tip": {
+      "message": "*Bunu Seçenekler'den yeniden etkinleştirebilirsiniz"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Çevirmen servisi yanıt vermiyor"
+   },
+   "error_google_title": {
+      "message": "Google Çeviri servisi yanıt vermiyor"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Microsoft Çevirmen'e geçiş yapın"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Google Çeviri'ye geçiş yapın"
+   },
+   "error_persists": {
+      "message": "Bu sorun devam ederse,"
+   },
+   "extDescription": {
+      "message": "Kendi dilinizde dünyayı arayın ve sosyal medya içeriği aramanızı geliştirin, hepsi ücretsiz."
+   },
+   "extName": {
+      "message": "Felo - Ücretsiz AI Arama Asistanınız"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it Butonu"
+   },
+   "felo_it_button_description": {
+      "message": "Açıldığında, arama kutusunda felo it butonu kullanılabilir olacaktır."
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Bu özelliğin devre dışı olduğu web sitelerinin listesi"
+   },
+   "felo_it_toast": {
+      "message": "Lütfen anahtar kelimeleri girin"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Aramak istediğiniz şeyi yazın"
+   },
+   "felo_search_subtitle": {
+      "message": "Ücretsiz AI Arama Motorunuz"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Genel"
+   },
+   "google_translate": {
+      "message": "Google Çeviri"
+   },
+   "language": {
+      "message": "Dil"
+   },
+   "language_description": {
+      "message": "Arayüz ve AI cevapları için tercih ettiğiniz dili ayarlayın."
+   },
+   "light": {
+      "message": "Aydınlık"
+   },
+   "open_option_page": {
+      "message": "Seçenekleri Aç"
+   },
+   "retry": {
+      "message": "Yeniden dene"
+   },
+   "search_felo_it_tip": {
+      "message": "Şüphe mi? Felo it!"
+   },
+   "search_for": {
+      "message": "Felo Arama'yı kullanın: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Metin seçimi için mini menü"
+   },
+   "selection_menu_description": {
+      "message": "Metin seçildiğinde mini menüyü göster"
+   },
+   "started_get_started": {
+      "message": "Başlayın"
+   },
+   "started_head_subtitle": {
+      "message": "Dünyayı kendi dilinizde arayın"
+   },
+   "started_head_title": {
+      "message": "Felo Arama Asistanı'na Hoş Geldiniz!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Felo Arama'yı varsayılan arama motoru olarak ayarlayın"
+   },
+   "started_welcome": {
+      "message": "🎉 Tebrikler! AI arama asistanınız hazır"
+   },
+   "target_language": {
+      "message": "Hedef Dil"
+   },
+   "target_language_description": {
+      "message": "Diğer dilleri belirlediğiniz dile çevirin"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Çevir"
+   },
+   "translate_display_style": {
+      "message": "Çeviri gösterim tarzı"
+   },
+   "translate_display_style_description": {
+      "message": "Farklı çeviri tarzlarının örnekleri için aşağıya bakın"
+   },
+   "translate_error_tip": {
+      "message": "Çeviri talebi başarısız oldu"
+   },
+   "translate_icon_display": {
+      "message": "Çeviri Kenar Çubuğu İkonu"
+   },
+   "translate_icon_display_description": {
+      "message": "Her Zaman Göster"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "AI yanıtlarının çıktısı ile aynı dil"
+   },
+   "translate_page_auto": {
+      "message": "Web sayfalarını otomatik çevir"
+   },
+   "translate_page_auto_description": {
+      "message": "Etkinleştirildiğinde, asistan yabancı dildeki web sayfalarını otomatik olarak çevirecektir (yalnızca Felo'dan açılan sayfalarla sınırlıdır)"
+   },
+   "translate_service": {
+      "message": "Çeviri Servisi"
+   },
+   "translate_service_description": {
+      "message": "Çeviri hizmetleri"
+   },
+   "translate_target_language_select": {
+      "message": "Hedef dilinizi seçin"
+   },
+   "translation_original_text_display": {
+      "message": "Orijinal Metin Gösterimi"
+   },
+   "translation_original_text_display_description": {
+      "message": "**Açık olduğunda**, orijinal metin sayfada görünür; **kapalı olduğunda**, yalnızca çeviri gösterilir."
+   },
+   "translation_service": {
+      "message": "Çeviri Servisi"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Akıllı Vurgulama"
+   },
+   "translation_style_blue": {
+      "message": "Açık Mavi"
+   },
+   "translation_style_bold": {
+      "message": "Kalın"
+   },
+   "translation_style_dashed": {
+      "message": "Kesikli"
+   },
+   "translation_style_default": {
+      "message": "Stilsiz"
+   },
+   "translation_style_green": {
+      "message": "Ferah Yeşil"
+   },
+   "translation_style_highlight": {
+      "message": "Vurgula"
+   },
+   "translation_style_italic": {
+      "message": "İtalik"
+   },
+   "translation_style_mask": {
+      "message": "Bulanık Efekt (Öğrenme Modu)"
+   },
+   "translation_style_opacity": {
+      "message": "Saydamlık"
+   },
+   "translation_style_orange": {
+      "message": "Sıcak Turuncu"
+   },
+   "translation_style_underline": {
+      "message": "Altı Çizili"
+   },
+   "translation_style_wavy": {
+      "message": "Dalgalı"
+   }
+}

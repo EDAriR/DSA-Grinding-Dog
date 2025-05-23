@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automatisk"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Ændringer gemt успешно"
+   },
+   "contact_us": {
+      "message": "Kontakt os"
+   },
+   "dark": {
+      "message": "Mørk"
+   },
+   "default_search_engine": {
+      "message": "Standard søgemaskine"
+   },
+   "default_search_engine_description": {
+      "message": "Når **aktiveret**, vil Felo Search blive indstillet som din browsers standard søgemaskine."
+   },
+   "disable_next": {
+      "message": "Deaktiver indtil næste besøg"
+   },
+   "disabled_global": {
+      "message": "Deaktiver globalt"
+   },
+   "disabled_site": {
+      "message": "Deaktiver for denne side"
+   },
+   "disabled_tip": {
+      "message": "*Du kan reaktivere dette i indstillinger"
+   },
+   "error_bing_title": {
+      "message": "Microsoft Translator tjenesten responderer ikke"
+   },
+   "error_google_title": {
+      "message": "Google Oversæt tjenesten responderer ikke"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Skift oversættelsesmotor til Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Skift oversættelsesmotor til Google Oversæt"
+   },
+   "error_persists": {
+      "message": "Hvis dette problem fortsætter,"
+   },
+   "extDescription": {
+      "message": "Søg i verden på dit eget sprog og forbedr din sociale netværksindholdssøgning, helt gratis."
+   },
+   "extName": {
+      "message": "Felo - Din gratis AI søgehjælper"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it knap"
+   },
+   "felo_it_button_description": {
+      "message": "Når den er tændt, vil Felo it knappen være tilgængelig i søgefeltet"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Liste over hjemmesider, hvor denne funktion er deaktiveret"
+   },
+   "felo_it_toast": {
+      "message": "Indtast venligst nøgleord"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Skriv hvad du vil søge efter"
+   },
+   "felo_search_subtitle": {
+      "message": "Din gratis AI søgemaskine"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Generelt"
+   },
+   "google_translate": {
+      "message": "Google Oversæt"
+   },
+   "language": {
+      "message": "Sprog"
+   },
+   "language_description": {
+      "message": "Indstil dit foretrukne sprog til grænseflade og AI-svar."
+   },
+   "light": {
+      "message": "Lys"
+   },
+   "open_option_page": {
+      "message": "Åbn indstillinger"
+   },
+   "retry": {
+      "message": "Prøv igen"
+   },
+   "search_felo_it_tip": {
+      "message": "Er du i tvivl? Felo it!"
+   },
+   "search_for": {
+      "message": "Brug Felo Search til: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menu ved tekstvalg"
+   },
+   "selection_menu_description": {
+      "message": "Vis mini menu ved valg af tekst"
+   },
+   "started_get_started": {
+      "message": "Kom i gang"
+   },
+   "started_head_subtitle": {
+      "message": "Søg i verden på dit eget sprog"
+   },
+   "started_head_title": {
+      "message": "Velkommen til Felo Search Assistant!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Indstil Felo Search som standard søgemaskine"
+   },
+   "started_welcome": {
+      "message": "🎉 Tillykke! Din AI søgehjælper er klar til brug"
+   },
+   "target_language": {
+      "message": "Mål sprog"
+   },
+   "target_language_description": {
+      "message": "Oversæt andre sprog til det sprog, du har indstillet"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Oversæt"
+   },
+   "translate_display_style": {
+      "message": "Oversættelsesvisningsstil"
+   },
+   "translate_display_style_description": {
+      "message": "Se nedenfor for eksempler på forskellige oversættelsesstile"
+   },
+   "translate_error_tip": {
+      "message": "Oversættelsesanmodning mislykkedes"
+   },
+   "translate_icon_display": {
+      "message": "Vis oversættelsesbjælkeikon"
+   },
+   "translate_icon_display_description": {
+      "message": "Vis altid"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Samme som AI-svaroutputtet"
+   },
+   "translate_page_auto": {
+      "message": "Automatisk oversættelse af websider"
+   },
+   "translate_page_auto_description": {
+      "message": "Når aktiveret, vil assistenten automatisk oversætte websider på fremmedsprog (begrænset til sider åbnet fra Felo)"
+   },
+   "translate_service": {
+      "message": "Oversættelsestjeneste"
+   },
+   "translate_service_description": {
+      "message": "Oversættelsestjenester"
+   },
+   "translate_target_language_select": {
+      "message": "Vælg dit mål sprog"
+   },
+   "translation_original_text_display": {
+      "message": "Visning af originaltekst"
+   },
+   "translation_original_text_display_description": {
+      "message": "Når **aktiveret**, forbliver den originale tekst synlig på siden; når **deaktiveret**, vises kun oversættelsen."
+   },
+   "translation_service": {
+      "message": "Oversættelsestjeneste"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Smart fremhævning"
+   },
+   "translation_style_blue": {
+      "message": "Blød blå"
+   },
+   "translation_style_bold": {
+      "message": "Fed"
+   },
+   "translation_style_dashed": {
+      "message": "Stiplet"
+   },
+   "translation_style_default": {
+      "message": "Ingen stil"
+   },
+   "translation_style_green": {
+      "message": "Frisk grøn"
+   },
+   "translation_style_highlight": {
+      "message": "Fremhævning"
+   },
+   "translation_style_italic": {
+      "message": "Kursiv"
+   },
+   "translation_style_mask": {
+      "message": "Uklar effekt (Læringsmode)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacitet"
+   },
+   "translation_style_orange": {
+      "message": "Varm orange"
+   },
+   "translation_style_underline": {
+      "message": "Understreget"
+   },
+   "translation_style_wavy": {
+      "message": "S bølget"
+   }
+}

@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Awtomatiko"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Matagumpay na na-save ang mga pagbabago"
+   },
+   "contact_us": {
+      "message": "Makipag-ugnayan sa Amin"
+   },
+   "dark": {
+      "message": "Madilim"
+   },
+   "default_search_engine": {
+      "message": "Default na Search Engine"
+   },
+   "default_search_engine_description": {
+      "message": "Kapag **naka-enable**, ang Felo Search ay itatakda bilang default na search engine ng iyong browser."
+   },
+   "disable_next": {
+      "message": "I-disable hanggang sa susunod na pagbisita"
+   },
+   "disabled_global": {
+      "message": "I-disable nang globally"
+   },
+   "disabled_site": {
+      "message": "I-disable para sa site na ito"
+   },
+   "disabled_tip": {
+      "message": "*Maaari mong muling i-enable ito sa Mga Pagpipilian"
+   },
+   "error_bing_title": {
+      "message": "Ang serbisyo ng Microsoft Translator ay hindi tumutugon"
+   },
+   "error_google_title": {
+      "message": "Ang serbisyo ng Google Translate ay hindi tumutugon"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Lumipat sa Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Lumipat sa Google Translate"
+   },
+   "error_persists": {
+      "message": "Kung magpapatuloy ang problemang ito,"
+   },
+   "extDescription": {
+      "message": "Maghanap sa mundo sa iyong sariling wika at pagyamanin ang iyong nilalaman sa social networking, lahat ng ito ay libre."
+   },
+   "extName": {
+      "message": "Felo - Ang iyong Libreng AI Search Assistant"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Felo it Button"
+   },
+   "felo_it_button_description": {
+      "message": "Kapag naka-on, ang felo it button ay magiging available sa search box"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Listahan ng mga website kung saan hindi available ang feature na ito"
+   },
+   "felo_it_toast": {
+      "message": "Mangyaring ipasok ang mga pangunahing salita"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "I-type ang nais mong hanapin"
+   },
+   "felo_search_subtitle": {
+      "message": "Ang iyong Libreng AI Search Engine"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Pangkalahatan"
+   },
+   "google_translate": {
+      "message": "Google Translate"
+   },
+   "language": {
+      "message": "Wika"
+   },
+   "language_description": {
+      "message": "I-set ang iyong ginustong wika para sa interface at mga sagot ng AI."
+   },
+   "light": {
+      "message": "Maliwanag"
+   },
+   "open_option_page": {
+      "message": "Buksan ang Mga Pagpipilian"
+   },
+   "retry": {
+      "message": "Subukan muli"
+   },
+   "search_felo_it_tip": {
+      "message": "May pagdududa? Felo it!"
+   },
+   "search_for": {
+      "message": "Gumamit ng Felo Search para sa: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menu sa pagpili ng teksto"
+   },
+   "selection_menu_description": {
+      "message": "Ipakita ang mini menu kapag pumipili ng teksto"
+   },
+   "started_get_started": {
+      "message": "Magsimula"
+   },
+   "started_head_subtitle": {
+      "message": "Maghanap sa mundo sa iyong sariling wika"
+   },
+   "started_head_title": {
+      "message": "Maligayang pagdating sa Felo Search Assistant!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "I-set ang Felo Search bilang default search engine"
+   },
+   "started_welcome": {
+      "message": "🎉 Congratulations! Ang iyong AI search assistant ay handa na"
+   },
+   "target_language": {
+      "message": "Target na Wika"
+   },
+   "target_language_description": {
+      "message": "Isalin ang ibang mga wika sa wikang iyong itinatakda"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Isalin"
+   },
+   "translate_display_style": {
+      "message": "Estilo ng pagpapakita ng pagsasalin"
+   },
+   "translate_display_style_description": {
+      "message": "Tingnan sa ibaba para sa mga halimbawa ng iba't ibang istilo ng pagsasalin"
+   },
+   "translate_error_tip": {
+      "message": "Nabigo ang kahilingan para sa pagsasalin"
+   },
+   "translate_icon_display": {
+      "message": "I-display ang Translate Sidebar Icon"
+   },
+   "translate_icon_display_description": {
+      "message": "Laging Ipakita"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Pareho sa wika ng mga sagot ng AI"
+   },
+   "translate_page_auto": {
+      "message": "Awtomatikong isalin ang mga web page"
+   },
+   "translate_page_auto_description": {
+      "message": "Kapag naka-enable, awtomatikong isasalin ng assistant ang mga banyagang web page (limitado sa mga pahinang binuksan mula sa Felo)"
+   },
+   "translate_service": {
+      "message": "Serbisyo ng Pagsasalin"
+   },
+   "translate_service_description": {
+      "message": "Mga serbisyo ng pagsasalin"
+   },
+   "translate_target_language_select": {
+      "message": "Pumili ng iyong target na wika"
+   },
+   "translation_original_text_display": {
+      "message": "Pagpapakita ng Orihinal na Teksto"
+   },
+   "translation_original_text_display_description": {
+      "message": "Kapag **naka-enable**, ang orihinal na teksto ay mananatiling nakikita sa pahina; kapag **naka-disable**, ang tanging isinasalin ay ipapakita."
+   },
+   "translation_service": {
+      "message": "Serbisyo ng Pagsasalin"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Matalinong Pag-highlight"
+   },
+   "translation_style_blue": {
+      "message": "Malambot na Asul"
+   },
+   "translation_style_bold": {
+      "message": "Bold"
+   },
+   "translation_style_dashed": {
+      "message": "Dashed"
+   },
+   "translation_style_default": {
+      "message": "Walang estilo"
+   },
+   "translation_style_green": {
+      "message": "Sariwang Berde"
+   },
+   "translation_style_highlight": {
+      "message": "I-highlight"
+   },
+   "translation_style_italic": {
+      "message": "Italic"
+   },
+   "translation_style_mask": {
+      "message": "Blur Effect (Learning Mode)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacity"
+   },
+   "translation_style_orange": {
+      "message": "Mainit na Kahel"
+   },
+   "translation_style_underline": {
+      "message": "I-underline"
+   },
+   "translation_style_wavy": {
+      "message": "Wavy"
+   }
+}

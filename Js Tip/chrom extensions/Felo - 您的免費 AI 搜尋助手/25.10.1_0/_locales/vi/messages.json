@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Tự động"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Thay đổi đã được lưu thành công"
+   },
+   "contact_us": {
+      "message": "Liên hệ với chúng tôi"
+   },
+   "dark": {
+      "message": "Tối"
+   },
+   "default_search_engine": {
+      "message": "Công cụ tìm kiếm mặc định"
+   },
+   "default_search_engine_description": {
+      "message": "Khi **bật**, Felo Search sẽ được đặt làm công cụ tìm kiếm mặc định của trình duyệt bạn."
+   },
+   "disable_next": {
+      "message": "Vô hiệu hóa cho đến lần truy cập tiếp theo"
+   },
+   "disabled_global": {
+      "message": "Vô hiệu hóa toàn cầu"
+   },
+   "disabled_site": {
+      "message": "Vô hiệu hóa cho trang này"
+   },
+   "disabled_tip": {
+      "message": "*Bạn có thể kích hoạt lại điều này trong Tùy chọn"
+   },
+   "error_bing_title": {
+      "message": "Dịch vụ Microsoft Translator không phản hồi"
+   },
+   "error_google_title": {
+      "message": "Dịch vụ Google Dịch không phản hồi"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Chuyển đổi động cơ dịch thuật sang Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Chuyển đổi động cơ dịch thuật sang Google Dịch"
+   },
+   "error_persists": {
+      "message": "Nếu vấn đề này vẫn tiếp diễn,"
+   },
+   "extDescription": {
+      "message": "Tìm kiếm thế giới bằng ngôn ngữ của bạn và nâng cao việc tìm kiếm nội dung mạng xã hội, hoàn toàn miễn phí."
+   },
+   "extName": {
+      "message": "Felo - Trợ lý tìm kiếm AI miễn phí của bạn"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Nút Felo it"
+   },
+   "felo_it_button_description": {
+      "message": "Khi bật, nút Felo it sẽ có sẵn trong ô tìm kiếm"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Danh sách các trang web mà chức năng này bị禁用"
+   },
+   "felo_it_toast": {
+      "message": "Vui lòng nhập từ khóa"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Nhập vào những gì bạn muốn tìm"
+   },
+   "felo_search_subtitle": {
+      "message": "Công cụ tìm kiếm AI miễn phí của bạn"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "Chung"
+   },
+   "google_translate": {
+      "message": "Google Dịch"
+   },
+   "language": {
+      "message": "Ngôn ngữ"
+   },
+   "language_description": {
+      "message": "Thiết lập ngôn ngữ ưa thích của bạn cho giao diện và phản hồi của AI."
+   },
+   "light": {
+      "message": "Sáng"
+   },
+   "open_option_page": {
+      "message": "Mở Tùy chọn"
+   },
+   "retry": {
+      "message": "Thử lại"
+   },
+   "search_felo_it_tip": {
+      "message": "Còn nghi ngờ? Hãy Felo it!"
+   },
+   "search_for": {
+      "message": "Sử dụng Felo Search để: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Menu nhỏ khi chọn văn bản"
+   },
+   "selection_menu_description": {
+      "message": "Hiển thị menu nhỏ khi chọn văn bản"
+   },
+   "started_get_started": {
+      "message": "Bắt đầu"
+   },
+   "started_head_subtitle": {
+      "message": "Tìm kiếm thế giới bằng ngôn ngữ của bạn"
+   },
+   "started_head_title": {
+      "message": "Chào mừng bạn đến với Trợ lý Tìm kiếm Felo!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Đặt Felo Search làm công cụ tìm kiếm mặc định"
+   },
+   "started_welcome": {
+      "message": "🎉 Chúc mừng! Trợ lý tìm kiếm AI của bạn đã sẵn sàng hoạt động"
+   },
+   "target_language": {
+      "message": "Ngôn ngữ đích"
+   },
+   "target_language_description": {
+      "message": "Dịch các ngôn ngữ khác sang ngôn ngữ bạn đã đặt"
+   },
+   "theme": {
+      "message": "Chủ đề"
+   },
+   "translate": {
+      "message": "Dịch"
+   },
+   "translate_display_style": {
+      "message": "Phong cách hiển thị dịch thuật"
+   },
+   "translate_display_style_description": {
+      "message": "Xem bên dưới để biết ví dụ về các phong cách dịch thuật khác nhau"
+   },
+   "translate_error_tip": {
+      "message": "Yêu cầu dịch thuật không thành công"
+   },
+   "translate_icon_display": {
+      "message": "Biểu tượng Thanh bên Dịch thuật"
+   },
+   "translate_icon_display_description": {
+      "message": "Luôn hiển thị"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Giống như ngôn ngữ phản hồi đầu ra của AI"
+   },
+   "translate_page_auto": {
+      "message": "Tự động dịch trang web"
+   },
+   "translate_page_auto_description": {
+      "message": "Khi được bật, trợ lý sẽ tự động dịch các trang web bằng ngôn ngữ nước ngoài (giới hạn cho các trang mở từ Felo)"
+   },
+   "translate_service": {
+      "message": "Dịch vụ dịch thuật"
+   },
+   "translate_service_description": {
+      "message": "Các dịch vụ dịch thuật"
+   },
+   "translate_target_language_select": {
+      "message": "Chọn ngôn ngữ đích của bạn"
+   },
+   "translation_original_text_display": {
+      "message": "Hiển thị văn bản gốc"
+   },
+   "translation_original_text_display_description": {
+      "message": "Khi **bật**, văn bản gốc sẽ vẫn hiển thị trên trang; khi **tắt**, chỉ hiển thị bản dịch."
+   },
+   "translation_service": {
+      "message": "Dịch vụ dịch thuật"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Đánh dấu thông minh"
+   },
+   "translation_style_blue": {
+      "message": "Xanh nhạt"
+   },
+   "translation_style_bold": {
+      "message": "Đậm"
+   },
+   "translation_style_dashed": {
+      "message": "Gạch ngang"
+   },
+   "translation_style_default": {
+      "message": "Không có phong cách"
+   },
+   "translation_style_green": {
+      "message": "Xanh tươi"
+   },
+   "translation_style_highlight": {
+      "message": "Đánh dấu"
+   },
+   "translation_style_italic": {
+      "message": "Nghiêng"
+   },
+   "translation_style_mask": {
+      "message": "Hiệu ứng mờ (Chế độ học tập)"
+   },
+   "translation_style_opacity": {
+      "message": "Độ mờ"
+   },
+   "translation_style_orange": {
+      "message": "Cam ấm"
+   },
+   "translation_style_underline": {
+      "message": "Gạch chân"
+   },
+   "translation_style_wavy": {
+      "message": "Gợn sóng"
+   }
+}

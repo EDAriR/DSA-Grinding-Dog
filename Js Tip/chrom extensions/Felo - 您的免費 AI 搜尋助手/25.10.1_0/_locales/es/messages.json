@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "Automático"
+   },
+   "bing_translate": {
+      "message": "Microsoft Translator"
+   },
+   "changes_saved": {
+      "message": "Cambios guardados con éxito"
+   },
+   "contact_us": {
+      "message": "Contacta con Nosotros"
+   },
+   "dark": {
+      "message": "Oscuro"
+   },
+   "default_search_engine": {
+      "message": "Motor de Búsqueda Predeterminado"
+   },
+   "default_search_engine_description": {
+      "message": "Cuando **activado**, Felo Search será configurado como el motor de búsqueda predeterminado de tu navegador."
+   },
+   "disable_next": {
+      "message": "Desactivar hasta la próxima visita"
+   },
+   "disabled_global": {
+      "message": "Desactivar globalmente"
+   },
+   "disabled_site": {
+      "message": "Desactivar para este sitio"
+   },
+   "disabled_tip": {
+      "message": "*Puedes volver a habilitar esto en Opciones"
+   },
+   "error_bing_title": {
+      "message": "El servicio de Microsoft Translator no está respondiendo"
+   },
+   "error_google_title": {
+      "message": "El servicio de Google Translate no está respondiendo"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 Cambiar el motor de traducción a Microsoft Translator"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 Cambiar el motor de traducción a Google Translate"
+   },
+   "error_persists": {
+      "message": "Si este problema persiste,"
+   },
+   "extDescription": {
+      "message": "Busca en el mundo en tu propio idioma y mejora la búsqueda de contenido en tus redes sociales, todo gratis."
+   },
+   "extName": {
+      "message": "Felo - Tu Asistente de Búsqueda AI Gratuito"
+   },
+   "felo_it": {
+      "message": "Felo it"
+   },
+   "felo_it_button": {
+      "message": "Botón Felo it"
+   },
+   "felo_it_button_description": {
+      "message": "Cuando se activa, el botón Felo it estará disponible en el cuadro de búsqueda"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "Lista de sitios web donde esta función está desactivada"
+   },
+   "felo_it_toast": {
+      "message": "Por favor, introduce palabras clave"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "Escribe lo que deseas buscar"
+   },
+   "felo_search_subtitle": {
+      "message": "Tu Motor de Búsqueda AI Gratuito"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "General"
+   },
+   "google_translate": {
+      "message": "Google Translate"
+   },
+   "language": {
+      "message": "Idioma"
+   },
+   "language_description": {
+      "message": "Establece tu idioma preferido para la interfaz y las respuestas de la IA."
+   },
+   "light": {
+      "message": "Claro"
+   },
+   "open_option_page": {
+      "message": "Abrir Opciones"
+   },
+   "retry": {
+      "message": "Reintentar"
+   },
+   "search_felo_it_tip": {
+      "message": "¿Tienes dudas? ¡Felo it!"
+   },
+   "search_for": {
+      "message": "Usa Felo Search para: \"%s\""
+   },
+   "selection_menu": {
+      "message": "Mini menú al seleccionar texto"
+   },
+   "selection_menu_description": {
+      "message": "Mostrar mini menú al seleccionar texto"
+   },
+   "started_get_started": {
+      "message": "Empezar"
+   },
+   "started_head_subtitle": {
+      "message": "Busca en el mundo en tu propio idioma"
+   },
+   "started_head_title": {
+      "message": "¡Bienvenido al Asistente de Búsqueda Felo!"
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Establecer Felo Search como motor de búsqueda predeterminado"
+   },
+   "started_welcome": {
+      "message": "🎉 ¡Felicidades! Tu asistente de búsqueda AI está listo para usar"
+   },
+   "target_language": {
+      "message": "Idioma de Destino"
+   },
+   "target_language_description": {
+      "message": "Traduce otros idiomas al idioma que has configurado"
+   },
+   "theme": {
+      "message": "Tema"
+   },
+   "translate": {
+      "message": "Traducir"
+   },
+   "translate_display_style": {
+      "message": "Estilo de visualización de traducción"
+   },
+   "translate_display_style_description": {
+      "message": "Consulta a continuación ejemplos de diferentes estilos de traducción"
+   },
+   "translate_error_tip": {
+      "message": "La solicitud de traducción falló"
+   },
+   "translate_icon_display": {
+      "message": "Icono de Barra Lateral de Traducción"
+   },
+   "translate_icon_display_description": {
+      "message": "Mostrar Siempre"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "Igual que el idioma de salida de las respuestas de la IA"
+   },
+   "translate_page_auto": {
+      "message": "Traducción automática de páginas web"
+   },
+   "translate_page_auto_description": {
+      "message": "Cuando está habilitado, el asistente traducirá automáticamente las páginas web en idiomas extranjeros (limitado a las páginas abiertas desde Felo)"
+   },
+   "translate_service": {
+      "message": "Servicio de Traducción"
+   },
+   "translate_service_description": {
+      "message": "Servicios de traducción"
+   },
+   "translate_target_language_select": {
+      "message": "Selecciona tu idioma de destino"
+   },
+   "translation_original_text_display": {
+      "message": "Mostrar Texto Original"
+   },
+   "translation_original_text_display_description": {
+      "message": "Cuando **activado**, el texto original permanece visible en la página; cuando **desactivado**, solo se muestra la traducción."
+   },
+   "translation_service": {
+      "message": "Servicio de Traducción"
+   },
+   "translation_style_auto_highlight": {
+      "message": "Resaltado Inteligente"
+   },
+   "translation_style_blue": {
+      "message": "Azul Suave"
+   },
+   "translation_style_bold": {
+      "message": "Negrita"
+   },
+   "translation_style_dashed": {
+      "message": "Discontinuo"
+   },
+   "translation_style_default": {
+      "message": "Sin estilo"
+   },
+   "translation_style_green": {
+      "message": "Verde Fresco"
+   },
+   "translation_style_highlight": {
+      "message": "Resaltar"
+   },
+   "translation_style_italic": {
+      "message": "Cursiva"
+   },
+   "translation_style_mask": {
+      "message": "Efecto de Desenfoque (Modo de Aprendizaje)"
+   },
+   "translation_style_opacity": {
+      "message": "Opacidad"
+   },
+   "translation_style_orange": {
+      "message": "Naranja Cálido"
+   },
+   "translation_style_underline": {
+      "message": "Subrayar"
+   },
+   "translation_style_wavy": {
+      "message": "Ondulado"
+   }
+}

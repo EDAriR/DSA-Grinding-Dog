@@ -1,0 +1,224 @@
+{
+   "auto": {
+      "message": "የራስ ሂደት"
+   },
+   "bing_translate": {
+      "message": "ምዕመና እንድባባ"
+   },
+   "changes_saved": {
+      "message": "ለውጦች በተ成功 ተያዥ"
+   },
+   "contact_us": {
+      "message": "ወይቅ እናንተን ይወዳድሩ"
+   },
+   "dark": {
+      "message": "ጨረቃ"
+   },
+   "default_search_engine": {
+      "message": "መደበኛ ፍለጋ የማህበረሰብ"
+   },
+   "default_search_engine_description": {
+      "message": "እንደ **የተገኙት** ቀዳሚ መዳረሻ የመስመር የተለዋዋጮችን ያምጣል።"
+   },
+   "disable_next": {
+      "message": "ከማውርይ ቀጥሎ ይቀጣ"
+   },
+   "disabled_global": {
+      "message": "መሬት ይጠጉ"
+   },
+   "disabled_site": {
+      "message": "ወገኖች ለመነፍረት"
+   },
+   "disabled_tip": {
+      "message": "*ይህን በ አማራጭዎች ይበርህ"
+   },
+   "error_bing_title": {
+      "message": "ምዕመውር አገልግሎት አይሰልም"
+   },
+   "error_google_title": {
+      "message": "ጉግል ትርጉም አገልግሎት አይሰልም"
+   },
+   "error_guide_to_bing_mode": {
+      "message": "👉 ወትው ወይዘን ይቻላል"
+   },
+   "error_guide_to_google_mode": {
+      "message": "👉 ወትው ወትወይዝ ይቻላሎ"
+   },
+   "error_persists": {
+      "message": "ይህ ችግኝ እንዲገኝ ነው,"
+   },
+   "extDescription": {
+      "message": "በእርግጥ በየአካባቢዎ ቋንቋ ዓለምን ፈልጋችሁ እና የማህበራዊ ገንቢያ ይተካ የይዘት ፍለጋን ይጨምር፣ ሁሉም ነፃ ነው።"
+   },
+   "extName": {
+      "message": "Felo - ነፃ የመረጃ ፍለጋ አገልግሎት"
+   },
+   "felo_it": {
+      "message": "Felo እንደ ወገን"
+   },
+   "felo_it_button": {
+      "message": "Felo እንደ ወገን"
+   },
+   "felo_it_button_description": {
+      "message": "እንደተለው በፍለጋ ውስጥ አንዱ ሆኖ ይገኛል"
+   },
+   "felo_it_button_disabled_list_description": {
+      "message": "ይህ ገጽ ውስጥ ስለአልኑ እንደሚያስቀመጥ ይዘው ማዕድ"
+   },
+   "felo_it_toast": {
+      "message": "ቁልፍ ቃል ይግቡ"
+   },
+   "felo_search": {
+      "message": "Felo"
+   },
+   "felo_search_placeholder": {
+      "message": "ፍለጋ የሚፈልጉትን ይዘው ይጻፉ"
+   },
+   "felo_search_subtitle": {
+      "message": "ነፃ የመረጃ ፍለጋ ማህበረሰብ"
+   },
+   "felo_search_title": {
+      "message": "Felo"
+   },
+   "general": {
+      "message": "አጠቃላይ"
+   },
+   "google_translate": {
+      "message": "ጉግል ትርጉም"
+   },
+   "language": {
+      "message": "ቋንቋ"
+   },
+   "language_description": {
+      "message": "ለተጠቃሚ መሣሪያ እና የአይ ይመልከቱ እቅፍ ቋንቋ ይመረጡ።"
+   },
+   "light": {
+      "message": "ብሩህ"
+   },
+   "open_option_page": {
+      "message": "አማራጭ ገጽ ክፈት"
+   },
+   "retry": {
+      "message": "ይቀይር"
+   },
+   "search_felo_it_tip": {
+      "message": "ይመለከታል? Felo እንደ ወገን!"
+   },
+   "search_for": {
+      "message": "Felo ፍለጋ እንዲህ ይጠቀሙ: \"%s\""
+   },
+   "selection_menu": {
+      "message": "በጽሑፍ ምርጥ ማዕድ"
+   },
+   "selection_menu_description": {
+      "message": "ይመለከታል እንደሚምርጥ ይገኝ"
+   },
+   "started_get_started": {
+      "message": "አውሇወ ይጅቁ"
+   },
+   "started_head_subtitle": {
+      "message": "በእውነት ዓለም መረጃ ፈልጋችሁ"
+   },
+   "started_head_title": {
+      "message": "እንኳን ወተይ አድራጊት ቢያን "
+   },
+   "started_set_felo_default_search_engine": {
+      "message": "Felo ወይን መደበኛ መንቀሬ ይምረጡ"
+   },
+   "started_welcome": {
+      "message": "🎉 ምርጫ! የአይ መረጃ እንዌ ወረሓጉዖች ናቸው"
+   },
+   "target_language": {
+      "message": "መዠርየት ቋንቋ"
+   },
+   "target_language_description": {
+      "message": "ሌላ ቋንቋ ወደ ህዋኑ ይተው"
+   },
+   "theme": {
+      "message": "ብስጭት"
+   },
+   "translate": {
+      "message": "ትርጉም"
+   },
+   "translate_display_style": {
+      "message": "የትርጉም እንደሚመያይ"
+   },
+   "translate_display_style_description": {
+      "message": "ምልክቶች መካከል ተልዕኮ"
+   },
+   "translate_error_tip": {
+      "message": "ትርጉም ግድመት ይሻላሉ"
+   },
+   "translate_icon_display": {
+      "message": "ትርጉም ገዶን ምሳሌ"
+   },
+   "translate_icon_display_description": {
+      "message": "መወይት ያነጋገር"
+   },
+   "translate_language_same_as_ai_response": {
+      "message": "እንደ አይ መልስ የተለዋዋጭ ቋንቋ"
+   },
+   "translate_page_auto": {
+      "message": "የመስመር ገፆችን ራስ-ሰር ይተርጉሙ"
+   },
+   "translate_page_auto_description": {
+      "message": "ሲነቃብ ባለ, አጋር የውጭ ቋንቋ የተጻፉ የመስመር ገፆችን ራስ-ሰር ይተርጉማል (ይህ በFelo ከተከፈቱ ገፆች ላይ ተገድዷል)"
+   },
+   "translate_service": {
+      "message": "ትርጉም አገልግሎት"
+   },
+   "translate_service_description": {
+      "message": "የትርጉመ አገልግሎቶች"
+   },
+   "translate_target_language_select": {
+      "message": "ፈልጉትን ቋንቋ ይምረጡ"
+   },
+   "translation_original_text_display": {
+      "message": "ዝርዝር የበረሃ"
+   },
+   "translation_original_text_display_description": {
+      "message": "ለማን ይመለከታል."
+   },
+   "translation_service": {
+      "message": "ትርጉም አገልግሎት"
+   },
+   "translation_style_auto_highlight": {
+      "message": "እንደተወን ዋሧ"
+   },
+   "translation_style_blue": {
+      "message": "ለምጣም ነጭ"
+   },
+   "translation_style_bold": {
+      "message": "ሞቅ"
+   },
+   "translation_style_dashed": {
+      "message": "ባዝ"
+   },
+   "translation_style_default": {
+      "message": "አይነት ምንም"
+   },
+   "translation_style_green": {
+      "message": "የተለዋዋጮች ሚጣጥ"
+   },
+   "translation_style_highlight": {
+      "message": "ዋሣስ"
+   },
+   "translation_style_italic": {
+      "message": "ኢታሊክ"
+   },
+   "translation_style_mask": {
+      "message": "የፈጣሬ ምርኣ እና ግለል"
+   },
+   "translation_style_opacity": {
+      "message": "ተምጨ"
+   },
+   "translation_style_orange": {
+      "message": "የማር ዋይው"
+   },
+   "translation_style_underline": {
+      "message": "ወይዘንገር"
+   },
+   "translation_style_wavy": {
+      "message": "የሥርዤው"
+   }
+}
