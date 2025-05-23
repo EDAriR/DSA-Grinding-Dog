@@ -1,0 +1,34 @@
+{
+   "action": {
+      "default_title": "Prompt4all"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "exclude_matches": [ "https://chatgpt.com/*#settings" ],
+      "js": [ "utils/mermaidFixUtils.js", "content.js" ],
+      "matches": [ "https://chatgpt.com/*", "https://*.openai.com/*", "https://*.claude.ai/*", "https://*.anthropic.com/*", "https://*.perplexity.ai/*", "https://*.felo.ai/*", "https://*.lmarena.ai/*", "https://*.huggingface.co/*", "https://*.monica.im/*", "https://m365.cloud.microsoft/*", "https://gemini.google.com/*", "https://aistudio.google.com/*", "https://colab.research.google.com/*", "https://*.sora.com/*", "https://*.x.com/i/grok/*", "https://*.deepseek.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "運用prompt的最佳幫手，包含提示範本以及提示產生器。",
+   "host_permissions": [ "https://chatgpt.com/*", "https://*.openai.com/*", "https://*.claude.ai/*", "https://*.anthropic.com/*", "https://*.perplexity.ai/*", "https://*.felo.ai/*", "https://*.lmarena.ai/*", "https://*.huggingface.co/*", "https://*.monica.im/*", "https://m365.cloud.microsoft/*", "https://copilot.microsoft/*", "https://gemini.google.com/*", "https://aistudio.google.com/*", "https://colab.research.google.com/*", "https://*.sora.com/*", "https://*.x.com/i/grok/*", "https://*.deepseek.com/*" ],
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuSuUdq2YsY2CeEXhZWS0xWfeQQbIdtIdkWmfP4/zKUQ4qnd8q4176zLZ1RIUrd+K6beY6dayBAb6mgRmKej8bk+fhTVK3FcKqW3+3TCYvnW7PSErd2XV6dUCbAjsYrTsYfq0CPVWk9yWudtkQ7BF1UZn+LAbRfkqx0sdsPE5S/AGolT4PzZP5/7Ebcz+eLjxSL4QflQwyWlUrFiFKINV3mN+HTxVbFwrZ3wm2JrtrzljEm0Pam+AxpAObcCJj2N9rNwzrR1alYPAfPpQsqZ1WM7zGBqsot16WjbKHBeAKobZhTkOO7QJO4Hud/u+Iw2S2g9XDvu65jw+jeb9oIW+0wIDAQAB",
+   "manifest_version": 3,
+   "name": "Prompt4all",
+   "permissions": [ "contextMenus", "storage", "sidePanel", "scripting", "activeTab", "clipboardWrite" ],
+   "side_panel": {
+      "default_path": "side_panel.html"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.1",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "prompt_builder.html", "prompt_builder.js", "prompt_templates.json", "prompt_data.json", "side_panel.html", "side_panel.js", "settings.html", "settings.js", "styles.css", "styles2.css", "mermaid.min.js", "utils/mermaidFixUtils.js" ]
+   } ]
+}

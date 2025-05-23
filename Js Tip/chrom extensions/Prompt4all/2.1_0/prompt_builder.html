@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Builder</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+<div class="builder-container">
+    <div class="prompt-builder">
+        <div class="title">Prompt Builder</div>
+        <div class="content">
+            <!-- 左側編輯區 -->
+            <div class="left-panel">
+                <div id="promptText" class="prompt-text" contenteditable="true">
+                    <!-- 範本內容將插入到這裡 -->
+                </div>
+                <div class="toolbar-row">
+                    <!-- 送出 (Submit) 按鈕 -->
+                    <button id="submitPrompt" class="submit-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20"
+                             height="20">
+                            <path d="M12 2L2 21h9v-7h2v7h9L12 2z"/>
+                        </svg>
+                        <span style="margin-left: 8px;">Submit</span>
+                    </button>
+                    <button id="clearButton" class="clear-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40px"
+                             height="20px">
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM18 4h-3.5l-1-1h-5l-1 1H6v2h12V4z"/>
+                        </svg>
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- 右側功能區 -->
+            <div class="right-panel">
+                <!-- 工具列 -->
+                <div class="toolbar">
+                    <div class="toolbar-row">
+                        <button id="homeButton" class="home-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px"
+                                 height="20px">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            </svg>
+                            Home
+                        </button>
+                        <button id="addItemButton" class="add-item-button" >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px"
+                                 height="20px">
+                                <path d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6V5a1 1 0 0 1 1-1z" fill="#FFFFFF"/>
+                            </svg>
+                            Add
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- 類別與模板列表 -->
+                <div id="categoryList" class="category-list">
+                    <!-- 第一層分類按鈕 -->
+                </div>
+                <div id="templateList" class="template-list hidden">
+                    <!-- 第二層模板按鈕 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="prompt_builder.js"></script>
+</body>
+</html>

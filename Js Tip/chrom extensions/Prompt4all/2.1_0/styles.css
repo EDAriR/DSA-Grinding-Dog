@@ -1,0 +1,183 @@
+:root {
+    --orange: #FF6B00;
+    --light-gray: #F5F5F5;
+    --silver-gray: #A9A9A9;
+    --dark-gray: #4A4A4A;
+    --white: #FFFFFF;
+    --purple: #6A0DAD;
+    --custom-blue: #439bb7;
+}
+
+/* 加上暗黑模式下的覆寫 */
+:root.dark-mode {
+    --light-gray: #1e1e1e;
+    --silver-gray: #555555;
+    --dark-gray: #4A4A4A;
+    --white: #f0f0f0;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background-color: var(--light-gray);
+    font-family: system-ui, -apple-system, sans-serif;
+    min-width: 300px;
+}
+
+/* 當加上 dark-mode class 時 */
+.dark-mode body {
+    background-color: var(--dark-gray);
+    color: var(--white);
+}
+
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hidden {
+    display: none !important; /* 確保覆蓋所有其他 display 設定 */
+}
+
+/* 按鈕樣式 */
+.category-button {
+    padding: 10px;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 150px; /* 設置最小寬度 */
+    min-height: 40px; /* 設置最小高度 */
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* 按鈕樣式 */
+.template-button {
+    padding: 10px;
+    background-color: var(--silver-gray);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 150px; /* 設置最小寬度 */
+    min-height: 40px; /* 設置最小高度 */
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+.category-button:hover {
+    background-color: var(--white);
+    color: var(--orange);
+}
+
+.template-button:hover {
+    background-color: var(--white);
+    color: var(--dark-gray);
+}
+
+.template-button.hidden {
+    display: none !important;
+}
+
+#categories,
+#templates {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%; /* 設置寬度為 100% */
+    max-width: 300px; /* 限制最大寬度 */
+    background-color: var(--light-gray);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: auto; /* 確保高度根據內容自動調整 */
+    overflow-y: visible; /* 確保內容可見，避免滾動條 */
+}
+
+
+.template-section {
+    margin-bottom: 20px;
+}
+
+.template-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.template-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--silver-gray);
+    border-radius: 4px;
+    resize: vertical;
+    background-color: var(--light-gray);
+}
+
+
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out;
+    min-width: 40px; /* 最小寬度 */
+    min-height: 40px; /* 最小高度 */
+}
+
+.home-button.hidden {
+    display: none !important;
+}
+
+.home-button:hover {
+    background-color: var(--dark-gray);
+}
+
+
+.collapsible-container {
+    margin: 10px 0;
+    border: 1px solid var(--silver-gray);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.collapsible-toggle {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--orange);
+    color: var(--white);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.collapsible-toggle:hover {
+    background-color: var(--dark-gray);
+}
+
+.collapsible-content {
+    padding: 10px;
+    background-color: var(--light-gray);
+    display: block;
+}
+
+.collapsible-content.hidden {
+    display: none;
+}
