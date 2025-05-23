@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const customItem = document.getElementById('custom-selector-item');
   const customInput = document.getElementById('custom-selector-input');
   const toggleHideSiteButton = document.getElementById('toggle-hide-site-button');
+  const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
 
   // 控制項群組，方便統一啟用/禁用
   const controlsToDisableWhenHidden = [
@@ -125,6 +126,67 @@ document.addEventListener('DOMContentLoaded', function() {
           toggleButton.textContent = '取消專注模式';
         } else {
           alert(response.error || '套用失敗');
+        }
+      });
+    });
+  });
+  
+  // 切換黑暗模式按鈕點擊事件
+  toggleDarkModeButton.addEventListener('click', function() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      if (!tabs || tabs.length === 0 || !tabs[0].id) {
+        console.error('[Extension Popup] Dark Mode: Could not get active tab ID.');
+        alert('無法獲取當前分頁資訊以切換黑暗模式。');
+        return;
+      }
+      const tabId = tabs[0].id;
+      console.log(`[Extension Popup] Attempting to inject script into tab ID: ${tabId}`);
+
+      chrome.scripting.executeScript({
+        target: {tabId: tabId},
+        func: () => {
+          console.log('[Injected Script] Filter-based dark mode script executed on page!');
+          const d = document.documentElement;
+          const mediaSelectors = 'img, video, canvas, svg, embed, object, picture';
+          const filterValue = 'invert(1) hue-rotate(180deg)';
+          const htmlMarkerClass = 'extension-dark-mode-active-filter';
+          const originalFilterDatasetKey = 'extensionOriginalFilter';
+
+          if (d.classList.contains(htmlMarkerClass)) {
+            // Dark mode is on, turn it off
+            d.style.filter = '';
+            d.classList.remove(htmlMarkerClass);
+            document.querySelectorAll(mediaSelectors).forEach(el => {
+              if (el.dataset[originalFilterDatasetKey] !== undefined) {
+                el.style.filter = el.dataset[originalFilterDatasetKey];
+                delete el.dataset[originalFilterDatasetKey];
+              } else if (el.style.filter === filterValue) {
+                el.style.filter = '';
+              }
+            });
+            console.log('[Injected Script] Filter dark mode turned OFF.');
+            return {success: true, mode: 'off'};
+          } else {
+            // Dark mode is off, turn it on
+            d.style.filter = filterValue;
+            d.classList.add(htmlMarkerClass);
+            document.querySelectorAll(mediaSelectors).forEach(el => {
+              el.dataset[originalFilterDatasetKey] = el.style.filter || '';
+              el.style.filter = filterValue; // Apply filter again to revert media
+            });
+            console.log('[Injected Script] Filter dark mode turned ON.');
+            return {success: true, mode: 'on'};
+          }
+        }
+      }, (injectionResults) => {
+        if (chrome.runtime.lastError) {
+          console.error('[Extension Popup] Dark Mode Script Execution Error:', chrome.runtime.lastError.message);
+          alert('切換黑暗模式失敗：' + chrome.runtime.lastError.message);
+        } else if (injectionResults && injectionResults[0] && injectionResults[0].result) {
+          console.log('[Extension Popup] Dark Mode Script Injection Result:', injectionResults[0].result);
+        } else {
+          console.error('[Extension Popup] Dark Mode Script Execution Failed: No results or unexpected result format.', injectionResults);
+          alert('切換黑暗模式時發生未知錯誤。');
         }
       });
     });
