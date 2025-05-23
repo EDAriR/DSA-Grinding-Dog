@@ -1,0 +1,48 @@
+{
+   "domain_excluded_notification": {
+      "message": "Seda domeeni ei saa Felo Search-iga kokku võtta: $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1"
+         }
+      }
+   },
+   "ip_excluded_notification": {
+      "message": "Seda IP-aadressi ei saa Felo Search-iga kokku võtta: $IP$",
+      "placeholders": {
+         "ip": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_reset_button": {
+      "message": "Lähtesta"
+   },
+   "options_reset_success": {
+      "message": "Seaded on lähtestatud vaikeväärtustele"
+   },
+   "options_save_button": {
+      "message": "Salvesta"
+   },
+   "options_save_success": {
+      "message": "Seaded on salvestatud"
+   },
+   "options_summary_prompt_label": {
+      "message": "Kokkuvõtte viip:"
+   },
+   "options_title": {
+      "message": "Valikud"
+   },
+   "summary_this_page": {
+      "message": "Tee sellest lehest kokkuvõte Felo Search-iga"
+   },
+   "tool_author": {
+      "message": "Will Huang"
+   },
+   "tool_description": {
+      "message": "Täiustab teie Felo Search kogemust kiirklahvide ja kiirligipääsu nuppudega Felo Search veebisaidile."
+   },
+   "tool_name": {
+      "message": "Felo Search Tööriistakomplekt"
+   }
+}

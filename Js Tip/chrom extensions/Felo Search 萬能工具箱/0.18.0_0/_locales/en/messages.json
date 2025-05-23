@@ -1,0 +1,48 @@
+{
+   "domain_excluded_notification": {
+      "message": "This domain cannot be summarized with Felo Search: $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1"
+         }
+      }
+   },
+   "ip_excluded_notification": {
+      "message": "This IP address cannot be summarized with Felo Search: $IP$",
+      "placeholders": {
+         "ip": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_reset_button": {
+      "message": "Reset"
+   },
+   "options_reset_success": {
+      "message": "Settings reset to default"
+   },
+   "options_save_button": {
+      "message": "Save"
+   },
+   "options_save_success": {
+      "message": "Settings saved"
+   },
+   "options_summary_prompt_label": {
+      "message": "Summary prompt:"
+   },
+   "options_title": {
+      "message": "Options"
+   },
+   "summary_this_page": {
+      "message": "Summarize this page with Felo Search"
+   },
+   "tool_author": {
+      "message": "Will Huang"
+   },
+   "tool_description": {
+      "message": "Enhances your Felo Search experience with shortcuts and quick access buttons for the Felo Search website."
+   },
+   "tool_name": {
+      "message": "Felo Search Toolkit"
+   }
+}

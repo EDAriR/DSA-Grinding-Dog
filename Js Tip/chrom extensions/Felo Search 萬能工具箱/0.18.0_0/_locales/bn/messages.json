@@ -1,0 +1,48 @@
+{
+   "domain_excluded_notification": {
+      "message": "এই ডোমেইন Felo Search দিয়ে সারাংশ করা যাবে না: $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1"
+         }
+      }
+   },
+   "ip_excluded_notification": {
+      "message": "এই IP ঠিকানা Felo Search দিয়ে সারাংশ করা যাবে না: $IP$",
+      "placeholders": {
+         "ip": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_reset_button": {
+      "message": "রিসেট"
+   },
+   "options_reset_success": {
+      "message": "সেটিংস ডিফল্ট মানে রিসেট করা হয়েছে"
+   },
+   "options_save_button": {
+      "message": "সংরক্ষণ"
+   },
+   "options_save_success": {
+      "message": "সেটিংস সংরক্ষিত হয়েছে"
+   },
+   "options_summary_prompt_label": {
+      "message": "সারাংশ প্রম্পট:"
+   },
+   "options_title": {
+      "message": "অপশনসমূহ"
+   },
+   "summary_this_page": {
+      "message": "Felo Search দিয়ে এই পৃষ্ঠা সারাংশ করুন"
+   },
+   "tool_author": {
+      "message": "Will Huang"
+   },
+   "tool_description": {
+      "message": "ফেলো সার্চ ওয়েবসাইটের জন্য শর্টকাট এবং দ্রুত অ্যাক্সেস বোতাম দিয়ে আপনার ফেলো সার্চ অভিজ্ঞতা উন্নত করে।"
+   },
+   "tool_name": {
+      "message": "ফেলো সার্চ টুলকিট"
+   }
+}

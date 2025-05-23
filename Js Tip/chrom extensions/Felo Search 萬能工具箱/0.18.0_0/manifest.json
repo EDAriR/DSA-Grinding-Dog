@@ -1,0 +1,31 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "images/icon128.png",
+         "16": "images/icon16.png",
+         "48": "images/icon48.png"
+      }
+   },
+   "author": "__MSG_tool_author__",
+   "background": {
+      "service_worker": "src/background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "src/playwright.js", "src/turndown.browser.umd.js", "src/content.js" ],
+      "matches": [ "\u003Call_urls>" ]
+   } ],
+   "default_locale": "zh_TW",
+   "description": "__MSG_tool_description__",
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwmZMbEUmsMGtTC1lrqp8tCKRJFbe+7uB6tKVYUUw2ZzSTpNfClZ+kkf+qm+755icT4zwcG/srvDIzKx9dIGHyC32Tzew6KkxiP3IdLvbEZSmjuyHG02yvs+9491nuPcYeHtRJJpLjOQR91QWvLQgwPPjkzZFPa7D9zekOQWI9g+qWQikVn/NU8bAPPQ1K4F21hQigTPnSTaSMhSV54RrclfpoXPlW1iUG1FuOzWRkWVpqzK9zUfTIqwIpdfGL9Yl82BZ/07IWUFw+NvcfxCxOhOx/ZIq1dc17uQLUJqZ6DC8827gUazitGFuHpe/38kVPlylZK5RBU0pGy83jlyOBwIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_tool_name__",
+   "options_page": "src/options.html",
+   "permissions": [ "notifications", "activeTab", "contextMenus", "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.18.0"
+}

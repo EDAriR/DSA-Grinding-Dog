@@ -1,0 +1,48 @@
+{
+   "domain_excluded_notification": {
+      "message": "Этот домен не может быть обработан с помощью Felo Search: $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1"
+         }
+      }
+   },
+   "ip_excluded_notification": {
+      "message": "Этот IP-адрес не может быть обработан с помощью Felo Search: $IP$",
+      "placeholders": {
+         "ip": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_reset_button": {
+      "message": "Сбросить"
+   },
+   "options_reset_success": {
+      "message": "Настройки сброшены до значений по умолчанию"
+   },
+   "options_save_button": {
+      "message": "Сохранить"
+   },
+   "options_save_success": {
+      "message": "Настройки сохранены"
+   },
+   "options_summary_prompt_label": {
+      "message": "Запрос для сводки:"
+   },
+   "options_title": {
+      "message": "Опции"
+   },
+   "summary_this_page": {
+      "message": "Сделать сводку этой страницы с помощью Felo Search"
+   },
+   "tool_author": {
+      "message": "Will Huang"
+   },
+   "tool_description": {
+      "message": "Улучшает работу с Felo Search с помощью сочетаний клавиш и кнопок быстрого доступа для веб-сайта Felo Search."
+   },
+   "tool_name": {
+      "message": "Felo Search Инструментарий"
+   }
+}
