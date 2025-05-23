@@ -1,0 +1,36 @@
+{
+   "background": {
+      "scripts": [ "lib/lodash.min.js", "js/mkutils.js", "lib/turndown.js", "lib/turndown-plugin-gfm.js", "js/html2mk.js", "js/browser/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "icons/paste-mk_19.png"
+      },
+      "default_popup": "popup_help.html",
+      "default_title": "MarkItDown - Click for help"
+   },
+   "commands": {
+      "paste-mk": {
+         "description": "Paste as Markdown",
+         "suggested_key": {
+            "default": "Alt+C"
+         }
+      }
+   },
+   "description": "Paste as Markdown.",
+   "homepage_url": "http://markitdown.medusis.com",
+   "icons": {
+      "128": "icons/paste-mk_128.png",
+      "16": "icons/paste-mk_16.png",
+      "19": "icons/paste-mk_19.png",
+      "38": "icons/paste-mk_38.png",
+      "48": "icons/paste-mk_48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgdq6TgKs0i92+Muosm3uq+eGXpSOngiRxzlbC/LZ50cFC4VAuF79fTJn4bJHRQN/mtQXLMBB13pMskAuRBb88R6rIl94CSSAXVBSy9nkHdFN/kSEYV89wtusuXA3NjMPyDrE0ASDSwXEHbprS3C0hyi80uVKcdUvB5ElL0eOV5w39xW7e0A0c8SJZ53Tf1o9mgPyVFmYZOmnDbeY+tUxnjNM9satAZWupWlC0kXga96ZBiefyHy4fUpxLZkOKB1ysPFY65+ubu2kCS0/mGoQc9bbS+NMnmjaMACGJluRR7JhO3TE8DBmv6QtP+CmwC25P0lN6Nn0hw+2uvXGR4aqMQIDAQAB",
+   "manifest_version": 2,
+   "name": "Paste as Markdown",
+   "permissions": [ "activeTab", "clipboardRead", "contextMenus" ],
+   "short_name": "Paste-Mkdown",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.5.7.2"
+}
