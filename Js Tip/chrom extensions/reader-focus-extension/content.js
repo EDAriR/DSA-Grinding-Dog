@@ -239,6 +239,23 @@
           }
         });
         return true; // 表示會异步呼叫 sendResponse
+      } else if (message.action === "getSelectedHtml") { // ++ 新增處理 getSelectedHtml 的邏輯 ++
+        // TODO
+        let selectedHtml = "";
+        const selection = window.getSelection();
+        if (selection && selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0);
+          const div = document.createElement("div");
+          div.appendChild(range.cloneContents());
+          selectedHtml = div.innerHTML;
+          // if (debug > 0) console.log("Selected HTML:", selectedHtml); // 如果您有 debug 變數
+          console.log("選取的 HTML:", selectedHtml);
+        } else {
+          // if (debug > 0) console.log("No selection found or rangeCount is 0.");
+          console.log("未找到選取內容或 rangeCount 為 0。");
+        }
+        sendResponse({ html: selectedHtml });
+        return true; // 為了非同步 sendResponse，保持通道開啟
       }
       return true; // 保持非同步回應
     };
