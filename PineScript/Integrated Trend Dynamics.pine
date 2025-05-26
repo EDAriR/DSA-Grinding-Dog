@@ -1,0 +1,295 @@
+//@version=6
+
+strategy("Integrated Trend Dynamics", shorttitle="ITD", overlay=true)
+
+// K線顏色判斷與繪製
+// 作用：此段代碼根據K線是實體上漲（收盤價 >= 開盤價）還是實體下跌（收盤價 < 開盤價）來繪製相應的箭頭。
+// 判讀：
+//   - 紅色箭頭向下：表示當前K線為實體下跌，可能預示著賣壓或趨勢向下。
+//   - 綠色箭頭向上：表示當前K線為實體上漲，可能預示著買盤或趨勢向上。
+// 這些箭頭提供了一個簡單的趨勢方向視覺指引，是價格行為的即時反應。
+data = close >= open
+// 註解掉以下兩行，以避免「大量的藍色Buy Sell」箭頭，因為它們會與策略進出場信號混淆。
+// plotshape(data, color=color.red, style=shape.arrowdown, text="Sell")
+// plotshape(not data, location=location.belowbar, color=color.green, style=shape.arrowup, text="Buy")
+
+//-----------------Built in MA 144-----------------------------------------
+m2_src = close
+m2_p = input.int(144, title="MA2 Period:", group="Built-in MA")
+
+// plot(ta.sma(m2_src, m2_p), color=color.blue, linewidth=1, title="MA2")
+
+//==============================================
+// Ichimoku-like Donchian Channel Components
+// 作用：此模組旨在類似於一目均衡表的方式，利用Donchian通道的原理來識別趨勢、潛在支撐與阻力位。
+// 判讀：
+//   - Conversion Line (轉換線) 和 Base Line (基準線) 的交叉：類似短期與中期移動平均線的交叉，提供短期趨勢轉變的信號。轉換線上穿基準線通常是看漲，反之看跌。
+//   - 雲層 (Kumo) (由 Lead 1 和 Lead 2 形成)：
+//     - 雲層的厚度：表示趨勢的強度。雲層越厚，支撐或阻力越強。
+//     - 價格相對雲層位置：價格在雲層之上表示強勁牛市，之下表示強勁熊市。價格進入雲層則表示盤整或趨勢不明。
+//   - Displacement (延遲)：通常表示雲層向未來平移的週期數，用於提供前瞻性的趨勢預測。
+conversionPeriods = input.int(34, minval=1, title="Conversion Periods", group="Ichimoku-like")
+basePeriods = input.int(26, minval=1, title="Base Periods", group="Ichimoku-like")
+laggingSpan2Periods = input.int(52, minval=1, title="Lagging Span2 Periods", group="Ichimoku-like")
+displacement = input.int(26, minval=1, title="Displacement", group="Ichimoku-like")
+
+donchian(len) => math.avg(ta.lowest(len), ta.highest(len))
+
+conversionLine = donchian(conversionPeriods)
+baseLine = donchian(basePeriods)
+leadLine1 = math.avg(conversionLine, baseLine)
+leadLine2 = donchian(laggingSpan2Periods)
+
+// 修正：移除 offset 參數，使先行線不再延伸到未來
+// 加強顯示：增加 linewidth
+p1 = plot(leadLine1, offset = displacement, title="Lead 1", color=color.rgb(100, 150, 255, 0), linewidth=2) // 藍色系，完全不透明
+p2 = plot(leadLine2, offset = displacement, title="Lead 2", color=color.rgb(255, 150, 100, 0), linewidth=2) // 橙色系，完全不透明
+fill(p1, p2, color=color.new(color.black, 90))
+
+//==============================================
+// RicardoSantos - Extreme Time Frame High/Low
+// 作用：此模組獲取指定「極端時間框架」（如240分鐘線，即4小時線）的最高價和最低價，並將其繪製為水平線。
+// 判讀：
+//   - 極端時間框架的高低點：這些水平線通常被視為重要的長期支撐和阻力位。
+//   - 觀察價格在這些線附近的行為：當價格接近或突破這些高低點時，可能預示著趨勢的延續或反轉。
+//   - 紅色（Extreme TF High）和綠色（Extreme TF Low）的線，指示了價格在該時間框架內的極限波動範圍。
+ExtremeTimeFrame = input.string("240", title="Extreme Time Frame", group="Extreme TF High/Low")
+ExtremeTimeWindow = input.int(2, title="Extreme Time Window", group="Extreme TF High/Low")
+
+TEH = request.security(syminfo.tickerid, ExtremeTimeFrame, ta.highest(ExtremeTimeWindow)[1], lookahead=barmerge.lookahead_on)
+TEL = request.security(syminfo.tickerid, ExtremeTimeFrame, ta.lowest(ExtremeTimeWindow)[1], lookahead=barmerge.lookahead_on)
+
+EH = plot(TEH, color=TEH!=TEH[1]?na:color.red, title="Extreme TF High")
+EL = plot(TEL, color=TEL!=TEL[1]?na:color.green, title="Extreme TF Low")
+
+//=================================================================================================
+// Lachlan Smith - Daily/Weekly/Monthly High & Lows
+// 作用：在當前時間框架圖表上，繪製前一個交易日、交易週或交易月的最高價和最低價。
+// 判讀：
+//   - 這些水平線是重要的短期至中長期支撐/阻力位，它們代表了歷史上價格的關鍵轉折區域。
+//   - Daily High/Low (紫色)：在日內交易中作為即時支撐阻力，突破可能預示當日強勁趨勢。
+//   - Weekly High/Low (青色)：對波段交易者更有意義，提供本週潛在波動範圍。
+//   - Monthly High/Low (銀色)：對於長期趨勢判斷至關重要，表示了更宏觀的長期關鍵價位。
+//   - 交易者可以觀察價格在這些線附近的反應：是反彈？是突破？還是形成假突破？這可以用來判斷趨勢的延續或反轉。
+disDaily = input.bool(true, title="Show Daily High & Lows?", group="Multi-TF High/Low")
+disWeekly = input.bool(false, title="Show Weekly High & Lows?", group="Multi-TF High/Low")
+disMonthly = input.bool(false, title="Show Monthly High & Lows?", group="Multi-TF High/Low")
+
+//Data setup
+dHigh = request.security(syminfo.tickerid, 'D', high[1], lookahead=barmerge.lookahead_on)
+dLow = request.security(syminfo.tickerid, 'D', low[1], lookahead=barmerge.lookahead_on)
+wHigh = request.security(syminfo.tickerid, 'W', high[1], lookahead=barmerge.lookahead_on)
+wLow = request.security(syminfo.tickerid, 'W', low[1], lookahead=barmerge.lookahead_on)
+mHigh = request.security(syminfo.tickerid, 'M', high[1], lookahead=barmerge.lookahead_on)
+mLow = request.security(syminfo.tickerid, 'M', low[1], lookahead=barmerge.lookahead_on)
+
+plot(disMonthly ? mHigh : na, title="Monthly High", style=plot.style_cross, color=color.silver, linewidth=1, trackprice = true)
+plot(disMonthly ? mLow : na, title="Monthly Low", style=plot.style_cross, color=color.silver, linewidth=1, trackprice = true)
+
+plot(disWeekly ? wHigh : na, title="Weekly High", style=plot.style_cross, color=color.teal, linewidth=1, trackprice = true)
+plot(disWeekly ? wLow : na, title="Weekly Low", style=plot.style_cross, color=color.teal, linewidth=1, trackprice = true)
+
+plot(disDaily ? dHigh : na, title="Daily High", style=plot.style_cross, color=color.purple, linewidth=1, trackprice = true)
+plot(disDaily ? dLow : na, title="Daily Low", style=plot.style_cross, color=color.purple, linewidth=1, trackprice = true)
+
+//===================================================================================================
+
+// Madrid - Multiple Moving Averages
+// 作用：繪製多組指數移動平均線 (EMA) 或簡單移動平均線 (SMA)，用於判斷趨勢和市場動能。
+// 判讀：
+//   - MA的排列與斜率：短期MA在長期MA上方且均線向上發散，通常表示強勁的上升趨勢；反之則為下降趨勢。
+//   - MA線的顏色：`maColor` 函數根據MA的方向和與長期MA的關係動態調整顏色，提供趨勢和動能的視覺化判斷。
+//     - 灰色：MA上漲且高於長期參考MA，可能表示強勁上升趨勢。
+//     - 紅色：MA下跌，或MA上漲但低於長期參考MA，表示疲軟或下降趨勢。
+//     - 銀色：MA上漲但仍低於長期參考MA，可能表示下跌趨勢中的反彈。
+exponential = input.bool(true, title="Exponential MA", group="Multiple MAs")
+
+src = close
+
+ma05 = exponential ? ta.ema(src, 05) : ta.sma(src, 05)
+ma10 = exponential ? ta.ema(src, 10) : ta.sma(src, 10)
+ma15 = exponential ? ta.ema(src, 15) : ta.sma(src, 15)
+ma20 = exponential ? ta.ema(src, 20) : ta.sma(src, 20)
+ma25 = exponential ? ta.ema(src, 25) : ta.sma(src, 25)
+ma30 = exponential ? ta.ema(src, 30) : ta.sma(src, 30)
+ma35 = exponential ? ta.ema(src, 35) : ta.sma(src, 35)
+ma40 = exponential ? ta.ema(src, 40) : ta.sma(src, 40)
+ma45 = exponential ? ta.ema(src, 45) : ta.sma(src, 45)
+ma50 = exponential ? ta.ema(src, 50) : ta.sma(src, 50)
+ma55 = exponential ? ta.ema(src, 55) : ta.sma(src, 55)
+ma60 = exponential ? ta.ema(src, 60) : ta.sma(src, 60)
+ma65 = exponential ? ta.ema(src, 65) : ta.sma(src, 65)
+ma70 = exponential ? ta.ema(src, 70) : ta.sma(src, 70)
+ma75 = exponential ? ta.ema(src, 75) : ta.sma(src, 75)
+ma80 = exponential ? ta.ema(src, 80) : ta.sma(src, 80)
+ma85 = exponential ? ta.ema(src, 85) : ta.sma(src, 85)
+ma90 = exponential ? ta.ema(src, 90) : ta.sma(src, 90)
+ma100 = exponential ? ta.ema(src, 100) : ta.sma(src, 100)
+
+// 顯眼顯示 MA 5, 30, 90
+plot(ma05, color=color.blue, linewidth=2, title="MA 5")
+plot(ma30, color=color.fuchsia, linewidth=2, title="MA 30")
+plot(ma90, color=color.orange, linewidth=2, title="MA 90")
+
+change_ma05 = ta.change(ma05)
+
+leadMAColor =
+  change_ma05 >= 0 and ma05 > ma100 ? color.gray :
+  change_ma05 < 0 and ma05 > ma100 ? color.red :
+  change_ma05 <= 0 and ma05 < ma100 ? color.red :
+  change_ma05 >= 0 and ma05 < ma100 ? color.silver :
+  color.gray
+
+maColor(ma, maRef) =>
+  ta.change(ma) >= 0 and ma05 > maRef ? color.gray :
+  ta.change(ma) < 0 and ma05 > maRef ? color.red :
+  ta.change(ma) <= 0 and ma05 < maRef ? color.red :
+  ta.change(ma) >= 0 and ma05 < maRef ? color.silver :
+  color.gray
+
+//==================
+// Madrid Profit Area
+// 作用：透過快速MA和慢速MA的填充區域來視覺化市場的趨勢強度或"盈利區間"。
+// 判讀：
+//   - 填充區域 (Profit Area)：當快速MA和慢速MA之間形成填充區域時，表示市場處於趨勢之中。
+//   - 填充區域的顏色 (color.new(color.silver, 75))：指示趨勢的潛在方向和強度。
+//   - MA線的顏色 (colorFMA, colorSMA)：當MA上漲（變化量 > 0）時顯示銀色，下跌時顯示紅色。
+//   - 觀察快慢MA的交叉點：快MA上穿慢MA可能表示買入機會（趨勢向上），下穿則為賣出機會（趨勢向下）。
+fastLen = input.int(5, minval=1, title="Fast MA Length", group="Madrid Profit Area")
+slowLen = input.int(90, minval=1, title="Slow MA Length", group="Madrid Profit Area")
+exponential_1 = input.bool(true, title="Exponential MA for Madrid", group="Madrid Profit Area")
+
+fastMA = exponential_1 ? ta.ema(src, fastLen) : ta.sma(src, fastLen)
+slowMA = exponential_1 ? ta.ema(src, slowLen) : ta.sma(src, slowLen)
+
+change_fastMA = ta.change(fastMA)
+change_slowMA = ta.change(slowMA)
+
+colorFMA = change_fastMA > 0 ? color.silver : color.red
+colorSMA = change_slowMA > 0 ? color.silver : color.red
+
+p5=plot(fastMA, color=colorFMA, linewidth=1, title="Fast MA (Madrid)")
+p6=plot(slowMA, color=colorSMA, linewidth=1, title="Slow MA (Madrid)")
+
+fill(p5, p6, color=color.new(color.silver, 75), title="Madrid Profit Area Fill")
+
+//======================================================================
+// Jurij - Price Time Zone (PTZ) / Channel
+// 作用：此模組旨在識別圖表上的關鍵樞軸點（特定時間窗口內的最高/最低價）和動態通道。
+// 判讀：
+//   - 綠色 "▲" 符號 (Buy PTZ)：表示在定義的時間窗口內（`h_left` 左側K線 + `h_right` 右側K線 + 中心K線），該中心K線的最低價是整個區域的最低點。這標誌著一個潛在的底部反轉買入信號。
+//   - 紅色 "▼" 符號 (Sell PTZ)：表示在相同時間窗口內，該中心K線的最高價是整個區域的最高點。這標誌著一個潛在的頂部反轉賣出信號。
+//   - 銀色通道 (PTZ Channel High / PTZ Channel Low)：代表了基於近期歷史最高/最低價的動態價格區間。價格在此通道內波動，突破通道邊界可能預示著趨勢的啟動或加速。通道提供了潛在的支撐和阻力區域。
+h_left = input.int(title="h left", defval=10, group="Price Time Zone")
+h_right = input.int(title="h right", defval=10, group="Price Time Zone")
+show_ptz = input.bool(title="Show PTZ", defval=true, group="Price Time Zone")
+show_channel = input.bool(title="Show channel", defval=true, group="Price Time Zone")
+
+//check history and realtime PTZ
+h_left_low = ta.lowest(h_left)
+h_left_high = ta.highest(h_left)
+newlow = low <= h_left_low
+newhigh = high >= h_left_high
+channel_high = plot(show_channel ? h_left_high : na, color=color.silver, title="PTZ Channel High")
+channel_low = plot(show_channel ? h_left_low : na, color=color.silver, title="PTZ Channel Low")
+central_bar_low = low[h_right + 1]
+central_bar_high = high[h_right + 1]
+full_zone_low = ta.lowest(h_left + h_right + 1)
+full_zone_high = ta.highest(h_left + h_right + 1)
+central_bar_is_highest = central_bar_high >= full_zone_high
+central_bar_is_lowest = central_bar_low <= full_zone_low
+
+plotchar(show_ptz and central_bar_is_highest, char="▲", offset=-h_right-1, color=color.green, text="Buy PTZ", location=location.abovebar)
+plotchar(show_ptz and central_bar_is_lowest, char="▼", offset=-h_right-1, location=location.belowbar, color=color.red, text="Sell PTZ")
+
+//======================================================================
+// 新增 RSI 指標用於賣出條件
+// Relative Strength Index (RSI)
+// 作用：測量價格變動的速度和變化，以判斷市場是否處於超買或超賣狀態。
+// 判讀：
+//   - 超買區 (通常 > 70)：表示買方力量過度，可能預示價格即將回調或下跌。
+//   - 超賣區 (通常 < 30)：表示賣方力量過度，可能預示價格即將反彈或上漲。
+//   - 趨勢確認：RSI 與價格的背離（價格創新高/低，RSI 未創新高/低）可能預示趨勢反轉。
+rsiLength = input.int(14, title="RSI 14 Length", group="RSI Settings")
+rsiLength7 = input.int(7, title="RSI 7 Length", group="RSI Settings") // 新增 RSI 7 參數
+rsiOverbought = input.int(70, title="RSI Overbought Level", group="RSI Settings")
+rsiOversold = input.int(30, title="RSI Oversold Level", group="RSI Settings")
+rsiValue = ta.rsi(close, rsiLength)
+rsiValue7 = ta.rsi(close, rsiLength7) // 計算 RSI 7
+
+// 修正：加強顯示 RSI 14 線，並更換顏色
+plot(rsiValue, "RSI 14", color=color.white, linewidth=2, display=display.pane)
+// 新增：繪製 RSI 7 線，並設定不同顏色
+plot(rsiValue7, "RSI 7", color=color.yellow, linewidth=2, display=display.pane)
+
+// 修正 hline 函數的 display 參數
+hline(rsiOverbought, "RSI Overbought", color=color.red)
+hline(rsiOversold, "RSI Oversold", color=color.green)
+
+
+// ======================================================================
+// 策略進出場條件修正 (N取K邏輯)
+// ======================================================================
+
+// 買入條件 (優化方向一：結合趨勢與動量指標 - 5取3)
+// 邏輯：
+// 1. 短期MA (ma05) 上穿 中期MA (ma10) (動量向上觸發)
+// 2. 短期MA (ma05) 和 中期MA (ma10, ma15, ma20) 都高於長期MA (ma100) (確認主要上升趨勢)
+// 3. MA 05 的動能顏色為灰色 (maColor 判斷 ma05 正在上漲且強勁)
+// 4. 價格從日線低點反彈 (price > dLow and price[1] <= dLow[1]) (在關鍵支撐位確認買入)
+// 5. PTZ 出現買入信號 (central_bar_is_lowest) (確認底部樞軸點)
+bool isMATrendUp = ta.crossover(ma05, ma10)
+bool isMultipleMAsAboveLongTerm = ma05 > ma100 and ma10 > ma100 and ma15 > ma100 and ma20 > ma100
+bool isMA05ColorGray = maColor(ma05, ma100) == color.gray
+bool isPriceReboundingFromDailyLow = close > dLow and close[1] <= dLow[1]
+bool isPTZBuySignal = central_bar_is_lowest
+
+// 計算滿足買入條件的數量
+int buyConditionCount = 0
+if isMATrendUp
+    buyConditionCount += 1
+if isMultipleMAsAboveLongTerm
+    buyConditionCount += 1
+if isMA05ColorGray
+    buyConditionCount += 1
+if isPriceReboundingFromDailyLow
+    buyConditionCount += 1
+if isPTZBuySignal
+    buyConditionCount += 1
+
+// 買入條件：5個條件中至少滿足3個
+buyCondition = buyConditionCount >= 3
+
+// 賣出條件 (優化方向二：結合趨勢指標和震盪指標 - 3取2)
+// 邏輯：
+// 1. 價格低於 Ichimoku 雲層 (leadLine1 和 leadLine2) (確認主要下降趨勢)
+// 2. 短期MA (ma05) 低於長期MA (ma100) (再次確認下降趨勢)
+// 3. RSI 進入超買區 (> rsiOverbought) 後向下穿出 (ta.crossunder(rsiValue, rsiOverbought)) (震盪指標確認頂部反轉)
+bool isPriceBelowIchimokuCloud = close < leadLine1 and close < leadLine2
+bool isMA05BelowLongTermMA = ma05 < ma100
+bool isRSIOverboughtAndFalling = ta.crossunder(rsiValue, rsiOverbought) // RSI 從超買區向下穿出
+
+// 計算滿足賣出條件的數量
+int sellConditionCount = 0
+if isPriceBelowIchimokuCloud
+    sellConditionCount += 1
+if isMA05BelowLongTermMA
+    sellConditionCount += 1
+if isRSIOverboughtAndFalling
+    sellConditionCount += 1
+
+// 賣出條件：3個條件中至少滿足2個
+sellCondition = sellConditionCount >= 2
+
+
+// 重新啟用策略入場信號
+// **重要提示：** 在啟用實盤交易前，請務必在策略設定中添加止損 (stop loss) 和止盈 (take profit) 機制，並進行充分的歷史回測。
+// 範例止損止盈：
+// - `strategy.exit("Exit Buy", from_entry="Buy", stop=close * 0.98, limit=close * 1.02)`
+// - `strategy.exit("Exit Sell", from_entry="Sell", stop=close * 1.02, limit=close * 0.98)`
+
+if buyCondition
+    strategy.entry("Buy", strategy.long)
+
+if sellCondition
+    strategy.entry("Sell", strategy.short)
