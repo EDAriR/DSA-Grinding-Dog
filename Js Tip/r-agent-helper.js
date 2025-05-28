@@ -72,7 +72,7 @@
 
             // 使用正規化後的 content 進行比對
             const normalizedContent = normalizeTechString(content);
-            const condContent = /(Salesforce|Android|Swift|C#|PHP|C\\+\\+|VB\\.NET|django)/i.test(normalizedContent);
+            const condContent = /(Salesforce|Android|スマホアプリ|Net|Swift|C#|PHP|C\\+\\+|VB\\.NET|django)/i.test(normalizedContent);
 
             // --- 偵錯用 Start ---
             if (content.includes("VB.NET") || content.includes("ＶＢ．ＮＥＴ")) {
@@ -84,7 +84,7 @@
             // --- 偵錯用 End ---
 
             // 優化：所有條件皆加上單字邊界，避免誤判，並加回明確的 PM 和 ＰＭ
-            const condTitle = /\b(PMO?|PM|PHP|講師|プロジェクトマネージャー|フロントエンジニア|PL)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
+            const condTitle = /\b(PMO?|PM|PHP|講師|プロジェクトマネージャー|アプリ|フロントエンジニア|Net|PL)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
 
             const shouldCheck = condSalary || condContent || condTitle;
             if (shouldCheck) {
