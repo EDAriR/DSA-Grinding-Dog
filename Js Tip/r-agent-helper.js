@@ -35,6 +35,8 @@
         let wantCheck = false;
         if (high === null) {
             wantCheck = low <= 410;
+        } else if (high == 600 && low == 400) {
+            wantCheck = true;
         } else if (high >= 600 && low >= 400) {
             wantCheck = false;
         } else {
@@ -84,7 +86,7 @@
             // --- 偵錯用 End ---
 
             // 優化：所有條件皆加上單字邊界，避免誤判，並加回明確的 PM 和 ＰＭ
-            const condTitle = /\b(PMO?|PM|PHP|講師|プロジェクトマネージャー|アプリ|フロントエンジニア|Net|PL)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
+            const condTitle = /\b(PMO?|PM|PHP|講師|マネージャー|アプリ|フロントエンジニア|Net|PL)\b|\b(ＰＭＯ?|ＰＭ|ＰＨＰ)\b/i.test(jobTitle);
 
             const shouldCheck = condSalary || condContent || condTitle;
             if (shouldCheck) {
