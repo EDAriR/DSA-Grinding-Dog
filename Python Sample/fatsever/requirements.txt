@@ -6,7 +6,6 @@ sqlalchemy>=2.0.0
 psycopg2-binary
 asyncpg
 python-magic
-python-magic-bin
 Pillow
 sse-starlette
 yt-dlp
