@@ -79,7 +79,10 @@ RUN python3 -m pip install --upgrade pip setuptools && \
         aiortc \
         fastapi-sse \
         discord.py \
-        aiofiles
+        aiofiles \
+        pyannote.audio \
+        opencc-python-reimplemented
+
 
 RUN update-ca-certificates
 RUN python3 -m pip install torch torchvision torchaudio

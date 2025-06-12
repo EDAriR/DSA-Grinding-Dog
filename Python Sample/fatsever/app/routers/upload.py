@@ -60,25 +60,32 @@ def get_unique_filename(filepath):
 
 @router.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
-    # 先讀取檔案開頭來確認 MIME 類型
-    initial_content = await file.read(1024)  # 讀取前 1KB 來檢查 MIME 類型
-    mime = magic.Magic(mime=True)
-    file_mime_type = mime.from_buffer(initial_content)
-    file_extension = os.path.splitext(file.filename)[1].lower()
-
-    # 決定檔案類型
-    if file_mime_type in ALLOWED_MIME_TYPES['image'] and file_extension in {'.png', '.jpeg', '.jpg', '.gif', '.webp'}:
-        file_type = 'image'
-    elif file_mime_type in ALLOWED_MIME_TYPES['video'] and file_extension in {'.mp4', '.mkv', '.avi'}:
-        file_type = 'video'
-    else:
-        file_type = 'file'
-
-    # 準備檔案路徑
-    file_location = os.path.join(UPLOAD_DIRS[file_type], file.filename)
-    file_location = get_unique_filename(file_location)
-
     try:
+        # 檢查檔案是否為空
+        if file.size and file.size == 0:
+            raise HTTPException(status_code=400, detail="檔案不能為空")
+        
+        # 先讀取檔案開頭來確認 MIME 類型
+        await file.seek(0)  # 確保從檔案開頭開始
+        initial_content = await file.read(1024)  # 讀取前 1KB 來檢查 MIME 類型
+        await file.seek(0)  # 重設檔案指標到開頭
+        
+        mime = magic.Magic(mime=True)
+        file_mime_type = mime.from_buffer(initial_content)
+        file_extension = os.path.splitext(file.filename)[1].lower()
+
+        # 決定檔案類型
+        if file_mime_type in ALLOWED_MIME_TYPES['image'] and file_extension in {'.png', '.jpeg', '.jpg', '.gif', '.webp'}:
+            file_type = 'image'
+        elif file_mime_type in ALLOWED_MIME_TYPES['video'] and file_extension in {'.mp4', '.mkv', '.avi'}:
+            file_type = 'video'
+        else:
+            file_type = 'file'
+
+        # 準備檔案路徑
+        file_location = os.path.join(UPLOAD_DIRS[file_type], file.filename)
+        file_location = get_unique_filename(file_location)
+
         # 特殊處理 webp 檔案
         if file_type == 'image' and file_mime_type == 'image/webp':
             content = await file.read()
@@ -88,23 +95,22 @@ async def upload_file(file: UploadFile = File(...)):
             image.save(file_location, 'PNG')
             file_size = os.path.getsize(file_location)
         else:
-            # 重設檔案指標到開頭
-            await file.seek(0)
-            
-            # 分塊寫入檔案並記錄進入與離開訊息
+            # 使用分塊寫入檔案
             file_size = 0
             chunk_index = 0
-            logger.info("開始分塊寫入檔案")
+            logger.info("開始分塊寫入檔案: %s", file.filename)
+            
             async with aiofiles.open(file_location, 'wb') as out_file:
-                while content := await file.read(CHUNK_SIZE):
-                    await out_file.write(content)
-                    file_size += len(content)
+                while chunk := await file.read(CHUNK_SIZE):
+                    await out_file.write(chunk)
+                    file_size += len(chunk)
                     chunk_index += 1
-                    logger.info("寫入 chunk %d, 長度: %d bytes", chunk_index, len(content))
+                    logger.info("寫入 chunk %d, 長度: %d bytes", chunk_index, len(chunk))
+            
             logger.info("分塊寫入完成，總共寫入 %d bytes", file_size)
 
         # 檢查總容量限制
-        if CACHE['total_size'] + file_size > 50 * 1024 * 1024 * 1024:  # 5GB
+        if CACHE['total_size'] + file_size > 50 * 1024 * 1024 * 1024:  # 50GB
             if os.path.exists(file_location):
                 os.remove(file_location)
             raise HTTPException(
@@ -114,11 +120,17 @@ async def upload_file(file: UploadFile = File(...)):
 
         CACHE['total_size'] += file_size
         logger.info("%s '%s' 上傳成功, 檔案大小: %d bytes", file_type.capitalize(), file.filename, file_size)
-        return {"info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully."}
+        
+        return {
+            "info": f"{file_type.capitalize()} '{file.filename}' uploaded successfully.",
+            "file_type": file_type,
+            "file_size": file_size,
+            "file_location": os.path.basename(file_location)
+        }
 
     except Exception as e:
         # 發生錯誤時清理已寫入的檔案
-        if os.path.exists(file_location):
+        if 'file_location' in locals() and os.path.exists(file_location):
             os.remove(file_location)
         logger.error("上傳失敗: %s", str(e))
         raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")

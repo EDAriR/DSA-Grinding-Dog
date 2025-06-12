@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>大檔案上傳測試</title>
+    <style>
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .progress {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>大檔案上傳測試</h1>
+    
+    <div class="upload-area">
+        <input type="file" id="fileInput" />
+        <br><br>
+        <button onclick="testUpload()">測試簡單上傳</button>
+        <button onclick="normalUpload()">正常上傳</button>
+    </div>
+    
+    <div class="progress" style="display: none;">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div id="result"></div>
+
+    <script>
+        function testUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('請先選擇檔案');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '測試上傳中...';
+
+            fetch('/test-upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                resultDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            })
+            .catch(error => {
+                resultDiv.innerHTML = '錯誤: ' + error.message;
+            });
+        }
+
+        function normalUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('請先選擇檔案');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const resultDiv = document.getElementById('result');
+            const progressDiv = document.querySelector('.progress');
+            const progressBar = document.getElementById('progressBar');
+            
+            resultDiv.innerHTML = '正常上傳中...';
+            progressDiv.style.display = 'block';
+
+            const xhr = new XMLHttpRequest();
+            
+            xhr.upload.addEventListener('progress', function(e) {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    progressBar.style.width = percentComplete + '%';
+                }
+            });
+
+            xhr.addEventListener('load', function() {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    resultDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    resultDiv.innerHTML = '上傳失敗: ' + xhr.status + ' ' + xhr.statusText;
+                }
+                progressDiv.style.display = 'none';
+                progressBar.style.width = '0%';
+            });
+
+            xhr.addEventListener('error', function() {
+                resultDiv.innerHTML = '上傳錯誤';
+                progressDiv.style.display = 'none';
+                progressBar.style.width = '0%';
+            });
+
+            xhr.open('POST', '/api/upload');
+            xhr.send(formData);
+        }
+    </script>
+</body>
+</html>
