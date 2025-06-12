@@ -256,6 +256,10 @@
         }
         sendResponse({ html: selectedHtml });
         return true; // 為了非同步 sendResponse，保持通道開啟
+      } else if (message.action === "getPageHtml") {
+        const html = document.documentElement.outerHTML;
+        sendResponse({ html });
+        return true;
       }
       return true; // 保持非同步回應
     };
