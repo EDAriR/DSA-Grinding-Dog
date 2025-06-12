@@ -1,20 +1,7 @@
 try {
-  importScripts('turndown.js');
+  importScripts('html2md.js');
 } catch (e) {
-  console.error('無法載入 Turndown:', e);
-}
-
-function convertHtmlToMarkdown(html, removeHidden = false) {
-  if (typeof TurndownService !== 'function') {
-    throw new Error('TurndownService 未載入');
-  }
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, 'text/html');
-  if (removeHidden) {
-    doc.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
-  }
-  const turndownService = new TurndownService();
-  return turndownService.turndown(doc.body || doc);
+  console.error('無法載入轉換腳本:', e);
 }
 
 chrome.runtime.onInstalled.addListener(() => {

@@ -1,30 +1,23 @@
-// 動態加載 Turndown 库
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/turndown@7.0.0/dist/turndown.js';
-document.head.appendChild(script);
+try {
+  importScripts('turndown.js');
+} catch (e) {
+  console.error('無法載入 Turndown:', e);
+}
 
-script.onload = function() {
-    // 確保 TurndownService 已加載
-    var turndownService = new TurndownService();
+function convertHtmlToMarkdown(html, removeHidden = false) {
+  if (typeof TurndownService !== 'function') {
+    throw new Error('TurndownService 未載入');
+  }
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  if (removeHidden) {
+    doc.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
+  }
+  const turndownService = new TurndownService();
+  return turndownService.turndown(doc.body || doc);
+}
 
-    // 選擇要轉換的 HTML 元素，這裡是 id 為 'content' 的元素
-    // var htmlContent = document.getElementById('content').innerHTML;
-    var htmlContent = document.getElementsByClassName('content').innerHTML;
-
-    // 將 HTML 轉換為 Markdown
-    var markdown = turndownService.turndown(htmlContent);
-
-    // 創建 Blob 對象
-    var markdownBlob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
-
-    // 創建一個臨時的超鏈接元素來觸發下載
-    var downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(markdownBlob);
-    downloadLink.download = 'output.md';
-
-    // 觸發下載
-    downloadLink.click();
-
-    // 清理 URL 對象
-    URL.revokeObjectURL(downloadLink.href);
-};
+// 若在瀏覽器頁面直接引入，可提供全域函式方便呼叫
+if (typeof window !== 'undefined') {
+  window.convertHtmlToMarkdown = convertHtmlToMarkdown;
+}
