@@ -240,7 +240,6 @@
         });
         return true; // 表示會异步呼叫 sendResponse
       } else if (message.action === "getSelectedHtml") { // ++ 新增處理 getSelectedHtml 的邏輯 ++
-        // TODO
         let selectedHtml = "";
         const selection = window.getSelection();
         if (selection && selection.rangeCount > 0) {
@@ -257,7 +256,10 @@
         sendResponse({ html: selectedHtml });
         return true; // 為了非同步 sendResponse，保持通道開啟
       } else if (message.action === "getPageHtml") {
-        const html = document.documentElement.outerHTML;
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
+        const html = clone.outerHTML;
+
         sendResponse({ html });
         return true;
       }
