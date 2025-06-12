@@ -261,6 +261,27 @@
         const html = clone.outerHTML;
         sendResponse({ html });
         return true;
+      } else if (message.action === 'copyMarkdown') {
+        const text = message.markdown || '';
+        const lines = text.split('\n');
+        const first = lines[0] || '';
+        const last = lines[lines.length - 1] || '';
+        console.log(`[Content] 開始寫入剪貼簿 首行: ${first} | 末行: ${last}`);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text)
+            .then(() => {
+              console.log(`[Content] 已完成複製 首行: ${first} | 末行: ${last}`);
+              sendResponse({ success: true });
+            })
+            .catch(err => {
+              console.error('[Content] 複製 Markdown 失敗:', err);
+              sendResponse({ success: false });
+            });
+        } else {
+          console.warn('[Content] Clipboard API 不可用');
+          sendResponse({ success: false });
+        }
+        return true;
       }
       return true; // 保持非同步回應
     };
