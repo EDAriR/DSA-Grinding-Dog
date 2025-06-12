@@ -240,7 +240,6 @@
         });
         return true; // 表示會异步呼叫 sendResponse
       } else if (message.action === "getSelectedHtml") { // ++ 新增處理 getSelectedHtml 的邏輯 ++
-        // TODO
         let selectedHtml = "";
         const selection = window.getSelection();
         if (selection && selection.rangeCount > 0) {

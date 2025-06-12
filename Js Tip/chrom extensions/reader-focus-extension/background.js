@@ -15,6 +15,7 @@ function convertHtmlToMarkdown(html, removeHidden = false) {
   }
   const turndownService = new TurndownService();
   return turndownService.turndown(doc.body || doc);
+
 }
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -33,6 +34,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === 'copyAsMarkdown' && tab) {
     chrome.tabs.sendMessage(tab.id, { action: 'getSelectedHtml' }, (response) => {
+
       if (chrome.runtime.lastError) {
         console.error("請求選取的 HTML 時發生錯誤:", chrome.runtime.lastError.message);
         return;
@@ -76,6 +78,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
           }
         } catch (err) {
           console.error('HTML 轉換為 Markdown 失敗:', err);
+
         }
       } else {
         console.warn("未從內容腳本收到 HTML 或回應格式無效。");
