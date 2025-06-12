@@ -259,7 +259,6 @@
         const clone = document.documentElement.cloneNode(true);
         clone.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
         const html = clone.outerHTML;
-
         sendResponse({ html });
         return true;
       }
