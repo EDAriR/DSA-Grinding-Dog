@@ -167,29 +167,31 @@
       if (message.action === 'toggleFocus') {
         if (getState().isButtonHiddenForSite) {
           sendResponse({ success: false, error: '按鈕已隱藏，無法切換專注' });
-          return true;
+          return; // 同步回應，不需要 return true
         }
         Main.toggleSelectMode();
         sendResponse({ success: true });
+        return; // 同步回應
       } else if (message.action === 'updatePosition') {
         if (getState().isButtonHiddenForSite) {
-          // 理論上按鈕隱藏時，popup 不應提供此選項，但做個防禦
           sendResponse({ success: false, error: '按鈕已隱藏，無法更新位置' });
-          return true;
+          return;
         }
         UI.updateButtonPosition(message.position);
         sendResponse({ success: true });
+        return;
       } else if (message.action === 'getStatus') {
         sendResponse({
           hasFocusedElement: !!getState().focusedElement,
           isSelectMode: getState().isSelectMode,
-          isButtonHidden: getState().isButtonHiddenForSite, // 新增狀態
-          currentSiteHost: window.location.hostname // 新增目前網域
+          isButtonHidden: getState().isButtonHiddenForSite,
+          currentSiteHost: window.location.hostname
         });
+        return; // 同步回應
       } else if (message.action === 'setCustomSelector') {
         if (getState().isButtonHiddenForSite) {
           sendResponse({ success: false, error: '按鈕已隱藏，無法套用自訂選取器' });
-          return true;
+          return;
         }
         try {
           const el = document.querySelector(message.selector);
@@ -204,6 +206,7 @@
         } catch (err) {
           sendResponse({ success: false, error: err.message });
         }
+        return; // 同步回應
       } else if (message.action === 'hideButtonForSite') {
         const currentHostname = window.location.hostname;
         chrome.storage.local.get(['hiddenSites'], function(result) {
@@ -216,11 +219,11 @@
               sendResponse({ success: true, isHidden: true });
             });
           } else {
-            performHideButtonActions(); // 即使已在列表，也執行隱藏動作確保一致
+            performHideButtonActions();
             sendResponse({ success: true, isHidden: true });
           }
         });
-        return true; // 表示會异步呼叫 sendResponse
+        return true; // 非同步回應
       } else if (message.action === 'showButtonForSite') {
         const currentHostname = window.location.hostname;
         chrome.storage.local.get(['hiddenSites'], function(result) {
@@ -234,12 +237,12 @@
               sendResponse({ success: true, isHidden: false });
             });
           } else {
-            performShowButtonActions(); // 即使不在列表，也執行顯示動作確保一致
+            performShowButtonActions();
             sendResponse({ success: true, isHidden: false });
           }
         });
-        return true; // 表示會异步呼叫 sendResponse
-      } else if (message.action === "getSelectedHtml") { // ++ 新增處理 getSelectedHtml 的邏輯 ++
+        return true; // 非同步回應
+      } else if (message.action === "getSelectedHtml") {
         let selectedHtml = "";
         const selection = window.getSelection();
         if (selection && selection.rangeCount > 0) {
@@ -247,26 +250,132 @@
           const div = document.createElement("div");
           div.appendChild(range.cloneContents());
           selectedHtml = div.innerHTML;
-          // if (debug > 0) console.log("Selected HTML:", selectedHtml); // 如果您有 debug 變數
           console.log("選取的 HTML:", selectedHtml);
         } else {
-          // if (debug > 0) console.log("No selection found or rangeCount is 0.");
           console.log("未找到選取內容或 rangeCount 為 0。");
         }
         sendResponse({ html: selectedHtml });
-        return true; // 為了非同步 sendResponse，保持通道開啟
+        // 雖然 getSelection 是同步的，但為了與 background.js 的流程保持一致性，
+        // 且 sendResponse 是在函式末尾，可以不返回 true，或返回 true 均可。
+        // 這裡保持原樣返回 true，因為 background.js 期望它可能非同步。
+        return true; 
       } else if (message.action === "getPageHtml") {
         const clone = document.documentElement.cloneNode(true);
-        clone.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
+        // 移除隱藏元素的操作已移至 actualConvertToMarkdown，這裡只傳送原始 HTML
+        // clone.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
         const html = clone.outerHTML;
         sendResponse({ html });
-        return true;
+        return true; // 同上，保持返回 true
+      } else if (message.action === 'actualConvertToMarkdown') {
+        console.log('[ContentScript] Received actualConvertToMarkdown request:', message);
+        try {
+          if (typeof TurndownService !== 'function') {
+            console.error('[ContentScript] TurndownService is not defined!');
+            sendResponse({ success: false, error: 'TurndownService is not available in content script.' });
+            return; // Turndown 未定義，同步回覆錯誤，不需 return true
+          }
+
+          const htmlString = message.html;
+          const removeHidden = message.removeHidden;
+
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlString, 'text/html');
+
+          // 1. 移除所有 <script> 標籤
+          doc.querySelectorAll('script').forEach(scriptTag => {
+            scriptTag.remove();
+          });
+
+          // 移除隱藏元素 (如果需要)
+          if (removeHidden) {
+            doc.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => {
+              if (el && typeof el.remove === 'function') {
+                el.remove();
+              }
+            });
+          }
+
+          const turndownService = new TurndownService({
+            // Turndown 選項範例
+            // headingStyle: 'atx',
+            // hr: '---',
+            // bulletListMarker: '*',
+            // codeBlockStyle: 'fenced'
+          });
+
+          // 2. 為 <pre> 標籤新增自訂規則 (使用遞迴方式處理換行)
+          turndownService.addRule('preservePreWithLanguageRecursive', {
+            filter: 'pre',
+            replacement: function (content, node) {
+              let language = '';
+              // 嘗試從 <pre> 自身或其子 <code> 元素獲取語言標記
+              const firstCodeElement = node.querySelector('code');
+              if (firstCodeElement) {
+                const langClass = firstCodeElement.className.match(/language-(\S+)/);
+                if (langClass && langClass[1]) {
+                  language = langClass[1];
+                }
+              }
+              if (!language) {
+                language = node.getAttribute('data-lang') ||
+                           (node.className.match(/language-(\S+)/) || [])[1] ||
+                           (node.getAttribute('lang')) ||
+                           (node.getAttribute('language')) ||
+                           '';
+              }
+
+              // 遞迴函式來處理節點及其子節點，尋找文本和 <br>
+              function getNodeTextRecursive(currentNode) {
+                let text = '';
+                Array.from(currentNode.childNodes).forEach(childNode => {
+                  if (childNode.nodeType === Node.TEXT_NODE) {
+                    text += childNode.nodeValue;
+                  } else if (childNode.nodeType === Node.ELEMENT_NODE) {
+                    if (childNode.tagName === 'BR') {
+                      text += '\n';
+                    } else {
+                      // 對於其他所有元素節點 (如 code, span 等)，遞迴處理其子節點
+                      text += getNodeTextRecursive(childNode);
+                    }
+                  }
+                });
+                return text;
+              }
+
+              let codeText = getNodeTextRecursive(node); // 從 <pre> 節點開始遞迴
+
+              // 標準化換行符：將 \r\n 和 \r 替換為 \n
+              codeText = codeText.replace(/\r\n?/g, '\n');
+              // 移除程式碼區塊內容本身前後的空白換行
+              const trimmedCode = codeText.trim();
+
+              if (!trimmedCode) {
+                return '';
+              }
+              return '\n\n```' + language + '\n' + trimmedCode + '\n```\n\n';
+            }
+          });
+
+          const markdownText = turndownService.turndown(doc.body || doc.documentElement);
+
+          console.log('[ContentScript] Markdown conversion successful.');
+          sendResponse({ success: true, markdown: markdownText });
+
+        } catch (e) {
+          console.error('[ContentScript] Error during Markdown conversion:', e, e.stack);
+          sendResponse({ success: false, error: e.toString(), stack: e.stack });
+        }
+        return true; // DOMParser 和 Turndown 可能耗時，表示非同步回應
       } else if (message.action === 'copyMarkdown') {
         const text = message.markdown || '';
         const lines = text.split('\n');
         const first = lines[0] || '';
         const last = lines[lines.length - 1] || '';
         console.log(`[Content] 開始寫入剪貼簿 首行: ${first} | 末行: ${last}`);
+
+        // 嘗試將焦點設定回文件，以允許剪貼簿寫入
+        window.focus();
+
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text)
             .then(() => {
@@ -274,16 +383,41 @@
               sendResponse({ success: true });
             })
             .catch(err => {
-              console.error('[Content] 複製 Markdown 失敗:', err);
-              sendResponse({ success: false });
+              console.error('[Content] 複製 Markdown 失敗 (navigator.clipboard.writeText):', err);
+              // 嘗試使用 document.execCommand('copy') 作為備案
+              console.log('[Content] 嘗試使用 document.execCommand(\'copy\') 作為備案...');
+              try {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed'; // 防止滾動
+                textarea.style.top = '-9999px'; // 移出畫面外
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                const success = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                if (success) {
+                  console.log('[Content] document.execCommand(\'copy\') 成功');
+                  sendResponse({ success: true, method: 'execCommand' });
+                } else {
+                  console.error('[Content] document.execCommand(\'copy\') 失敗');
+                  sendResponse({ success: false, error: 'execCommand failed', originalError: err.toString() });
+                }
+              } catch (execErr) {
+                console.error('[Content] document.execCommand(\'copy\') 執行時發生錯誤:', execErr);
+                sendResponse({ success: false, error: execErr.toString(), originalError: err.toString() });
+              }
             });
         } else {
           console.warn('[Content] Clipboard API 不可用');
-          sendResponse({ success: false });
+          sendResponse({ success: false, error: 'Clipboard API not available' });
         }
-        return true;
+        return true; // navigator.clipboard.writeText 是非同步的
       }
-      return true; // 保持非同步回應
+      // 移除通用的 return true，只在需要非同步回應的 action 中返回 true
+      // console.warn('[ContentScript] Unknown message action:', message.action);
+      // sendResponse({ success: false, error: 'Unknown action' }); // 對於未知 action，可以考慮回覆
+      // return false; // 或不返回，讓通道關閉
     };
     chrome.runtime.onMessage.addListener(messageListener);
   }

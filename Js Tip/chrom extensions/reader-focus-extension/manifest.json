@@ -30,6 +30,7 @@
     {
       "matches": ["<all_urls>"],
       "js": [
+        "turndown.js",
         "focusable-selectors.js",
         "ui.js",
         "focus-mode.js",
