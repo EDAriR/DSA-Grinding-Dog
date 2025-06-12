@@ -256,6 +256,12 @@
         }
         sendResponse({ html: selectedHtml });
         return true; // 為了非同步 sendResponse，保持通道開啟
+      } else if (message.action === "getPageHtml") {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('[style*="display:none" i], [hidden]').forEach(el => el.remove());
+        const html = clone.outerHTML;
+        sendResponse({ html });
+        return true;
       }
       return true; // 保持非同步回應
     };
