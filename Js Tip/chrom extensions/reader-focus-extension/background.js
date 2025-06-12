@@ -17,21 +17,30 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+function copyToClipboard(tabId, text) {
+  chrome.scripting.executeScript(
+    {
+      target: { tabId },
+      func: (content) => navigator.clipboard.writeText(content),
+      args: [text]
+    },
+    () => {
+      if (chrome.runtime.lastError) {
+        console.error('無法寫入剪貼簿:', chrome.runtime.lastError.message);
+      } else {
+        console.log('Markdown 已複製到剪貼簿。');
+      }
+    }
+  );
+}
+
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === 'copyAsMarkdown' && tab) {
     chrome.tabs.sendMessage(tab.id, { action: 'getSelectedHtml' }, (response) => {
-
-      if (chrome.runtime.lastError) {
-        console.error("請求選取的 HTML 時發生錯誤:", chrome.runtime.lastError.message);
-        return;
-      }
+            copyToClipboard(tab.id, markdownText);
       if (response && typeof response.html === 'string') {
         try {
-          const markdownText = convertHtmlToMarkdown(response.html);
-          if (markdownText) {
-            navigator.clipboard.writeText(markdownText)
-              .then(() => {
-                console.log('Markdown 已複製到剪貼簿。');
+            copyToClipboard(tab.id, markdownText);
               })
               .catch(err => console.error('將 Markdown 複製到剪貼簿失敗:', err));
           } else {
