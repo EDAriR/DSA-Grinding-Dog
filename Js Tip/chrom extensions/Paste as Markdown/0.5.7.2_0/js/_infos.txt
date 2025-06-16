@@ -1,7 +1,0 @@
-lib contains external scripts used as is
-js contains custom scripts for the extension
-js/browser contains different versions of the same scripts for chrome/ff
-
-using "browser" as dir name allows to have the same manifest for both browsers
-content.js is injected by background.js and therefore not declared in manifest
-it is also called directly by the help popup (popup_help.html)
