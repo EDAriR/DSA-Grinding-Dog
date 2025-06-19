@@ -28,18 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
     controlsToDisableWhenHidden.forEach(control => {
       control.disabled = isDisabled;
     });
-    if (isDisabled) {
-      customItem.style.display = 'none'; // 如果按鈕隱藏，也隱藏自訂選取器區域
-    } else {
-      // 重新查詢狀態以決定是否顯示自訂選取器
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { action: 'getStatus' }, function(response) {
-          if (response && !response.hasFocusedElement) {
-            customItem.style.display = 'block';
-          }
-        });
-      });
-    }
+    // if (isDisabled) {
+    //   customItem.style.display = 'none'; // 如果按鈕隱藏，也隱藏自訂選取器區域
+    // } else {
+    //   // 重新查詢狀態以決定是否顯示自訂選取器
+    //   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    //     chrome.tabs.sendMessage(tabs[0].id, { action: 'getStatus' }, function(response) {
+    //       if (response && !response.hasFocusedElement) {
+    //         customItem.style.display = 'block';
+    //       }
+    //     });
+    //   });
+    // }
   }
 
   // 在彈窗開啟時，查詢內容腳本狀態並更新按鈕文字與自訂選取器區塊
@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
           // 根據是否有焦點元素，更新 "選取/取消專注" 按鈕和自訂選取器可見性
           if (response.hasFocusedElement) {
             toggleButton.textContent = '取消專注模式';
-            customItem.style.display = 'none';
+            // customItem.style.display = 'none';
           } else {
             toggleButton.textContent = '選取閱讀區塊';
-            customItem.style.display = 'block';
+            // customItem.style.display = 'block';
             applyBtn.disabled = false;
             customInput.disabled = false;
           }
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
           alert('套用失敗，內容腳本未回應');
         } else if (response && response.success) {
           // 套用成功後，隱藏自訂選取器區塊
-          customItem.style.display = 'none';
+          // customItem.style.display = 'none';
           applyBtn.disabled = true;
           customInput.disabled = true;
           toggleButton.textContent = '取消專注模式';

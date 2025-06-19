@@ -518,7 +518,7 @@
       if (!document.getElementById('reader-focus-button') && window.readerFocusInitialized) {
           // 這裡需要確保 floatButton 狀態也正確，避免在不應顯示時重建
           // initializeExtension 內部已有 isButtonHiddenForSite 的檢查
-          console.warn('[DEBUG] 偵測到按鈕消失，嘗試重新執行初始化檢查...');
+          console.debug('[DEBUG] 偵測到按鈕消失，嘗試重新執行初始化檢查...');
           // window.readerFocusInitialized = false; // 不需要重設為 false，讓 initializeExtension 內部邏輯判斷
           initializeExtension(); // 重新執行初始化流程，它會檢查是否要建按鈕
       }
