@@ -169,3 +169,25 @@ Python Sample/fatsever/files/tmp
 Python Sample/fatsever/files/tmp
 Python Sample/fatsever/video/tmp
 Python Sample/fatsever/youtube.com_cookies.txt
+
+# 瀏覽器擴充套件的大檔案
+Js Tip/chrom extensions/**/*.dat
+Js Tip/chrom extensions/**/*.woff
+Js Tip/chrom extensions/**/*.woff2
+Js Tip/chrom extensions/**/*.png
+Js Tip/chrom extensions/**/*.gif
+Js Tip/chrom extensions/**/*.jpg
+Js Tip/chrom extensions/**/*.jpeg
+Js Tip/chrom extensions/**/*.svg
+Js Tip/chrom extensions/**/*.ttf
+Js Tip/chrom extensions/**/*.eot
+
+# IDE 設定檔案
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 作業系統生成的檔案
+.DS_Store
+Thumbs.db
