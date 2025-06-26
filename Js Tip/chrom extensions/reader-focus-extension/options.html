@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>閱讀區塊專注模式 - 設定</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>閱讀區塊專注模式 - 設定</h1>
+
+    <!-- 隱藏網站管理 -->
+    <div class="section">
+      <h2>隱藏按鈕的網站列表</h2>
+      <p>在此列表中的網站，將不會顯示懸浮功能按鈕。</p>
+      <ul id="hidden-sites-list">
+        <!-- 內容將由 options.js 動態填入 -->
+      </ul>
+      <form id="add-site-form">
+        <input type="text" id="new-site-input" placeholder="例如：www.example.com">
+        <button type="submit" id="add-site-btn">新增</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

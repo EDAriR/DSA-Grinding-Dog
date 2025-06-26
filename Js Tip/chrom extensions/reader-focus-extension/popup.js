@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const customInput = document.getElementById('custom-selector-input');
   const toggleHideSiteButton = document.getElementById('toggle-hide-site-button');
   const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
+  const screenshotButton = document.getElementById('take-screenshot'); // 獲取截圖按鈕
 
   // 控制項群組，方便統一啟用/禁用
   const controlsToDisableWhenHidden = [
@@ -41,6 +42,19 @@ document.addEventListener('DOMContentLoaded', function() {
     //   });
     // }
   }
+
+  // 全頁截圖按鈕點擊事件
+  screenshotButton.addEventListener('click', function() {
+    chrome.runtime.sendMessage({ action: 'takeScreenshot' }, function(response) {
+      if (chrome.runtime.lastError) {
+        console.error('無法發送截圖請求:', chrome.runtime.lastError.message);
+        alert('啟動截圖失敗，請重新整理頁面再試一次。');
+      } else {
+        console.log('已發送截圖請求');
+      }
+    });
+    window.close(); // 立即關閉彈出視窗
+  });
 
   // 在彈窗開啟時，查詢內容腳本狀態並更新按鈕文字與自訂選取器區塊
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {

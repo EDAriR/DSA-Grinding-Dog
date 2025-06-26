@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>截圖預覽</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左側 Sidebar：顯示原始截圖 -->
+        <div class="sidebar">
+            <h2>原始截圖</h2>
+            <div id="original-images"></div>
+        </div>
+        
+        <!-- 中間 Main：顯示拼接後的圖片 -->
+        <div class="main">
+            <h1>拼接結果</h1>
+            <div id="stitched-container">
+                <img id="stitched-image" src="" alt="拼接後的截圖">
+                <div id="loading">拼接處理中...</div>
+            </div>
+            <div id="actions">
+                <button id="download-btn">下載拼接圖片</button>
+            </div>
+        </div>
+    </div>
+    <script src="preview.js"></script>
+</body>
+</html>

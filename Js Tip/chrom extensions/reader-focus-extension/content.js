@@ -209,11 +209,11 @@
         return; // 同步回應
       } else if (message.action === 'hideButtonForSite') {
         const currentHostname = window.location.hostname;
-        chrome.storage.local.get(['hiddenSites'], function(result) {
+        chrome.storage.sync.get(['hiddenSites'], function(result) {
           const hiddenSites = result.hiddenSites || [];
           if (!hiddenSites.includes(currentHostname)) {
             hiddenSites.push(currentHostname);
-            chrome.storage.local.set({ hiddenSites: hiddenSites }, () => {
+            chrome.storage.sync.set({ hiddenSites: hiddenSites }, () => {
               console.log(`[DEBUG] ${currentHostname} 已加入隱藏列表`);
               performHideButtonActions();
               sendResponse({ success: true, isHidden: true });
@@ -226,12 +226,12 @@
         return true; // 非同步回應
       } else if (message.action === 'showButtonForSite') {
         const currentHostname = window.location.hostname;
-        chrome.storage.local.get(['hiddenSites'], function(result) {
+        chrome.storage.sync.get(['hiddenSites'], function(result) {
           let hiddenSites = result.hiddenSites || [];
           const index = hiddenSites.indexOf(currentHostname);
           if (index > -1) {
             hiddenSites.splice(index, 1);
-            chrome.storage.local.set({ hiddenSites: hiddenSites }, () => {
+            chrome.storage.sync.set({ hiddenSites: hiddenSites }, () => {
               console.log(`[DEBUG] ${currentHostname} 已從隱藏列表移除`);
               performShowButtonActions();
               sendResponse({ success: true, isHidden: false });
@@ -477,7 +477,7 @@
       
       window.readerFocusInitialized = true; // 先標記初始化
 
-      chrome.storage.local.get(['hiddenSites'], function(result) {
+      chrome.storage.sync.get(['hiddenSites'], function(result) {
         const hiddenSites = result.hiddenSites || [];
         const currentHostname = window.location.hostname;
         if (hiddenSites.includes(currentHostname)) {

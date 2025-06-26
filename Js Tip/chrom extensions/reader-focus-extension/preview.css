@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #fff;
+    border-right: 2px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 10px;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+}
+
+.main h1 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+#original-images {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.original-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.original-item:hover {
+    transform: scale(1.02);
+}
+
+.original-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.original-item .caption {
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #666;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+#stitched-container {
+    text-align: center;
+    position: relative;
+}
+
+#stitched-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #333;
+    display: block;
+}
+
+#actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#download-btn {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#download-btn:hover {
+    background-color: #005999;
+}
+
+#download-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

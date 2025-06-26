@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "閱讀區塊專注模式",
   "version": "1.0.0",
-  "description": "讓使用者可手動選取一個網頁區塊，自動隱藏其餘部分，提升閱讀專注力",
+  "description": "選取網頁上的任何區塊，將其專注顯示，並隱藏其餘所有內容，提供無干擾的閱讀體驗。支援自訂選取器、Markdown 複製與全頁截圖。",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
@@ -17,11 +17,16 @@
     }
   },
   "permissions": [
-    "activeTab",
     "storage",
+    "activeTab",
     "scripting",
     "contextMenus",
-    "clipboardWrite"
+    "clipboardWrite",
+    "downloads"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -38,6 +43,13 @@
         "content.js"
       ],
       "css": ["styles.css"]
+    }
+  ],
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["preview.html", "preview.css", "preview.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }
