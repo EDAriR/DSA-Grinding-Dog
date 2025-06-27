@@ -159,38 +159,41 @@ document.addEventListener('DOMContentLoaded', function() {
       chrome.scripting.executeScript({
         target: {tabId: tabId},
         func: () => {
-          console.log('[Injected Script] Filter-based dark mode script executed on page!');
-          const d = document.documentElement;
-          const mediaSelectors = 'img, video, canvas, svg, embed, object, picture';
-          const filterValue = 'invert(1) hue-rotate(180deg)';
-          const htmlMarkerClass = 'extension-dark-mode-active-filter';
-          const originalFilterDatasetKey = 'extensionOriginalFilter';
-
-          if (d.classList.contains(htmlMarkerClass)) {
-            // Dark mode is on, turn it off
-            d.style.filter = '';
-            d.classList.remove(htmlMarkerClass);
-            document.querySelectorAll(mediaSelectors).forEach(el => {
-              if (el.dataset[originalFilterDatasetKey] !== undefined) {
-                el.style.filter = el.dataset[originalFilterDatasetKey];
-                delete el.dataset[originalFilterDatasetKey];
-              } else if (el.style.filter === filterValue) {
-                el.style.filter = '';
-              }
-            });
-            console.log('[Injected Script] Filter dark mode turned OFF.');
+          const styleId = 'extension-dark-mode-style';
+          const className = 'extension-dark-mode';
+          const html = document.documentElement;
+          const existing = document.getElementById(styleId);
+          // 清理舊版 filter 實作遺留樣式
+          if (html.style.filter) html.style.filter = '';
+          document.querySelectorAll('[data-extensionoriginalfilter]').forEach(el => {
+            el.style.filter = el.dataset.extensionoriginalfilter;
+            delete el.dataset.extensionoriginalfilter;
+          });
+          if (html.classList.contains(className)) {
+            html.classList.remove(className);
+            if (existing) existing.remove();
             return {success: true, mode: 'off'};
-          } else {
-            // Dark mode is off, turn it on
-            d.style.filter = filterValue;
-            d.classList.add(htmlMarkerClass);
-            document.querySelectorAll(mediaSelectors).forEach(el => {
-              el.dataset[originalFilterDatasetKey] = el.style.filter || '';
-              el.style.filter = filterValue; // Apply filter again to revert media
-            });
-            console.log('[Injected Script] Filter dark mode turned ON.');
-            return {success: true, mode: 'on'};
           }
+          const css = `
+html.${className},
+html.${className} body,
+html.${className} body *:not(img):not(video):not(canvas):not(svg):not(picture) {
+  background-color: #121212 !important;
+  color: #f0f0f0 !important;
+}
+html.${className} img,
+html.${className} video,
+html.${className} canvas,
+html.${className} svg,
+html.${className} picture {
+  filter: invert(0.92) hue-rotate(180deg) !important;
+}`;
+          const style = existing || document.createElement('style');
+          style.id = styleId;
+          style.textContent = css;
+          if (!existing) document.head.appendChild(style);
+          html.classList.add(className);
+          return {success: true, mode: 'on'};
         }
       }, (injectionResults) => {
         if (chrome.runtime.lastError) {
