@@ -16,12 +16,14 @@ h1, h2 {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#hidden-sites-list {
+#hidden-sites-list,
+#darkmode-sites-list {
     list-style: none;
     padding: 0;
 }
 
-#hidden-sites-list li {
+#hidden-sites-list li,
+#darkmode-sites-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +31,8 @@ h1, h2 {
     border-bottom: 1px solid #ddd;
 }
 
-#hidden-sites-list li:last-child {
+#hidden-sites-list li:last-child,
+#darkmode-sites-list li:last-child {
     border-bottom: none;
 }
 
@@ -46,19 +49,22 @@ h1, h2 {
     background-color: #da190b;
 }
 
-#add-site-form {
+#add-site-form,
+#add-dark-site-form {
     margin-top: 20px;
     display: flex;
 }
 
-#new-site-input {
+#new-site-input,
+#new-dark-site-input {
     flex-grow: 1;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-#add-site-btn {
+#add-site-btn,
+#add-dark-site-btn {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -68,6 +74,7 @@ h1, h2 {
     margin-left: 10px;
 }
 
-#add-site-btn:hover {
+#add-site-btn:hover,
+#add-dark-site-btn:hover {
     background-color: #45a049;
 }
