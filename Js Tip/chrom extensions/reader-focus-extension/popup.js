@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       const tabId = tabs[0].id;
+      const hostname = tabs[0].url ? new URL(tabs[0].url).hostname : '';
       console.log(`[Extension Popup] Attempting to inject script into tab ID: ${tabId}`);
 
       chrome.scripting.executeScript({
@@ -201,6 +202,18 @@ html.${className} picture {
           alert('切換黑暗模式失敗：' + chrome.runtime.lastError.message);
         } else if (injectionResults && injectionResults[0] && injectionResults[0].result) {
           console.log('[Extension Popup] Dark Mode Script Injection Result:', injectionResults[0].result);
+          const mode = injectionResults[0].result.mode;
+          chrome.storage.sync.get({ darkModeSites: [] }, (res) => {
+            let sites = res.darkModeSites || [];
+            if (mode === 'on') {
+              if (hostname && !sites.includes(hostname)) {
+                sites.push(hostname);
+              }
+            } else if (mode === 'off') {
+              sites = sites.filter(site => site !== hostname);
+            }
+            chrome.storage.sync.set({ darkModeSites: sites });
+          });
         } else {
           console.error('[Extension Popup] Dark Mode Script Execution Failed: No results or unexpected result format.', injectionResults);
           alert('切換黑暗模式時發生未知錯誤。');

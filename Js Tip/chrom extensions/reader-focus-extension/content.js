@@ -39,6 +39,41 @@
   // UI 物件的實作已移至 ui.js，從全域 UI 取得
   const UI = window.UI;
 
+  // --- Dark Mode Helpers ---
+  const DARK_STYLE_ID = 'extension-dark-mode-style';
+  const DARK_CLASS_NAME = 'extension-dark-mode';
+
+  function applyDarkMode() {
+    const html = document.documentElement;
+    const existing = document.getElementById(DARK_STYLE_ID);
+    if (html.style.filter) html.style.filter = '';
+    document.querySelectorAll('[data-extensionoriginalfilter]').forEach(el => {
+      el.style.filter = el.dataset.extensionoriginalfilter;
+      delete el.dataset.extensionoriginalfilter;
+    });
+    if (!existing) {
+      const css = `html.${DARK_CLASS_NAME},html.${DARK_CLASS_NAME} body,html.${DARK_CLASS_NAME} body *:not(img):not(video):not(canvas):not(svg):not(picture){background-color:#121212!important;color:#f0f0f0!important;}html.${DARK_CLASS_NAME} img,html.${DARK_CLASS_NAME} video,html.${DARK_CLASS_NAME} canvas,html.${DARK_CLASS_NAME} svg,html.${DARK_CLASS_NAME} picture{filter:invert(0.92) hue-rotate(180deg)!important;}`;
+      const style = document.createElement('style');
+      style.id = DARK_STYLE_ID;
+      style.textContent = css;
+      document.head.appendChild(style);
+    }
+    html.classList.add(DARK_CLASS_NAME);
+  }
+
+  function removeDarkMode() {
+    const html = document.documentElement;
+    const existing = document.getElementById(DARK_STYLE_ID);
+    html.classList.remove(DARK_CLASS_NAME);
+    if (existing) existing.remove();
+    if (html.style.filter) html.style.filter = '';
+    document.querySelectorAll('[data-extensionoriginalfilter]').forEach(el => {
+      el.style.filter = el.dataset.extensionoriginalfilter;
+      delete el.dataset.extensionoriginalfilter;
+    });
+  }
+  // --- /Dark Mode Helpers ---
+
   // --- FocusMode (從 focus-mode.js 建立) ---
   const FocusMode = window.createFocusMode({
     getState,
@@ -477,15 +512,20 @@
       
       window.readerFocusInitialized = true; // 先標記初始化
 
-      chrome.storage.sync.get(['hiddenSites'], function(result) {
+      chrome.storage.sync.get({ hiddenSites: [], darkModeSites: [] }, function(result) {
         const hiddenSites = result.hiddenSites || [];
+        const darkModeSites = result.darkModeSites || [];
         const currentHostname = window.location.hostname;
         if (hiddenSites.includes(currentHostname)) {
           setState({ isButtonHiddenForSite: true });
           console.log(`[DEBUG] 擴充功能按鈕已於 ${currentHostname} 設定為隱藏 (根據儲存設定)。`);
         }
-        Main.initialize(); // 呼叫初始化，它會根據 isButtonHiddenForSite 決定是否建按鈕
-        setupMessageListener(); // 在 Main.initialize 後設定訊息監聽器
+        if (darkModeSites.includes(currentHostname)) {
+          applyDarkMode();
+          console.log(`[DEBUG] 已於 ${currentHostname} 自動開啟黑暗模式 (根據儲存設定)。`);
+        }
+        Main.initialize();
+        setupMessageListener();
       });
   }
 
