@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 import starlette.formparsers
 
-from app.routers import upload, ytdownloader, file_handler, chat
+from app.routers import upload, ytdownloader, file_handler, chat, pages
 from app.routers.upload import calculate_total_size, CACHE
 
 from app.services.file_service import get_file_list, get_video_files
@@ -77,7 +77,7 @@ app.add_middleware(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "app" / "templates"))
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/assets", StaticFiles(directory="app/static"), name="assets")
 
 app.mount("/img", StaticFiles(directory="img"), name="img")
 app.mount("/video", StaticFiles(directory="video"), name="video")
@@ -88,6 +88,7 @@ app.include_router(upload.router, prefix="/api", tags=["upload"])
 app.include_router(ytdownloader.router, prefix="/api", tags=["ytdownloader"])
 app.include_router(file_handler.router)
 app.include_router(chat.router)
+app.include_router(pages.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
