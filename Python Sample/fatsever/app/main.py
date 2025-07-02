@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 import starlette.formparsers
 
-from app.routers import upload, ytdownloader, file_handler
+from app.routers import upload, ytdownloader, file_handler, chat
 from app.routers.upload import calculate_total_size, CACHE
 
 from app.services.file_service import get_file_list, get_video_files
@@ -36,6 +36,8 @@ logger.info("啟動 FastAPI 應用程式...")
 starlette.formparsers.FormParser.max_size = NEW_MAX_SIZE
 starlette.formparsers.MultiPartParser.max_size = NEW_MAX_SIZE
 logger.info("設定最大檔案大小限制: %d GB", NEW_MAX_SIZE / (1024 * 1024 * 1024))
+
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -85,6 +87,7 @@ app.mount("/files", StaticFiles(directory="files"), name="files")
 app.include_router(upload.router, prefix="/api", tags=["upload"])
 app.include_router(ytdownloader.router, prefix="/api", tags=["ytdownloader"])
 app.include_router(file_handler.router)
+app.include_router(chat.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
@@ -150,14 +153,6 @@ async def status(request: Request, db: AsyncSession = Depends(get_db)):
         }
     )
 
-@app.get("/chat", response_class=HTMLResponse)
-async def chat(request: Request):
-    return templates.TemplateResponse(
-        "chat.html",
-        {
-            "request": request,
-        }
-    )
 
 if __name__ == "__main__":
     uvicorn.run(

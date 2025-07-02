@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {% block container %}
-<div class="container home-container">
+<div class="container py-3">
   {% block content %}
-    <h1>Home Page</h1>
-    <!-- 其他專屬的內容 -->
+  <h2 class="mb-3">Chat Room</h2>
+  <div id="chatLog" style="height:60vh;overflow-y:auto;border:1px solid #ccc;padding:10px;"></div>
+  <div class="input-group mt-3">
+    <input type="text" id="messageInput" class="form-control" placeholder="輸入訊息" autocomplete="off">
+    <button id="sendBtn" class="btn btn-primary">送出</button>
+  </div>
+  <script src="/static/js/chat.js"></script>
   {% endblock content %}
 </div>
 {% endblock container %}
