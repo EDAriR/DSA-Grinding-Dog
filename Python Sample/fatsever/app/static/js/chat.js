@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('messageInput');
   const send = document.getElementById('sendBtn');
 
-  const ws = new WebSocket(`ws://${location.host}/ws`);
+  const scheme = location.protocol === 'https:' ? 'wss' : 'ws';
+  const ws = new WebSocket(`${scheme}://${location.host}/ws`);
 
   ws.onmessage = (event) => {
     const div = document.createElement('div');
