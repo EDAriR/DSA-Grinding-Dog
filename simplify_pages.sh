@@ -1,0 +1,20 @@
+#!/bin/bash
+for file in "$@"; do
+  sed -i -E 's#\[audio://([^]]+)\]#<audio controls src="https://\1"></audio>#g' "$file"
+  perl -0pi -e 's@<span\s+style="(text-decoration: underline; color: #[0-9a-fA-F]+;?)"@<span data-keep="\1"@g' "$file"
+  perl -0pi -e "s@<span\s+style='(text-decoration: underline; color: #[0-9a-fA-F]+;?)'@<span data-keep=\"\1\"@g" "$file"
+  sed -i -E 's/\s+class="[^"]*"//g' "$file"
+  sed -i -E "s/\s+class='[^']*'//g" "$file"
+  sed -i -E 's/\s+id="[^"]*"//g' "$file"
+  sed -i -E "s/\s+id='[^']*'//g" "$file"
+  sed -i -E 's/\s+style="[^"]*"//g' "$file"
+  sed -i -E "s/\s+style='[^']*'//g" "$file"
+  sed -i -E 's/ preload="[^"]*"//g' "$file"
+  sed -i -E 's/ type="[^"]*"//g' "$file"
+  perl -0pi -e 's#<audio[^>]*>\s*<source[^>]*src="([^"]+)"[^>]*>.*?</audio>#<audio controls src="\1">#sg' "$file"
+  sed -i -E 's/<audio([^>]*)src="([^"]+)"[^>]*>/<audio controls src="\2">/g' "$file"
+  sed -i -E '/<div>\s*<\/div>/d' "$file"
+  sed -i -E '/<span>\s*<\/span>/d' "$file"
+  sed -i -E 's/^\s+$//g' "$file"
+  sed -i -E 's#<span data-keep="([^"]+)"#<span style="\1"#g' "$file"
+done
