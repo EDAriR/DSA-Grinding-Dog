@@ -92,14 +92,29 @@ body.monokai {
 }
 
 /* 修改 navbar 風格 */
-body.monokai .navbar {
+body.monokai nav {
   background-color: #1e1e1e;
 }
 
-body.monokai .navbar-brand, 
-body.monokai .nav-link, 
-body.monokai .btn-outline-light {
+body.monokai nav a.brand-logo,
+body.monokai nav a,
+body.monokai #themeToggle {
   color: #f8f8f2;
+}
+
+/* chat 影像預覽 */
+#chatLog img {
+  max-width: 100%;
+  height: auto;
+  margin: 4px 0;
+}
+
+/* 讓暗黑模式切換圖示在導覽列中垂直置中 */
+nav #themeToggle {
+  display: flex;
+  align-items: center;
+  height: 64px;          /* 導覽列預設高度 */
+  padding: 0 15px;        /* 與其他連結保持一致 */
 }
 
 /* 其他元件設定可依需求調整 */

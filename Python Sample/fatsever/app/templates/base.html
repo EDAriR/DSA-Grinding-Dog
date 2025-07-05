@@ -4,37 +4,25 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}FatAPI{% endblock %}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   <link rel="stylesheet" href="/assets/css/index.css"/>
 </head>
 <body>
   {% block navigation %}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">FatAPI Server</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNav" aria-controls="navbarNav"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse ms-auto" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/chat">Chat</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/status">Status</a>
-          </li>
-        </ul>
-      </div>
-
-      <button id="themeToggle" class="btn btn-outline-light justify-content-end" aria-label="dark mode switch">
-        <i id="themeIcon" class="fas fa-sun"></i>
-      </button>
+  <nav class="blue">
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo">FatAPI Server</a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="/">Home</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/status">Status</a></li>
+        <li>
+          <a id="themeToggle" class="btn-flat" aria-label="dark mode switch" href="#!">
+            <i id="themeIcon" class="fas fa-sun"></i>
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
   {% endblock navigation %}
@@ -64,7 +52,7 @@
     </div>
   </dialog>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="/assets/js/index.js"></script>
 </body>
 </html>
