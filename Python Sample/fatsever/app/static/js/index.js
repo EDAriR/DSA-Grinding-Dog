@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
 
+  // 初始化 Materialize tabs
+  M.Tabs.init(document.querySelectorAll('.tabs'));
+
   // 初始化 dialog 變數
   imageDialog = document.getElementById('imageDialog');
   videoDialog = document.getElementById('videoDialog');
