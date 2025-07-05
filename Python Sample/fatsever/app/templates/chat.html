@@ -4,7 +4,16 @@
 <div class="container py-3">
   {% block content %}
   <h2 class="mb-3">Chat Room</h2>
-  <div id="chatLog" style="height:60vh;overflow-y:auto;border:1px solid #ccc;padding:10px;"></div>
+  <div class="input-group mb-3">
+    <input type="text" id="usernameInput" class="form-control" placeholder="輸入名字" autocomplete="off">
+    <button id="setNameBtn" class="btn btn-secondary">設定</button>
+  </div>
+
+  <div id="chatLayout" class="chat-layout">
+    <div id="chatLog" class="chat-log"></div>
+    <div id="previewArea" class="preview-area"></div>
+  </div>
+
   <div class="input-group mt-3">
     <input type="text" id="messageInput" class="form-control" placeholder="輸入訊息" autocomplete="off">
     <button id="sendBtn" class="btn btn-primary">送出</button>
