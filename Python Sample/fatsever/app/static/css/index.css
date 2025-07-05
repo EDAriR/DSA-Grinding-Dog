@@ -92,13 +92,13 @@ body.monokai {
 }
 
 /* 修改 navbar 風格 */
-body.monokai .navbar {
+body.monokai nav {
   background-color: #1e1e1e;
 }
 
-body.monokai .navbar-brand, 
-body.monokai .nav-link, 
-body.monokai .btn-outline-light {
+body.monokai nav a.brand-logo,
+body.monokai nav a,
+body.monokai #themeToggle {
   color: #f8f8f2;
 }
 

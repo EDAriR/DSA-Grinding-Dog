@@ -7,64 +7,49 @@
       
   <!-- ytdownloader 表單 -->
   <form id="ytDownloadForm" action="/api/ytdownloader" method="post" enctype="multipart/form-data" class="mb-4">
-    <div class="input-group">
-      <input type="text" 
-             id="youtubeUrl" 
-             name="url" 
-             class="form-control" 
-             placeholder="請輸入 YouTube 影片網址"
-             aria-label="YouTube URL">
-      <button class="btn btn-primary" type="submit" id="ytDownloadBtn">
-        <i class="fas fa-download me-2"></i>
-        <span>下載</span>
-        <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-      </button>
+    <div class="row">
+      <div class="input-field col s12 m8">
+        <input type="text" id="youtubeUrl" name="url" placeholder="請輸入 YouTube 影片網址">
+      </div>
+      <div class="input-field col s12 m4">
+        <button class="btn waves-effect waves-light" type="submit" id="ytDownloadBtn">
+          <i class="fas fa-download left"></i>
+          <span>下載</span>
+          <i class="fas fa-spinner fa-spin" style="display:none;"></i>
+        </button>
+      </div>
     </div>
   </form>
 
   <!-- 上傳表單 -->
   <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data" class="mb-4">
-    <div class="mb-3">
-      <input class="form-control" type="file" id="file" name="file" multiple style="display: none;">
+    <div class="file-field input-field">
       <div class="drop-zone" id="dropZone">Drag & Drop files here or click to upload</div>
+      <input type="file" id="file" name="file" multiple style="display:none;">
     </div>
-    <button type="submit" class="btn btn-primary d-none">Upload File</button>
+    <button type="submit" class="btn waves-effect waves-light d-none">Upload File</button>
   </form>
 
   <!-- Tabs -->
-  <ul class="nav nav-tabs" id="fileTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="images-tab" data-bs-toggle="tab" data-bs-target="#images"
-              type="button" role="tab" aria-controls="images" aria-selected="true">
-        Images
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#videos"
-              type="button" role="tab" aria-controls="videos" aria-selected="false">
-        Videos
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="others-tab" data-bs-toggle="tab" data-bs-target="#others"
-              type="button" role="tab" aria-controls="others" aria-selected="false">
-        Others
-      </button>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs" id="fileTabs">
+        <li class="tab col s4"><a href="#images" class="active">Images</a></li>
+        <li class="tab col s4"><a href="#videos">Videos</a></li>
+        <li class="tab col s4"><a href="#others">Others</a></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Tab contents -->
-  <div class="tab-content" id="fileTabsContent">
-    <!-- 圖片檔案 -->
-    <div class="tab-pane fade show active p-3" id="images" role="tabpanel"
-         aria-labelledby="images-tab">
-      <div id="imageGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+  <div id="images" class="col s12">
+    <div id="imageGrid" class="row">
         {% for file in img_files %}
-        <div class="col">
+        <div class="col s6 m4 l3">
           <div class="file-card" data-file="{{ file }}" data-type="image" title="{{ file }}">
             <img src="/img/{{ file }}" alt="{{ file }}" class="file-card-img">
-            <button class="btn btn-danger btn-sm delete-btn" 
-                    data-file="{{ file }}" 
+            <button class="btn btn-danger btn-sm delete-btn"
+                    data-file="{{ file }}"
                     data-type="image"
                     style="position: absolute; top: 5px; right: 5px;">
               <i class="fas fa-trash"></i>
@@ -73,13 +58,12 @@
         </div>
         {% endfor %}
       </div>
-    </div>
+  </div>
 
-    <!-- 影片檔案 -->
-    <div class="tab-pane fade p-3" id="videos" role="tabpanel" aria-labelledby="videos-tab">
-      <div id="videoGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+  <div id="videos" class="col s12">
+    <div id="videoGrid" class="row">
         {% for item in video_files %}
-        <div class="col">
+        <div class="col s6 m4 l3">
           <div class="file-card" data-file="{{ item.video }}" data-type="video">
             {% if item.thumbnail %}
             <img src="/video/{{ item.thumbnail }}" alt="{{ item.video }}" class="file-card-img">
@@ -89,8 +73,8 @@
             <div class="file-card-body">
               <p class="file-card-title">{{ item.video }}</p>
             </div>
-            <button class="btn btn-danger btn-sm delete-btn" 
-                    data-file="{{ item.video }}" 
+            <button class="btn btn-danger btn-sm delete-btn"
+                    data-file="{{ item.video }}"
                     data-type="video"
                     style="position: absolute; top: 5px; right: 5px;">
               <i class="fas fa-trash"></i>
@@ -99,20 +83,19 @@
         </div>
         {% endfor %}
       </div>
-    </div>
+  </div>
 
-    <!-- 其他檔案 -->
-    <div class="tab-pane fade p-3" id="others" role="tabpanel" aria-labelledby="others-tab">
-      <div id="otherGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+  <div id="others" class="col s12">
+    <div id="otherGrid" class="row">
         {% for file in other_files %}
-        <div class="col">
+        <div class="col s6 m4 l3">
           <a class="file-card" href="/files/{{ file }}" download data-file="{{ file }}" data-type="other">
             <div class="file-icon"></div>
             <div class="file-card-body">
               <p class="file-card-title">{{ file }}</p>
             </div>
-            <button class="btn btn-danger btn-sm delete-btn" 
-                    data-file="{{ file }}" 
+            <button class="btn btn-danger btn-sm delete-btn"
+                    data-file="{{ file }}"
                     data-type="other"
                     style="position: absolute; top: 5px; right: 5px;">
               <i class="fas fa-trash"></i>
@@ -121,7 +104,6 @@
         </div>
         {% endfor %}
       </div>
-    </div>
   </div>
   
   <!-- 圖片預覽用 dialog -->
