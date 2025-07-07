@@ -164,12 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const className = 'extension-dark-mode';
           const html = document.documentElement;
           const existing = document.getElementById(styleId);
-          // 清理舊版 filter 實作遺留樣式
-          if (html.style.filter) html.style.filter = '';
-          document.querySelectorAll('[data-extensionoriginalfilter]').forEach(el => {
-            el.style.filter = el.dataset.extensionoriginalfilter;
-            delete el.dataset.extensionoriginalfilter;
-          });
           if (html.classList.contains(className)) {
             html.classList.remove(className);
             if (existing) existing.remove();
@@ -182,12 +176,11 @@ html.${className} body *:not(img):not(video):not(canvas):not(svg):not(picture) {
   background-color: #121212 !important;
   color: #f0f0f0 !important;
 }
-html.${className} img,
-html.${className} video,
-html.${className} canvas,
-html.${className} svg,
-html.${className} picture {
-  filter: invert(0.92) hue-rotate(180deg) !important;
+html.${className} table,
+html.${className} th,
+html.${className} td,
+html.${className} hr {
+  border-color: #ffffff !important;
 }`;
           const style = existing || document.createElement('style');
           style.id = styleId;

@@ -42,20 +42,27 @@
   // --- Dark Mode Helpers ---
   const DARK_STYLE_ID = 'extension-dark-mode-style';
   const DARK_CLASS_NAME = 'extension-dark-mode';
+  const DARK_CSS = `
+html.${DARK_CLASS_NAME},
+html.${DARK_CLASS_NAME} body,
+html.${DARK_CLASS_NAME} body *:not(img):not(video):not(canvas):not(svg):not(picture) {
+  background-color: #121212 !important;
+  color: #f0f0f0 !important;
+}
+html.${DARK_CLASS_NAME} table,
+html.${DARK_CLASS_NAME} th,
+html.${DARK_CLASS_NAME} td,
+html.${DARK_CLASS_NAME} hr {
+  border-color: #ffffff !important;
+}`;
 
   function applyDarkMode() {
     const html = document.documentElement;
     const existing = document.getElementById(DARK_STYLE_ID);
-    if (html.style.filter) html.style.filter = '';
-    document.querySelectorAll('[data-extensionoriginalfilter]').forEach(el => {
-      el.style.filter = el.dataset.extensionoriginalfilter;
-      delete el.dataset.extensionoriginalfilter;
-    });
     if (!existing) {
-      const css = `html.${DARK_CLASS_NAME},html.${DARK_CLASS_NAME} body,html.${DARK_CLASS_NAME} body *:not(img):not(video):not(canvas):not(svg):not(picture){background-color:#121212!important;color:#f0f0f0!important;}html.${DARK_CLASS_NAME} img,html.${DARK_CLASS_NAME} video,html.${DARK_CLASS_NAME} canvas,html.${DARK_CLASS_NAME} svg,html.${DARK_CLASS_NAME} picture{filter:invert(0.92) hue-rotate(180deg)!important;}`;
       const style = document.createElement('style');
       style.id = DARK_STYLE_ID;
-      style.textContent = css;
+      style.textContent = DARK_CSS;
       document.head.appendChild(style);
     }
     html.classList.add(DARK_CLASS_NAME);
@@ -66,11 +73,6 @@
     const existing = document.getElementById(DARK_STYLE_ID);
     html.classList.remove(DARK_CLASS_NAME);
     if (existing) existing.remove();
-    if (html.style.filter) html.style.filter = '';
-    document.querySelectorAll('[data-extensionoriginalfilter]').forEach(el => {
-      el.style.filter = el.dataset.extensionoriginalfilter;
-      delete el.dataset.extensionoriginalfilter;
-    });
   }
   // --- /Dark Mode Helpers ---
 
