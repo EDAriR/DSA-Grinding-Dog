@@ -11,7 +11,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const scheme = location.protocol === 'https:' ? 'wss' : 'ws';
   const ws = new WebSocket(`${scheme}://${location.host}/ws`);
 
-  let userName = '';
+  ws.onmessage = (event) => {
+    const div = document.createElement('div');
+    const msg = event.data.trim();
+    // 若訊息包含圖片 URL，則顯示預覽
+    if (/https?:\/\/\S+\.(?:png|jpe?g|gif|webp)/i.test(msg)) {
+      const img = document.createElement('img');
+      img.src = msg;
+      img.alt = msg;
+      img.style.maxWidth = '200px';
+      div.appendChild(img);
+    } else {
+      div.textContent = msg;
+    }
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  };
+
 
   ws.addEventListener('open', () => {
     if (nameInput.value.trim()) {

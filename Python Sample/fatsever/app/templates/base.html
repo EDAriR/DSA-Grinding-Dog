@@ -13,18 +13,30 @@
   <nav class="blue">
     <div class="nav-wrapper container">
       <a href="/" class="brand-logo">FatAPI Server</a>
-      <ul id="nav-mobile" class="right">
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
         <li><a href="/">Home</a></li>
         <li><a href="/chat">Chat</a></li>
         <li><a href="/status">Status</a></li>
         <li>
-          <a id="themeToggle" class="btn-flat" aria-label="dark mode switch">
+          <a id="themeToggle" class="btn-flat" aria-label="dark mode switch" href="#!">
             <i id="themeIcon" class="fas fa-sun"></i>
           </a>
         </li>
       </ul>
     </div>
   </nav>
+  <ul class="sidenav" id="mobile-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/chat">Chat</a></li>
+    <li><a href="/status">Status</a></li>
+    <li>
+      <a id="mobileThemeToggle" class="btn-flat" aria-label="dark mode switch" href="#!">
+        <i class="fas fa-sun" id="mobileThemeIcon"></i>
+      </a>
+    </li>
+  </ul>
   {% endblock navigation %}
 
   <!-- 主要內容區塊 -->
