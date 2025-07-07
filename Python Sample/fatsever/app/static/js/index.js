@@ -9,9 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const messageDiv = document.getElementById('message');
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
 
-  // 初始化 Materialize tabs
+  // 初始化 Materialize components
   M.Tabs.init(document.querySelectorAll('.tabs'));
+  M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
   // 初始化 dialog 變數
   imageDialog = document.getElementById('imageDialog');
@@ -24,25 +27,40 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('monokai');
     themeIcon.classList.remove('fa-moon');
     themeIcon.classList.add('fa-sun');
+    mobileThemeIcon.classList.remove('fa-moon');
+    mobileThemeIcon.classList.add('fa-sun');
   } else {
     document.body.classList.add('monokai');
     themeIcon.classList.remove('fa-sun');
     themeIcon.classList.add('fa-moon');
+    mobileThemeIcon.classList.remove('fa-sun');
+    mobileThemeIcon.classList.add('fa-moon');
   }
 
   // 主題切換
-  themeToggle.addEventListener('click', () => {
+  function toggleTheme() {
     if (document.body.classList.contains('monokai')) {
       document.body.classList.remove('monokai');
       localStorage.setItem('theme', 'default');
       themeIcon.classList.remove('fa-moon');
       themeIcon.classList.add('fa-sun');
+      mobileThemeIcon.classList.remove('fa-moon');
+      mobileThemeIcon.classList.add('fa-sun');
     } else {
       document.body.classList.add('monokai');
       localStorage.setItem('theme', 'monokai');
       themeIcon.classList.remove('fa-sun');
       themeIcon.classList.add('fa-moon');
+      mobileThemeIcon.classList.remove('fa-sun');
+      mobileThemeIcon.classList.add('fa-moon');
     }
+  }
+  themeToggle.addEventListener('click', toggleTheme);
+  mobileThemeToggle?.addEventListener('click', () => {
+    const sidenavEl = document.querySelector('.sidenav');
+    const instance = M.Sidenav.getInstance(sidenavEl);
+    instance.close();
+    toggleTheme();
   });
 
   // 檔案上傳相關
