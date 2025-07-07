@@ -4,10 +4,14 @@
 <div class="container py-3">
   {% block content %}
   <h2 class="mb-3">Chat Room</h2>
-  <div id="chatLog" style="height:60vh;overflow-y:auto;border:1px solid #ccc;padding:10px;"></div>
-  <div class="input-group mt-3">
-    <input type="text" id="messageInput" class="form-control" placeholder="輸入訊息" autocomplete="off">
-    <button id="sendBtn" class="btn btn-primary">送出</button>
+  <div id="chatLog" class="z-depth-1" style="height:60vh;overflow-y:auto;padding:10px;"></div>
+  <div class="row valign-wrapper" style="margin-top:1rem;">
+    <div class="input-field col s10">
+      <input id="messageInput" type="text" placeholder="輸入訊息" autocomplete="off" />
+    </div>
+    <div class="col s2 right-align">
+      <a id="sendBtn" class="btn waves-effect waves-light">送出</a>
+    </div>
   </div>
   <script src="/assets/js/chat.js"></script>
   {% endblock content %}
