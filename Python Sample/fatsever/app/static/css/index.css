@@ -155,3 +155,55 @@ body {
 #mainContainer {
   flex: 1;
 }
+
+/* chat layout */
+.chat-layout {
+  display: flex;
+}
+
+.chat-log {
+  flex: 2;
+  height: 60vh;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.preview-area {
+  flex: 1;
+  margin-left: 1rem;
+  max-width: 33%;
+}
+
+.message-box {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.message-preview img,
+.message-preview iframe {
+  width: 100%;
+  height: auto;
+}
+
+@media (orientation: portrait) {
+  .chat-layout {
+    flex-direction: column;
+  }
+  .preview-area {
+    display: none;
+  }
+}

@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   M.Tabs.init(document.querySelectorAll('.tabs'));
   M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
+  // 初始化 Materialize tabs
+  M.Tabs.init(document.querySelectorAll('.tabs'));
+
   // 初始化 dialog 變數
   imageDialog = document.getElementById('imageDialog');
   videoDialog = document.getElementById('videoDialog');
