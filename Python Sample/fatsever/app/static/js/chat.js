@@ -7,28 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('usernameInput');
   const setNameBtn = document.getElementById('setNameBtn');
   const previewArea = document.getElementById('previewArea');
+  let userName = '';
 
   const scheme = location.protocol === 'https:' ? 'wss' : 'ws';
   const ws = new WebSocket(`${scheme}://${location.host}/ws`);
-
-  ws.onmessage = (event) => {
-    const div = document.createElement('div');
-    const msg = event.data.trim();
-    // 若訊息包含圖片 URL，則顯示預覽
-    if (/https?:\/\/\S+\.(?:png|jpe?g|gif|webp)/i.test(msg)) {
-      const img = document.createElement('img');
-      img.src = msg;
-      img.alt = msg;
-      img.style.maxWidth = '200px';
-      div.appendChild(img);
-    } else {
-      div.textContent = msg;
-    }
-    log.appendChild(div);
-    log.scrollTop = log.scrollHeight;
-  };
-
-
   ws.addEventListener('open', () => {
     if (nameInput.value.trim()) {
       userName = nameInput.value.trim();
@@ -46,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function extractPreviewUrl(text) {
-    const imgur = text.match(/https?:\/\/i\.imgur\.com\/\S+\.(jpg|png|gif)/i);
-    if (imgur) return { type: 'img', url: imgur[0] };
+    const img = text.match(/https?:\/\/\S+\.(?:png|jpe?g|gif|webp)/i);
+    if (img) return { type: 'img', url: img[0] };
 
     const yt = text.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
     if (yt) return { type: 'iframe', url: `https://www.youtube.com/embed/${yt[1]}` };
