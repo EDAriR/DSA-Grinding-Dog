@@ -4,7 +4,10 @@
 <div class="container py-3">
   {% block content %}
   <h2 class="mb-3">Chat Room</h2>
-  <div id="chatLog" class="z-depth-1" style="height:60vh;overflow-y:auto;padding:10px;"></div>
+  <div class="chat-layout">
+    <div id="chatLog" class="chat-log z-depth-1"></div>
+    <div id="previewArea" class="preview-area"></div>
+  </div>
   <div class="row valign-wrapper" style="margin-top:1rem;">
     <div class="input-field col s10">
       <input id="messageInput" type="text" placeholder="輸入訊息" autocomplete="off" />
