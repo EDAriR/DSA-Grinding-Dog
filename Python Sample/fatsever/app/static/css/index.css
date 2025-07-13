@@ -246,10 +246,14 @@ body {
   }
 }
 /* Dark mode form fields */
-body.monokai input:not([type="submit"]):not([type="file"]),
-body.monokai textarea {
+body.monokai .input-field input:not([type="submit"]):not([type="file"]),
+body.monokai .input-field textarea {
   color: #f8f8f2 !important;
 }
+body.monokai .input-field input::placeholder,
+body.monokai .input-field textarea::placeholder {
+  color: #bdbdbd;
+}
 body.monokai .input-field label {
-  color: #ccc;
+  color: #ccc !important;
 }
