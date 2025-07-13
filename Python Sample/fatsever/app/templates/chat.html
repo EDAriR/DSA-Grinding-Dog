@@ -4,6 +4,14 @@
 <div class="container py-3">
   {% block content %}
   <h2 class="mb-3">Chat Room</h2>
+  <div class="row valign-wrapper mb-2">
+    <div class="input-field col s10">
+      <input id="usernameInput" type="text" placeholder="輸入名字" autocomplete="off" />
+    </div>
+    <div class="col s2 right-align">
+      <a id="setNameBtn" class="btn waves-effect waves-light">設定</a>
+    </div>
+  </div>
   <div class="chat-layout">
     <div id="chatLog" class="chat-log z-depth-1"></div>
     <div id="previewArea" class="preview-area"></div>
