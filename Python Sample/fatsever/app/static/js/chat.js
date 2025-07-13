@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showPreviewSide(el) {
+    if (!previewArea) return;
     previewArea.innerHTML = '';
     previewArea.appendChild(el);
   }
