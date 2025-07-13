@@ -96,6 +96,13 @@ body.monokai nav {
   background-color: #1e1e1e;
 }
 
+
+nav .brand-logo {
+  left: 0;
+  transform: none;
+  padding-left: 15px;
+}
+
 body.monokai nav a.brand-logo,
 body.monokai nav a,
 body.monokai #themeToggle,
