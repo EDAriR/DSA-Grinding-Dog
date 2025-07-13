@@ -115,8 +115,39 @@ nav #themeToggle,
 nav #mobileThemeToggle {
   display: flex;
   align-items: center;
-  height: 64px;          /* 導覽列預設高度 */
+  height: 56px;          /* 行動裝置導覽列高度 */
   padding: 0 15px;        /* 與其他連結保持一致 */
+}
+
+@media only screen and (min-width: 601px) {
+  nav #themeToggle {
+    height: 64px;        /* 桌機版高度 */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* 行動裝置：隱藏導覽列清單並顯示側邊欄圖示 */
+  #nav-mobile {
+    display: none;
+  }
+  nav .sidenav-trigger {
+    display: block;
+  }
+  nav .brand-logo {
+    left: 0;
+    transform: none;
+    padding-left: 15px;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  /* 桌機版：隱藏側邊欄圖示並微調品牌名稱位置 */
+  nav .sidenav-trigger {
+    display: none;
+  }
+  nav .brand-logo {
+    padding-left: 15px;
+  }
 }
 
 /* 其他元件設定可依需求調整 */
