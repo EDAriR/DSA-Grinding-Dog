@@ -238,3 +238,13 @@ body {
     display: none;
   }
 }
+/* Dark mode form fields */
+body.monokai input[type="text"],
+body.monokai textarea {
+  color: #f8f8f2;
+}
+
+body.monokai input[type="text"]::placeholder,
+body.monokai textarea::placeholder {
+  color: #ccc;
+}
