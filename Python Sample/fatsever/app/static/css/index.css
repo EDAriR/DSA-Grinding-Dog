@@ -213,6 +213,10 @@ body {
   max-width: 33%;
 }
 
+.side-preview-item {
+  margin-bottom: 0.5rem;
+}
+
 .message-box {
   border: 1px solid #ccc;
   border-radius: 0.25rem;

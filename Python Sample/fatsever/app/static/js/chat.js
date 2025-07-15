@@ -44,27 +44,31 @@ document.addEventListener('DOMContentLoaded', () => {
     return window.innerWidth > window.innerHeight;
   }
 
-  function extractPreviewUrl(text) {
-    const img = text.match(/https?:\/\/\S+\.(?:png|jpe?g|gif|webp)(?:\?\S*)?/i);
-    if (img) return { type: 'img', url: img[0] };
+  function extractPreviewUrls(text) {
+    const infos = [];
+    const imgReg = /https?:\/\/\S+\.(?:png|jpe?g|gif|webp)(?:\?\S*)?/gi;
+    const imgMatches = text.matchAll(imgReg);
+    for (const m of imgMatches) {
+      infos.push({ type: 'img', url: m[0] });
+    }
 
     const tw = text.match(/https?:\/\/(?:x|twitter)\.com\/[\w@.-]+\/status\/\d+/i);
     if (tw) {
       const url = new URL(tw[0]);
       url.hostname = 'vxtwitter.com';
-      return { type: 'iframe', url: url.toString() };
+      infos.push({ type: 'iframe', url: url.toString() });
     }
 
     const yt = text.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
-    if (yt) return { type: 'iframe', url: `https://www.youtube.com/embed/${yt[1]}` };
+    if (yt) infos.push({ type: 'iframe', url: `https://www.youtube.com/embed/${yt[1]}` });
 
     const twitch = text.match(/twitch\.tv\/videos\/(\d+)/);
-    if (twitch) return { type: 'iframe', url: `https://player.twitch.tv/?video=${twitch[1]}&parent=${location.hostname}` };
+    if (twitch) infos.push({ type: 'iframe', url: `https://player.twitch.tv/?video=${twitch[1]}&parent=${location.hostname}` });
 
     const tiktok = text.match(/tiktok\.com\/.+\/video\/(\d+)/);
-    if (tiktok) return { type: 'iframe', url: `https://www.tiktok.com/embed/v2/${tiktok[1]}` };
+    if (tiktok) infos.push({ type: 'iframe', url: `https://www.tiktok.com/embed/v2/${tiktok[1]}` });
 
-    return null;
+    return infos;
   }
 
   function createPreviewElement(info) {
@@ -86,8 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showPreviewSide(el) {
     if (!previewArea) return;
-    previewArea.innerHTML = '';
-    previewArea.appendChild(el);
+    const wrap = document.createElement('div');
+    wrap.className = 'side-preview-item mb-2';
+    wrap.appendChild(el);
+    previewArea.appendChild(wrap);
   }
 
   function appendMessage(data) {
@@ -110,9 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
     textDiv.textContent = data.message;
     box.appendChild(textDiv);
 
-    const previewInfo = extractPreviewUrl(data.message || '');
-    if (previewInfo) {
-      const previewEl = createPreviewElement(previewInfo);
+    const previews = extractPreviewUrls(data.message || '');
+    for (const info of previews) {
+      const previewEl = createPreviewElement(info);
       if (isLandscape()) {
         showPreviewSide(previewEl);
       } else {
