@@ -9,6 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const previewArea = document.getElementById('previewArea');
   let userName = '';
 
+  async function uploadImage(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    const resp = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData
+    });
+    if (!resp.ok) {
+      throw new Error('upload failed');
+    }
+    const result = await resp.json();
+    if (result.file_type === 'image') {
+      return `/img/${result.file_location}`;
+    }
+    return `/files/${result.file_location}`;
+  }
+
   const scheme = location.protocol === 'https:' ? 'wss' : 'ws';
   const ws = new WebSocket(`${scheme}://${location.host}/ws`);
   ws.addEventListener('open', () => {
@@ -122,6 +139,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       sendMessage();
+    }
+  });
+
+  input.addEventListener('paste', async (e) => {
+    const items = e.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].kind === 'file') {
+        e.preventDefault();
+        const file = items[i].getAsFile();
+        if (!file) continue;
+        try {
+          const url = await uploadImage(file);
+          ws.send(JSON.stringify({ type: 'chat', message: url }));
+        } catch (err) {
+          console.error('upload error', err);
+        }
+      }
     }
   });
 
