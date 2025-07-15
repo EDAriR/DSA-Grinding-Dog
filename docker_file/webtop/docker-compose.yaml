@@ -1,0 +1,79 @@
+services:
+  webtop:
+    build: .  # 建構映像檔使用當前目錄下的 Dockerfile
+    container_name: webtop
+
+    # --- 連接埠對應 ---
+    # 將容器內的 noVNC Web 介面 (預設埠3001，HTTPS) 映射到主機的9002埠。
+    # 您可以在主機上透過 http**s**://localhost:9002 來存取容器桌面（因使用自簽憑證，瀏覽器會顯示不安全提示）。
+    ports:
+      - "9002:3001"
+
+    environment:
+      # --- 使用者UID/GID ---
+      # 建議將 PUID, PGID 設為您主機使用者的UID和GID，以避免掛載卷的檔案權限問題。
+      # 例如在WSL或Linux環境下可透過 `id -u` 和 `id -g` 查詢。目前預設1000為一般第一個使用者。
+      - PUID=1000 
+      - PGID=1000
+      # --- 時區設定 ---
+      - TZ=Asia/Japan  # 將容器時區設定為您的本地時區
+      # --- Web介面基本驗證 ---
+      # 設定noVNC網頁介面的HTTP基本驗證密碼（使用者名稱預設為abc）。
+      # **請務必修改**為高強度隨機密碼，以免未經授權的存取。
+      - PASSWORD=123456
+
+    volumes:
+      # --- 資料夾掛載 ---
+      # 將主機的下載資料夾和圖片資料夾掛載進容器，以便在沙盒環境中存取。
+      - type: bind
+        source: "D:\\Downloads"  # Windows路徑，請替換為實際下載資料夾路徑
+        target: /download
+      - type: bind
+        source: "D:\\Pictures"   # Windows路徑，請替換為實際圖片資料夾路徑
+        target: /picture
+      - type: bind
+        source: "D:\\work_space"   # Windows路徑，請替換為實際圖片資料夾路徑
+        target: /work_space
+      # 將容器內使用者主目錄掛載為具名卷，以持久保存桌面環境的設定（瀏覽器配置、VSCode設定等）。
+      - type: volume
+        source: webtop_config
+        target: /home/abc
+
+    # --- /dev/shm 設定 ---
+    # 預設的 /dev/shm 共享記憶體只有64MB，現代瀏覽器可能因此崩潰:contentReference[oaicite:0]{index=0}。設定為2GB以提供充足的共享記憶體。
+    shm_size: "16gb"
+
+    # --- GPU 加速 ---
+    # 啟用 NVIDIA GPU 硬體加速（需要主機已安裝NVIDIA驅動及Container Toolkit）。
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all               # 使用主機上所有可用GPU（若只需特定GPU可改為數字或設定 device_ids）
+              capabilities: [gpu, utility, compute, video, graphics]  
+              # 上行列出需要的GPU功能類型。其中至少需包含 "gpu":contentReference[oaicite:1]{index=1}，
+              # 我們涵蓋了 compute、video、graphics、utility 等以確保CUDA計算和圖形加速:contentReference[oaicite:2]{index=2}。
+
+    # --- 容器內存取主機服務 ---
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      # 利用 Docker Desktop 提供的 host-gateway，讓容器能以 host.docker.internal 名稱訪問主機。本例可用於連接主機上的服務，例如Postgres資料庫。
+
+    # --- Docker 重啟策略 ---
+    restart: unless-stopped
+
+    # --- 網路設定 ---
+    # networks:
+    #   - default       # 使用Compose自動建立的預設網路，以供一般隔離
+    #   - postgres_net  # 連接到已有的Postgres網路（需在下方networks定義）
+
+# 定義一個外部網路，以連接其他Docker容器（如Postgres所在網路）。
+# networks:
+#   postgres_net:
+#     external: true
+#     name: <您的現有Postgres網路名稱>  # 請將此處替換為實際的Docker網路名稱
+
+# 定義具名卷，用於保存容器配置（對應掛載的 /home/abc）
+volumes:
+  webtop_config:
