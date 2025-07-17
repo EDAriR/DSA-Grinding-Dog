@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     tigervnc-standalone-server novnc python3-websockify python3-numpy \
     # 終端機模擬器
     xfce4-terminal gnome-terminal \
+    # 剪貼簿工具
+    xclip xsel \
     # 實用工具
     sudo curl wget gnupg apt-transport-https openssl \
     # 瀏覽器：安裝Google Chrome（透過官方deb）和Brave Browser（透過官方APT來源）
@@ -29,6 +31,18 @@ RUN apt-get update && apt-get install -y \
     && curl -L -o /tmp/code.deb https://go.microsoft.com/fwlink/?LinkID=760868 \
     && apt-get install -y /tmp/code.deb \
     && rm /tmp/code.deb \
+    # 安裝額外的字體和圖形庫支援 VSCode
+    && apt-get install -y fonts-liberation fonts-dejavu-core fonts-noto-cjk \
+    # 安裝圖示字體和主題
+    && apt-get install -y fonts-font-awesome fonts-material-design-icons-iconfont \
+    # 安裝 GTK 圖示主題
+    && apt-get install -y adwaita-icon-theme gnome-icon-theme hicolor-icon-theme \
+    # 安裝 Web 字體支援
+    && apt-get install -y fontconfig fonts-noto-color-emoji fonts-symbola \
+    # 安裝 VSCode 所需的依賴
+    && apt-get install -y libasound2-dev libdrm2 libxkbfile1 libxss1 libgconf-2-4 \
+    # 安裝 Git（VSCode 需要）
+    && apt-get install -y git \
     # 安裝Python 3以及pip（CUDA基底映像未預裝）
     && apt-get install -y python3 python3-pip \
     # 安裝 Mesa GLX（提供OpenGL圖形介面所需的庫，供瀏覽器等應用使用）
@@ -72,7 +86,7 @@ RUN mkdir -p /home/abc/.config/autostart && \
 
 # 建立桌面快捷方式（可執行）
 RUN mkdir -p /home/abc/Desktop && \
-    echo -e "[Desktop Entry]\nVersion=1.0\nType=Application\nName=Visual Studio Code\nComment=Code Editor\nExec=code --no-sandbox --disable-dev-shm-usage\nIcon=code\nTerminal=false\nStartupNotify=true\nCategories=Development;\nStartupWMClass=Code" > /home/abc/Desktop/VSCode.desktop && \
+    echo -e "[Desktop Entry]\nVersion=1.0\nType=Application\nName=Visual Studio Code\nComment=Code Editor\nExec=code --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer\nIcon=code\nTerminal=false\nStartupNotify=true\nCategories=Development;\nStartupWMClass=Code" > /home/abc/Desktop/VSCode.desktop && \
     echo -e "[Desktop Entry]\nVersion=1.0\nType=Application\nName=Brave Browser\nComment=Web Browser\nExec=brave-browser --no-sandbox --disable-dev-shm-usage\nIcon=brave-browser\nTerminal=false\nStartupNotify=true\nCategories=Network;\nStartupWMClass=Brave" > /home/abc/Desktop/Brave.desktop && \
     echo -e "[Desktop Entry]\nVersion=1.0\nType=Application\nName=Google Chrome\nComment=Web Browser\nExec=google-chrome --no-sandbox --disable-dev-shm-usage\nIcon=google-chrome\nTerminal=false\nStartupNotify=true\nCategories=Network;\nStartupWMClass=Google-chrome" > /home/abc/Desktop/Chrome.desktop && \
     echo -e "[Desktop Entry]\nVersion=1.0\nType=Application\nName=Terminal\nComment=Terminal Emulator\nExec=gnome-terminal\nIcon=utilities-terminal\nTerminal=false\nStartupNotify=true\nCategories=System;\nStartupWMClass=Gnome-terminal" > /home/abc/Desktop/Terminal.desktop && \
@@ -88,7 +102,18 @@ RUN echo -e "#!/bin/bash\nkillall xfce4-panel 2>/dev/null\nsleep 1\nDISPLAY=:1 x
 RUN mkdir -p /home/abc/.config/xfce4/xfconf/xfce-perchannel-xml && \
     echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<channel name="xfce4-panel" version="1.0">\n  <property name="configver" type="int" value="2"/>\n  <property name="panels" type="array">\n    <value type="int" value="1"/>\n    <property name="panel-1" type="empty">\n      <property name="position" type="string" value="p=6;x=0;y=0"/>\n      <property name="length" type="uint" value="100"/>\n      <property name="position-locked" type="bool" value="true"/>\n      <property name="size" type="uint" value="24"/>\n      <property name="plugin-ids" type="array">\n        <value type="int" value="1"/>\n        <value type="int" value="2"/>\n        <value type="int" value="3"/>\n        <value type="int" value="4"/>\n        <value type="int" value="5"/>\n      </property>\n    </property>\n  </property>\n  <property name="plugins" type="empty">\n    <property name="plugin-1" type="string" value="applicationsmenu"/>\n    <property name="plugin-2" type="string" value="tasklist"/>\n    <property name="plugin-3" type="string" value="separator"/>\n    <property name="plugin-4" type="string" value="systray"/>\n    <property name="plugin-5" type="string" value="clock"/>\n  </property>\n</channel>' > /home/abc/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 
+# --- 建立 VSCode 設定檔案 ---
+RUN mkdir -p /home/abc/.config/Code/User && \
+    echo -e '{\n  "extensions.autoCheckUpdates": false,\n  "extensions.autoUpdate": false,\n  "telemetry.telemetryLevel": "off",\n  "update.mode": "none",\n  "security.workspace.trust.enabled": false,\n  "workbench.startupEditor": "welcomePage",\n  "git.enableSmartCommit": true,\n  "git.confirmSync": false,\n  "terminal.integrated.defaultProfile.linux": "bash"\n}' > /home/abc/.config/Code/User/settings.json
+
+# --- 更新字體快取 ---
+RUN fc-cache -fv
+
+# --- 設定字體配置以改善圖示顯示 ---
+RUN mkdir -p /home/abc/.config/fontconfig && \
+    echo -e '<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n<fontconfig>\n  <alias>\n    <family>sans-serif</family>\n    <prefer>\n      <family>Noto Sans</family>\n      <family>Noto Color Emoji</family>\n      <family>Font Awesome 5 Free</family>\n    </prefer>\n  </alias>\n  <alias>\n    <family>monospace</family>\n    <prefer>\n      <family>Noto Sans Mono</family>\n      <family>Noto Color Emoji</family>\n    </prefer>\n  </alias>\n</fontconfig>' > /home/abc/.config/fontconfig/fonts.conf
+
 # --- 啟動容器時執行 VNC 伺服器與 noVNC ---
 # 使用 supervisord/s6 等管理多進程是更正規的方法，但此處用簡單方法在前景啟動websockify。
 USER abc
-CMD bash -c "vncserver :1 -geometry 1920x1080 -depth 24 -SecurityTypes None & websockify --web=/usr/share/novnc/ --cert=/home/abc/novnc.pem 3001 localhost:5901"
+CMD bash -c "vncserver :1 -depth 24 -SecurityTypes None & websockify --web=/usr/share/novnc/ --cert=/home/abc/novnc.pem 3001 localhost:5901 -- /?resize=scale&clipboard=1"
