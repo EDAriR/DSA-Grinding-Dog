@@ -20,10 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
       throw new Error('upload failed');
     }
     const result = await resp.json();
+    const baseUrl = `${location.protocol}//${location.host}`;
     if (result.file_type === 'image') {
-      return `/img/${result.file_location}`;
+      return `${baseUrl}/img/${result.file_location}`;
     }
-    return `/files/${result.file_location}`;
+    if (result.file_type === 'video') {
+      return `${baseUrl}/video/${result.file_location}`;
+    }
+    return `${baseUrl}/files/${result.file_location}`;
   }
 
   const scheme = location.protocol === 'https:' ? 'wss' : 'ws';
