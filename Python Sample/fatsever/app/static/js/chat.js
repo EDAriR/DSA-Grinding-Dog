@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const iframe = document.createElement('iframe');
     iframe.src = info.url;
-    iframe.frameBorder = '0';
+    iframe.style.border = '0';
     iframe.allow = 'autoplay; encrypted-media';
     iframe.allowFullscreen = true;
     iframe.className = 'w-100';
