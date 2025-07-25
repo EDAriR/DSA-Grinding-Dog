@@ -1,0 +1,56 @@
+# 使用較新的 Compose 檔案格式版本
+version: "3.8"
+
+services:
+  # 定義 code-server 服務
+  code-server:
+    # 使用官方的 code-server 映像檔
+    image: codercom/code-server:latest
+    
+    # 為容器設定一個固定的名稱，方便管理
+    container_name: code-server
+    
+    # 設定容器在退出時自動重啟，除非手動停止
+    restart: unless-stopped
+    
+    # 設定環境變數
+    environment:
+      # 設定您的登入密碼，請務必替換為一個高強度密碼
+      - PASSWORD=123456
+      # 設定 Sudo 功能不需要密碼（可選，方便在終端機中操作）
+      - SUDO_PASSWORD=123456
+      
+    # 設定連接埠映射 (Port Mapping)
+    # 將主機的 localhost:9003 映射到容器的 8080 連接埠
+    ports:
+      - "127.0.0.1:9003:8080"
+      
+    # 設定磁碟區掛載 (Volume Mounts)
+    # 使用長語法 (long syntax) 以增加可讀性
+    volumes:
+      # 將主機的設定檔目錄掛載進來，以便持久化 VS Code 的設定、擴充功能等
+      - type: bind
+        source: D:\work_space\webvscode\config # 在當前目錄下建立一個名為 config 的資料夾
+        target: /home/coder/.local/share/code-server
+        
+      # 以下為您指定的資料夾掛載
+      - type: bind
+        source: "D:\\Downloads"   # 注意：此為 Windows 路徑範例
+        target: /download
+        
+      - type: bind
+        source: "D:\\Pictures"    # 注意：此為 Windows 路徑範例
+        target: /picture
+        
+      - type: bind
+        source: "D:\\work_space"   # 注意：此為 Windows 路徑範例
+        target: /work_space
+    # 將此服務連接到名為 'work_space' 的網路
+    networks:
+      - work_space
+
+# 定義 Docker 網路
+networks:
+  # 定義一個名為 work_space 的網路，由 Docker Compose 自動建立與管理
+  work_space:
+    name: work_space
