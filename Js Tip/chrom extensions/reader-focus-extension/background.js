@@ -220,108 +220,68 @@ async function scrollAndCapture() {
   // 函式庫：等待指定時間
   const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+  // 截圖函式
+  const takeScreenshot = async () => {
+    return new Promise(resolve => {
+      chrome.runtime.sendMessage({ action: 'captureVisibleTab' }, response => {
+        resolve(response && response.dataUrl ? response.dataUrl : null);
+      });
+    });
+  };
+
   try {
     console.log('[ScrollCapture] 開始全頁截圖');
     const originalOverflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = 'hidden'; // 隱藏滾動條
+    document.documentElement.style.overflow = 'hidden';
 
     const totalHeight = document.documentElement.scrollHeight;
     const viewportHeight = window.innerHeight;
-    let currentScroll = 0;
+    
+    console.log(`[ScrollCapture] 總高度: ${totalHeight}, 視窗高度: ${viewportHeight}`);
+    
     const dataUrls = [];
+    
+    // 如果頁面高度小於等於視窗高度，只需要一張截圖
+    if (totalHeight <= viewportHeight) {
+      console.log('[ScrollCapture] 頁面內容適合單一畫面，只截一張');
+      window.scrollTo(0, 0);
+      await wait(300);
+      const dataUrl = await takeScreenshot();
+      if (dataUrl) {
+        dataUrls.push(dataUrl);
+      }
+      document.documentElement.style.overflow = originalOverflow;
+      return dataUrls;
+    }
+    
+    let currentScroll = 0;
     let currentStep = 0;
 
     while (currentScroll < totalHeight) {
       currentStep++;
       console.log(`[ScrollCapture] 第 ${currentStep} 次滾動，位置 ${currentScroll}/${totalHeight} (${Math.round(currentScroll/totalHeight*100)}%)`);
       window.scrollTo(0, currentScroll);
-      await wait(900); // 延長等待，避免超過速率限制
+      await wait(500);
 
-      try {
-        // 捕獲可見區域，增加錯誤處理與超時
-        const dataUrl = await Promise.race([
-          new Promise(resolve => {
-            chrome.runtime.sendMessage({ action: 'captureVisibleTab' }, response => {
-              if (!response || !response.dataUrl) {
-                console.error(`[ScrollCapture] 第 ${currentStep} 次截圖：回傳值無效`);
-                resolve(null);
-              } else {
-                resolve(response.dataUrl);
-              }
-            });
-          }),
-          // 5秒超時
-          new Promise((_, reject) => setTimeout(() => reject(new Error('截圖逾時 (5秒)')), 5000))
-        ]);
-        
-        if (dataUrl) {
-          dataUrls.push(dataUrl);
-          console.log(`[ScrollCapture] 第 ${currentStep} 次截圖成功，目前共 ${dataUrls.length} 張`);
-          
-          // 向背景頁報告進度（不開啟新頁面，僅記錄日誌）
-          chrome.runtime.sendMessage({ 
-            action: 'screenshotProgress', 
-            current: currentScroll,
-            total: totalHeight,
-            percentage: Math.round(currentScroll/totalHeight*100),
-            imageCount: dataUrls.length
-          });
-        } else {
-          console.error(`[ScrollCapture] 第 ${currentStep} 次截圖失敗，無回傳值`);
-          // 繼續執行，允許部分截圖失敗
-        }
-      } catch (captureError) {
-        console.error(`[ScrollCapture] 第 ${currentStep} 次截圖發生錯誤:`, captureError);
-        chrome.runtime.sendMessage({ 
-          action: 'screenshotError',
-          error: captureError.message,
-          position: currentScroll,
-          total: totalHeight
-        });
-        // 繼續執行，允許部分截圖失敗
+      const dataUrl = await takeScreenshot();
+      if (dataUrl) {
+        dataUrls.push(dataUrl);
+        console.log(`[ScrollCapture] 第 ${currentStep} 次截圖成功，目前共 ${dataUrls.length} 張`);
+      } else {
+        console.error(`[ScrollCapture] 第 ${currentStep} 次截圖失敗`);
       }
 
       currentScroll += viewportHeight;
     }
 
-    // 確保最後一屏也被截取
-    if (currentScroll >= totalHeight) {
-      currentStep++;
-      console.log(`[ScrollCapture] 最後一次滾動至底部 ${totalHeight}`);
-      window.scrollTo(0, totalHeight);
-      await wait(900);
-      
-      try {
-        const lastDataUrl = await Promise.race([
-          new Promise(resolve => {
-            chrome.runtime.sendMessage({ action: 'captureVisibleTab' }, response => {
-              resolve(response && response.dataUrl);
-            });
-          }),
-          new Promise((_, reject) => setTimeout(() => reject(new Error('截圖逾時 (5秒)')), 5000))
-        ]);
-        
-        if (lastDataUrl) {
-          dataUrls.push(lastDataUrl);
-          console.log(`[ScrollCapture] 底部截圖成功，總計 ${dataUrls.length} 張`);
-        } else {
-          console.error(`[ScrollCapture] 底部截圖失敗，無回傳值`);
-        }
-      } catch (captureError) {
-        console.error(`[ScrollCapture] 底部截圖發生錯誤:`, captureError);
-      }
-    }
-
-    window.scrollTo(0, 0); // 滾動回頂部
-    document.documentElement.style.overflow = originalOverflow; // 恢復滾動條
-    console.log(`[ScrollCapture] 截圖完成，共 ${dataUrls.length} 張，準備拼接`);
+    window.scrollTo(0, 0);
+    document.documentElement.style.overflow = originalOverflow;
+    console.log(`[ScrollCapture] 截圖完成，共 ${dataUrls.length} 張`);
 
     return dataUrls;
   } catch (error) {
     console.error('[ScrollCapture] 滾動截圖時發生錯誤:', error);
-    // 確保在出錯時也恢復滾動條
     document.documentElement.style.overflow = document.documentElement.style.originalOverflow || '';
-    // 向背景頁報告錯誤
     chrome.runtime.sendMessage({ 
       action: 'screenshotFatalError',
       error: error.message
