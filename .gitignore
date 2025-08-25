@@ -191,3 +191,4 @@ Js Tip/chrom extensions/**/*.eot
 # 作業系統生成的檔案
 .DS_Store
 Thumbs.db
+note/.smart-env/smart_env.json
