@@ -1,1 +1,16 @@
-{}
+{
+  "theme": "obsidian",
+  "cssTheme": "ITS Theme",
+  "accentColor": "#5781ff",
+  "interfaceFontFamily": "",
+  "textFontFamily": "",
+  "monospaceFontFamily": "",
+  "enabledCssSnippets": [
+    "blue_links",
+    "blue-links",
+    "timeline-color",
+    "timecolor",
+    "dataview-display",
+    "note"
+  ]
+}

@@ -7,7 +7,6 @@
   "canvas": true,
   "outgoing-link": true,
   "tag-pane": true,
-  "footnotes": false,
   "properties": false,
   "page-preview": true,
   "daily-notes": true,
@@ -27,7 +26,8 @@
   "workspaces": false,
   "file-recovery": true,
   "publish": false,
-  "sync": true,
-  "bases": true,
-  "webviewer": false
+  "sync": false,
+  "webviewer": true,
+  "footnotes": false,
+  "bases": true
 }

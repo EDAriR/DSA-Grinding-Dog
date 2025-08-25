@@ -1,0 +1,15 @@
+.callout[data-callout="timeline"] .callout-title {
+    background-color: #960000 !important; /* 標題背景色   #FFDCA7*/
+    color: #F0F0F0 !important; /* 標題字體顏色 #000000*/
+}
+
+.callout[data-callout="timeline"] {
+    background-color: transparent !important; /* 內文背景色 */
+    color: #000000 !important; /* 內文字體 */
+}
+.callout[data-callout="timeline"] .callout-title em {
+    color: #ADADAD !important; /* 副標題字體顏色#000000 */
+    font-style: italic !important; /* 副標題斜體 */
+}
+
+

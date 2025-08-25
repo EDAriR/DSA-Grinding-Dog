@@ -1,0 +1,11 @@
+{
+  "webviewer:open": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Y"
+    }
+  ],
+  "graph:open": []
+}

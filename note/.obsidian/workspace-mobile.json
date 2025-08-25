@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "89f97fc5c9011441",
+    "type": "split",
+    "children": [
+      {
+        "id": "1222d806318b87a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0f2a73a3057800e1",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "AI測試用/Pastedimage20250217232243.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pastedimage20250217232243"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0aff37713d4e1c83",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "02ed7407a85e0928",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "檔案瀏覽器"
+        }
+      },
+      {
+        "id": "33e0a1ce4edf7606",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "搜尋"
+        }
+      },
+      {
+        "id": "ffa4f79cd6d4b7aa",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          },
+          "icon": "lucide-tags",
+          "title": "標籤"
+        }
+      },
+      {
+        "id": "acdf954de60771b8",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "書籤"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "c43a06bdbcc2b967",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "0ca709ed6872170f",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "AI測試用/Pastedimage20250217232243.png",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "反向連結"
+        }
+      },
+      {
+        "id": "d86f9cbc56f5ab49",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "貝西亞赫.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "5ba7c7955e90f978",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "AI測試用/Pastedimage20250217232243.png",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "大綱"
+        }
+      },
+      {
+        "id": "272aea790977bcbf",
+        "type": "leaf",
+        "state": {
+          "type": "smart-chat-view",
+          "state": {},
+          "icon": "message-square",
+          "title": "Smart Chat"
+        }
+      }
+    ],
+    "currentTab": 3
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
+    }
+  },
+  "active": "272aea790977bcbf",
+  "lastOpenFiles": [
+    "AI測試用/歡樂島.md",
+    "01.角色/梅芙.md",
+    "07.神祇/錫古.md",
+    "07.神祇/女族長.md",
+    "07.神祇/摩摩伽耶力岡.md",
+    "07.神祇/瑪赫.md",
+    "07.神祇/達-伊迦圖戈戈爾栖.md",
+    "07.神祇/貝洛.md",
+    "02.地理/永夜淨土.md",
+    "02.地理/思念界.md",
+    "故事/旅行者聯篇/就這樣吧.md",
+    "故事/旅行者聯篇/黑天鵝.md",
+    "99.作者手札/文本/斯坎以童話形式描述降月事變.md",
+    "01.角色/塔奇亞忒.md",
+    "99.作者手札/文本/對白集錦.md",
+    "01.角色/歐婭.md",
+    "01.角色/熾月.md",
+    "10.歷史/事件/燼土長征.md",
+    "99.作者手札/靈感/旅行者聯篇靈感/不要對無家可歸的小狗微笑.md",
+    "99.作者手札/靈感/旅行者聯篇靈感/敵人.md",
+    "99.作者手札/靈感/不想融化的雪人.md",
+    "角色/梅芙.md",
+    "文化/變形.md",
+    "文化/行路箴言.md",
+    "角色/Fergus mac Roy.md",
+    "文化/歐甘符文.md",
+    "圖片/461156376_122194746446068419_9048653432961310809_n.jpg",
+    "Untitled.canvas"
+  ]
+}

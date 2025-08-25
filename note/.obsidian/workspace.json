@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "57a6041314e34beb",
+    "id": "ee00eef976661a45",
     "type": "split",
     "children": [
       {
-        "id": "34650d0931a4fba6",
+        "id": "7ab1ee02a1d52d71",
         "type": "tabs",
         "children": [
           {
-            "id": "85e607f62999f496",
+            "id": "82916db68f014fdd",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,22 +20,33 @@
               "icon": "lucide-file",
               "title": "memo"
             }
+          },
+          {
+            "id": "bb2f3a31d1651b4d",
+            "type": "leaf",
+            "state": {
+              "type": "smart-chat-view",
+              "state": {},
+              "icon": "smart-chat",
+              "title": "Smart Chat"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "3a12f5c4291ca271",
+    "id": "14fd2f98cd976eee",
     "type": "split",
     "children": [
       {
-        "id": "dfab6ddbfbc0ec96",
+        "id": "9aea25ab53b3fa8e",
         "type": "tabs",
         "children": [
           {
-            "id": "763eaccca2b3f5d6",
+            "id": "ca707830ccde927e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +59,17 @@
             }
           },
           {
-            "id": "8216464a9199d220",
+            "id": "600d4af4a991ecc4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "c0d8c7c2f2da06e3",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,69 +82,57 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜尋"
-            }
-          },
-          {
-            "id": "5a3d3160e208adc4",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {},
-              "icon": "lucide-bookmark",
-              "title": "書籤"
+              "title": "Search"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 241.5
   },
   "right": {
-    "id": "c53977a15ac49478",
+    "id": "fd1531a5bb8bae72",
     "type": "split",
     "children": [
       {
-        "id": "3e23f234027c8af4",
+        "id": "4c2815954ba536c0",
         "type": "tabs",
         "children": [
           {
-            "id": "4011c7b8ac5d9ad5",
+            "id": "8af788f5257b0475",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DSA/1768. Merge Strings Alternately.md",
-                "collapseAll": false,
+                "file": "memo.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "1768. Merge Strings Alternately 的反向連結"
+              "title": "memo 的反向連結"
             }
           },
           {
-            "id": "9a09a0d6e9761e37",
+            "id": "780cd0b0f5a1c381",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DSA/1768. Merge Strings Alternately.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "1768. Merge Strings Alternately 的對外連結"
+              "title": "對外連結"
             }
           },
           {
-            "id": "0cd4d7adf5a43405",
+            "id": "0b5846dd824ab1d3",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -138,25 +147,65 @@
             }
           },
           {
-            "id": "cbf4b67c5078fc61",
+            "id": "d2bb0dbcb7401655",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "DSA/1768. Merge Strings Alternately.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1768. Merge Strings Alternately 的大綱"
+              "title": "大綱"
+            }
+          },
+          {
+            "id": "8aa4c1283809166d",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "advanced-tables-toolbar"
+            }
+          },
+          {
+            "id": "71bf76e6f24c1e27",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
+          },
+          {
+            "id": "5f64fcccbf7a1946",
+            "type": "leaf",
+            "state": {
+              "type": "smart-chatgpt-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Smart ChatGPT"
+            }
+          },
+          {
+            "id": "b95fd63890541120",
+            "type": "leaf",
+            "state": {
+              "type": "smart-chat-v0",
+              "state": {},
+              "icon": "message-square",
+              "title": "Smart Chat (v0 legacy)"
             }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 430.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -167,13 +216,67 @@
       "daily-notes:開啟今天的每日筆記": false,
       "templates:插入模板": false,
       "command-palette:開啟命令面板": false,
-      "bases:建立新的 base": false
+      "bases:建立新的 base": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "smart-connections:Open: Smart Chat": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": true
     }
   },
-  "active": "85e607f62999f496",
+  "active": "bb2f3a31d1651b4d",
   "lastOpenFiles": [
-    "DSA/1768. Merge Strings Alternately.md",
-    "memo.md",
-    "DSA"
+    "DSA/1071.Greatest Common Divisor of Strings 1.md",
+    "DSA/026. Remove Duplicates from Sorted Array 1.md",
+    "DSA/013.Roman to Integer 1.md",
+    "目錄.md",
+    "99.Read Me asset/Pasted image 20250228005807.png",
+    "99.Read Me asset/2025-02-28 01-42-49.mkv",
+    "未命名.base",
+    "Obsidian語法教學(只想瑟瑟的不用看).md",
+    "Obsidian × SmartChat教學.md",
+    "Smart_Chat優化.md",
+    "99.Read Me asset/2025-02-28 02-49-26.mkv",
+    "99.Read Me asset/Pasted image 20250228031811.png",
+    "01.角色/MaidoDism.md",
+    "02.圖片/00005-3352261780.jpg.png",
+    "01.角色/Hell's academy.md",
+    "01.角色/Lynn.md",
+    "01.角色/歡樂島.md",
+    "02.圖片/Pastedimage20250217232243.png",
+    "02.圖片/876e8361-89d3-42ad-88b7-f41b18f14a4a.jpg",
+    "02.圖片/4fe63c88-639e-4e85-b9a4-cc78e1f8ecb1.jpg",
+    "02.圖片/876e8361-89d3-42ad-88b7-f41b18f14a4a.jpg.crdownload",
+    "00005-3352261780.jpg.md",
+    "02.圖片/00005-3352261780.jpg",
+    "02.圖片/Pastedimage20250217232243.jpg",
+    "01.角色/Memoria.md",
+    "AI測試用/Lynn.md",
+    "AI測試用/4fe63c88-639e-4e85-b9a4-cc78e1f8ecb1.jpg",
+    "AI測試用/4fe63c88-639e-4e85-b9a4-cc78e1f8ecb1.jpg.crdownload",
+    "AI測試用/都立彩舞學園(編輯中).md",
+    "其他/火焰‧伊芙與她的傳奇鐵匠鋪.md",
+    "其他",
+    "AI測試用/00005-3352261780(0).png",
+    "AI測試用/00005-3352261780.psd~",
+    "AI測試用/00005-3352261780.psd",
+    "AI測試用/MaidoDism.md",
+    "AI測試用/女僕祕書.md",
+    "AI測試用/歡樂島.md",
+    "99.作者手札/參考資料/Untitled.md",
+    "Obsidian使用筆記.md",
+    "99.作者手札/Api金鑰.md",
+    "AI測試用/At-the-Mountains-of-Madness.md",
+    "AI測試用/Untitled 1.md",
+    "AI測試用/Smart_Chat優化.md",
+    "AI測試用/Untitled.md",
+    "圖片/女僕祕書/Untitled",
+    "圖片/女僕祕書",
+    "Untitled.canvas",
+    "角色/關係圖/Untitled.canvas",
+    "種族/未命名.canvas",
+    "未命名.canvas",
+    "Untitled 1.canvas",
+    "未命名 1.canvas",
+    "腳n/未命名.canvas"
   ]
 }
